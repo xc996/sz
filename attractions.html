@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="深圳旅游景点 | Shenzhen Attractions">
+    <title>深圳景点 | Shenzhen Attractions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/attractions.css">
+    
+    <!-- Font Awesome (本地化) -->
+    <link rel="stylesheet" href="css/vendor/all.min.css">
+    
+    <!-- AOS Animation (本地化) -->
+    <link href="css/vendor/aos.css" rel="stylesheet">
+</head>
+<body data-theme="light" data-lang="zh">
+    <!-- 导航栏 -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🏙️</span>
+                <span class="logo-text" data-i18n="nav.logo">深圳</span>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="attractions.html" data-i18n="nav.attractions">景点</a></li>
+                <li><a href="index.html#culture" data-i18n="nav.culture">历史文化</a></li>
+                <li><a href="index.html#food" data-i18n="nav.food">美食</a></li>
+                <li><a href="index.html#shopping" data-i18n="nav.shopping">购物</a></li>
+                <li><a href="index.html#transport" data-i18n="nav.transport">交通</a></li>
+                <li><a href="map.html" data-i18n="nav.map">地图</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button id="langSwitch" class="icon-btn" title="切换语言">
+                    <i class="fas fa-globe"></i>
+                    <span>EN</span>
+                </button>
+                <button id="themeToggle" class="icon-btn" title="切换主题">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="menuToggle" class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 大屏图片轮播 -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <!-- 轮播项 -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920" alt="深圳湾公园">
+                    <div class="carousel-caption">
+                        <h2 data-i18n="attractions.slide1.title">深圳湾公园</h2>
+                        <p data-i18n="attractions.slide1.desc">绵延15公里的海滨长廊，欣赏日落的最佳地点</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=1920" alt="世界之窗">
+                    <div class="carousel-caption">
+                        <h2 data-i18n="attractions.slide2.title">世界之窗</h2>
+                        <p data-i18n="attractions.slide2.desc">一天游遍世界，130个微缩景观</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=1920" alt="欢乐谷">
+                    <div class="carousel-caption">
+                        <h2 data-i18n="attractions.slide3.title">欢乐谷</h2>
+                        <p data-i18n="attractions.slide3.desc">华南地区最受欢迎的主题乐园</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920" alt="东部华侨城">
+                    <div class="carousel-caption">
+                        <h2 data-i18n="attractions.slide4.title">东部华侨城</h2>
+                        <p data-i18n="attractions.slide4.desc">山海结合的生态旅游度假区</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1920" alt="平安金融中心">
+                    <div class="carousel-caption">
+                        <h2 data-i18n="attractions.slide5.title">平安金融中心</h2>
+                        <p data-i18n="attractions.slide5.desc">深圳最高建筑，599米云际观光层</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 轮播控制按钮 -->
+            <button class="carousel-btn prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- 轮播指示器 -->
+            <div class="carousel-indicators" id="carouselIndicators">
+                <!-- 指示器由JS生成 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 景点详情区域 -->
+    <section class="attractions-detail-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span data-i18n="attractions.title">景点</span>
+                <div class="title-underline"></div>
+            </h2>
+            <p class="section-subtitle" data-i18n="attractions.subtitle">探索深圳最具代表性的地标建筑与自然风光</p>
+            
+            <!-- 景点卡片区域 -->
+            <div class="attractions-grid" id="attractionsGrid">
+                <!-- 深圳湾公园 -->
+                <div class="attraction-card" data-attraction="szbay">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800" alt="深圳湾公园">
+
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="attraction.szbay.name">深圳湾公园</h3>
+                        <p class="card-description" data-i18n="attraction.szbay.desc">绵延15公里的海滨长廊，欣赏日落的最佳地点</p>
+                        <div class="card-meta">
+                            <div class="card-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="attraction.szbay.location">南山区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 世界之窗 -->
+                <div class="attraction-card" data-attraction="window">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?w=800" alt="世界之窗">
+
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="attraction.window.name">世界之窗</h3>
+                        <p class="card-description" data-i18n="attraction.window.desc">一天游遍世界，130个微缩景观</p>
+                        <div class="card-meta">
+                            <div class="card-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="attraction.window.location">南山区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 欢乐谷 -->
+                <div class="attraction-card" data-attraction="happyvalley">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800" alt="欢乐谷">
+
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="attraction.happyvalley.name">欢乐谷</h3>
+                        <p class="card-description" data-i18n="attraction.happyvalley.desc">华南地区最受欢迎的主题乐园</p>
+                        <div class="card-meta">
+                            <div class="card-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="attraction.happyvalley.location">南山区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 东部华侨城 -->
+                <div class="attraction-card" data-attraction="octeast">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800" alt="东部华侨城">
+
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="attraction.octeast.name">东部华侨城</h3>
+                        <p class="card-description" data-i18n="attraction.octeast.desc">山海结合的生态旅游度假区</p>
+                        <div class="card-meta">
+                            <div class="card-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="attraction.octeast.location">盐田区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 深圳中心书城 -->
+                <div class="attraction-card" data-attraction="bookcity">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800" alt="深圳中心书城">
+
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="attraction.bookcity.name">深圳中心书城</h3>
+                        <p class="card-description" data-i18n="attraction.bookcity.desc">华南地区最大的书店，文化地标</p>
+                        <div class="card-meta">
+                            <div class="card-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="attraction.bookcity.location">福田区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 平安金融中心 -->
+                <div class="attraction-card" data-attraction="pingan">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800" alt="平安金融中心">
+
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title" data-i18n="attraction.pingan.name">平安金融中心</h3>
+                        <p class="card-description" data-i18n="attraction.pingan.desc">深圳最高建筑，599米云际观光层</p>
+                        <div class="card-meta">
+                            <div class="card-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-i18n="attraction.pingan.location">福田区</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-i18n="footer.about">关于深圳</h3>
+                    <p data-i18n="footer.desc">中国改革开放的窗口，创新创业的热土</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quick">快速链接</h3>
+                    <ul>
+                        <li><a href="attractions.html" data-i18n="footer.attractions">热门景点</a></li>
+                        <li><a href="map.html" data-i18n="footer.map">互动地图</a></li>
+                        <li><a href="index.html#culture" data-i18n="footer.culture">文化故事</a></li>
+                        <li><a href="index.html#food" data-i18n="footer.food">美食推荐</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-i18n="footer.contact">联系我们</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +86 755-12345678</li>
+                        <li><i class="fas fa-envelope"></i> info@shenzhen.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 深圳市福田区</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shenzhen Tourism. <span data-i18n="footer.rights">保留所有权利</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JS Libraries -->
+    <script src="js/vendor/aos.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/attractions.js"></script>
+</body>
+</html>
