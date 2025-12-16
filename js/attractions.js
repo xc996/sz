@@ -856,6 +856,10 @@ function renderAttractions() {
     });
 }
 
+/**
+ * 功能：在离开列表进入详情前保存当前滚动位置（中文注释）
+ * 说明：使用 sessionStorage 存储 Y 坐标与进入的条目标识，便于返回时恢复
+ */
 function saveEntryScroll(slug) {
     try {
         sessionStorage.setItem('attractionsScrollY', String(window.scrollY));
@@ -864,6 +868,10 @@ function saveEntryScroll(slug) {
     } catch (e) {}
 }
 
+/**
+ * 功能：从 sessionStorage 恢复列表滚动位置（中文注释）
+ * 说明：仅在数据有效且未过期时恢复，并清理已使用的数据
+ */
 function restoreEntryScroll() {
     const yStr = sessionStorage.getItem('attractionsScrollY');
     const atStr = sessionStorage.getItem('attractionsSavedAt');
@@ -875,6 +883,21 @@ function restoreEntryScroll() {
     sessionStorage.removeItem('attractionsScrollY');
     sessionStorage.removeItem('attractionsEntrySlug');
     sessionStorage.removeItem('attractionsSavedAt');
+}
+
+/**
+ * 功能：为详情链接绑定点击事件以保存滚动位置（中文注释）
+ * 说明：在跳转到 attractions/*.html 之前记录当前位置
+ */
+function bindDetailEntryScroll() {
+    const links = document.querySelectorAll('.detail-btn');
+    if (!links || links.length === 0) return;
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            const slug = link.getAttribute('data-slug') || '';
+            saveEntryScroll(slug);
+        });
+    });
 }
 
 // 渲染时间轴
@@ -1187,6 +1210,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 绑定景点卡片点击事件，显示详情弹窗
     bindAttractionClickEvents();
+    
+    // 仅在列表页恢复滚动并绑定保存事件
+    if (document.getElementById('attractionsGrid')) {
+        restoreEntryScroll();
+        bindDetailEntryScroll();
+    }
 });
 
 // ------------------------------
@@ -1211,5 +1240,12 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
                 icon.classList.add('fa-moon');
             }
         }
+    }
+});
+
+// 在页面通过 bfcache 恢复时也尝试恢复滚动（中文注释）
+window.addEventListener('pageshow', (e) => {
+    if (document.getElementById('attractionsGrid')) {
+        restoreEntryScroll();
     }
 });
