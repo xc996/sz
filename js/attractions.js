@@ -839,7 +839,6 @@ function renderAttractions() {
         card.innerHTML = `
             <div class="card-image">
                 <img src="${attraction.image}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}">
-                <span class="card-badge">${currentLang === 'zh' ? attraction.badge : attraction.badgeEn}</span>
             </div>
             <div class="card-content">
                 <h3 class="card-title">${currentLang === 'zh' ? attraction.name : attraction.nameEn}</h3>
