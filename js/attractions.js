@@ -1164,10 +1164,8 @@ document.addEventListener('DOMContentLoaded', () => {
         carousel.init();
     }
     
-    // 绑定景点卡片点击事件
-    if (document.querySelector('.attractions-grid')) {
-        bindAttractionClickEvents();
-    }
+    // 移除弹窗功能，直接跳转到详情页
+    // bindAttractionClickEvents();
 });
 
 // ------------------------------
