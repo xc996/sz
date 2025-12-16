@@ -299,9 +299,8 @@ body:has(.attraction-detail-section) .menu-toggle span {
 @media (prefers-reduced-motion: no-preference) {
     .detail-header,
     .detail-image,
-    .detail-info,
-    .detail-highlights,
-    .info-card,
+    .detail-content,
+    .detail-cards,
     .back-button {
         animation-fill-mode: both;
         animation-duration: 0.6s;
@@ -313,6 +312,11 @@ body:has(.attraction-detail-section) .menu-toggle span {
     
     .detail-image {
         animation-name: zoomIn;
+        animation-delay: 0.1s;
+    }
+    
+    .detail-content {
+        animation-delay: 0.2s;
     }
     
     .detail-info {
@@ -323,11 +327,13 @@ body:has(.attraction-detail-section) .menu-toggle span {
         animation-name: fadeInLeft;
     }
     
-    .info-card {
+    .detail-cards {
         animation-name: fadeInUp;
+        animation-delay: 0.4s;
     }
     
     .back-button {
         animation-name: fadeInUp;
+        animation-delay: 0.6s;
     }
 }
