@@ -237,7 +237,7 @@ const attractionsData = [
         category: 'nature',
         description: '绵延15公里的海滨长廊，欣赏日落的最佳地点',
         descriptionEn: 'A 15km coastal promenade, the best spot to watch the sunset',
-        image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
+        image: 'images/深圳湾公园.jpg',
         location: '南山区',
         locationEn: 'Nanshan District',
         rating: 4.8,
@@ -325,6 +325,246 @@ const attractionsData = [
         badgeEn: 'Landmark',
         lat: 22.5364,
         lng: 114.0547
+    },
+    {
+        id: 7,
+        name: '小梅沙',
+        nameEn: 'Xiaomeisha Beach',
+        category: 'nature',
+        description: '深圳东部的美丽海滩，适合游泳和休闲',
+        descriptionEn: 'Beautiful beach in eastern Shenzhen, perfect for swimming and relaxation',
+        image: 'https://images.unsplash.com/photo-1551029506-0807df4e2031?w=800',
+        location: '盐田区',
+        locationEn: 'Yantian District',
+        rating: 4.6,
+        badge: '海滩',
+        badgeEn: 'Beach',
+        lat: 22.5847,
+        lng: 114.2847
+    },
+    {
+        id: 8,
+        name: '大梅沙',
+        nameEn: 'Dameisha Beach',
+        category: 'nature',
+        description: '深圳最大的免费海滩，设施完善，人气旺盛',
+        descriptionEn: 'Shenzhen\'s largest free beach with complete facilities and vibrant atmosphere',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+        location: '盐田区',
+        locationEn: 'Yantian District',
+        rating: 4.7,
+        badge: '免费',
+        badgeEn: 'Free',
+        lat: 22.5689,
+        lng: 114.2789
+    },
+    {
+        id: 9,
+        name: '莲花山公园',
+        nameEn: 'Lianhuashan Park',
+        category: 'nature',
+        description: '深圳中心区的城市公园，可以俯瞰福田CBD',
+        descriptionEn: 'Urban park in Shenzhen\'s central area with panoramic views of Futian CBD',
+        image: 'https://images.unsplash.com/photo-1522759438344-6a9f6d5f14af?w=800',
+        location: '福田区',
+        locationEn: 'Futian District',
+        rating: 4.5,
+        badge: '城市',
+        badgeEn: 'Urban',
+        lat: 22.5459,
+        lng: 114.0589
+    },
+    {
+        id: 10,
+        name: '红树林自然保护区',
+        nameEn: 'Mangrove Nature Reserve',
+        category: 'nature',
+        description: '国家级自然保护区，候鸟栖息地',
+        descriptionEn: 'National nature reserve and migratory bird habitat',
+        image: 'https://images.unsplash.com/photo-1503551723145-6c040742065b?w=800',
+        location: '福田区',
+        locationEn: 'Futian District',
+        rating: 4.8,
+        badge: '生态',
+        badgeEn: 'Eco',
+        lat: 22.5219,
+        lng: 113.9479
+    },
+    {
+        id: 11,
+        name: '海上世界',
+        nameEn: 'Sea World',
+        category: 'culture',
+        description: '集餐饮、娱乐、购物于一体的海滨综合体',
+        descriptionEn: 'Coastal complex with dining, entertainment and shopping',
+        image: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=800',
+        location: '南山区',
+        locationEn: 'Nanshan District',
+        rating: 4.6,
+        badge: '娱乐',
+        badgeEn: 'Entertainment',
+        lat: 22.5309,
+        lng: 113.9359
+    },
+    {
+        id: 12,
+        name: '深圳博物馆',
+        nameEn: 'Shenzhen Museum',
+        category: 'culture',
+        description: '了解深圳历史和文化的重要场所',
+        descriptionEn: 'Important place to learn about Shenzhen\'s history and culture',
+        image: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800',
+        location: '福田区',
+        locationEn: 'Futian District',
+        rating: 4.7,
+        badge: '文化',
+        badgeEn: 'Culture',
+        lat: 22.5409,
+        lng: 114.0529
+    },
+    {
+        id: 13,
+        name: '东门老街',
+        nameEn: 'Dongmen Old Street',
+        category: 'shopping',
+        description: '深圳最古老的商业街，热闹非凡',
+        descriptionEn: 'Shenzhen\'s oldest commercial street with bustling atmosphere',
+        image: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800',
+        location: '罗湖区',
+        locationEn: 'Luohu District',
+        rating: 4.4,
+        badge: '购物',
+        badgeEn: 'Shopping',
+        lat: 22.5439,
+        lng: 114.1029
+    },
+    {
+        id: 14,
+        name: '华强北',
+        nameEn: 'Huaqiangbei',
+        category: 'shopping',
+        description: '全球最大的电子产品集散地',
+        descriptionEn: 'The world\'s largest electronics distribution center',
+        image: 'https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=800',
+        location: '福田区',
+        locationEn: 'Futian District',
+        rating: 4.5,
+        badge: '电子',
+        badgeEn: 'Electronics',
+        lat: 22.5389,
+        lng: 114.0659
+    },
+    {
+        id: 15,
+        name: '仙湖植物园',
+        nameEn: 'Fairy Lake Botanical Garden',
+        category: 'nature',
+        description: '集植物科研、科普、旅游于一体的综合性植物园',
+        descriptionEn: 'Comprehensive botanical garden for research, education and tourism',
+        image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800',
+        location: '罗湖区',
+        locationEn: 'Luohu District',
+        rating: 4.8,
+        badge: '植物',
+        badgeEn: 'Botanical',
+        lat: 22.5739,
+        lng: 114.1189
+    },
+    {
+        id: 16,
+        name: '杨梅坑',
+        nameEn: 'Yangmeikeng',
+        category: 'nature',
+        description: '深圳东部的美丽海湾，适合骑行和徒步',
+        descriptionEn: 'Beautiful bay in eastern Shenzhen, perfect for cycling and hiking',
+        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+        location: '大鹏新区',
+        locationEn: 'Dapeng New District',
+        rating: 4.7,
+        badge: '自然',
+        badgeEn: 'Nature',
+        lat: 22.5486,
+        lng: 114.5856
+    },
+    {
+        id: 17,
+        name: '吉钓沙',
+        nameEn: 'Jidiaosha',
+        category: 'nature',
+        description: '水质清澈的海滩，适合游泳和沙滩活动',
+        descriptionEn: 'Beach with clear water, ideal for swimming and beach activities',
+        image: 'https://images.unsplash.com/photo-1551029506-0807df4e2031?w=800',
+        location: '大鹏新区',
+        locationEn: 'Dapeng New District',
+        rating: 4.8,
+        badge: '海滩',
+        badgeEn: 'Beach',
+        lat: 22.5444,
+        lng: 114.5733
+    },
+    {
+        id: 18,
+        name: '天文台',
+        nameEn: 'Shenzhen Observatory',
+        category: 'science',
+        description: '深圳天文台，俯瞰大鹏湾美景',
+        descriptionEn: 'Shenzhen Observatory, overlooking the beautiful scenery of Dapeng Bay',
+        image: 'https://images.unsplash.com/photo-1580327121178-9053119a0861?w=800',
+        location: '大鹏新区',
+        locationEn: 'Dapeng New District',
+        rating: 4.9,
+        badge: '科学',
+        badgeEn: 'Science',
+        lat: 22.5167,
+        lng: 114.5433
+    },
+    {
+        id: 19,
+        name: '鹿嘴山庄',
+        nameEn: 'Luzui Villa',
+        category: 'resort',
+        description: '悬崖边的度假山庄，电影《美人鱼》拍摄地',
+        descriptionEn: 'Cliffside resort, filming location of the movie "The Mermaid"',
+        image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800',
+        location: '大鹏新区',
+        locationEn: 'Dapeng New District',
+        rating: 4.7,
+        badge: '度假',
+        badgeEn: 'Resort',
+        lat: 22.5497,
+        lng: 114.6000
+    },
+    {
+        id: 20,
+        name: '望郎归',
+        nameEn: 'Wanglanggui',
+        category: 'scenic',
+        description: '形似妇人望夫归来的奇石景观',
+        descriptionEn: 'Strange rock formation resembling a woman waiting for her husband',
+        image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800',
+        location: '大鹏新区',
+        locationEn: 'Dapeng New District',
+        rating: 4.6,
+        badge: '奇石',
+        badgeEn: 'Rock Formation',
+        lat: 22.5333,
+        lng: 114.5667
+    },
+    {
+        id: 21,
+        name: '鱼翅石',
+        nameEn: 'Yuchishi',
+        category: 'scenic',
+        description: '形状酷似鱼翅的天然岩石',
+        descriptionEn: 'Natural rock formation resembling shark fin',
+        image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800',
+        location: '大鹏新区',
+        locationEn: 'Dapeng New District',
+        rating: 4.5,
+        badge: '奇石',
+        badgeEn: 'Rock Formation',
+        lat: 22.5250,
+        lng: 114.5583
     }
 ];
 
@@ -521,13 +761,21 @@ function initTheme() {
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
+    
+    // 检查并设置初始状态
+    function updateNavbar() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }
+    
+    // 初始化时立即检查
+    updateNavbar();
+    
+    // 监听滚动事件
+    window.addEventListener('scroll', updateNavbar);
 }
 
 // 移动端菜单切换
@@ -582,6 +830,10 @@ function renderAttractions() {
     grid.innerHTML = '';
     
     attractionsData.forEach(attraction => {
+        // 生成详情页链接，使用景点名称的拼音或英文名称作为文件名
+        const slug = attraction.nameEn.toLowerCase().replace(/\s+/g, '');
+        const detailUrl = `attractions/${slug}.html`;
+        
         const card = document.createElement('div');
         card.className = 'attraction-card';
         card.innerHTML = `
@@ -597,6 +849,7 @@ function renderAttractions() {
                         <i class="fas fa-map-marker-alt"></i>
                         <span>${currentLang === 'zh' ? attraction.location : attraction.locationEn}</span>
                     </div>
+                    <a href="${detailUrl}" class="detail-btn" title="查看详情">详</a>
                 </div>
             </div>
         `;
@@ -655,6 +908,9 @@ function init() {
     
     // 渲染时间轴
     renderTimeline();
+    
+    // 渲染景点
+    renderAttractions();
     
     // 数字动画
     animateNumbers();

@@ -493,13 +493,21 @@ function initTheme() {
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
+    
+    // 检查并设置初始状态
+    function updateNavbar() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
-    });
+    }
+    
+    // 初始化时立即检查
+    updateNavbar();
+    
+    // 监听滚动事件
+    window.addEventListener('scroll', updateNavbar);
 }
 
 // 移动端菜单切换

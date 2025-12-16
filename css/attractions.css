@@ -549,6 +549,45 @@ body {
     color: var(--accent-color);
 }
 
+/* 详情按钮 */
+.detail-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.detail-btn:hover {
+    transform: scale(1.1);
+    background: var(--secondary-color);
+}
+
+/* 夜间模式适配 */
+[data-theme="dark"] .detail-btn {
+    background: var(--accent-color);
+    color: var(--bg-primary);
+}
+
+[data-theme="dark"] .detail-btn:hover {
+    background: var(--secondary-color);
+    color: white;
+}
+
+/* 卡片相对定位 */
+.attraction-card {
+    position: relative;
+}
+
 
 /* ===================================
    历史文化时间轴
@@ -907,6 +946,86 @@ body {
 /* 轮播标题 - 已隐藏 */
 .carousel-caption {
     display: none;
+}
+
+/* 轮播标题 */
+.carousel-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+    animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.carousel-title h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    line-height: 1;
+    animation: slideInDown 1s ease-out 0.3s forwards;
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+.carousel-title h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 10px;
+    color: white;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin: 10px 0 0;
+    text-transform: uppercase;
+    animation: slideInUp 1s ease-out 0.6s forwards;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* 夜间模式下的标题效果 */
+[data-theme="dark"] .carousel-title h1 {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .carousel-title h2 {
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 标题动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* 轮播控制按钮 */
