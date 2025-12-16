@@ -932,20 +932,6 @@ function init() {
     // 渲染景点
     renderAttractions();
     
-    // 详情按钮点击前记录滚动位置
-    const gridEl = document.getElementById('attractionsGrid');
-    if (gridEl) {
-        gridEl.addEventListener('click', (e) => {
-            const btn = e.target.closest('.detail-btn');
-            if (!btn) return;
-            const slug = btn.getAttribute('data-slug') || '';
-            saveEntryScroll(slug);
-        });
-    }
-    
-    // 列表渲染后恢复滚动位置
-    restoreEntryScroll();
-    
     // 数字动画
     animateNumbers();
     
