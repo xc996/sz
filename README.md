@@ -64,6 +64,22 @@ function 初始化AOS() {
 
 ## 兼容性与缓存建议（图标库）
 
-- 确保 `css/vendor/all.min.css` 能正确找到 `../webfonts/` 下的字体文件
-- 建议对 `css/webfonts/*` 设置长期缓存；若升级版本，替换文件并更新引用以破坏缓存
+67→- 确保 `css/vendor/all.min.css` 能正确找到 `../webfonts/` 下的字体文件
+68→- 建议对 `css/webfonts/*` 设置长期缓存；若升级版本，替换文件并更新引用以破坏缓存
+ 
+## 变更摘要（2025-12-16）
+
+- 清理景点详情页底部残留的 `info-card` 区块，统一页面结构。
+- 精简 `attractions/css/detail.css`，移除与 `detail-cards`、`info-card` 相关的样式与动画，保留核心布局与返回按钮样式。
+- 兼容性：`attractions/js/detail.js` 中 `initDetailCardsAccessibility` 在无卡片时自动跳过，无需修改脚本。
+- 影响范围：
+  - `attractions/luzuivilla.html`
+  - `attractions/shenzhenobservatory.html`
+  - `attractions/szbay.html`
+  - `attractions/window.html`
+  - `attractions/jidiaosha.html`
+  - `attractions/css/detail.css`
+- 验证：代码库内已无 `class="info-card"` 使用；页面结构与交互正常。
+- 提交：`b8b71c0`（分支 `master`，远程 `origin`）。
+- 后续建议：如需恢复底部信息展示，建议以独立组件按页面配置是否渲染。
 
