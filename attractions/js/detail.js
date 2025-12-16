@@ -59,6 +59,49 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbarScroll();
     initMobileMenu();
     initBackToTop();
+    initDetailBackButton();
+    initDetailCardsAccessibility();
     
     // 可以在这里添加更多详情页面特定的功能
 });
+
+/**
+ * 详情页返回按钮逻辑（中文注释）
+ * 优先使用浏览器历史返回以保留列表滚动位置；
+ * 若来源不是列表页则回到 attractions.html
+ */
+function initDetailBackButton() {
+    const backLink = document.querySelector('.back-button a');
+    if (!backLink) return;
+    backLink.addEventListener('click', (e) => {
+        const ref = document.referrer || '';
+        const canGoBack = ref.includes('/attractions.html') || ref.endsWith('attractions.html');
+        if (canGoBack && window.history.length > 1) {
+            e.preventDefault();
+            history.back();
+        } else {
+            // 保持默认跳转到列表页
+        }
+    });
+}
+
+/**
+ * 功能：增强详情页信息卡片的可访问性与触摸体验（中文注释）
+ * 说明：
+ *  - 为 .info-card 添加 ARIA 角色与 tabindex，支持键盘操作
+ *  - 统一移动端触摸行为，提升点击体验
+ */
+function initDetailCardsAccessibility() {
+    const cards = document.querySelectorAll('.detail-cards .info-card');
+    if (!cards || cards.length === 0) return;
+    cards.forEach(card => {
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+}

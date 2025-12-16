@@ -848,12 +848,33 @@ function renderAttractions() {
                         <i class="fas fa-map-marker-alt"></i>
                         <span>${currentLang === 'zh' ? attraction.location : attraction.locationEn}</span>
                     </div>
-                    <a href="${detailUrl}" class="detail-btn" title="查看详情">详</a>
+                    <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="查看详情">详</a>
                 </div>
             </div>
         `;
         grid.appendChild(card);
     });
+}
+
+function saveEntryScroll(slug) {
+    try {
+        sessionStorage.setItem('attractionsScrollY', String(window.scrollY));
+        sessionStorage.setItem('attractionsEntrySlug', slug || '');
+        sessionStorage.setItem('attractionsSavedAt', String(Date.now()));
+    } catch (e) {}
+}
+
+function restoreEntryScroll() {
+    const yStr = sessionStorage.getItem('attractionsScrollY');
+    const atStr = sessionStorage.getItem('attractionsSavedAt');
+    const y = yStr ? parseInt(yStr, 10) : NaN;
+    const at = atStr ? parseInt(atStr, 10) : 0;
+    if (!Number.isNaN(y) && Date.now() - at < 5 * 60 * 1000) {
+        window.scrollTo({ top: y, behavior: 'auto' });
+    }
+    sessionStorage.removeItem('attractionsScrollY');
+    sessionStorage.removeItem('attractionsEntrySlug');
+    sessionStorage.removeItem('attractionsSavedAt');
 }
 
 // 渲染时间轴
@@ -910,6 +931,20 @@ function init() {
     
     // 渲染景点
     renderAttractions();
+    
+    // 详情按钮点击前记录滚动位置
+    const gridEl = document.getElementById('attractionsGrid');
+    if (gridEl) {
+        gridEl.addEventListener('click', (e) => {
+            const btn = e.target.closest('.detail-btn');
+            if (!btn) return;
+            const slug = btn.getAttribute('data-slug') || '';
+            saveEntryScroll(slug);
+        });
+    }
+    
+    // 列表渲染后恢复滚动位置
+    restoreEntryScroll();
     
     // 数字动画
     animateNumbers();
