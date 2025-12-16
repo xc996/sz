@@ -237,7 +237,7 @@ const attractionsData = [
         category: 'nature',
         description: '绵延15公里的海滨长廊，欣赏日落的最佳地点',
         descriptionEn: 'A 15km coastal promenade, the best spot to watch the sunset',
-        image: 'images/深圳湾公园.jpg',
+        image: 'assets/images/深圳湾公园.jpg',
         location: '南山区',
         locationEn: 'Nanshan District',
         rating: 4.8,
