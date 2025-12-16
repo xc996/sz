@@ -1025,7 +1025,11 @@ function closeModal(modal) {
 function bindAttractionClickEvents() {
     const cards = document.querySelectorAll('.attraction-card');
     cards.forEach((card, index) => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+            // 检查点击的目标是否是链接或链接的子元素，如果是则不显示弹窗
+            if (e.target.closest('a')) {
+                return;
+            }
             showAttractionDetail(attractionsData[index]);
         });
     });
