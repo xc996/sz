@@ -1164,8 +1164,8 @@ document.addEventListener('DOMContentLoaded', () => {
         carousel.init();
     }
     
-    // 移除弹窗功能，直接跳转到详情页
-    // bindAttractionClickEvents();
+    // 绑定景点卡片点击事件，显示详情弹窗
+    bindAttractionClickEvents();
 });
 
 // ------------------------------
