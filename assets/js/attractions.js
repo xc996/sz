@@ -18,6 +18,9 @@ const translations = {
         'nav.shopping': '购物',
         'nav.transport': '交通',
         'nav.map': '地图',
+        // 按钮提示
+        'btn.lang': '切换语言',
+        'btn.theme': '切换主题',
         
         // Hero区
         'hero.title1': '深圳',
@@ -102,6 +105,9 @@ const translations = {
         'nav.shopping': 'Shopping',
         'nav.transport': 'Transportation',
         'nav.map': 'Map',
+        // Button tips
+        'btn.lang': 'Switch Language',
+        'btn.theme': 'Switch Theme',
         
         // Hero
         'hero.title1': 'SHENZHEN',
@@ -196,7 +202,7 @@ const localAttractionsFallback = [
         name: '世界之窗',
         nameEn: 'Window of the World',
         district: { zh: '南山区', en: 'Nanshan District' },
-        image: 'https://images.unsplash.com/photo-1549144511-f099e773c147?w=800',
+        image: 'assets/images/世界之窗.jpg',
         seo: { description: { zh: '一天游遍世界，130个微缩景观', en: 'Travel the world in one day with 130 miniature attractions' } }
     },
     {
@@ -204,7 +210,7 @@ const localAttractionsFallback = [
         name: '平安金融中心',
         nameEn: 'Ping An Finance Center',
         district: { zh: '福田区', en: 'Futian District' },
-        image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800',
+        image: 'assets/images/平安金融中心.jpg',
         seo: { description: { zh: '深圳最高建筑，599米云际观光层', en: "Shenzhen's tallest building with 599m observation deck" } }
     }
 ];
@@ -355,15 +361,23 @@ function switchLanguage() {
         }
     });
     
-    // 更新语言按钮文本
+    // 更新语言按钮文本和提示
     const langBtn = document.getElementById('langSwitch');
     if (langBtn) {
         langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', translations[currentLang]['btn.lang']);
     }
     
-    // 重新渲染时间轴与景点
+    // 更新主题按钮提示
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', translations[currentLang]['btn.theme']);
+    }
+    
+    // 更新景点卡片文本内容
+    updateAttractionCardsText();
+    // 更新时间轴文本内容
     renderTimeline();
-    renderAttractions();
     
     // 保存语言偏好
     localStorage.setItem('preferredLanguage', currentLang);
@@ -574,6 +588,52 @@ function renderAttractionsEmptyState() {
 }
 
 /**
+ * 功能：更新景点卡片的文本内容
+ * 说明：只更新现有卡片的文本内容，不重新渲染整个列表，提高性能
+ */
+async function updateAttractionCardsText() {
+    const cards = document.querySelectorAll('.attraction-card');
+    if (!cards || cards.length === 0) {
+        // 如果没有卡片，重新渲染
+        await renderAttractions();
+        return;
+    }
+    
+    const items = await loadAttractionsConfig();
+    if (!items || items.length === 0) return;
+    
+    cards.forEach(card => {
+        const index = parseInt(card.getAttribute('data-index'));
+        const attraction = items[index];
+        if (!attraction) return;
+        
+        // 更新卡片标题
+        const title = card.querySelector('.card-title');
+        if (title) {
+            title.textContent = currentLang === 'zh' ? attraction.name : attraction.nameEn;
+        }
+        
+        // 更新卡片描述
+        const description = card.querySelector('.card-description');
+        if (description) {
+            description.textContent = currentLang === 'zh' ? (attraction.seo?.description?.zh || '') : (attraction.seo?.description?.en || '');
+        }
+        
+        // 更新卡片位置
+        const location = card.querySelector('.card-location span');
+        if (location) {
+            location.textContent = currentLang === 'zh' ? (attraction.district?.zh || '') : (attraction.district?.en || '');
+        }
+        
+        // 更新查看详情按钮
+        const detailBtn = card.querySelector('.detail-btn');
+        if (detailBtn) {
+            detailBtn.setAttribute('title', currentLang === 'zh' ? '查看详情' : 'View Details');
+        }
+    });
+}
+
+/**
  * 功能：在离开列表进入详情前保存当前滚动位置（中文注释）
  * 说明：使用 sessionStorage 存储 Y 坐标与进入的条目标识，便于返回时恢复
  */
@@ -621,6 +681,28 @@ function renderTimeline() {
     const timeline = document.getElementById('timeline');
     if (!timeline) return;
     
+    // 检查是否已有时间轴项，如果有则只更新文本内容
+    const existingItems = timeline.querySelectorAll('.timeline-item');
+    if (existingItems.length === timelineData.length) {
+        // 更新现有项的文本内容
+        existingItems.forEach((item, index) => {
+            const dataItem = timelineData[index];
+            if (!dataItem) return;
+            
+            const h3 = item.querySelector('h3');
+            if (h3) {
+                h3.textContent = currentLang === 'zh' ? dataItem.title : dataItem.titleEn;
+            }
+            
+            const p = item.querySelector('.timeline-text');
+            if (p) {
+                p.textContent = currentLang === 'zh' ? dataItem.description : dataItem.descriptionEn;
+            }
+        });
+        return;
+    }
+    
+    // 如果没有现有项或数量不匹配，则重新渲染
     timeline.innerHTML = '';
     
     timelineData.forEach((item, index) => {

@@ -18,6 +18,9 @@ const translations = {
         'nav.shopping': '购物',
         'nav.transport': '交通',
         'nav.map': '地图',
+        // 按钮提示
+        'btn.lang': '切换语言',
+        'btn.theme': '切换主题',
         
         // Hero区
         'hero.title1': '深圳',
@@ -128,6 +131,9 @@ const translations = {
         'nav.shopping': 'Shopping',
         'nav.transport': 'Transportation',
         'nav.map': 'Map',
+        // Button tips
+        'btn.lang': 'Switch Language',
+        'btn.theme': 'Switch Theme',
         
         // Hero
         'hero.title1': 'SHENZHEN',
@@ -398,10 +404,17 @@ function switchLanguage() {
         }
     });
     
-    // 更新语言按钮文本
+    // 更新语言按钮文本和提示
     const langBtn = document.getElementById('langSwitch');
     if (langBtn) {
         langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', translations[currentLang]['btn.lang']);
+    }
+    
+    // 更新主题按钮提示
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', translations[currentLang]['btn.theme']);
     }
     
     // 重新渲染时间轴
@@ -561,6 +574,28 @@ function renderTimeline() {
     const timeline = document.getElementById('timeline');
     if (!timeline) return;
     
+    // 检查是否已有时间轴项，如果有则只更新文本内容
+    const existingItems = timeline.querySelectorAll('.timeline-item');
+    if (existingItems.length === timelineData.length) {
+        // 更新现有项的文本内容
+        existingItems.forEach((item, index) => {
+            const dataItem = timelineData[index];
+            if (!dataItem) return;
+            
+            const h3 = item.querySelector('h3');
+            if (h3) {
+                h3.textContent = currentLang === 'zh' ? dataItem.title : dataItem.titleEn;
+            }
+            
+            const p = item.querySelector('.timeline-text');
+            if (p) {
+                p.textContent = currentLang === 'zh' ? dataItem.description : dataItem.descriptionEn;
+            }
+        });
+        return;
+    }
+    
+    // 如果没有现有项或数量不匹配，则重新渲染
     timeline.innerHTML = '';
     
     timelineData.forEach((item, index) => {

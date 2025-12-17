@@ -9,6 +9,35 @@
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/vendor/all.min.css">
     <link href="assets/vendor/aos.css" rel="stylesheet">
+    <style>
+        #navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            padding: 15px 0;
+        }
+        
+        [data-theme="dark"] #navbar {
+            background: rgba(18, 18, 18, 0.95);
+        }
+        
+        #navbar .logo {
+            color: var(--text-primary);
+        }
+        
+        #navbar .nav-menu a {
+            color: var(--text-primary);
+        }
+        
+        #navbar .icon-btn {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+        
+        #navbar .menu-toggle span {
+            background: var(--text-primary);
+        }
+    </style>
 </head>
 <body data-theme="light" data-lang="zh">
     <nav id="navbar">
@@ -99,5 +128,24 @@
 
     <script src="assets/vendor/aos.js"></script>
     <script src="assets/js/index.js"></script>
+    <script>
+        // 覆盖导航栏滚动监听行为，确保map.html页面导航栏始终显示固定背景
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移除可能存在的滚动监听
+            const navbar = document.getElementById('navbar');
+            if (navbar) {
+                // 确保导航栏始终显示固定背景
+                navbar.classList.add('scrolled');
+                
+                // 移除滚动监听事件（如果存在）
+                // 这里我们重新定义导航栏初始化函数，覆盖原有的滚动监听
+                if (window.initNavbarScroll) {
+                    window.initNavbarScroll = function() {
+                        // 空函数，不执行任何滚动监听
+                    };
+                }
+            }
+        });
+    </script>
 </body>
 </html>
