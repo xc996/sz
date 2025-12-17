@@ -24,7 +24,8 @@ const ConfigStore = (function () {
   return {
     async load() {
       if (cache) return cache;
-      const res = await fetch('../assets/data/attractions.json');
+      const base = getAssetsBase();
+      const res = await fetch(`${base}data/attractions.json`);
       if (!res.ok) throw new Error('配置加载失败');
       const json = await res.json();
       cache = json && Array.isArray(json.items) ? json.items : [];
@@ -34,6 +35,21 @@ const ConfigStore = (function () {
 })();
 // 暴露到全局以便测试与调试
 window.ConfigStore = ConfigStore;
+
+/**
+ * 功能：获取静态资源基础路径（中文注释）
+ * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
+ */
+function getAssetsBase() {
+  const host = window.location.hostname || '';
+  const path = window.location.pathname || '';
+  const isGh = host.endsWith('github.io');
+  if (isGh) {
+    const seg = path.split('/').filter(Boolean)[0] || '';
+    return seg ? `/${seg}/assets/` : '/assets/';
+  }
+  return 'assets/';
+}
 
 /**
  * 功能：校验配置项（中文注释）
@@ -98,7 +114,8 @@ function renderDetail(item) {
   const district = lang === 'en' ? item.district.en : item.district.zh;
   const introList = lang === 'en' ? (item.intro?.en || []) : (item.intro?.zh || []);
   const highlights = item.highlights || [];
-  const imgSrc = (item.image || '').startsWith('assets/') ? '/' + item.image : (item.image || '/assets/images/placeholder.svg');
+  const base = getAssetsBase();
+  const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
 
   root.innerHTML = `
     <div class="detail-header" data-aos="fade-up">
@@ -169,7 +186,7 @@ async function initDetailRender() {
         nameEn: 'Not Found',
         district: { zh: '深圳', en: 'Shenzhen' },
         rating: 0,
-        image: '/assets/images/placeholder.svg',
+        image: `${getAssetsBase()}images/placeholder.svg`,
         intro: { zh: ['暂无法显示该景点详情'], en: ['Detail is unavailable'] },
         highlights: []
       };

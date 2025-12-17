@@ -9,6 +9,26 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏙️</text></svg>">
     
+    <script>
+        /**
+         * 首屏哈希处理（中文注释）
+         * 功能：
+         *  - 禁用浏览器历史滚动恢复（防止回退自动定位旧位置）
+         *  - 如果首屏 URL 含有哈希（如 #map），在解析阶段立即移除，阻止默认锚点跳转
+         */
+        (function() {
+            try {
+                if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                }
+                if (window.location.hash) {
+                    history.replaceState(null, document.title, window.location.pathname);
+                    window.scrollTo(0, 0);
+                }
+            } catch (e) {}
+        })();
+    </script>
+    
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/index.css">
     
@@ -235,10 +255,11 @@
             <iframe
                 id="mapContainer"
                 class="map-container"
-                src="https://www.amap.com/place/440300"
+                data-src="https://www.amap.com/place/440300"
                 title="高德地图 - 深圳互动地图"
                 loading="lazy"
                 referrerpolicy="strict-origin-when-cross-origin"
+                tabindex="-1"
                 allowfullscreen>
             </iframe>
         </div>

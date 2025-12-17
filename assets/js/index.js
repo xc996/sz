@@ -874,6 +874,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.AMap && document.getElementById('mapContainer')) {
         initMap();
     }
+
+    // 防止首次加载带有哈希时自动跳转到锚点顶部
+    preventInitialHashJump();
+    // 初始化哈希滚动（支持偏移与后续 hashchange）
+    initHashScroll();
+
+    // 初始化地图 iframe 懒加载
+    initLazyMapIframe();
 });
 
 // ------------------------------
@@ -975,4 +983,108 @@ function addMapControls(map) {
         map.addControl(toolbar);
         map.addControl(scale);
     });
+}
+
+// ----------------------------------
+// 哈希锚点滚动与首屏行为修复
+// ----------------------------------
+
+/**
+ * 根据 URL 哈希滚动到目标区块，并考虑固定导航栏偏移
+ * 说明：
+ *  - 支持所有以 id 作为锚点的 section（如 #map、#food 等）
+ *  - 计算导航栏高度，避免标题被遮挡
+ */
+function scrollToHashTarget() {
+    const hash = window.location.hash || '';
+    if (!hash) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    const navbar = document.getElementById('navbar');
+    const offset = navbar ? (navbar.offsetHeight || 0) : 0;
+
+    const rect = target.getBoundingClientRect();
+    const absoluteTop = window.scrollY + rect.top;
+
+    window.scrollTo({
+        top: Math.max(absoluteTop - offset, 0),
+        behavior: 'smooth'
+    });
+}
+
+/**
+ * 初始化哈希滚动行为
+ * 说明：
+ *  - 拦截页面内锚点链接点击，改为平滑滚动并更新地址栏哈希
+ *  - 监听 hashchange，确保通过脚本或历史操作变更哈希时也能正确滚动
+ */
+function initHashScroll() {
+    // 拦截页面内锚点链接点击（如导航/页脚）
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetHash = link.getAttribute('href');
+            if (!targetHash || targetHash === '#') return;
+            e.preventDefault();
+            if (targetHash === '#map') {
+                loadMapIframe();
+            }
+            history.pushState(null, '', targetHash);
+            scrollToHashTarget();
+        });
+    });
+
+    // 监听哈希变化
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#map') {
+            loadMapIframe();
+        }
+        scrollToHashTarget();
+    });
+}
+
+/**
+ * 防止首次加载带有哈希（如 index.html#map）时浏览器自动跳转到底部
+ * 处理方式：
+ *  - 在 DOMContentLoaded 后移除哈希，并回到页面顶部
+ *  - 之后的锚点点击将由 initHashScroll 接管，采用平滑滚动与偏移修正
+ */
+function preventInitialHashJump() {
+    if (!window.location.hash) return;
+    history.replaceState(null, document.title, window.location.pathname);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+/**
+ * 懒加载地图 iframe，避免首屏加载导致焦点滚动
+ * 说明：
+ *  - 默认不设置 iframe 的 src，仅在用户滚动到地图区或点击“地图”链接时加载
+ */
+function loadMapIframe() {
+    const iframe = document.getElementById('mapContainer');
+    if (!iframe) return false;
+    const dataSrc = iframe.getAttribute('data-src');
+    if (!dataSrc) return false;
+    if (iframe.getAttribute('src')) return true; // 已加载
+    iframe.setAttribute('src', dataSrc);
+    return true;
+}
+
+/**
+ * 初始化地图 iframe 的懒加载（IntersectionObserver）
+ * 说明：
+ *  - 当地图 section 进入视口时才设置 iframe.src
+ */
+function initLazyMapIframe() {
+    const section = document.getElementById('map');
+    if (!section || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadMapIframe();
+                observer.disconnect();
+            }
+        });
+    }, { root: null, rootMargin: '200px', threshold: 0.01 });
+    observer.observe(section);
 }

@@ -182,13 +182,29 @@ const translations = {
 let attractionsList = [];
 
 /**
+ * 功能：获取静态资源基础路径（中文注释）
+ * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
+ */
+function getAssetsBase() {
+    const host = window.location.hostname || '';
+    const path = window.location.pathname || '';
+    const isGh = host.endsWith('github.io');
+    if (isGh) {
+        const seg = path.split('/').filter(Boolean)[0] || '';
+        return seg ? `/${seg}/assets/` : '/assets/';
+    }
+    return 'assets/';
+}
+
+/**
  * 功能：加载景点配置（中文注释）
  * 说明：从 assets/data/attractions.json 读取并缓存 items
  */
 async function loadAttractionsConfig() {
     if (attractionsList && attractionsList.length > 0) return attractionsList;
     try {
-        const res = await fetch('/assets/data/attractions.json');
+        const base = getAssetsBase();
+        const res = await fetch(`${base}data/attractions.json`);
         if (!res.ok) throw new Error('配置加载失败');
         const json = await res.json();
         attractionsList = Array.isArray(json.items) ? json.items : [];
@@ -458,7 +474,8 @@ async function renderAttractions() {
     items.forEach(attraction => {
         const slug = attraction.slug;
         const detailUrl = `attractions/detail.html?slug=${slug}`;
-        const imgSrc = (attraction.image || '').startsWith('assets/') ? '/' + attraction.image : (attraction.image || '/assets/images/placeholder.svg');
+        const base = getAssetsBase();
+        const imgSrc = (attraction.image || '').startsWith('assets/') ? `${base}${attraction.image.replace('assets/','')}` : (attraction.image || `${base}images/placeholder.svg`);
         console.log(`[list] link=${detailUrl} slug=${slug} mode=query`);
         
         const card = document.createElement('div');
