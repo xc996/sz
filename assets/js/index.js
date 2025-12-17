@@ -879,6 +879,9 @@ document.addEventListener('DOMContentLoaded', () => {
     preventInitialHashJump();
     // 初始化哈希滚动（支持偏移与后续 hashchange）
     initHashScroll();
+
+    // 初始化地图 iframe 懒加载
+    initLazyMapIframe();
 });
 
 // ------------------------------
@@ -1023,13 +1026,21 @@ function initHashScroll() {
             const targetHash = link.getAttribute('href');
             if (!targetHash || targetHash === '#') return;
             e.preventDefault();
+            if (targetHash === '#map') {
+                loadMapIframe();
+            }
             history.pushState(null, '', targetHash);
             scrollToHashTarget();
         });
     });
 
     // 监听哈希变化
-    window.addEventListener('hashchange', scrollToHashTarget);
+    window.addEventListener('hashchange', () => {
+        if (window.location.hash === '#map') {
+            loadMapIframe();
+        }
+        scrollToHashTarget();
+    });
 }
 
 /**
@@ -1042,4 +1053,38 @@ function preventInitialHashJump() {
     if (!window.location.hash) return;
     history.replaceState(null, document.title, window.location.pathname);
     window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+/**
+ * 懒加载地图 iframe，避免首屏加载导致焦点滚动
+ * 说明：
+ *  - 默认不设置 iframe 的 src，仅在用户滚动到地图区或点击“地图”链接时加载
+ */
+function loadMapIframe() {
+    const iframe = document.getElementById('mapContainer');
+    if (!iframe) return false;
+    const dataSrc = iframe.getAttribute('data-src');
+    if (!dataSrc) return false;
+    if (iframe.getAttribute('src')) return true; // 已加载
+    iframe.setAttribute('src', dataSrc);
+    return true;
+}
+
+/**
+ * 初始化地图 iframe 的懒加载（IntersectionObserver）
+ * 说明：
+ *  - 当地图 section 进入视口时才设置 iframe.src
+ */
+function initLazyMapIframe() {
+    const section = document.getElementById('map');
+    if (!section || !('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                loadMapIframe();
+                observer.disconnect();
+            }
+        });
+    }, { root: null, rootMargin: '200px', threshold: 0.01 });
+    observer.observe(section);
 }
