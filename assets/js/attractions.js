@@ -42,31 +42,6 @@ const translations = {
         'attractions.slide4.desc': '山海结合的生态旅游度假区',
         'attractions.slide5.title': '平安金融中心',
         'attractions.slide5.desc': '深圳最高建筑，599米云际观光层',
-        // 景点详情
-        'attraction.szbay.name': '深圳湾公园',
-        'attraction.szbay.desc': '绵延15公里的海滨长廊，欣赏日落的最佳地点',
-        'attraction.szbay.badge': '热门',
-        'attraction.szbay.location': '南山区',
-        'attraction.window.name': '世界之窗',
-        'attraction.window.desc': '一天游遍世界，130个微缩景观',
-        'attraction.window.badge': '必游',
-        'attraction.window.location': '南山区',
-        'attraction.happyvalley.name': '欢乐谷',
-        'attraction.happyvalley.desc': '华南地区最受欢迎的主题乐园',
-        'attraction.happyvalley.badge': '刺激',
-        'attraction.happyvalley.location': '南山区',
-        'attraction.octeast.name': '东部华侨城',
-        'attraction.octeast.desc': '山海结合的生态旅游度假区',
-        'attraction.octeast.badge': '推荐',
-        'attraction.octeast.location': '盐田区',
-        'attraction.bookcity.name': '深圳中心书城',
-        'attraction.bookcity.desc': '华南地区最大的书店，文化地标',
-        'attraction.bookcity.badge': '文艺',
-        'attraction.bookcity.location': '福田区',
-        'attraction.pingan.name': '平安金融中心',
-        'attraction.pingan.desc': '深圳最高建筑，599米云际观光层',
-        'attraction.pingan.badge': '地标',
-        'attraction.pingan.location': '福田区',
         
         // 文化
         'culture.title': '深圳故事',
@@ -151,31 +126,6 @@ const translations = {
         'attractions.slide4.desc': 'Eco-tourism resort combining mountains and sea',
         'attractions.slide5.title': 'Ping An Finance Center',
         'attractions.slide5.desc': 'Shenzhen\'s tallest building with 599m observation deck',
-        // Attraction Details
-        'attraction.szbay.name': 'Shenzhen Bay Park',
-        'attraction.szbay.desc': 'A 15km coastal promenade, the best spot to watch the sunset',
-        'attraction.szbay.badge': 'Popular',
-        'attraction.szbay.location': 'Nanshan District',
-        'attraction.window.name': 'Window of the World',
-        'attraction.window.desc': 'Travel the world in one day with 130 miniature attractions',
-        'attraction.window.badge': 'Must-Visit',
-        'attraction.window.location': 'Nanshan District',
-        'attraction.happyvalley.name': 'Happy Valley',
-        'attraction.happyvalley.desc': 'The most popular theme park in South China',
-        'attraction.happyvalley.badge': 'Thrilling',
-        'attraction.happyvalley.location': 'Nanshan District',
-        'attraction.octeast.name': 'OCT East',
-        'attraction.octeast.desc': 'Eco-tourism resort combining mountains and sea',
-        'attraction.octeast.badge': 'Recommended',
-        'attraction.octeast.location': 'Yantian District',
-        'attraction.bookcity.name': 'Central Book City',
-        'attraction.bookcity.desc': 'The largest bookstore in South China, a cultural landmark',
-        'attraction.bookcity.badge': 'Literary',
-        'attraction.bookcity.location': 'Futian District',
-        'attraction.pingan.name': 'Ping An Finance Center',
-        'attraction.pingan.desc': 'Shenzhen\'s tallest building with 599m observation deck',
-        'attraction.pingan.badge': 'Landmark',
-        'attraction.pingan.location': 'Futian District',
         
         // Culture
         'culture.title': 'Shenzhen Story',
@@ -666,7 +616,6 @@ function bindDetailEntryScroll() {
         });
     });
 }
-
 // 渲染时间轴
 function renderTimeline() {
     const timeline = document.getElementById('timeline');
@@ -986,15 +935,12 @@ const carousel = {
 document.addEventListener('DOMContentLoaded', () => {
     init();
     
-    // 初始化轮播
     if (document.querySelector('.carousel-section')) {
         carousel.init();
     }
     
-    // 绑定景点卡片点击事件，显示详情弹窗
     bindAttractionClickEvents();
     
-    // 仅在列表页恢复滚动并绑定保存事件
     if (document.getElementById('attractionsGrid')) {
         restoreEntryScroll();
         bindDetailEntryScroll();
@@ -1027,7 +973,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 });
 
 // 在页面通过 bfcache 恢复时也尝试恢复滚动（中文注释）
-window.addEventListener('pageshow', (e) => {
+window.addEventListener('pageshow', () => {
     if (document.getElementById('attractionsGrid')) {
         restoreEntryScroll();
     }

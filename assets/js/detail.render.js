@@ -141,7 +141,7 @@ function renderDetail(item) {
       </div>
     </div>
     <div class="back-button" data-aos="fade-up">
-      <a href="../attractions.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back to List' : '返回景点列表'}</a>
+      <a href="../attractions.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back' : '返回'}</a>
     </div>
   `;
 
