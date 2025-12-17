@@ -48,7 +48,7 @@ function getAssetsBase() {
     const seg = path.split('/').filter(Boolean)[0] || '';
     return seg ? `/${seg}/assets/` : '/assets/';
   }
-  return 'assets/';
+  return '/assets/';
 }
 
 /**
@@ -212,7 +212,7 @@ async function initDetailRender() {
     }
   } catch (e) {
     console.error('[detail.render] 初始化失败', e);
-    showErrorBanner('页面初始化失败，请稍后重试');
+    showErrorBanner(`页面初始化失败：${e && e.message ? e.message : '未知错误'}，请稍后重试`);
   }
 }
 

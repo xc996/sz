@@ -221,7 +221,7 @@ function getAssetsBase() {
         const seg = path.split('/').filter(Boolean)[0] || '';
         return seg ? `/${seg}/assets/` : '/assets/';
     }
-    return 'assets/';
+    return '/assets/';
 }
 
 /**
