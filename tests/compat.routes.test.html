@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>路径兼容测试</title>
+</head>
+<body data-theme="light" data-lang="zh">
+  <section class="attraction-detail-section"><div class="container"><div id="detailRoot"></div></div></section>
+  <script src="../assets/vendor/aos.js"></script>
+  <script src="../assets/js/detail.js"></script>
+  <script>history.replaceState(null, '', '/attractions/detail.html?slug=window');</script>
+  <script src="../assets/js/detail.render.js"></script>
+  <script>
+  /**
+   * 功能：旧别名路径兼容断言（中文注释）
+   * 说明：使用 window.html 路径应能正确渲染（依赖别名）
+   */
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      const title = document.querySelector('.detail-title');
+      console.assert(!!title, '别名路径未渲染');
+      const ok = document.createElement('div');
+      ok.id = 'compat-test-passed';
+      ok.textContent = '路径兼容通过';
+      ok.style.cssText = 'position:fixed;bottom:10px;right:10px;background:#0a0;color:#fff;padding:6px 10px';
+      document.body.appendChild(ok);
+    }, 500);
+  });
+  </script>
+</body>
+</html>

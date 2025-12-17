@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>列表渲染测试</title>
+  <link rel="stylesheet" href="../assets/css/attractions.css">
+</head>
+<body data-theme="light" data-lang="zh">
+  <section id="attractions" class="attractions-section">
+    <div class="container">
+      <div id="attractionsGrid" class="attractions-grid"></div>
+    </div>
+  </section>
+  <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="../assets/js/attractions.js"></script>
+  <script>
+  /**
+   * 功能：断言列表渲染（中文注释）
+   * 说明：加载后应有至少一张卡片并包含中文名
+   */
+  function assertList() {
+    const cards = document.querySelectorAll('.attraction-card');
+    if (cards.length === 0) {
+      setTimeout(assertList, 400);
+      return;
+    }
+    const title = cards[0].querySelector('.card-title');
+    if (!title || !title.textContent) {
+      setTimeout(assertList, 400);
+      return;
+    }
+    const ok = document.createElement('div');
+    ok.id = 'list-test-passed';
+    ok.textContent = '列表渲染通过';
+    ok.style.cssText = 'position:fixed;bottom:10px;right:10px;background:#0a0;color:#fff;padding:6px 10px';
+    document.body.appendChild(ok);
+  }
+  document.addEventListener('DOMContentLoaded', () => setTimeout(assertList, 600));
+  </script>
+</body>
+</html>

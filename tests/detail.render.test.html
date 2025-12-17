@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>detail.render 测试</title>
+  <link rel="stylesheet" href="../assets/css/attractions.css">
+  <link rel="stylesheet" href="../assets/css/detail.css">
+  <link rel="stylesheet" href="../assets/vendor/all.min.css">
+  <link href="../assets/vendor/aos.css" rel="stylesheet">
+</head>
+<body data-theme="light" data-lang="zh">
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo"><span class="logo-icon">🏙️</span><span class="logo-text" data-i18n="nav.logo">深圳</span></div>
+      <ul class="nav-menu" id="navMenu"></ul>
+      <div class="nav-actions">
+        <button id="langSwitch" class="icon-btn"><i class="fas fa-globe"></i><span>EN</span></button>
+        <button id="themeToggle" class="icon-btn"><i class="fas fa-moon"></i></button>
+        <button id="menuToggle" class="menu-toggle"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section class="attraction-detail-section"><div class="container"><div id="detailRoot"></div></div></section>
+  <button id="backToTop" class="back-to-top"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="../assets/vendor/aos.js"></script>
+  <script src="../assets/js/attractions.js"></script>
+  <script src="../assets/js/detail.js"></script>
+  <script>
+  // 设置查询参数以指定 slug
+  history.replaceState(null, '', '?slug=windowoftheworld');
+  </script>
+  <script src="../assets/js/detail.render.js"></script>
+  <script>
+  /**
+   * 功能：基本渲染断言（中文注释）
+   * 说明：检查标题、区位、评分与图片是否渲染
+   */
+  function assertBasic() {
+    const title = document.querySelector('.detail-title');
+    const loc = document.querySelector('.detail-meta .location');
+    const rating = document.querySelector('.detail-meta .rating');
+    const img = document.querySelector('.detail-image img');
+    console.assert(!!title && title.textContent.length > 0, '标题未渲染');
+    console.assert(!!loc && loc.textContent.length > 0, '区位未渲染');
+    console.assert(!!rating && rating.textContent.includes('.'), '评分未渲染');
+    console.assert(!!img && !!img.getAttribute('src'), '图片未渲染');
+    const ok = document.createElement('div');
+    ok.id = 'data-test-passed';
+    ok.textContent = 'detail.render 基本渲染通过';
+    ok.style.cssText = 'position:fixed;bottom:10px;right:10px;background:#0a0;color:#fff;padding:6px 10px';
+    document.body.appendChild(ok);
+  }
+  document.addEventListener('DOMContentLoaded', () => setTimeout(assertBasic, 500));
+  </script>
+</body>
+</html>

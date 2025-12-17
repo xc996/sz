@@ -42,31 +42,6 @@ const translations = {
         'attractions.slide4.desc': '山海结合的生态旅游度假区',
         'attractions.slide5.title': '平安金融中心',
         'attractions.slide5.desc': '深圳最高建筑，599米云际观光层',
-        // 景点详情
-        'attraction.szbay.name': '深圳湾公园',
-        'attraction.szbay.desc': '绵延15公里的海滨长廊，欣赏日落的最佳地点',
-        'attraction.szbay.badge': '热门',
-        'attraction.szbay.location': '南山区',
-        'attraction.window.name': '世界之窗',
-        'attraction.window.desc': '一天游遍世界，130个微缩景观',
-        'attraction.window.badge': '必游',
-        'attraction.window.location': '南山区',
-        'attraction.happyvalley.name': '欢乐谷',
-        'attraction.happyvalley.desc': '华南地区最受欢迎的主题乐园',
-        'attraction.happyvalley.badge': '刺激',
-        'attraction.happyvalley.location': '南山区',
-        'attraction.octeast.name': '东部华侨城',
-        'attraction.octeast.desc': '山海结合的生态旅游度假区',
-        'attraction.octeast.badge': '推荐',
-        'attraction.octeast.location': '盐田区',
-        'attraction.bookcity.name': '深圳中心书城',
-        'attraction.bookcity.desc': '华南地区最大的书店，文化地标',
-        'attraction.bookcity.badge': '文艺',
-        'attraction.bookcity.location': '福田区',
-        'attraction.pingan.name': '平安金融中心',
-        'attraction.pingan.desc': '深圳最高建筑，599米云际观光层',
-        'attraction.pingan.badge': '地标',
-        'attraction.pingan.location': '福田区',
         
         // 文化
         'culture.title': '深圳故事',
@@ -151,31 +126,6 @@ const translations = {
         'attractions.slide4.desc': 'Eco-tourism resort combining mountains and sea',
         'attractions.slide5.title': 'Ping An Finance Center',
         'attractions.slide5.desc': 'Shenzhen\'s tallest building with 599m observation deck',
-        // Attraction Details
-        'attraction.szbay.name': 'Shenzhen Bay Park',
-        'attraction.szbay.desc': 'A 15km coastal promenade, the best spot to watch the sunset',
-        'attraction.szbay.badge': 'Popular',
-        'attraction.szbay.location': 'Nanshan District',
-        'attraction.window.name': 'Window of the World',
-        'attraction.window.desc': 'Travel the world in one day with 130 miniature attractions',
-        'attraction.window.badge': 'Must-Visit',
-        'attraction.window.location': 'Nanshan District',
-        'attraction.happyvalley.name': 'Happy Valley',
-        'attraction.happyvalley.desc': 'The most popular theme park in South China',
-        'attraction.happyvalley.badge': 'Thrilling',
-        'attraction.happyvalley.location': 'Nanshan District',
-        'attraction.octeast.name': 'OCT East',
-        'attraction.octeast.desc': 'Eco-tourism resort combining mountains and sea',
-        'attraction.octeast.badge': 'Recommended',
-        'attraction.octeast.location': 'Yantian District',
-        'attraction.bookcity.name': 'Central Book City',
-        'attraction.bookcity.desc': 'The largest bookstore in South China, a cultural landmark',
-        'attraction.bookcity.badge': 'Literary',
-        'attraction.bookcity.location': 'Futian District',
-        'attraction.pingan.name': 'Ping An Finance Center',
-        'attraction.pingan.desc': 'Shenzhen\'s tallest building with 599m observation deck',
-        'attraction.pingan.badge': 'Landmark',
-        'attraction.pingan.location': 'Futian District',
         
         // Culture
         'culture.title': 'Shenzhen Story',
@@ -228,345 +178,27 @@ const translations = {
     }
 };
 
-// 景点数据
-const attractionsData = [
-    {
-        id: 1,
-        name: '深圳湾公园',
-        nameEn: 'Shenzhen Bay Park',
-        category: 'nature',
-        description: '绵延15公里的海滨长廊，欣赏日落的最佳地点',
-        descriptionEn: 'A 15km coastal promenade, the best spot to watch the sunset',
-        image: 'assets/images/深圳湾公园.jpg',
-        location: '南山区',
-        locationEn: 'Nanshan District',
-        rating: 4.8,
-        badge: '热门',
-        badgeEn: 'Popular',
-        lat: 22.5189,
-        lng: 113.9447
-    },
-    {
-        id: 2,
-        name: '世界之窗',
-        nameEn: 'Window of the World',
-        category: 'culture',
-        description: '一天游遍世界，130个微缩景观',
-        descriptionEn: 'Travel the world in one day with 130 miniature attractions',
-        image: 'assets/images/世界之窗.jpg',
-        location: '南山区',
-        locationEn: 'Nanshan District',
-        rating: 4.6,
-        badge: '必游',
-        badgeEn: 'Must-Visit',
-        lat: 22.5364,
-        lng: 113.9750
-    },
-    {
-        id: 3,
-        name: '欢乐谷',
-        nameEn: 'Happy Valley',
-        category: 'landmark',
-        description: '华南地区最受欢迎的主题乐园',
-        descriptionEn: 'The most popular theme park in South China',
-        image: 'assets/images/欢乐谷.jpg',
-        location: '南山区',
-        locationEn: 'Nanshan District',
-        rating: 4.7,
-        badge: '刺激',
-        badgeEn: 'Thrilling',
-        lat: 22.5394,
-        lng: 113.9806
-    },
-    {
-        id: 4,
-        name: '东部华侨城',
-        nameEn: 'OCT East',
-        category: 'nature',
-        description: '山海结合的生态旅游度假区',
-        descriptionEn: 'Eco-tourism resort combining mountains and sea',
-        image: 'assets/images/东部华侨城.jpg',
-        location: '盐田区',
-        locationEn: 'Yantian District',
-        rating: 4.9,
-        badge: '推荐',
-        badgeEn: 'Recommended',
-        lat: 22.6028,
-        lng: 114.2242
-    },
-    {
-        id: 5,
-        name: '深圳中心书城',
-        nameEn: 'Central Book City',
-        category: 'culture',
-        description: '华南地区最大的书店，文化地标',
-        descriptionEn: 'The largest bookstore in South China, a cultural landmark',
-        image: 'assets/images/深圳中心书城.jpg',
-        location: '福田区',
-        locationEn: 'Futian District',
-        rating: 4.5,
-        badge: '文艺',
-        badgeEn: 'Literary',
-        lat: 22.5439,
-        lng: 114.0600
-    },
-    {
-        id: 6,
-        name: '平安金融中心',
-        nameEn: 'Ping An Finance Center',
-        category: 'landmark',
-        description: '深圳最高建筑，599米云际观光层',
-        descriptionEn: 'Shenzhen\'s tallest building with 599m observation deck',
-        image: 'assets/images/平安金融中心.jpg',
-        location: '福田区',
-        locationEn: 'Futian District',
-        rating: 4.8,
-        badge: '地标',
-        badgeEn: 'Landmark',
-        lat: 22.5364,
-        lng: 114.0547
-    },
-    {
-        id: 7,
-        name: '小梅沙',
-        nameEn: 'Xiaomeisha Beach',
-        category: 'nature',
-        description: '深圳东部的美丽海滩，适合游泳和休闲',
-        descriptionEn: 'Beautiful beach in eastern Shenzhen, perfect for swimming and relaxation',
-        image: 'https://images.unsplash.com/photo-1551029506-0807df4e2031?w=800',
-        location: '盐田区',
-        locationEn: 'Yantian District',
-        rating: 4.6,
-        badge: '海滩',
-        badgeEn: 'Beach',
-        lat: 22.5847,
-        lng: 114.2847
-    },
-    {
-        id: 8,
-        name: '大梅沙',
-        nameEn: 'Dameisha Beach',
-        category: 'nature',
-        description: '深圳最大的免费海滩，设施完善，人气旺盛',
-        descriptionEn: 'Shenzhen\'s largest free beach with complete facilities and vibrant atmosphere',
-        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
-        location: '盐田区',
-        locationEn: 'Yantian District',
-        rating: 4.7,
-        badge: '免费',
-        badgeEn: 'Free',
-        lat: 22.5689,
-        lng: 114.2789
-    },
-    {
-        id: 9,
-        name: '莲花山公园',
-        nameEn: 'Lianhuashan Park',
-        category: 'nature',
-        description: '深圳中心区的城市公园，可以俯瞰福田CBD',
-        descriptionEn: 'Urban park in Shenzhen\'s central area with panoramic views of Futian CBD',
-        image: 'https://images.unsplash.com/photo-1522759438344-6a9f6d5f14af?w=800',
-        location: '福田区',
-        locationEn: 'Futian District',
-        rating: 4.5,
-        badge: '城市',
-        badgeEn: 'Urban',
-        lat: 22.5459,
-        lng: 114.0589
-    },
-    {
-        id: 10,
-        name: '红树林自然保护区',
-        nameEn: 'Mangrove Nature Reserve',
-        category: 'nature',
-        description: '国家级自然保护区，候鸟栖息地',
-        descriptionEn: 'National nature reserve and migratory bird habitat',
-        image: 'https://images.unsplash.com/photo-1503551723145-6c040742065b?w=800',
-        location: '福田区',
-        locationEn: 'Futian District',
-        rating: 4.8,
-        badge: '生态',
-        badgeEn: 'Eco',
-        lat: 22.5219,
-        lng: 113.9479
-    },
-    {
-        id: 11,
-        name: '海上世界',
-        nameEn: 'Sea World',
-        category: 'culture',
-        description: '集餐饮、娱乐、购物于一体的海滨综合体',
-        descriptionEn: 'Coastal complex with dining, entertainment and shopping',
-        image: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=800',
-        location: '南山区',
-        locationEn: 'Nanshan District',
-        rating: 4.6,
-        badge: '娱乐',
-        badgeEn: 'Entertainment',
-        lat: 22.5309,
-        lng: 113.9359
-    },
-    {
-        id: 12,
-        name: '深圳博物馆',
-        nameEn: 'Shenzhen Museum',
-        category: 'culture',
-        description: '了解深圳历史和文化的重要场所',
-        descriptionEn: 'Important place to learn about Shenzhen\'s history and culture',
-        image: 'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800',
-        location: '福田区',
-        locationEn: 'Futian District',
-        rating: 4.7,
-        badge: '文化',
-        badgeEn: 'Culture',
-        lat: 22.5409,
-        lng: 114.0529
-    },
-    {
-        id: 13,
-        name: '东门老街',
-        nameEn: 'Dongmen Old Street',
-        category: 'shopping',
-        description: '深圳最古老的商业街，热闹非凡',
-        descriptionEn: 'Shenzhen\'s oldest commercial street with bustling atmosphere',
-        image: 'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800',
-        location: '罗湖区',
-        locationEn: 'Luohu District',
-        rating: 4.4,
-        badge: '购物',
-        badgeEn: 'Shopping',
-        lat: 22.5439,
-        lng: 114.1029
-    },
-    {
-        id: 14,
-        name: '华强北',
-        nameEn: 'Huaqiangbei',
-        category: 'shopping',
-        description: '全球最大的电子产品集散地',
-        descriptionEn: 'The world\'s largest electronics distribution center',
-        image: 'https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=800',
-        location: '福田区',
-        locationEn: 'Futian District',
-        rating: 4.5,
-        badge: '电子',
-        badgeEn: 'Electronics',
-        lat: 22.5389,
-        lng: 114.0659
-    },
-    {
-        id: 15,
-        name: '仙湖植物园',
-        nameEn: 'Fairy Lake Botanical Garden',
-        category: 'nature',
-        description: '集植物科研、科普、旅游于一体的综合性植物园',
-        descriptionEn: 'Comprehensive botanical garden for research, education and tourism',
-        image: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800',
-        location: '罗湖区',
-        locationEn: 'Luohu District',
-        rating: 4.8,
-        badge: '植物',
-        badgeEn: 'Botanical',
-        lat: 22.5739,
-        lng: 114.1189
-    },
-    {
-        id: 16,
-        name: '杨梅坑',
-        nameEn: 'Yangmeikeng',
-        category: 'nature',
-        description: '深圳东部的美丽海湾，适合骑行和徒步',
-        descriptionEn: 'Beautiful bay in eastern Shenzhen, perfect for cycling and hiking',
-        image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
-        location: '大鹏新区',
-        locationEn: 'Dapeng New District',
-        rating: 4.7,
-        badge: '自然',
-        badgeEn: 'Nature',
-        lat: 22.5486,
-        lng: 114.5856
-    },
-    {
-        id: 17,
-        name: '吉钓沙',
-        nameEn: 'Jidiaosha',
-        category: 'nature',
-        description: '水质清澈的海滩，适合游泳和沙滩活动',
-        descriptionEn: 'Beach with clear water, ideal for swimming and beach activities',
-        image: 'https://images.unsplash.com/photo-1551029506-0807df4e2031?w=800',
-        location: '大鹏新区',
-        locationEn: 'Dapeng New District',
-        rating: 4.8,
-        badge: '海滩',
-        badgeEn: 'Beach',
-        lat: 22.5444,
-        lng: 114.5733
-    },
-    {
-        id: 18,
-        name: '天文台',
-        nameEn: 'Shenzhen Observatory',
-        category: 'science',
-        description: '深圳天文台，俯瞰大鹏湾美景',
-        descriptionEn: 'Shenzhen Observatory, overlooking the beautiful scenery of Dapeng Bay',
-        image: 'https://images.unsplash.com/photo-1580327121178-9053119a0861?w=800',
-        location: '大鹏新区',
-        locationEn: 'Dapeng New District',
-        rating: 4.9,
-        badge: '科学',
-        badgeEn: 'Science',
-        lat: 22.5167,
-        lng: 114.5433
-    },
-    {
-        id: 19,
-        name: '鹿嘴山庄',
-        nameEn: 'Luzui Villa',
-        category: 'resort',
-        description: '悬崖边的度假山庄，电影《美人鱼》拍摄地',
-        descriptionEn: 'Cliffside resort, filming location of the movie "The Mermaid"',
-        image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800',
-        location: '大鹏新区',
-        locationEn: 'Dapeng New District',
-        rating: 4.7,
-        badge: '度假',
-        badgeEn: 'Resort',
-        lat: 22.5497,
-        lng: 114.6000
-    },
-    {
-        id: 20,
-        name: '望郎归',
-        nameEn: 'Wanglanggui',
-        category: 'scenic',
-        description: '形似妇人望夫归来的奇石景观',
-        descriptionEn: 'Strange rock formation resembling a woman waiting for her husband',
-        image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800',
-        location: '大鹏新区',
-        locationEn: 'Dapeng New District',
-        rating: 4.6,
-        badge: '奇石',
-        badgeEn: 'Rock Formation',
-        lat: 22.5333,
-        lng: 114.5667
-    },
-    {
-        id: 21,
-        name: '鱼翅石',
-        nameEn: 'Yuchishi',
-        category: 'scenic',
-        description: '形状酷似鱼翅的天然岩石',
-        descriptionEn: 'Natural rock formation resembling shark fin',
-        image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800',
-        location: '大鹏新区',
-        locationEn: 'Dapeng New District',
-        rating: 4.5,
-        badge: '奇石',
-        badgeEn: 'Rock Formation',
-        lat: 22.5250,
-        lng: 114.5583
+// 景点数据（配置驱动）
+let attractionsList = [];
+
+/**
+ * 功能：加载景点配置（中文注释）
+ * 说明：从 assets/data/attractions.json 读取并缓存 items
+ */
+async function loadAttractionsConfig() {
+    if (attractionsList && attractionsList.length > 0) return attractionsList;
+    try {
+        const res = await fetch('/assets/data/attractions.json');
+        if (!res.ok) throw new Error('配置加载失败');
+        const json = await res.json();
+        attractionsList = Array.isArray(json.items) ? json.items : [];
+        return attractionsList;
+    } catch (e) {
+        console.error('[attractions] 配置读取失败', e);
+        attractionsList = [];
+        return attractionsList;
     }
-];
+}
 
 // 时间轴数据
 const timelineData = [
@@ -672,8 +304,9 @@ function switchLanguage() {
         langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
     }
     
-    // 重新渲染时间轴
+    // 重新渲染时间轴与景点
     renderTimeline();
+    renderAttractions();
     
     // 保存语言偏好
     localStorage.setItem('preferredLanguage', currentLang);
@@ -761,8 +394,7 @@ function initTheme() {
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-    
-    // 检查并设置初始状态
+    if (!navbar) return;
     function updateNavbar() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -770,11 +402,7 @@ function initNavbarScroll() {
             navbar.classList.remove('scrolled');
         }
     }
-    
-    // 初始化时立即检查
     updateNavbar();
-    
-    // 监听滚动事件
     window.addEventListener('scroll', updateNavbar);
 }
 
@@ -782,12 +410,10 @@ function initNavbarScroll() {
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
-    
+    if (!menuToggle || !navMenu) return;
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
-    
-    // 点击菜单项后关闭菜单
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
@@ -823,80 +449,38 @@ function initBackToTop() {
 // ------------------------------
 
 // 渲染景点
-function renderAttractions() {
+async function renderAttractions() {
     const grid = document.getElementById('attractionsGrid');
     if (!grid) return;
     
     grid.innerHTML = '';
-    
-    attractionsData.forEach(attraction => {
-        // 生成详情页链接，使用景点名称的拼音或英文名称作为文件名
-        const slug = attraction.nameEn.toLowerCase().replace(/\s+/g, '');
-        const detailUrl = `attractions/${slug}.html`;
+    const items = await loadAttractionsConfig();
+    items.forEach(attraction => {
+        const slug = attraction.slug;
+        const detailUrl = `attractions/detail.html?slug=${slug}`;
+        const imgSrc = (attraction.image || '').startsWith('assets/') ? '/' + attraction.image : (attraction.image || '/assets/images/placeholder.svg');
+        console.log(`[list] link=${detailUrl} slug=${slug} mode=query`);
         
         const card = document.createElement('div');
         card.className = 'attraction-card';
         card.innerHTML = `
             <div class="card-image">
-                <img src="${attraction.image}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}" onerror="this.onerror=null;this.src='/assets/images/placeholder.svg'">
             </div>
             <div class="card-content">
                 <h3 class="card-title">${currentLang === 'zh' ? attraction.name : attraction.nameEn}</h3>
-                <p class="card-description">${currentLang === 'zh' ? attraction.description : attraction.descriptionEn}</p>
+                <p class="card-description">${currentLang === 'zh' ? (attraction.seo?.description?.zh || '') : (attraction.seo?.description?.en || '')}</p>
                 <div class="card-meta">
                     <div class="card-location">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>${currentLang === 'zh' ? attraction.location : attraction.locationEn}</span>
+                        <span>${currentLang === 'zh' ? (attraction.district?.zh || '') : (attraction.district?.en || '')}</span>
                     </div>
                     <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="查看详情">详</a>
                 </div>
             </div>
         `;
+        card.setAttribute('data-index', String(items.indexOf(attraction)));
         grid.appendChild(card);
-    });
-}
-
-/**
- * 功能：在离开列表进入详情前保存当前滚动位置（中文注释）
- * 说明：使用 sessionStorage 存储 Y 坐标与进入的条目标识，便于返回时恢复
- */
-function saveEntryScroll(slug) {
-    try {
-        sessionStorage.setItem('attractionsScrollY', String(window.scrollY));
-        sessionStorage.setItem('attractionsEntrySlug', slug || '');
-        sessionStorage.setItem('attractionsSavedAt', String(Date.now()));
-    } catch (e) {}
-}
-
-/**
- * 功能：从 sessionStorage 恢复列表滚动位置（中文注释）
- * 说明：仅在数据有效且未过期时恢复，并清理已使用的数据
- */
-function restoreEntryScroll() {
-    const yStr = sessionStorage.getItem('attractionsScrollY');
-    const atStr = sessionStorage.getItem('attractionsSavedAt');
-    const y = yStr ? parseInt(yStr, 10) : NaN;
-    const at = atStr ? parseInt(atStr, 10) : 0;
-    if (!Number.isNaN(y) && Date.now() - at < 5 * 60 * 1000) {
-        window.scrollTo({ top: y, behavior: 'auto' });
-    }
-    sessionStorage.removeItem('attractionsScrollY');
-    sessionStorage.removeItem('attractionsEntrySlug');
-    sessionStorage.removeItem('attractionsSavedAt');
-}
-
-/**
- * 功能：为详情链接绑定点击事件以保存滚动位置（中文注释）
- * 说明：在跳转到 attractions/*.html 之前记录当前位置
- */
-function bindDetailEntryScroll() {
-    const links = document.querySelectorAll('.detail-btn');
-    if (!links || links.length === 0) return;
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            const slug = link.getAttribute('data-slug') || '';
-            saveEntryScroll(slug);
-        });
     });
 }
 
@@ -928,13 +512,15 @@ function renderTimeline() {
 
 // 页面加载完成后执行
 function init() {
-    // 初始化AOS动画
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
+    // 初始化AOS动画（存在性判断）
+    if (window.AOS && typeof AOS.init === 'function') {
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false
+        });
+    }
     
     // 初始化语言
     initLanguage();
@@ -1074,7 +660,21 @@ function bindAttractionClickEvents() {
             if (e.target.closest('a')) {
                 return;
             }
-            showAttractionDetail(attractionsData[index]);
+            const i = parseInt(card.getAttribute('data-index') || String(index), 10);
+            const data = attractionsList[i];
+            if (data) {
+                const mapped = {
+                    name: data.name,
+                    nameEn: data.nameEn,
+                    description: data.seo?.description?.zh || '',
+                    descriptionEn: data.seo?.description?.en || '',
+                    image: data.image,
+                    location: data.district?.zh || '',
+                    locationEn: data.district?.en || ''
+                };
+                console.log(`[list] card-click slug=${data.slug}`);
+                showAttractionDetail(mapped);
+            }
         });
     });
 }
@@ -1210,12 +810,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 绑定景点卡片点击事件，显示详情弹窗
     bindAttractionClickEvents();
-    
-    // 仅在列表页恢复滚动并绑定保存事件
-    if (document.getElementById('attractionsGrid')) {
-        restoreEntryScroll();
-        bindDetailEntryScroll();
-    }
 });
 
 // ------------------------------
@@ -1240,12 +834,5 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
                 icon.classList.add('fa-moon');
             }
         }
-    }
-});
-
-// 在页面通过 bfcache 恢复时也尝试恢复滚动（中文注释）
-window.addEventListener('pageshow', (e) => {
-    if (document.getElementById('attractionsGrid')) {
-        restoreEntryScroll();
     }
 });
