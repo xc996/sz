@@ -4,6 +4,7 @@ name: 部署到 GitHub Pages
 on:
   push:
     branches: ["master"]
+  workflow_dispatch:
 
 # 运行此工作流所需的权限（GitHub Pages 官方推荐）
 permissions:
@@ -28,6 +29,9 @@ jobs:
         uses: actions/checkout@v4
       - name: 配置 Pages 环境
         uses: actions/configure-pages@v5
+      - name: 生成 .nojekyll（禁用 Jekyll）
+        run: |
+          touch .nojekyll
       - name: 上传站点制品
         uses: actions/upload-pages-artifact@v3
         with:
@@ -36,4 +40,3 @@ jobs:
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
