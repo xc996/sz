@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AttractionItem",
+  "type": "object",
+  "required": [
+    "slug",
+    "name",
+    "nameEn",
+    "district",
+    "rating",
+    "image",
+    "seo"
+  ],
+  "properties": {
+    "slug": { "type": "string" },
+    "aliases": { "type": "array", "items": { "type": "string" } },
+    "name": { "type": "string" },
+    "nameEn": { "type": "string" },
+    "district": {
+      "type": "object",
+      "required": ["zh", "en"],
+      "properties": {
+        "zh": { "type": "string" },
+        "en": { "type": "string" }
+      }
+    },
+    "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+    "image": { "type": "string" },
+    "seo": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": {
+          "type": "object",
+          "required": ["zh", "en"],
+          "properties": {
+            "zh": { "type": "string" },
+            "en": { "type": "string" }
+          }
+        },
+        "description": {
+          "type": "object",
+          "required": ["zh", "en"],
+          "properties": {
+            "zh": { "type": "string" },
+            "en": { "type": "string" }
+          }
+        }
+      }
+    },
+    "intro": {
+      "type": "object",
+      "properties": {
+        "zh": { "type": "array", "items": { "type": "string" } },
+        "en": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "highlights": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "icon": { "type": "string" },
+          "zh": { "type": "string" },
+          "en": { "type": "string" }
+        }
+      }
+    }
+  }
+}

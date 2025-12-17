@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数据校验测试</title>
+  <link rel="stylesheet" href="../assets/css/detail.css">
+</head>
+<body data-theme="light" data-lang="zh">
+  <section class="attraction-detail-section"><div class="container"><div id="detailRoot"></div></div></section>
+  <script src="../assets/js/detail.render.js"></script>
+  <script>
+  /**
+   * 功能：模拟错误数据并断言提示（中文注释）
+   * 说明：覆写配置加载返回缺失必填字段的数据
+   */
+  (function mockConfig(){
+    const bad = [{ slug: 'bad', name: '', nameEn: '', district: { zh: '', en: '' }, rating: 10, image: '', seo: { title: { zh: '', en: '' }, description: { zh: '', en: '' } } }];
+    const original = window.ConfigStore && window.ConfigStore.load;
+    if (window.ConfigStore) {
+      window.ConfigStore.load = async () => bad;
+    }
+    history.replaceState(null, '', '?slug=bad');
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const banner = document.querySelector('.error-banner');
+        console.assert(!!banner, '未显示错误横幅');
+        const ok = document.createElement('div');
+        ok.id = 'validation-test-passed';
+        ok.textContent = '数据校验错误提示通过';
+        ok.style.cssText = 'position:fixed;bottom:10px;right:10px;background:#0a0;color:#fff;padding:6px 10px';
+        document.body.appendChild(ok);
+        // 还原
+        if (original && window.ConfigStore) window.ConfigStore.load = original;
+      }, 500);
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+{
+  "items": [
+    {
+      "slug": "shenzhenbaypark",
+      "aliases": ["szbay"],
+      "name": "深圳湾公园",
+      "nameEn": "Shenzhen Bay Park",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.8,
+      "image": "assets/images/深圳湾公园.jpg",
+      "seo": {
+        "title": { "zh": "深圳湾公园 | Shenzhen Bay Park", "en": "Shenzhen Bay Park | 深圳湾公园" },
+        "description": {
+          "zh": "绵延15公里的海滨长廊，欣赏日落的最佳地点",
+          "en": "A 15km coastal promenade, the best spot to watch the sunset"
+        }
+      },
+      "intro": {
+        "zh": ["绵延15公里的海滨长廊，欣赏日落的最佳地点"],
+        "en": ["A 15km coastal promenade, the best spot to watch the sunset"]
+      },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "特色景观", "en": "Scenic features" },
+        { "icon": "fas fa-check-circle", "zh": "便利交通", "en": "Convenient transport" },
+        { "icon": "fas fa-check-circle", "zh": "适合休闲", "en": "Leisure friendly" }
+      ]
+    },
+    {
+      "slug": "windowoftheworld",
+      "aliases": ["window"],
+      "name": "世界之窗",
+      "nameEn": "Window of the World",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.6,
+      "image": "https://images.unsplash.com/photo-1549144511-f099e773c147?w=800",
+      "seo": {
+        "title": { "zh": "世界之窗 | Window of the World", "en": "Window of the World | 世界之窗" },
+        "description": {
+          "zh": "一天游遍世界，130个微缩景观",
+          "en": "Travel the world in one day with 130 miniature attractions"
+        }
+      },
+      "intro": {
+        "zh": ["一天游遍世界，130个微缩景观"],
+        "en": ["Travel the world in one day with 130 miniature attractions"]
+      },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "全球微缩景观", "en": "Miniature world attractions" },
+        { "icon": "fas fa-check-circle", "zh": "家庭友好", "en": "Family friendly" },
+        { "icon": "fas fa-check-circle", "zh": "娱乐项目丰富", "en": "Rich entertainment" }
+      ]
+    },
+    {
+      "slug": "happyvalley",
+      "name": "欢乐谷",
+      "nameEn": "Happy Valley",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800",
+      "seo": {
+        "title": { "zh": "欢乐谷 | Happy Valley", "en": "Happy Valley | 欢乐谷" },
+        "description": {
+          "zh": "华南地区最受欢迎的主题乐园",
+          "en": "The most popular theme park in South China"
+        }
+      },
+      "intro": { "zh": ["华南地区最受欢迎的主题乐园"], "en": ["The most popular theme park in South China"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "刺激游乐设施", "en": "Thrilling rides" },
+        { "icon": "fas fa-check-circle", "zh": "亲子活动", "en": "Family activities" },
+        { "icon": "fas fa-check-circle", "zh": "演艺节目", "en": "Shows & performances" }
+      ]
+    },
+    {
+      "slug": "octeast",
+      "name": "东部华侨城",
+      "nameEn": "OCT East",
+      "district": { "zh": "盐田区", "en": "Yantian District" },
+      "rating": 4.9,
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+      "seo": {
+        "title": { "zh": "东部华侨城 | OCT East", "en": "OCT East | 东部华侨城" },
+        "description": {
+          "zh": "山海结合的生态旅游度假区",
+          "en": "Eco-tourism resort combining mountains and sea"
+        }
+      },
+      "intro": { "zh": ["山海结合的生态旅游度假区"], "en": ["Eco-tourism resort combining mountains and sea"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "自然风光", "en": "Natural scenery" },
+        { "icon": "fas fa-check-circle", "zh": "主题园区", "en": "Themed zones" },
+        { "icon": "fas fa-check-circle", "zh": "度假休闲", "en": "Resort leisure" }
+      ]
+    },
+    {
+      "slug": "centralbookcity",
+      "name": "深圳中心书城",
+      "nameEn": "Central Book City",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=800",
+      "seo": {
+        "title": { "zh": "深圳中心书城 | Central Book City", "en": "Central Book City | 深圳中心书城" },
+        "description": {
+          "zh": "华南地区最大的书店，文化地标",
+          "en": "The largest bookstore in South China, a cultural landmark"
+        }
+      },
+      "intro": { "zh": ["华南地区最大的书店，文化地标"], "en": ["The largest bookstore in South China, a cultural landmark"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "丰富藏书", "en": "Extensive collection" },
+        { "icon": "fas fa-check-circle", "zh": "文化活动", "en": "Cultural events" },
+        { "icon": "fas fa-check-circle", "zh": "城市地标", "en": "City landmark" }
+      ]
+    },
+    {
+      "slug": "pinganfinancecenter",
+      "name": "平安金融中心",
+      "nameEn": "Ping An Finance Center",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800",
+      "seo": {
+        "title": { "zh": "平安金融中心 | Ping An Finance Center", "en": "Ping An Finance Center | 平安金融中心" },
+        "description": {
+          "zh": "深圳最高建筑，599米云际观光层",
+          "en": "Shenzhen's tallest building with 599m observation deck"
+        }
+      },
+      "intro": { "zh": ["深圳最高建筑，599米云际观光层"], "en": ["Shenzhen's tallest building with 599m observation deck"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "高空观景", "en": "Sky observation" },
+        { "icon": "fas fa-check-circle", "zh": "地标建筑", "en": "Landmark building" },
+        { "icon": "fas fa-check-circle", "zh": "城市天际线", "en": "City skyline" }
+      ]
+    },
+    {
+      "slug": "xiaomeishabeach",
+      "name": "小梅沙",
+      "nameEn": "Xiaomeisha Beach",
+      "district": { "zh": "盐田区", "en": "Yantian District" },
+      "rating": 4.6,
+      "image": "https://images.unsplash.com/photo-1551029506-0807df4e2031?w=800",
+      "seo": {
+        "title": { "zh": "小梅沙 | Xiaomeisha Beach", "en": "Xiaomeisha Beach | 小梅沙" },
+        "description": {
+          "zh": "深圳东部的美丽海滩，适合游泳和休闲",
+          "en": "Beautiful beach in eastern Shenzhen, perfect for swimming and relaxation"
+        }
+      },
+      "intro": { "zh": ["深圳东部的美丽海滩，适合游泳和休闲"], "en": ["Beautiful beach in eastern Shenzhen, perfect for swimming and relaxation"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "细腻沙滩", "en": "Fine sand" },
+        { "icon": "fas fa-check-circle", "zh": "海水清澈", "en": "Clear water" },
+        { "icon": "fas fa-check-circle", "zh": "休闲配套", "en": "Leisure facilities" }
+      ]
+    },
+    {
+      "slug": "dameishabeach",
+      "name": "大梅沙",
+      "nameEn": "Dameisha Beach",
+      "district": { "zh": "盐田区", "en": "Yantian District" },
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+      "seo": {
+        "title": { "zh": "大梅沙 | Dameisha Beach", "en": "Dameisha Beach | 大梅沙" },
+        "description": {
+          "zh": "深圳最大的免费海滩，设施完善，人气旺盛",
+          "en": "Shenzhen's largest free beach with complete facilities and vibrant atmosphere"
+        }
+      },
+      "intro": { "zh": ["深圳最大的免费海滩，设施完善，人气旺盛"], "en": ["Shenzhen's largest free beach with complete facilities and vibrant atmosphere"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "免费开放", "en": "Free access" },
+        { "icon": "fas fa-check-circle", "zh": "设施完善", "en": "Well-equipped" },
+        { "icon": "fas fa-check-circle", "zh": "人气旺盛", "en": "Popular spot" }
+      ]
+    },
+    {
+      "slug": "lianhuashanpark",
+      "name": "莲花山公园",
+      "nameEn": "Lianhuashan Park",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1522759438344-6a9f6d5f14af?w=800",
+      "seo": {
+        "title": { "zh": "莲花山公园 | Lianhuashan Park", "en": "Lianhuashan Park | 莲花山公园" },
+        "description": {
+          "zh": "深圳中心区的城市公园，可以俯瞰福田CBD",
+          "en": "Urban park in Shenzhen's central area with panoramic views of Futian CBD"
+        }
+      },
+      "intro": { "zh": ["深圳中心区的城市公园，可以俯瞰福田CBD"], "en": ["Urban park in Shenzhen's central area with panoramic views of Futian CBD"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "市区绿肺", "en": "Urban green" },
+        { "icon": "fas fa-check-circle", "zh": "视野开阔", "en": "Wide views" },
+        { "icon": "fas fa-check-circle", "zh": "徒步休闲", "en": "Leisure walking" }
+      ]
+    },
+    {
+      "slug": "mangrovenaturereserve",
+      "name": "红树林自然保护区",
+      "nameEn": "Mangrove Nature Reserve",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1503551723145-6c040742065b?w=800",
+      "seo": {
+        "title": { "zh": "红树林自然保护区 | Mangrove Nature Reserve", "en": "Mangrove Nature Reserve | 红树林自然保护区" },
+        "description": {
+          "zh": "国家级自然保护区，候鸟栖息地",
+          "en": "National nature reserve and migratory bird habitat"
+        }
+      },
+      "intro": { "zh": ["国家级自然保护区，候鸟栖息地"], "en": ["National nature reserve and migratory bird habitat"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "生态湿地", "en": "Wetland ecology" },
+        { "icon": "fas fa-check-circle", "zh": "观鸟天堂", "en": "Birdwatching" },
+        { "icon": "fas fa-check-circle", "zh": "科普教育", "en": "Education" }
+      ]
+    },
+    {
+      "slug": "seaworld",
+      "name": "海上世界",
+      "nameEn": "Sea World",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.6,
+      "image": "https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=800",
+      "seo": {
+        "title": { "zh": "海上世界 | Sea World", "en": "Sea World | 海上世界" },
+        "description": {
+          "zh": "集餐饮、娱乐、购物于一体的海滨综合体",
+          "en": "Coastal complex with dining, entertainment and shopping"
+        }
+      },
+      "intro": { "zh": ["集餐饮、娱乐、购物于一体的海滨综合体"], "en": ["Coastal complex with dining, entertainment and shopping"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "餐饮娱乐", "en": "Dining & fun" },
+        { "icon": "fas fa-check-circle", "zh": "滨海风情", "en": "Coastal vibe" },
+        { "icon": "fas fa-check-circle", "zh": "购物便利", "en": "Shopping" }
+      ]
+    },
+    {
+      "slug": "shenzhenmuseum",
+      "name": "深圳博物馆",
+      "nameEn": "Shenzhen Museum",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=800",
+      "seo": {
+        "title": { "zh": "深圳博物馆 | Shenzhen Museum", "en": "Shenzhen Museum | 深圳博物馆" },
+        "description": {
+          "zh": "了解深圳历史和文化的重要场所",
+          "en": "Important place to learn about Shenzhen's history and culture"
+        }
+      },
+      "intro": { "zh": ["了解深圳历史和文化的重要场所"], "en": ["Important place to learn about Shenzhen's history and culture"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "历史展陈", "en": "History exhibits" },
+        { "icon": "fas fa-check-circle", "zh": "文化教育", "en": "Cultural education" },
+        { "icon": "fas fa-check-circle", "zh": "地理位置优越", "en": "Central location" }
+      ]
+    },
+    {
+      "slug": "dongmenoldstreet",
+      "name": "东门老街",
+      "nameEn": "Dongmen Old Street",
+      "district": { "zh": "罗湖区", "en": "Luohu District" },
+      "rating": 4.4,
+      "image": "https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800",
+      "seo": {
+        "title": { "zh": "东门老街 | Dongmen Old Street", "en": "Dongmen Old Street | 东门老街" },
+        "description": {
+          "zh": "深圳最古老的商业街，热闹非凡",
+          "en": "Shenzhen's oldest commercial street with bustling atmosphere"
+        }
+      },
+      "intro": { "zh": ["深圳最古老的商业街，热闹非凡"], "en": ["Shenzhen's oldest commercial street with bustling atmosphere"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "街市繁华", "en": "Bustling market" },
+        { "icon": "fas fa-check-circle", "zh": "购物美食", "en": "Shopping & food" },
+        { "icon": "fas fa-check-circle", "zh": "老深圳记忆", "en": "Old Shenzhen vibes" }
+      ]
+    },
+    {
+      "slug": "huaqiangbei",
+      "name": "华强北",
+      "nameEn": "Huaqiangbei",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?w=800",
+      "seo": {
+        "title": { "zh": "华强北 | Huaqiangbei", "en": "Huaqiangbei | 华强北" },
+        "description": {
+          "zh": "全球最大的电子产品集散地",
+          "en": "The world's largest electronics distribution center"
+        }
+      },
+      "intro": { "zh": ["全球最大的电子产品集散地"], "en": ["The world's largest electronics distribution center"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "电子集散", "en": "Electronics hub" },
+        { "icon": "fas fa-check-circle", "zh": "价格实惠", "en": "Affordable prices" },
+        { "icon": "fas fa-check-circle", "zh": "产品多样", "en": "Wide selection" }
+      ]
+    },
+    {
+      "slug": "fairylakebotanicalgarden",
+      "name": "仙湖植物园",
+      "nameEn": "Fairy Lake Botanical Garden",
+      "district": { "zh": "罗湖区", "en": "Luohu District" },
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800",
+      "seo": {
+        "title": { "zh": "仙湖植物园 | Fairy Lake Botanical Garden", "en": "Fairy Lake Botanical Garden | 仙湖植物园" },
+        "description": {
+          "zh": "集植物科研、科普、旅游于一体的综合性植物园",
+          "en": "Comprehensive botanical garden for research, education and tourism"
+        }
+      },
+      "intro": { "zh": ["集植物科研、科普、旅游于一体的综合性植物园"], "en": ["Comprehensive botanical garden for research, education and tourism"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "植物多样性", "en": "Plant diversity" },
+        { "icon": "fas fa-check-circle", "zh": "科普教育", "en": "Education" },
+        { "icon": "fas fa-check-circle", "zh": "环境优美", "en": "Beautiful environment" }
+      ]
+    },
+    {
+      "slug": "yangmeikeng",
+      "name": "杨梅坑",
+      "nameEn": "Yangmeikeng",
+      "district": { "zh": "大鹏新区", "en": "Dapeng New District" },
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+      "seo": {
+        "title": { "zh": "杨梅坑 | Yangmeikeng", "en": "Yangmeikeng | 杨梅坑" },
+        "description": {
+          "zh": "深圳东部的美丽海湾，适合骑行和徒步",
+          "en": "Beautiful bay in eastern Shenzhen, perfect for cycling and hiking"
+        }
+      },
+      "intro": { "zh": ["深圳东部的美丽海湾，适合骑行和徒步"], "en": ["Beautiful bay in eastern Shenzhen, perfect for cycling and hiking"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "海湾风光", "en": "Bay scenery" },
+        { "icon": "fas fa-check-circle", "zh": "骑行徒步", "en": "Cycling & hiking" },
+        { "icon": "fas fa-check-circle", "zh": "摄影打卡", "en": "Photo spots" }
+      ]
+    },
+    {
+      "slug": "jidiaosha",
+      "name": "吉钓沙",
+      "nameEn": "Jidiaosha",
+      "district": { "zh": "大鹏新区", "en": "Dapeng New District" },
+      "rating": 4.8,
+      "image": "https://images.unsplash.com/photo-1551029506-0807df4e2031?w=800",
+      "seo": {
+        "title": { "zh": "吉钓沙 | Jidiaosha", "en": "Jidiaosha | 吉钓沙" },
+        "description": {
+          "zh": "水质清澈的海滩，适合游泳和沙滩活动",
+          "en": "Beach with clear water, ideal for swimming and beach activities"
+        }
+      },
+      "intro": { "zh": ["水质清澈的海滩，适合游泳和沙滩活动"], "en": ["Beach with clear water, ideal for swimming and beach activities"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "清澈海水", "en": "Clear water" },
+        { "icon": "fas fa-check-circle", "zh": "沙滩活动", "en": "Beach activities" },
+        { "icon": "fas fa-check-circle", "zh": "自然环境", "en": "Natural setting" }
+      ]
+    },
+    {
+      "slug": "shenzhenobservatory",
+      "name": "天文台",
+      "nameEn": "Shenzhen Observatory",
+      "district": { "zh": "大鹏新区", "en": "Dapeng New District" },
+      "rating": 4.9,
+      "image": "https://images.unsplash.com/photo-1580327121178-9053119a0861?w=800",
+      "seo": {
+        "title": { "zh": "天文台 | Shenzhen Observatory", "en": "Shenzhen Observatory | 天文台" },
+        "description": {
+          "zh": "深圳天文台，俯瞰大鹏湾美景",
+          "en": "Shenzhen Observatory, overlooking the beautiful scenery of Dapeng Bay"
+        }
+      },
+      "intro": { "zh": ["深圳天文台，俯瞰大鹏湾美景"], "en": ["Shenzhen Observatory, overlooking the beautiful scenery of Dapeng Bay"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "观景平台", "en": "View platform" },
+        { "icon": "fas fa-check-circle", "zh": "科学普及", "en": "Science outreach" },
+        { "icon": "fas fa-check-circle", "zh": "山海美景", "en": "Mountain & sea" }
+      ]
+    },
+    {
+      "slug": "luzuivilla",
+      "name": "鹿嘴山庄",
+      "nameEn": "Luzui Villa",
+      "district": { "zh": "大鹏新区", "en": "Dapeng New District" },
+      "rating": 4.7,
+      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+      "seo": {
+        "title": { "zh": "鹿嘴山庄 | Luzui Villa", "en": "Luzui Villa | 鹿嘴山庄" },
+        "description": {
+          "zh": "悬崖边的度假山庄，电影《美人鱼》拍摄地",
+          "en": "Cliffside resort, filming location of the movie 'The Mermaid'"
+        }
+      },
+      "intro": { "zh": ["悬崖边的度假山庄，电影《美人鱼》拍摄地"], "en": ["Cliffside resort, filming location of the movie 'The Mermaid'"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "悬崖美景", "en": "Cliff views" },
+        { "icon": "fas fa-check-circle", "zh": "度假设施", "en": "Resort facilities" },
+        { "icon": "fas fa-check-circle", "zh": "打卡地标", "en": "Photo landmark" }
+      ]
+    },
+    {
+      "slug": "wanglanggui",
+      "name": "望郎归",
+      "nameEn": "Wanglanggui",
+      "district": { "zh": "大鹏新区", "en": "Dapeng New District" },
+      "rating": 4.6,
+      "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800",
+      "seo": {
+        "title": { "zh": "望郎归 | Wanglanggui", "en": "Wanglanggui | 望郎归" },
+        "description": {
+          "zh": "形似妇人望夫归来的奇石景观",
+          "en": "Strange rock formation resembling a woman waiting for her husband"
+        }
+      },
+      "intro": { "zh": ["形似妇人望夫归来的奇石景观"], "en": ["Strange rock formation resembling a woman waiting for her husband"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "奇石地貌", "en": "Rock formations" },
+        { "icon": "fas fa-check-circle", "zh": "海岸景色", "en": "Coastal scenery" },
+        { "icon": "fas fa-check-circle", "zh": "徒步探索", "en": "Hiking" }
+      ]
+    },
+    {
+      "slug": "yuchishi",
+      "name": "鱼翅石",
+      "nameEn": "Yuchishi",
+      "district": { "zh": "大鹏新区", "en": "Dapeng New District" },
+      "rating": 4.5,
+      "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
+      "seo": {
+        "title": { "zh": "鱼翅石 | Yuchishi", "en": "Yuchishi | 鱼翅石" },
+        "description": {
+          "zh": "形状酷似鱼翅的天然岩石",
+          "en": "Natural rock formation resembling shark fin"
+        }
+      },
+      "intro": { "zh": ["形状酷似鱼翅的天然岩石"], "en": ["Natural rock formation resembling shark fin"] },
+      "highlights": [
+        { "icon": "fas fa-check-circle", "zh": "独特造型", "en": "Unique shape" },
+        { "icon": "fas fa-check-circle", "zh": "海岸风光", "en": "Coastal view" },
+        { "icon": "fas fa-check-circle", "zh": "摄影佳地", "en": "Photography" }
+      ]
+    }
+  ]
+}

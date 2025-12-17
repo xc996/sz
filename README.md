@@ -115,6 +115,7 @@ assets/
     index.js
     attractions.js
     detail.js
+    detail.render.js
   vendor/
     all.min.css
     aos.css
@@ -123,11 +124,48 @@ assets/
     fa-*.woff2 / fa-*.ttf
   images/
     深圳湾公园.jpg
+    placeholder.svg
 attractions/
-  *.html  （景点详情页，未移动）
+  detail.html  （通用详情模板，按 slug 动态渲染）
 index.html
 attractions.html
+tests/
+  detail.render.test.html
+  i18n.toggle.test.html
+  data-validation.test.html
+  compat.routes.test.html
+  list.render.test.html
 ```
 
-说明：页面位置保持不变，仅将所有静态资源统一到 `assets/` 目录，避免相对路径混乱，便于后续维护与发布。
+说明：所有静态资源统一在 `assets/`；详情页改为通用模板 + 配置驱动，避免重复页面维护。
 
+## 变更摘要（2025-12-17）
+
+### 配置驱动的景点详情页
+- 新增配置文件：`assets/data/attractions.json`
+- 新增渲染模块：`assets/js/detail.render.js`
+- 通用模板：`attractions/detail.html` 通过 `?slug=<id>` 渲染详情
+- 删除薄壳详情页：`attractions/` 目录下原各景点 `*.html` 已清理，仅保留 `detail.html`
+
+### 列表页改造
+- 列表卡片改为从 `assets/data/attractions.json` 加载并渲染
+- 详情链接统一为：`attractions/detail.html?slug=<slug>`
+
+### 图片加载与占位
+- 外链图片可能被浏览器 ORB 拦截，已在列表与详情增加失败回退占位图：`assets/images/placeholder.svg`
+- 规范化本地图片路径（以 `/assets/` 开头），并在 `img` 上添加 `onerror` 回退逻辑
+
+### 控制台日志（用于确认链接形式）
+- 详情页：`[detail.render] mode=<query|file> slug=<...>`，`mode=query` 为单模板形式
+- 列表页：`[list] link=attractions/detail.html?slug=<...> mode=query`
+
+### 回归测试页（浏览器直接打开）
+- 列表渲染：`/tests/list.render.test.html`
+- 详情渲染：`/tests/detail.render.test.html`
+- 语言切换：`/tests/i18n.toggle.test.html`
+- 配置校验提示：`/tests/data-validation.test.html`
+- 链接兼容验证：`/tests/compat.routes.test.html`
+
+### 本地运行方式
+- Python：`python3 -m http.server 5500`
+- 访问 `http://localhost:5500/`，页面入口：`index.html`、`attractions.html`、`attractions/detail.html?slug=<slug>`
