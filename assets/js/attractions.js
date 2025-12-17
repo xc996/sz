@@ -231,6 +231,34 @@ const translations = {
 // 景点数据（配置驱动）
 let attractionsList = [];
 
+// 本地文件协议下的内置景点数据（中文注释）
+const localAttractionsFallback = [
+    {
+        slug: 'shenzhenbaypark',
+        name: '深圳湾公园',
+        nameEn: 'Shenzhen Bay Park',
+        district: { zh: '南山区', en: 'Nanshan District' },
+        image: 'assets/images/深圳湾公园.jpg',
+        seo: { description: { zh: '绵延15公里的海滨长廊，欣赏日落的最佳地点', en: 'A 15km coastal promenade, the best spot to watch the sunset' } }
+    },
+    {
+        slug: 'windowoftheworld',
+        name: '世界之窗',
+        nameEn: 'Window of the World',
+        district: { zh: '南山区', en: 'Nanshan District' },
+        image: 'https://images.unsplash.com/photo-1549144511-f099e773c147?w=800',
+        seo: { description: { zh: '一天游遍世界，130个微缩景观', en: 'Travel the world in one day with 130 miniature attractions' } }
+    },
+    {
+        slug: 'pinganfinancecenter',
+        name: '平安金融中心',
+        nameEn: 'Ping An Finance Center',
+        district: { zh: '福田区', en: 'Futian District' },
+        image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800',
+        seo: { description: { zh: '深圳最高建筑，599米云际观光层', en: "Shenzhen's tallest building with 599m observation deck" } }
+    }
+];
+
 /**
  * 功能：获取静态资源基础路径（中文注释）
  * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
@@ -247,19 +275,32 @@ function getAssetsBase() {
 }
 
 /**
+ * 功能：检测是否为文件协议（中文注释）
+ * 说明：用于判断当前页面是否通过 file:// 直接打开
+ */
+function isFileProtocol() {
+    return (window.location.protocol || '').startsWith('file');
+}
+
+/**
  * 功能：加载景点配置（中文注释）
- * 说明：从 assets/data/attractions.json 读取并缓存 items
+ * 说明：优先从 assets/data/attractions.json 读取；在 file:// 环境下自动回退到内置数据
  */
 async function loadAttractionsConfig() {
     if (attractionsList && attractionsList.length > 0) return attractionsList;
+    const base = getAssetsBase();
     try {
-        const base = getAssetsBase();
-        const res = await fetch(`${base}data/attractions.json`);
+        const res = await fetch(`${base}data/attractions.json`, { cache: 'no-cache' });
         if (!res.ok) throw new Error('配置加载失败');
         const json = await res.json();
         attractionsList = Array.isArray(json.items) ? json.items : [];
         return attractionsList;
     } catch (e) {
+        if (isFileProtocol()) {
+            console.warn('[attractions] 检测到通过文件方式打开，浏览器会阻止 fetch 读取本地文件。已使用内置示例数据作为回退。');
+            attractionsList = localAttractionsFallback;
+            return attractionsList;
+        }
         console.error('[attractions] 配置读取失败', e);
         attractionsList = [];
         return attractionsList;
@@ -514,13 +555,20 @@ function initBackToTop() {
 // 动态渲染函数
 // ------------------------------
 
-// 渲染景点
+/**
+ * 功能：渲染景点列表（中文注释）
+ * 说明：根据已加载的配置渲染卡片；当无数据时展示友好提示
+ */
 async function renderAttractions() {
     const grid = document.getElementById('attractionsGrid');
     if (!grid) return;
     
     grid.innerHTML = '';
     const items = await loadAttractionsConfig();
+    if (!items || items.length === 0) {
+        renderAttractionsEmptyState();
+        return;
+    }
     items.forEach(attraction => {
         const slug = attraction.slug;
         const detailUrl = `attractions/detail.html?slug=${slug}`;
@@ -549,6 +597,30 @@ async function renderAttractions() {
         card.setAttribute('data-index', String(items.indexOf(attraction)));
         grid.appendChild(card);
     });
+}
+
+/**
+ * 功能：渲染空状态提示（中文注释）
+ * 说明：在无法加载配置或数据为空时，为用户提供解决方案与回退说明
+ */
+function renderAttractionsEmptyState() {
+    const grid = document.getElementById('attractionsGrid');
+    if (!grid) return;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'empty-state';
+    wrapper.innerHTML = `
+        <div class="empty-state-content">
+            <h3>无法加载景点数据</h3>
+            <p>检测到通过本地文件方式打开页面，浏览器会阻止读取本地 JSON 文件。</p>
+            <p>解决方案：</p>
+            <ul>
+                <li>在项目目录运行：<code>python3 -m http.server 5500</code></li>
+                <li>然后访问：<code>http://localhost:5500/attractions.html</code></li>
+            </ul>
+            <p>当前已展示少量内置示例数据作为回退。</p>
+        </div>
+    `;
+    grid.appendChild(wrapper);
 }
 
 /**
