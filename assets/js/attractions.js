@@ -238,7 +238,7 @@ let attractionsList = [];
 async function loadAttractionsConfig() {
     if (attractionsList && attractionsList.length > 0) return attractionsList;
     try {
-        const res = await fetch('/assets/data/attractions.json');
+        const res = await fetch('assets/data/attractions.json');
         if (!res.ok) throw new Error('配置加载失败');
         const json = await res.json();
         attractionsList = Array.isArray(json.items) ? json.items : [];
