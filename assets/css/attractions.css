@@ -181,9 +181,7 @@ body {
 }
 
 .logo-icon {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
+    font-size: 2rem;
 }
 
 .nav-menu {
