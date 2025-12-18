@@ -1,0 +1,1177 @@
+/* ===================================
+   全局样式
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* 颜色变量 - 白天模式 */
+    --primary-color: #00B8D4;
+    --secondary-color: #FF6B35;
+    --accent-color: #FFC107;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #F5F7FA;
+    --bg-dark: #0A0E27;
+    --border-color: #E0E0E0;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.2);
+    
+    /* 字体 */
+    --font-primary: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    --font-secondary: 'Arial', sans-serif;
+    
+    /* 过渡 */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 夜间模式变量 */
+[data-theme="dark"] {
+    --text-primary: #FFFFFF;
+    --text-secondary: #B0B0B0;
+    --bg-primary: #121212;
+    --bg-secondary: #1E1E1E;
+    --border-color: #333333;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4);
+    --glow-color: rgba(0, 184, 212, 0.3);
+    --text-glow: rgba(0, 184, 212, 0.5);
+}
+
+/* 夜景模式 - 介绍内容发光效果 */
+[data-theme="dark"] .modal-content {
+    box-shadow: 0 0 30px var(--glow-color), 0 0 60px var(--glow-color);
+}
+
+[data-theme="dark"] .modal-content h2 {
+    text-shadow: 0 0 10px var(--text-glow);
+}
+
+[data-theme="dark"] .modal-content p {
+    text-shadow: 0 0 5px var(--text-glow);
+}
+
+/* 夜景模式 - 页面内容发光效果 */
+[data-theme="dark"] .timeline-item {
+    box-shadow: none;
+    background: transparent;
+    border: none;
+}
+
+[data-theme="dark"] .lingnan-item,
+[data-theme="dark"] .heritage-item,
+[data-theme="dark"] .festival-item {
+    box-shadow: 0 0 15px var(--glow-color);
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(0, 184, 212, 0.2);
+}
+
+[data-theme="dark"] .timeline-content {
+    background: rgba(18, 18, 18, 0.9);
+    box-shadow: 0 0 15px var(--glow-color);
+    border: 1px solid rgba(0, 184, 212, 0.2);
+}
+
+[data-theme="dark"] .lingnan-item,
+[data-theme="dark"] .heritage-content,
+[data-theme="dark"] .festival-content {
+    background: rgba(18, 18, 18, 0.9);
+}
+
+[data-theme="dark"] .section-title {
+    text-shadow: 0 0 15px var(--text-glow);
+}
+
+[data-theme="dark"] .section-subtitle {
+    text-shadow: 0 0 8px var(--text-glow);
+}
+
+[data-theme="dark"] .timeline-text,
+[data-theme="dark"] .lingnan-item p,
+[data-theme="dark"] .heritage-description,
+[data-theme="dark"] .festival-description {
+    text-shadow: 0 0 4px var(--text-glow);
+    color: var(--text-primary);
+    opacity: 0.9;
+}
+
+[data-theme="dark"] .timeline-year,
+[data-theme="dark"] .lingnan-item h3,
+[data-theme="dark"] .heritage-title,
+[data-theme="dark"] .festival-title {
+    text-shadow: 0 0 8px var(--text-glow);
+    color: var(--text-primary);
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: var(--transition-slow);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.section-dark {
+    background-color: var(--bg-secondary);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 300% 100%;
+    margin: 20px auto;
+    border-radius: 2px;
+    animation: gradientScroll 2s linear infinite;
+}
+
+@keyframes gradientScroll {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+}
+
+
+/* ===================================
+   导航栏
+   =================================== */
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: transparent;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+#navbar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    padding: 15px 0;
+}
+
+[data-theme="dark"] #navbar.scrolled {
+    background: rgba(18, 18, 18, 0.95);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    transition: var(--transition);
+}
+
+#navbar.scrolled .logo {
+    color: var(--text-primary);
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition);
+}
+
+#navbar.scrolled .nav-menu a {
+    color: var(--text-primary);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+}
+
+#navbar.scrolled .icon-btn {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.icon-btn:hover {
+    transform: scale(1.1);
+    background: var(--primary-color);
+    color: white;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+#navbar.scrolled .menu-toggle span {
+    background: var(--text-primary);
+}
+
+
+/* ===================================
+   轮播样式
+   =================================== */
+
+/* 轮播区域 */
+.carousel-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* 轮播容器 */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 轮播包装器 */
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* 轮播项 */
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease-in-out;
+    transform: scale(1.1);
+}
+
+/* 活动轮播项 */
+.carousel-item.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+    z-index: 1;
+}
+
+/* 轮播图片 */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 轮播标题 - 已隐藏 */
+.carousel-caption {
+    display: none;
+}
+
+/* 轮播标题 */
+.carousel-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+    animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+}
+
+.carousel-title h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    line-height: 1;
+    animation: slideInDown 1s ease-out 0.3s forwards;
+    opacity: 0;
+    transform: translateY(-50px);
+}
+
+.carousel-title h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 10px;
+    color: white;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin: 10px 0 0;
+    text-transform: uppercase;
+    animation: slideInUp 1s ease-out 0.6s forwards;
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+/* 夜间模式下的标题效果 */
+[data-theme="dark"] .carousel-title h1 {
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .carousel-title h2 {
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 标题动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 轮播控制按钮 */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.carousel-btn:hover, .carousel-btn:active {
+    color: var(--primary-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
+}
+
+/* 轮播指示器 */
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-indicator.active {
+    background: white;
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* 轮播项淡入淡出动画 */
+@keyframes carouselFade {
+    0% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 历史文化内容区域 */
+.history-content-section {
+    padding: 100px 0;
+    background: var(--bg-primary);
+}
+
+/* 响应式轮播 */
+@media (max-width: 768px) {
+    .carousel-section {
+        height: 60vh;
+    }
+    
+    .carousel-caption {
+        bottom: 50px;
+        padding: 15px 30px;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 1.8rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .prev-btn {
+        left: 15px;
+    }
+    
+    .next-btn {
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-section {
+        height: 50vh;
+    }
+    
+    .carousel-caption {
+        bottom: 30px;
+        padding: 10px 20px;
+    }
+    
+    .carousel-caption h2 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ===================================
+   历史轴样式
+   =================================== */
+
+.history-timeline-section {
+    margin-bottom: 50px;
+    padding: 20px 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 居中时间线 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 100% 300%;
+    transform: translateX(-50%);
+    animation: timelineGradientUp 3s linear infinite;
+}
+
+@keyframes timelineGradientUp {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    width: 50%;
+}
+
+/* 交替排列 */
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-right: 40px;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+    padding-left: 40px;
+    text-align: left;
+}
+
+.timeline-content {
+    background: var(--bg-primary);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    max-width: 400px;
+    box-shadow: var(--shadow);
+}
+
+.timeline-item:hover .timeline-content {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.timeline-year {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    display: block;
+    line-height: 1;
+}
+
+.timeline-item h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.timeline-text {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* 时间点样式 */
+.timeline-dot {
+    position: absolute;
+    top: 15px;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 100% 300%;
+    border: 4px solid var(--bg-primary);
+    border-radius: 50%;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 3px rgba(0, 184, 212, 0.2);
+    animation: timelineGradientUp 3s linear infinite;
+}
+
+/* 定位时间点 */
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -9px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -9px;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 5px rgba(0, 184, 212, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 70px;
+        padding-right: 20px;
+        text-align: left !important;
+    }
+    
+    .timeline-dot {
+        left: 21px !important;
+        right: auto !important;
+    }
+    
+    .timeline-content {
+        max-width: 100%;
+    }
+    
+    .timeline-year {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-dot {
+        left: 11px !important;
+        width: 16px;
+        height: 16px;
+    }
+    
+    .timeline-year {
+        font-size: 1.3rem;
+    }
+    
+    .timeline-content {
+        padding: 20px;
+    }
+}
+
+/* ===================================
+   岭南文化样式
+   =================================== */
+
+.lingnan-culture-section {
+    margin-bottom: 50px;
+}
+
+.lingnan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.lingnan-item {
+    background: var(--bg-primary);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center;
+}
+
+.lingnan-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.lingnan-item i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.lingnan-item h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.lingnan-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+
+/* ===================================
+   非物质文化遗产样式
+   =================================== */
+
+.intangible-heritage-section {
+    margin-bottom: 50px;
+    background: var(--bg-secondary);
+    padding: 50px 0;
+    border-radius: 20px;
+}
+
+.heritage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.heritage-item {
+    background: var(--bg-primary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.heritage-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.heritage-image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.heritage-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.heritage-item:hover .heritage-image img {
+    transform: scale(1.1);
+}
+
+.heritage-content {
+    padding: 20px;
+}
+
+.heritage-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.heritage-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.heritage-level {
+    display: inline-block;
+    padding: 5px 15px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+
+/* ===================================
+   传统节日样式
+   =================================== */
+
+.festivals-section {
+    margin-bottom: 50px;
+}
+
+.festivals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.festival-item {
+    background: var(--bg-primary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.festival-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+.festival-image {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.festival-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.festival-item:hover .festival-image img {
+    transform: scale(1.1);
+}
+
+.festival-content {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.festival-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.festival-title i {
+    color: var(--accent-color);
+}
+
+.festival-date {
+    color: var(--primary-color);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.festival-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+
+/* ===================================
+   返回顶部
+   =================================== */
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 998;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--secondary-color);
+    transform: translateY(-5px);
+}
+
+
+/* ===================================
+   Footer
+   =================================== */
+
+.footer {
+    background: var(--bg-dark);
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+/* ===================================
+   主题图标动画
+   =================================== */
+
+/* 主题切换图标旋转动画 */
+@keyframes themeIconRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg) scale(0.8);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 主题图标缩放动画 */
+@keyframes themeIconZoom {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* 应用动画的类 */
+.theme-icon-animate {
+    animation: themeIconRotate 0.6s ease-in-out;
+}
+
+
+/* ===================================
+   响应式设计
+   =================================== */
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--bg-primary);
+        flex-direction: column;
+        padding: 50px 0;
+        transition: left 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .title-line-2 {
+        font-size: 2rem;
+    }
+    
+    .attractions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline::before {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: calc(100% - 60px);
+        left: 60px !important;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: -50px;
+    }
+    
+    .lingnan-grid,
+    .heritage-grid,
+    .festivals-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .section {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}

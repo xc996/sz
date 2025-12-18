@@ -118,9 +118,20 @@ body {
 .title-underline {
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 300% 100%;
     margin: 20px auto;
     border-radius: 2px;
+    animation: gradientScroll 2s linear infinite;
+}
+
+@keyframes gradientScroll {
+    0% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .section-subtitle {
@@ -181,13 +192,25 @@ body {
 }
 
 .logo-icon {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 40px;
+    gap: 25px;
 }
 
 .nav-menu a {
@@ -596,7 +619,18 @@ body {
     transform: translateX(-50%);
     width: 4px;
     height: 100%;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 100% 300%;
+    animation: timelineGradientUp 3s linear infinite;
+}
+
+@keyframes timelineGradientUp {
+    0% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
 }
 
 .timeline-item {
@@ -644,10 +678,12 @@ body {
     top: 20px;
     width: 20px;
     height: 20px;
-    background: var(--bg-primary);
-    border: 4px solid var(--primary-color);
+    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+    background-size: 100% 300%;
+    border: none;
     border-radius: 50%;
     z-index: 1;
+    animation: timelineGradientUp 3s linear infinite;
 }
 
 .timeline-item:nth-child(odd) .timeline-dot {
@@ -1023,7 +1059,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
+    background: transparent;
     border: none;
     width: 50px;
     height: 50px;
@@ -1036,11 +1072,10 @@ body {
     font-size: 1.5rem;
     transition: var(--transition);
     z-index: 10;
-    backdrop-filter: blur(10px);
 }
 
-.carousel-btn:hover {
-    background: var(--primary-color);
+.carousel-btn:hover, .carousel-btn:active {
+    color: var(--primary-color);
     transform: translateY(-50%) scale(1.1);
 }
 
