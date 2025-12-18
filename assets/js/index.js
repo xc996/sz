@@ -119,7 +119,10 @@ const translations = {
         'footer.food': '美食推荐',
         'footer.contact': '联系我们',
         'footer.rights': '保留所有权利',
-        'footer.city': '深圳'
+        'footer.city': '深圳',
+        
+        // 地图
+        'map.subtitle': '基于高德地图，支持缩放与互动'
     },
     en: {
         // Navigation
@@ -232,7 +235,10 @@ const translations = {
         'footer.food': 'Food',
         'footer.contact': 'Contact Us',
         'footer.rights': 'All Rights Reserved',
-        'footer.city': 'Shenzhen'
+        'footer.city': 'Shenzhen',
+        
+        // Map
+        'map.subtitle': 'Based on Amap, supports zooming and interaction'
     }
 };
 

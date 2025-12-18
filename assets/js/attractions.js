@@ -84,6 +84,9 @@ const translations = {
         'transport.item4': '机场',
         'transport.desc4': '深圳宝安国际机场，连接全球主要城市',
         
+        // 地图
+        'map.subtitle': '基于高德地图，支持缩放与互动',
+        
         // Footer
         'footer.about': '关于深圳',
         'footer.desc': '中国改革开放的窗口，创新创业的热土',
@@ -170,6 +173,9 @@ const translations = {
         'transport.desc3': 'Starting price ¥10, Didi is also convenient',
         'transport.item4': 'Airport',
         'transport.desc4': 'Shenzhen Baoan International Airport, connecting major cities worldwide',
+        
+        // Map
+        'map.subtitle': 'Based on Amap, supports zooming and interaction',
         
         // Footer
         'footer.about': 'About Shenzhen',
@@ -561,6 +567,9 @@ async function renderAttractions() {
         card.setAttribute('data-index', String(items.indexOf(attraction)));
         grid.appendChild(card);
     });
+    
+    // 确保卡片创建完成后绑定点击事件
+    bindAttractionClickEvents();
 }
 
 /**

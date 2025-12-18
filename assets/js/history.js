@@ -29,10 +29,10 @@ const translations = {
         // 历史文化轮播图
         'history.slide1.title': '深圳历史',
         'history.slide1.desc': '从渔村到国际化大都市的变迁',
-        'history.slide2.title': '岭南文化',
+        'history.slide2.title': '文化特色',
         'history.slide2.desc': '传承千年的地方文化',
-        'history.slide3.title': '非遗传承',
-        'history.slide3.desc': '保护和传承非物质文化遗产',
+        'history.slide3.title': '文化遗产',
+        'history.slide3.desc': '保护和传承文化遗产与古迹',
         'history.slide4.title': '传统节日',
         'history.slide4.desc': '丰富多彩的民俗活动',
         'history.slide5.title': '文化融合',
@@ -42,21 +42,25 @@ const translations = {
         'history.timeline.title': '历史轴',
         'history.timeline.subtitle': '深圳的发展历程',
         
-        // 岭南文化
-        'history.lingnan.title': '岭南文化',
-        'history.lingnan.subtitle': '岭南地区的独特文化传统',
-        'history.lingnan.item1.title': '建筑风格',
-        'history.lingnan.item1.desc': '骑楼、碉楼等特色建筑展现岭南风情',
-        'history.lingnan.item2.title': '饮食文化',
-        'history.lingnan.item2.desc': '粤菜、潮汕菜、客家菜三大菜系交汇',
-        'history.lingnan.item3.title': '民俗活动',
-        'history.lingnan.item3.desc': '醒狮、龙舟、粤剧等传统民俗',
-        'history.lingnan.item4.title': '工艺技艺',
-        'history.lingnan.item4.desc': '陶瓷、刺绣、木雕等传统工艺',
+        // 文化特色
+        'history.features.title': '文化特色',
+        'history.features.subtitle': '深圳地区的独特文化传统',
+        'history.features.item1.title': '客家文化',
+        'history.features.item1.desc': '除围屋、宗祠、山歌、凉帽技艺外，深圳客家因“迁海复界”后迁入滨海，被称为“滨海客家”：建筑上把客家围屋与广府碉楼结合，出现专门炮楼；经济上也由“重农”转向“重农亦重商”，参与海洋贸易乃至广州十三行网络。',
+        'history.features.item2.title': '海洋文化',
+        'history.features.item2.desc': '除渔歌、祭海、妈祖信仰外，深圳历史上还有盐业生产、蚝业养殖（沙井蚝）等经济活动，是岭南“盐农—渔—商”复合海洋文化的组成部分。',
+        'history.features.item3.title': '海防文化',
+        'history.features.item3.desc': '大鹏所城是明代“大鹏守御千户所”，与南头古城互为犄角，共同构成明清珠三角东岸海防体系；城内现存10余座清代将军府第及古庙、粮仓等，被誉为“沿海所城，大鹏为最”。',
+        'history.features.item4.title': '饮食文化',
+        'history.features.item4.desc': '深圳饮食融合广府、客家风味，并发展出特色"沙井蚝宴"、"公明烧鹅"等地方美食，体现了多元包容的特质。',
+        'history.features.item5.title': '宗族文化',
+        'history.features.item5.desc': '深圳保留了大量明清宗祠建筑，如陈氏宗祠、文氏宗祠等，族谱文化、祭祖仪式传承至今，体现了传统社会组织形态。',
+        'history.features.item6.title': '侨乡文化',
+        'history.features.item6.desc': '深圳是著名侨乡，海外侨胞众多，形成了独特的侨乡建筑和侨批文化，体现了深圳与海外华人社会的深厚联系。',
         
-        // 非物质文化遗产
-        'history.heritage.title': '非物质文化遗产',
-        'history.heritage.subtitle': '深圳的国家级和省级非遗项目',
+        // 文化遗产与古迹
+        'history.heritage.title': '文化遗产与古迹',
+        'history.heritage.subtitle': '深圳的历史文化遗产与著名古迹',
         'history.heritage.level.national': '国家级',
         'history.heritage.level.provincial': '省级',
         
@@ -96,10 +100,10 @@ const translations = {
         // History carousel
         'history.slide1.title': 'Shenzhen History',
         'history.slide1.desc': 'From fishing village to international metropolis',
-        'history.slide2.title': 'Lingnan Culture',
+        'history.slide2.title': 'Cultural Features',
         'history.slide2.desc': 'Thousand-year-old local cultural heritage',
-        'history.slide3.title': 'Intangible Heritage',
-        'history.slide3.desc': 'Protecting and inheriting intangible cultural heritage',
+        'history.slide3.title': 'Cultural Heritage',
+        'history.slide3.desc': 'Protecting and inheriting cultural heritage and monuments',
         'history.slide4.title': 'Traditional Festivals',
         'history.slide4.desc': 'Colorful folk activities',
         'history.slide5.title': 'Cultural Integration',
@@ -109,21 +113,25 @@ const translations = {
         'history.timeline.title': 'Timeline',
         'history.timeline.subtitle': 'Development history of Shenzhen',
         
-        // Lingnan Culture
-        'history.lingnan.title': 'Lingnan Culture',
-        'history.lingnan.subtitle': 'Unique cultural traditions of Lingnan region',
-        'history.lingnan.item1.title': 'Architectural Style',
-        'history.lingnan.item1.desc': 'Qilou, diaolou and other characteristic buildings',
-        'history.lingnan.item2.title': 'Food Culture',
-        'history.lingnan.item2.desc': 'Convergence of Cantonese, Chaoshan and Hakka cuisines',
-        'history.lingnan.item3.title': 'Folk Activities',
-        'history.lingnan.item3.desc': 'Lion dance, dragon boat, Cantonese opera and other traditions',
-        'history.lingnan.item4.title': 'Craftsmanship',
-        'history.lingnan.item4.desc': 'Ceramics, embroidery, wood carving and other crafts',
+        // Cultural Features
+        'history.features.title': 'Cultural Features',
+        'history.features.subtitle': 'Unique cultural traditions of Shenzhen region',
+        'history.features.item1.title': 'Hakka Culture',
+        'history.features.item1.desc': 'In addition to enclosed houses, ancestral halls, mountain songs, and cool hat craftsmanship, Shenzhen Hakka were called "Coastal Hakka" because they moved to the coast after the "coastal evacuation and reclamation" period: architecturally, they combined Hakka enclosed houses with Cantonese watchtowers, resulting in specialized gun towers; economically, they shifted from "agriculture-focused" to "both agriculture and commerce-focused", participating in maritime trade and even the Guangzhou Thirteen Hongs network.',
+        'history.features.item2.title': 'Marine Culture',
+        'history.features.item2.desc': 'In addition to fishing songs, sea sacrifice ceremonies, and Mazu belief, Shenzhen also had salt production and oyster farming (Shajing oysters) in history, being part of Lingnan\'s "salt farmer-fisherman-merchant" composite marine culture.',
+        'history.features.item3.title': 'Coastal Defense Culture',
+        'history.features.item3.desc': 'Dapeng Ancient City was the "Dapeng Garrison Thousand Household Office" in the Ming Dynasty, forming a coastal defense system with Nantou Ancient City on the east coast of the Pearl River Delta during the Ming and Qing Dynasties; the city still preserves more than 10 Qing Dynasty general mansions, ancient temples, and granaries, known as "among coastal defense cities, Dapeng is the best".',
+        'history.features.item4.title': 'Food Culture',
+        'history.features.item4.desc': 'Shenzhen\'s cuisine integrates Cantonese and Hakka flavors, and has developed characteristic local delicacies such as "Shajing Oyster Feast" and "Gongming Roast Goose", reflecting its diverse and inclusive characteristics.',
+        'history.features.item5.title': 'Clan Culture',
+        'history.features.item5.desc': 'Shenzhen has preserved a large number of ancestral hall buildings from the Ming and Qing dynasties, such as Chen Ancestral Hall and Wen Ancestral Hall, with genealogy culture and ancestor worship ceremonies inherited to this day, reflecting traditional social organization forms.',
+        'history.features.item6.title': 'Overseas Chinese Culture',
+        'history.features.item6.desc': 'Shenzhen is a famous hometown of overseas Chinese, with a large number of overseas Chinese, forming a unique overseas Chinese architecture and overseas Chinese letter culture, reflecting the deep connection between Shenzhen and the overseas Chinese community.',
         
-        // Intangible Heritage
-        'history.heritage.title': 'Intangible Cultural Heritage',
-        'history.heritage.subtitle': 'National and provincial heritage projects in Shenzhen',
+        // Cultural Heritage and Monuments
+        'history.heritage.title': 'Cultural Heritage and Monuments',
+        'history.heritage.subtitle': 'Historical cultural heritage and famous monuments in Shenzhen',
         'history.heritage.level.national': 'National',
         'history.heritage.level.provincial': 'Provincial',
         
@@ -190,63 +198,89 @@ const timelineData = [
     }
 ];
 
-// 岭南文化数据
-const lingnanData = [
+// 文化特色数据
+const featuresData = [
     {
         icon: 'fas fa-home',
-        title: 'history.lingnan.item1.title',
-        description: 'history.lingnan.item1.desc'
+        title: 'history.features.item1.title',
+        description: 'history.features.item1.desc'
+    },
+    {
+        icon: 'fas fa-ship',
+        title: 'history.features.item2.title',
+        description: 'history.features.item2.desc'
+    },
+    {
+        icon: 'fas fa-shield-alt',
+        title: 'history.features.item3.title',
+        description: 'history.features.item3.desc'
     },
     {
         icon: 'fas fa-utensils',
-        title: 'history.lingnan.item2.title',
-        description: 'history.lingnan.item2.desc'
+        title: 'history.features.item4.title',
+        description: 'history.features.item4.desc'
     },
     {
-        icon: 'fas fa-theater-masks',
-        title: 'history.lingnan.item3.title',
-        description: 'history.lingnan.item3.desc'
+        icon: 'fas fa-users',
+        title: 'history.features.item5.title',
+        description: 'history.features.item5.desc'
     },
     {
-        icon: 'fas fa-palette',
-        title: 'history.lingnan.item4.title',
-        description: 'history.lingnan.item4.desc'
+        icon: 'fas fa-globe',
+        title: 'history.features.item6.title',
+        description: 'history.features.item6.desc'
     }
 ];
 
-// 非物质文化遗产数据
+// 文化遗产与古迹数据
 const heritageData = [
     {
-        name: '麒麟舞',
-        nameEn: 'Kirin Dance',
-        description: '深圳传统民俗舞蹈，象征吉祥如意',
-        descriptionEn: 'Traditional folk dance in Shenzhen, symbolizing good luck',
+        name: '大鹏所城',
+        nameEn: 'Dapeng Ancient City',
+        description: '明代海防要塞，保存完好的明清海防体系，被誉为"沿海所城，大鹏为最"',
+        descriptionEn: 'Ming Dynasty coastal defense fortress with well-preserved Ming and Qing coastal defense system, known as "among coastal defense cities, Dapeng is the best"',
         level: 'national',
-        image: 'assets/images/轮1.jpg'
+        image: 'assets/images/大鹏所城.jpg'
     },
     {
-        name: '客家山歌',
-        nameEn: 'Hakka Mountain Songs',
-        description: '客家传统民歌，表达情感和生活',
-        descriptionEn: 'Traditional Hakka folk songs, expressing emotions and life',
-        level: 'provincial',
-        image: 'assets/images/轮2.jpg'
-    },
-    {
-        name: '粤剧',
-        nameEn: 'Cantonese Opera',
-        description: '广东传统戏曲，唱腔优美，表演细腻',
-        descriptionEn: 'Traditional Cantonese opera with beautiful singing and delicate performances',
+        name: '南头古城',
+        nameEn: 'Nantou Ancient City',
+        description: '深圳历史最悠久的古城，见证了深圳从汉代到现代的历史变迁',
+        descriptionEn: 'Shenzhen\'s oldest ancient city, witnessing Shenzhen\'s historical changes from Han Dynasty to modern times',
         level: 'national',
-        image: 'assets/images/轮3.jpg'
+        image: 'assets/images/南头古城.jpg'
     },
     {
-        name: '南头古城庙会',
-        nameEn: 'Nantou Ancient City Temple Fair',
-        description: '南头古城传统庙会，热闹非凡',
-        descriptionEn: 'Traditional temple fair in Nantou Ancient City, very lively',
+        name: '鹤湖新居',
+        nameEn: 'Hehu Xingu',
+        description: '深圳保存最完整、规模最大的客家围屋建筑群，被誉为"客家围屋博物馆"',
+        descriptionEn: 'The most complete and largest preserved Hakka enclosed house complex in Shenzhen, known as the "Hakka Enclosed House Museum"',
+        level: 'national',
+        image: 'assets/images/鹤湖新居.jpg'
+    },
+    {
+        name: '咸头岭遗址',
+        nameEn: 'Xiantouling Site',
+        description: '深圳最早的史前文化遗址，距今约7000年，展现了珠三角地区早期人类文明',
+        descriptionEn: 'Shenzhen\'s earliest prehistoric cultural site, dating back about 7000 years, showing early human civilization in the Pearl River Delta region',
+        level: 'national',
+        image: 'assets/images/咸头岭遗址.jpg'
+    },
+    {
+        name: '文天祥纪念馆',
+        nameEn: 'Wen Tianxiang Memorial Hall',
+        description: '纪念南宋民族英雄文天祥的纪念馆，展示其生平事迹和崇高精神',
+        descriptionEn: 'Memorial hall commemorating Wen Tianxiang, a national hero of the Southern Song Dynasty, showcasing his life story and noble spirit',
         level: 'provincial',
-        image: 'assets/images/轮4.jpg'
+        image: 'assets/images/文天祥纪念馆.jpg'
+    },
+    {
+        name: '大万世居',
+        nameEn: 'Dawanshiju',
+        description: '深圳第二大客家围屋，保存完好的清代客家建筑群',
+        descriptionEn: 'Shenzhen\'s second largest Hakka enclosed house, well-preserved Qing Dynasty Hakka architectural complex',
+        level: 'provincial',
+        image: 'assets/images/大万世居.jpg'
     }
 ];
 
@@ -341,7 +375,7 @@ function switchLanguage() {
     
     // 更新所有内容
     renderTimeline();
-    renderLingnanCulture();
+    renderCulturalFeatures();
     renderHeritage();
     renderFestivals();
     
@@ -529,26 +563,26 @@ function renderTimeline() {
     });
 }
 
-// 渲染岭南文化
-function renderLingnanCulture() {
-    const grid = document.getElementById('lingnanGrid');
+// 渲染文化特色
+function renderCulturalFeatures() {
+    const grid = document.getElementById('featuresGrid');
     if (!grid) return;
     
     grid.innerHTML = '';
     
-    lingnanData.forEach((item, index) => {
-        const lingnanItem = document.createElement('div');
-        lingnanItem.className = 'lingnan-item';
-        lingnanItem.innerHTML = `
+    featuresData.forEach((item, index) => {
+        const featureItem = document.createElement('div');
+        featureItem.className = 'feature-item';
+        featureItem.innerHTML = `
             <i class="${item.icon}"></i>
             <h3>${t(item.title)}</h3>
             <p>${t(item.description)}</p>
         `;
-        grid.appendChild(lingnanItem);
+        grid.appendChild(featureItem);
     });
 }
 
-// 渲染非物质文化遗产
+// 渲染文化遗产与古迹
 function renderHeritage() {
     const grid = document.getElementById('heritageGrid');
     if (!grid) return;
@@ -747,7 +781,7 @@ function init() {
     
     // 渲染内容
     renderTimeline();
-    renderLingnanCulture();
+    renderCulturalFeatures();
     renderHeritage();
     renderFestivals();
     
