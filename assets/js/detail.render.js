@@ -16,20 +16,37 @@ function getSlug() {
 }
 
 /**
+ * 功能：获取数据类型（中文注释）
+ * 说明：从 URL 查询参数 type 获取，默认为 attractions
+ */
+function getDataType() {
+  const params = new URLSearchParams(window.location.search);
+  const type = params.get('type');
+  const validTypes = ['attractions', 'food', 'shopping', 'traffic'];
+  return (type && validTypes.includes(type)) ? type : 'attractions';
+}
+
+/**
  * 功能：加载配置数据（中文注释）
- * 说明：拉取 attractions.json 并做基本缓存
+ * 说明：拉取对应类型的 json 并做基本缓存
  */
 const ConfigStore = (function () {
-  let cache = null;
+  let cache = {};
   return {
     async load() {
-      if (cache) return cache;
+      const type = getDataType();
+      if (cache[type]) return cache[type];
       const base = getAssetsBase();
-      const res = await fetch(`${base}data/attractions.json`);
-      if (!res.ok) throw new Error('配置加载失败');
-      const json = await res.json();
-      cache = json && Array.isArray(json.items) ? json.items : [];
-      return cache;
+      try {
+        const res = await fetch(`${base}data/${type}.json`);
+        if (!res.ok) throw new Error('配置加载失败');
+        const json = await res.json();
+        cache[type] = json && Array.isArray(json.items) ? json.items : [];
+        return cache[type];
+      } catch (e) {
+        console.error(`[ConfigStore] Load failed for ${type}`, e);
+        return [];
+      }
     }
   };
 })();

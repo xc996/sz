@@ -1,0 +1,172 @@
+{
+  "items": [
+    {
+      "slug": "beefhotpot",
+      "name": "潮汕牛肉火锅",
+      "nameEn": "Chaoshan Beef Hotpot",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.9,
+      "image": "assets/images/food_beef.svg",
+      "seo": {
+        "title": { "zh": "潮汕牛肉火锅 | Chaoshan Beef Hotpot", "en": "Chaoshan Beef Hotpot | 潮汕牛肉火锅" },
+        "description": {
+          "zh": "鲜嫩多汁的牛肉，浓郁的牛骨汤，深圳必尝美食",
+          "en": "Tender beef, rich bone broth, a must-try in Shenzhen"
+        }
+      },
+      "intro": {
+        "zh": ["讲究“鲜”字，现宰现吃，部位分类细致，口感各异。"],
+        "en": ["Focuses on freshness, meticulous cuts of beef with distinct textures."]
+      },
+      "highlights": [
+        { "icon": "fas fa-utensils", "zh": "极致鲜嫩", "en": "Extremely fresh" },
+        { "icon": "fas fa-utensils", "zh": "部位丰富", "en": "Various cuts" },
+        { "icon": "fas fa-utensils", "zh": "原汁原味", "en": "Authentic taste" }
+      ]
+    },
+    {
+      "slug": "coconutchicken",
+      "name": "椰子鸡",
+      "nameEn": "Coconut Chicken Hotpot",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.8,
+      "image": "assets/images/food_coconut.svg",
+      "seo": {
+        "title": { "zh": "椰子鸡 | Coconut Chicken Hotpot", "en": "Coconut Chicken Hotpot | 椰子鸡" },
+        "description": {
+          "zh": "清甜椰子水煮文昌鸡，深圳特色美食",
+          "en": "Wenchang chicken cooked in sweet coconut water, a Shenzhen specialty"
+        }
+      },
+      "intro": {
+        "zh": ["海南椰子水与文昌鸡的完美结合，汤清爽口，鸡肉滑嫩。"],
+        "en": ["Perfect combination of Hainan coconut water and Wenchang chicken, refreshing soup and tender meat."]
+      },
+      "highlights": [
+        { "icon": "fas fa-leaf", "zh": "清甜养生", "en": "Healthy & Sweet" },
+        { "icon": "fas fa-drumstick-bite", "zh": "鸡肉滑嫩", "en": "Tender chicken" },
+        { "icon": "fas fa-users", "zh": "适合聚餐", "en": "Good for groups" }
+      ]
+    },
+    {
+      "slug": "dimsum",
+      "name": "广式早茶",
+      "nameEn": "Cantonese Dim Sum",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.9,
+      "image": "assets/images/food_dimsum.svg",
+      "seo": {
+        "title": { "zh": "广式早茶 | Cantonese Dim Sum", "en": "Cantonese Dim Sum | 广式早茶" },
+        "description": {
+          "zh": "一盅两件，享受悠闲的早晨时光",
+          "en": "Enjoy a leisurely morning with tea and dim sum"
+        }
+      },
+      "intro": {
+        "zh": ["虾饺、烧卖、凤爪、排骨……种类繁多，精致美味。"],
+        "en": ["Shrimp dumplings, siu mai, chicken feet, spare ribs... huge variety and exquisite taste."]
+      },
+      "highlights": [
+        { "icon": "fas fa-coffee", "zh": "传统文化", "en": "Traditional culture" },
+        { "icon": "fas fa-star", "zh": "种类繁多", "en": "Great variety" },
+        { "icon": "fas fa-clock", "zh": "悠闲时光", "en": "Leisure time" }
+      ]
+    },
+    {
+      "slug": "seafood",
+      "name": "海鲜大餐",
+      "nameEn": "Seafood Feast",
+      "district": { "zh": "盐田区/大鹏新区", "en": "Yantian/Dapeng" },
+      "rating": 4.7,
+      "image": "assets/images/food_seafood.svg",
+      "seo": {
+        "title": { "zh": "海鲜大餐 | Seafood Feast", "en": "Seafood Feast | 海鲜大餐" },
+        "description": {
+          "zh": "靠海吃海，新鲜生猛的海鲜盛宴",
+          "en": "Fresh and lively seafood feast by the sea"
+        }
+      },
+      "intro": {
+        "zh": ["盐田海鲜街、南澳海鲜市场，现点现做，鲜味十足。"],
+        "en": ["Yantian Seafood Street, Nan'ao Seafood Market, cooked to order, full of freshness."]
+      },
+      "highlights": [
+        { "icon": "fas fa-fish", "zh": "现点现做", "en": "Cooked to order" },
+        { "icon": "fas fa-water", "zh": "新鲜生猛", "en": "Fresh & Lively" },
+        { "icon": "fas fa-utensils", "zh": "做法多样", "en": "Various cooking" }
+      ]
+    },
+    {
+      "slug": "streetfood",
+      "name": "街头小吃",
+      "nameEn": "Street Food",
+      "district": { "zh": "罗湖区/福田区", "en": "Luohu/Futian" },
+      "rating": 4.6,
+      "image": "assets/images/food_street.svg",
+      "seo": {
+        "title": { "zh": "街头小吃 | Street Food", "en": "Street Food | 街头小吃" },
+        "description": {
+          "zh": "东门老街、华强北，汇聚各地特色小吃",
+          "en": "Dongmen Old Street, Huaqiangbei, gathering snacks from all over"
+        }
+      },
+      "intro": {
+        "zh": ["烤生蚝、酸辣粉、臭豆腐、鸡蛋仔……应有尽有。"],
+        "en": ["Grilled oysters, hot and sour noodles, stinky tofu, egg waffles... everything you can imagine."]
+      },
+      "highlights": [
+        { "icon": "fas fa-fire", "zh": "烟火气息", "en": "Lively atmosphere" },
+        { "icon": "fas fa-wallet", "zh": "价格亲民", "en": "Affordable" },
+        { "icon": "fas fa-walking", "zh": "边走边吃", "en": "Eat on the go" }
+      ]
+    },
+    {
+      "slug": "porkrice",
+      "name": "隆江猪脚饭",
+      "nameEn": "Pork Leg Rice",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.5,
+      "image": "assets/images/food_porkrice.svg",
+      "seo": {
+        "title": { "zh": "隆江猪脚饭 | Pork Leg Rice", "en": "Pork Leg Rice | 隆江猪脚饭" },
+        "description": {
+          "zh": "深圳打工人的灵魂美食，肥而不腻",
+          "en": "Soul food for Shenzhen workers, fatty but not greasy"
+        }
+      },
+      "intro": {
+        "zh": ["软糯入味的猪脚，搭配酸菜和卤汁，是深圳最常见的快餐之一。"],
+        "en": ["Soft and flavorful pork leg, served with pickled vegetables and gravy, one of the most common fast foods in Shenzhen."]
+      },
+      "highlights": [
+        { "icon": "fas fa-bowl-rice", "zh": "软糯入味", "en": "Soft & Flavorful" },
+        { "icon": "fas fa-clock", "zh": "方便快捷", "en": "Convenient" },
+        { "icon": "fas fa-thumbs-up", "zh": "分量十足", "en": "Big portion" }
+      ]
+    },
+    {
+      "slug": "pigeon",
+      "name": "光明乳鸽",
+      "nameEn": "Guangming Squab",
+      "district": { "zh": "光明区", "en": "Guangming District" },
+      "rating": 4.8,
+      "image": "assets/images/food_pigeon.svg",
+      "seo": {
+        "title": { "zh": "光明乳鸽 | Guangming Squab", "en": "Guangming Squab | 光明乳鸽" },
+        "description": {
+          "zh": "皮脆肉嫩，骨香多汁，深圳经典名菜",
+          "en": "Crispy skin, tender meat, juicy and fragrant, a classic Shenzhen dish"
+        }
+      },
+      "intro": {
+        "zh": ["以润、滑、甜、嫩为特点，是深圳的一张美食名片。"],
+        "en": ["Characterized by moist, smooth, sweet, and tender texture, a culinary card of Shenzhen."]
+      },
+      "highlights": [
+        { "icon": "fas fa-drumstick-bite", "zh": "皮脆肉嫩", "en": "Crispy & Tender" },
+        { "icon": "fas fa-award", "zh": "经典名菜", "en": "Classic dish" },
+        { "icon": "fas fa-history", "zh": "历史悠久", "en": "Historic" }
+      ]
+    }
+  ]
+}
