@@ -21,6 +21,7 @@ const translations = {
         // 按钮提示
         'btn.lang': '切换语言',
         'btn.theme': '切换主题',
+        'btn.detail': '详细',
         
         // Hero区
         'hero.title1': '文化',
@@ -92,6 +93,7 @@ const translations = {
         // Button tips
         'btn.lang': 'Switch Language',
         'btn.theme': 'Switch Theme',
+        'btn.detail': 'Detail',
         
         // Hero
         'hero.title1': 'CULTURE',
@@ -607,7 +609,10 @@ function renderHeritage() {
             <div class="heritage-content">
                 <h3 class="heritage-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
                 <p class="heritage-description">${currentLang === 'zh' ? item.description : item.descriptionEn}</p>
-                <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
+                <div class="heritage-footer">
+                    <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
+                    <button class="btn-detail">${t('btn.detail')}</button>
+                </div>
             </div>
         `;
         grid.appendChild(heritageItem);
