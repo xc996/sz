@@ -64,8 +64,8 @@ function 初始化AOS() {
 
 ## 兼容性与缓存建议（图标库）
 
-67→- 确保 `assets/vendor/all.min.css` 能正确找到 `../webfonts/` 下的字体文件
-68→- 建议对 `assets/webfonts/*` 设置长期缓存；若升级版本，替换文件并更新引用以破坏缓存
+- 确保 `assets/vendor/all.min.css` 能正确找到 `../webfonts/` 下的字体文件
+- 建议对 `assets/webfonts/*` 设置长期缓存；若升级版本，替换文件并更新引用以破坏缓存
  
 ## 变更摘要（2025-12-16）
 
@@ -111,11 +111,22 @@ assets/
     index.css
     attractions.css
     detail.css
+    food.css
+    shopping.css
+    traffic.css
+  data/
+    attractions.json
+    food.json
+    shopping.json
+    traffic.json
   js/
     index.js
     attractions.js
     detail.js
     detail.render.js
+    food.js
+    shopping.js
+    traffic.js
   vendor/
     all.min.css
     aos.css
@@ -126,9 +137,14 @@ assets/
     深圳湾公园.jpg
     placeholder.svg
 attractions/
-  detail.html  （通用详情模板，按 slug 动态渲染）
+  detail.html  （通用详情模板，按 type 和 slug 动态渲染）
 index.html
 attractions.html
+food.html
+shopping.html
+traffic.html
+history.html
+map.html
 tests/
   detail.render.test.html
   i18n.toggle.test.html
@@ -169,3 +185,23 @@ tests/
 ### 本地运行方式
 - Python：`python3 -m http.server 5500`
 - 访问 `http://localhost:5500/`，页面入口：`index.html`、`attractions.html`、`attractions/detail.html?slug=<slug>`
+
+## 变更摘要（2025-12-19）
+
+### 新增独立功能页面
+- **美食页面** (`food.html`)：展示深圳特色美食（如潮汕牛肉火锅、椰子鸡等），配备独立轮播图与数据展示。
+- **购物页面** (`shopping.html`)：展示主要购物中心与特色街区（如万象城、东门老街）。
+- **交通页面** (`traffic.html`)：展示深圳交通网络（地铁、公交、机场等）。
+
+### 数据与逻辑分离
+- **数据文件**：新增 `assets/data/food.json`、`assets/data/shopping.json`、`assets/data/traffic.json`，实现内容配置化。
+- **样式文件**：新增 `assets/css/food.css`、`assets/css/shopping.css`、`assets/css/traffic.css`，保持风格统一但允许独立定制。
+- **脚本文件**：新增 `assets/js/food.js`、`assets/js/shopping.js`、`assets/js/traffic.js`，负责各页面的渲染逻辑。
+
+### 通用详情页升级
+- 修改 `assets/js/detail.render.js`，支持通过 URL 参数 `type` 加载不同类型的数据。
+- 详情页链接格式更新为：`attractions/detail.html?type=<type>&slug=<slug>`（例如：`?type=food&slug=beefhotpot`）。
+- 默认 `type` 为 `attractions`，保持向下兼容。
+
+### 导航更新
+- 全站导航栏（首页、景点页、详情页等）已更新，"美食"、"购物"、"交通"链接指向新的独立页面，替代原有的首页锚点跳转。

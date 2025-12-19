@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "slug": "mixc",
+      "name": "万象城",
+      "nameEn": "The MixC",
+      "district": { "zh": "罗湖区/南山区", "en": "Luohu/Nanshan" },
+      "rating": 4.9,
+      "image": "assets/images/shop_mixc.jpg",
+      "seo": {
+        "title": { "zh": "万象城 | The MixC", "en": "The MixC | 万象城" },
+        "description": {
+          "zh": "深圳顶级奢华购物中心，国际大牌云集",
+          "en": "Shenzhen's top luxury shopping mall, gathering international brands"
+        }
+      },
+      "intro": {
+        "zh": ["集购物、餐饮、娱乐、休闲于一体的高端商业综合体。"],
+        "en": ["High-end commercial complex integrating shopping, dining, entertainment and leisure."]
+      },
+      "highlights": [
+        { "icon": "fas fa-gem", "zh": "顶级奢华", "en": "Top luxury" },
+        { "icon": "fas fa-tshirt", "zh": "品牌齐全", "en": "Complete brands" },
+        { "icon": "fas fa-utensils", "zh": "精致餐饮", "en": "Fine dining" }
+      ]
+    },
+    {
+      "slug": "cocopark",
+      "name": "COCO Park",
+      "nameEn": "COCO Park",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.7,
+      "image": "assets/images/shop_coco.jpg",
+      "seo": {
+        "title": { "zh": "COCO Park | COCO Park", "en": "COCO Park | COCO Park" },
+        "description": {
+          "zh": "年轻时尚的公园版情景式购物中心",
+          "en": "Young and fashionable park-style scenario shopping center"
+        }
+      },
+      "intro": {
+        "zh": ["独特的露天广场设计，汇聚众多时尚品牌和网红餐厅。"],
+        "en": ["Unique open-air plaza design, gathering many fashion brands and popular restaurants."]
+      },
+      "highlights": [
+        { "icon": "fas fa-glass-cheers", "zh": "酒吧街区", "en": "Bar street" },
+        { "icon": "fas fa-users", "zh": "年轻时尚", "en": "Young & Trendy" },
+        { "icon": "fas fa-camera", "zh": "网红打卡", "en": "Photo spots" }
+      ]
+    },
+    {
+      "slug": "huaqiangbei",
+      "name": "华强北",
+      "nameEn": "Huaqiangbei",
+      "district": { "zh": "福田区", "en": "Futian District" },
+      "rating": 4.6,
+      "image": "assets/images/shop_hqb.jpg",
+      "seo": {
+        "title": { "zh": "华强北 | Huaqiangbei", "en": "Huaqiangbei | 华强北" },
+        "description": {
+          "zh": "中国电子第一街，数码爱好者的天堂",
+          "en": "China's No.1 Electronics Street, paradise for digital enthusiasts"
+        }
+      },
+      "intro": {
+        "zh": ["各类电子元器件、数码产品、智能硬件应有尽有。"],
+        "en": ["All kinds of electronic components, digital products, and intelligent hardware are available."]
+      },
+      "highlights": [
+        { "icon": "fas fa-microchip", "zh": "电子数码", "en": "Electronics" },
+        { "icon": "fas fa-cogs", "zh": "硬件极客", "en": "Hardware geeks" },
+        { "icon": "fas fa-globe", "zh": "全球贸易", "en": "Global trade" }
+      ]
+    },
+    {
+      "slug": "dongmen",
+      "name": "东门老街",
+      "nameEn": "Dongmen Pedestrian Street",
+      "district": { "zh": "罗湖区", "en": "Luohu District" },
+      "rating": 4.5,
+      "image": "assets/images/shop_dongmen.jpg",
+      "seo": {
+        "title": { "zh": "东门老街 | Dongmen Pedestrian Street", "en": "Dongmen Pedestrian Street | 东门老街" },
+        "description": {
+          "zh": "深圳最古老的商业街，大众消费首选",
+          "en": "Shenzhen's oldest commercial street, top choice for mass consumption"
+        }
+      },
+      "intro": {
+        "zh": ["服装批发、特色小吃、美容美甲，热闹非凡。"],
+        "en": ["Clothing wholesale, snacks, beauty services, bustling atmosphere."]
+      },
+      "highlights": [
+        { "icon": "fas fa-history", "zh": "历史悠久", "en": "Historic" },
+        { "icon": "fas fa-tags", "zh": "物美价廉", "en": "Good value" },
+        { "icon": "fas fa-users", "zh": "人潮涌动", "en": "Crowded" }
+      ]
+    },
+    {
+      "slug": "coastalcity",
+      "name": "海岸城",
+      "nameEn": "Coastal City",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.8,
+      "image": "assets/images/shop_coastal.jpg",
+      "seo": {
+        "title": { "zh": "海岸城 | Coastal City", "en": "Coastal City | 海岸城" },
+        "description": {
+          "zh": "南山中心区的大型购物中心，毗邻深圳湾",
+          "en": "Large shopping mall in Nanshan center, adjacent to Shenzhen Bay"
+        }
+      },
+      "intro": {
+        "zh": ["集购物、餐饮、娱乐于一体，拥有大型影院和溜冰场。"],
+        "en": ["Integrates shopping, dining, and entertainment, featuring a large cinema and ice rink."]
+      },
+      "highlights": [
+        { "icon": "fas fa-film", "zh": "娱乐休闲", "en": "Entertainment" },
+        { "icon": "fas fa-shopping-bag", "zh": "品牌丰富", "en": "Rich brands" },
+        { "icon": "fas fa-map-marker-alt", "zh": "核心地段", "en": "Prime location" }
+      ]
+    }
+  ]
+}

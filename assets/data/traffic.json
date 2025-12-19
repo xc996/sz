@@ -1,0 +1,124 @@
+{
+  "items": [
+    {
+      "slug": "metro",
+      "name": "深圳地铁",
+      "nameEn": "Shenzhen Metro",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.9,
+      "image": "assets/images/traffic_metro.jpg",
+      "seo": {
+        "title": { "zh": "深圳地铁 | Shenzhen Metro", "en": "Shenzhen Metro | 深圳地铁" },
+        "description": {
+          "zh": "四通八达的地下交通网络，快捷准时",
+          "en": "Extensive underground transport network, fast and punctual"
+        }
+      },
+      "intro": {
+        "zh": ["覆盖全市主要区域，运营时间通常为6:30-23:00。"],
+        "en": ["Covers major areas of the city, operating hours usually 6:30-23:00."]
+      },
+      "highlights": [
+        { "icon": "fas fa-subway", "zh": "网络密集", "en": "Dense network" },
+        { "icon": "fas fa-clock", "zh": "准时高效", "en": "Punctual" },
+        { "icon": "fas fa-snowflake", "zh": "冷气充足", "en": "Air-conditioned" }
+      ]
+    },
+    {
+      "slug": "bus",
+      "name": "公共巴士",
+      "nameEn": "Shenzhen Bus",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.5,
+      "image": "assets/images/traffic_bus.jpg",
+      "seo": {
+        "title": { "zh": "公共巴士 | Shenzhen Bus", "en": "Shenzhen Bus | 公共巴士" },
+        "description": {
+          "zh": "全电动公交车队，绿色环保，线路丰富",
+          "en": "All-electric bus fleet, eco-friendly, rich routes"
+        }
+      },
+      "intro": {
+        "zh": ["深入城市各个角落，票价低廉，可刷“深圳通”或扫码乘车。"],
+        "en": ["Reaches every corner of the city, low fare, pay with 'Shenzhen Tong' or QR code."]
+      },
+      "highlights": [
+        { "icon": "fas fa-leaf", "zh": "绿色环保", "en": "Eco-friendly" },
+        { "icon": "fas fa-route", "zh": "线路丰富", "en": "Rich routes" },
+        { "icon": "fas fa-coins", "zh": "经济实惠", "en": "Affordable" }
+      ]
+    },
+    {
+      "slug": "airport",
+      "name": "深圳宝安国际机场",
+      "nameEn": "Shenzhen Bao'an International Airport",
+      "district": { "zh": "宝安区", "en": "Bao'an District" },
+      "rating": 4.8,
+      "image": "assets/images/traffic_airport.jpg",
+      "seo": {
+        "title": { "zh": "深圳机场 | Shenzhen Airport", "en": "Shenzhen Airport | 深圳机场" },
+        "description": {
+          "zh": "现代化的大型国际机场，连接全球",
+          "en": "Modern large international airport, connecting the world"
+        }
+      },
+      "intro": {
+        "zh": ["拥有独特的“大飞鱼”造型T3航站楼，海陆空联运便捷。"],
+        "en": ["Features the unique 'Manta Ray' shaped Terminal 3, convenient sea-land-air transport."]
+      },
+      "highlights": [
+        { "icon": "fas fa-plane", "zh": "国际通航", "en": "International flights" },
+        { "icon": "fas fa-archway", "zh": "建筑美学", "en": "Architectural beauty" },
+        { "icon": "fas fa-exchange-alt", "zh": "换乘便捷", "en": "Easy transfer" }
+      ]
+    },
+    {
+      "slug": "train",
+      "name": "高铁/火车站",
+      "nameEn": "Railway Stations",
+      "district": { "zh": "多区", "en": "Multiple Districts" },
+      "rating": 4.7,
+      "image": "assets/images/traffic_train.jpg",
+      "seo": {
+        "title": { "zh": "深圳火车站 | Shenzhen Railway Stations", "en": "Shenzhen Railway Stations | 深圳火车站" },
+        "description": {
+          "zh": "深圳北站、福田站、深圳站等，连接全国",
+          "en": "Shenzhen North, Futian, Shenzhen Station, etc., connecting the country"
+        }
+      },
+      "intro": {
+        "zh": ["高铁直达香港西九龙仅需14分钟，通往全国各大城市。"],
+        "en": ["High-speed rail to Hong Kong West Kowloon in just 14 mins, connecting major cities nationwide."]
+      },
+      "highlights": [
+        { "icon": "fas fa-train", "zh": "高速快捷", "en": "High speed" },
+        { "icon": "fas fa-map", "zh": "连接全国", "en": "Nationwide connection" },
+        { "icon": "fas fa-ticket-alt", "zh": "电子客票", "en": "E-ticket" }
+      ]
+    },
+    {
+      "slug": "ferry",
+      "name": "蛇口邮轮母港",
+      "nameEn": "Shekou Cruise Homeport",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.8,
+      "image": "assets/images/traffic_ferry.jpg",
+      "seo": {
+        "title": { "zh": "蛇口邮轮母港 | Shekou Cruise Homeport", "en": "Shekou Cruise Homeport | 蛇口邮轮母港" },
+        "description": {
+          "zh": "通往香港、澳门、珠海及国际邮轮航线",
+          "en": "Routes to Hong Kong, Macau, Zhuhai and international cruise lines"
+        }
+      },
+      "intro": {
+        "zh": ["现代化的客运码头，可乘船前往港澳珠及参加海上观光。"],
+        "en": ["Modern passenger terminal, ferries to HK/Macau/Zhuhai and sea sightseeing."]
+      },
+      "highlights": [
+        { "icon": "fas fa-ship", "zh": "海上航线", "en": "Sea routes" },
+        { "icon": "fas fa-building", "zh": "设施先进", "en": "Advanced facilities" },
+        { "icon": "fas fa-camera", "zh": "海景风光", "en": "Sea view" }
+      ]
+    }
+  ]
+}
