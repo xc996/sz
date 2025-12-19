@@ -249,3 +249,33 @@ tests/
 - 统一导航栏的垂直内边距：首屏与滚动态均为 `padding: 15px 0`，消除各页面之间的视觉高度差。
 - 统一导航链接下划线伪元素位置：`bottom: 5px`（此前首页为 `-5px`，现已修复），确保基线对齐一致。
 - 地图页 `map.html` 保持浅色固定背景（等同滚动态），与其他页面在选中态高度与视觉风格保持一致。
+
+## Cloudflare Pages 部署
+
+- 项目类型：纯静态站点，无需构建步骤。
+- 部署方式：在 Cloudflare Pages 选择“连接 Git 仓库”，分支选择主分支（如 `master`）。
+
+### 构建设置（Pages 控制台）
+- 框架预设：`None`
+- 构建命令：留空（或 `echo "no build"`）
+- 构建输出目录：`.`（仓库根目录）
+
+### 站点行为配置
+- 安全与缓存：根目录已新增 `_headers` 文件，包含：
+  - HSTS、X-Content-Type-Options、X-Frame-Options、Referrer-Policy、Permissions-Policy 等安全头
+  - CSP：允许本地资源与内联脚本，允许外域资源：
+    - `frame-src https://www.amap.com`（地图 iframe）
+    - `media-src https://videos.pexels.com`（首页视频）
+  - 缓存策略：HTML 不缓存（必须重新验证），静态资源设置中短/长期缓存
+- 路由与直链：根目录已新增 `_redirects`，支持无扩展路径：
+  - `/shopping → /shopping.html`、`/food → /food.html`、`/map → /map.html` 等
+  - `/ → /index.html`
+
+### 本地预览（可选）
+- 安装 Wrangler：`npm i -g wrangler`
+- 预览：在项目根目录执行 `wrangler pages dev .`
+- 说明：用于验证 `_headers` 与 `_redirects` 行为，与线上一致。
+
+### 常见问题
+- 页面加载失败且控制台提示 CSP 受限：确认 `_headers` 中的 CSP 源域与使用的第三方资源一致。
+- 静态资源更新未生效：可能命中长期缓存（`immutable`）；建议更换文件名或添加版本后缀（如 `?v=2`）。
