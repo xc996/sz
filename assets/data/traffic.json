@@ -6,7 +6,7 @@
       "nameEn": "Shenzhen Metro",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.9,
-      "image": "assets/images/traffic_metro.jpg",
+      "image": "assets/images/traffic_metro.svg",
       "seo": {
         "title": { "zh": "深圳地铁 | Shenzhen Metro", "en": "Shenzhen Metro | 深圳地铁" },
         "description": {
@@ -30,7 +30,7 @@
       "nameEn": "Shenzhen Bus",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.5,
-      "image": "assets/images/traffic_bus.jpg",
+      "image": "assets/images/traffic_bus.svg",
       "seo": {
         "title": { "zh": "公共巴士 | Shenzhen Bus", "en": "Shenzhen Bus | 公共巴士" },
         "description": {
@@ -49,12 +49,36 @@
       ]
     },
     {
+      "slug": "taxi",
+      "name": "出租车/网约车",
+      "nameEn": "Taxi / Ride-hailing",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.7,
+      "image": "assets/images/traffic_taxi.svg",
+      "seo": {
+        "title": { "zh": "出租车与网约车 | Taxi & Ride-hailing", "en": "Taxi & Ride-hailing | 出租车与网约车" },
+        "description": {
+          "zh": "纯电动出租车与便捷的网约车服务",
+          "en": "Pure electric taxis and convenient ride-hailing services"
+        }
+      },
+      "intro": {
+        "zh": ["深圳出租车基本实现了纯电动化（蓝的），网约车平台（如滴滴）也非常普及。"],
+        "en": ["Shenzhen taxis are basically all-electric (Blue ones), and ride-hailing platforms (like DiDi) are very popular."]
+      },
+      "highlights": [
+        { "icon": "fas fa-car", "zh": "随叫随到", "en": "On-demand" },
+        { "icon": "fas fa-mobile-alt", "zh": "手机支付", "en": "Mobile payment" },
+        { "icon": "fas fa-bolt", "zh": "纯电静音", "en": "Electric & Quiet" }
+      ]
+    },
+    {
       "slug": "airport",
       "name": "深圳宝安国际机场",
       "nameEn": "Shenzhen Bao'an International Airport",
       "district": { "zh": "宝安区", "en": "Bao'an District" },
       "rating": 4.8,
-      "image": "assets/images/traffic_airport.jpg",
+      "image": "assets/images/traffic_airport.svg",
       "seo": {
         "title": { "zh": "深圳机场 | Shenzhen Airport", "en": "Shenzhen Airport | 深圳机场" },
         "description": {
@@ -78,7 +102,7 @@
       "nameEn": "Railway Stations",
       "district": { "zh": "多区", "en": "Multiple Districts" },
       "rating": 4.7,
-      "image": "assets/images/traffic_train.jpg",
+      "image": "assets/images/traffic_train.svg",
       "seo": {
         "title": { "zh": "深圳火车站 | Shenzhen Railway Stations", "en": "Shenzhen Railway Stations | 深圳火车站" },
         "description": {
@@ -102,7 +126,7 @@
       "nameEn": "Shekou Cruise Homeport",
       "district": { "zh": "南山区", "en": "Nanshan District" },
       "rating": 4.8,
-      "image": "assets/images/traffic_ferry.jpg",
+      "image": "assets/images/traffic_ferry.svg",
       "seo": {
         "title": { "zh": "蛇口邮轮母港 | Shekou Cruise Homeport", "en": "Shekou Cruise Homeport | 蛇口邮轮母港" },
         "description": {

@@ -6,7 +6,7 @@
       "nameEn": "The MixC",
       "district": { "zh": "罗湖区/南山区", "en": "Luohu/Nanshan" },
       "rating": 4.9,
-      "image": "assets/images/shop_mixc.jpg",
+      "image": "assets/images/shop_mixc.svg",
       "seo": {
         "title": { "zh": "万象城 | The MixC", "en": "The MixC | 万象城" },
         "description": {
@@ -30,7 +30,7 @@
       "nameEn": "COCO Park",
       "district": { "zh": "福田区", "en": "Futian District" },
       "rating": 4.7,
-      "image": "assets/images/shop_coco.jpg",
+      "image": "assets/images/shop_coco.svg",
       "seo": {
         "title": { "zh": "COCO Park | COCO Park", "en": "COCO Park | COCO Park" },
         "description": {
@@ -54,7 +54,7 @@
       "nameEn": "Huaqiangbei",
       "district": { "zh": "福田区", "en": "Futian District" },
       "rating": 4.6,
-      "image": "assets/images/shop_hqb.jpg",
+      "image": "assets/images/shop_hqb.svg",
       "seo": {
         "title": { "zh": "华强北 | Huaqiangbei", "en": "Huaqiangbei | 华强北" },
         "description": {
@@ -78,7 +78,7 @@
       "nameEn": "Dongmen Pedestrian Street",
       "district": { "zh": "罗湖区", "en": "Luohu District" },
       "rating": 4.5,
-      "image": "assets/images/shop_dongmen.jpg",
+      "image": "assets/images/shop_dongmen.svg",
       "seo": {
         "title": { "zh": "东门老街 | Dongmen Pedestrian Street", "en": "Dongmen Pedestrian Street | 东门老街" },
         "description": {
@@ -102,7 +102,7 @@
       "nameEn": "Coastal City",
       "district": { "zh": "南山区", "en": "Nanshan District" },
       "rating": 4.8,
-      "image": "assets/images/shop_coastal.jpg",
+      "image": "assets/images/shop_coastal.svg",
       "seo": {
         "title": { "zh": "海岸城 | Coastal City", "en": "Coastal City | 海岸城" },
         "description": {
@@ -118,6 +118,54 @@
         { "icon": "fas fa-film", "zh": "娱乐休闲", "en": "Entertainment" },
         { "icon": "fas fa-shopping-bag", "zh": "品牌丰富", "en": "Rich brands" },
         { "icon": "fas fa-map-marker-alt", "zh": "核心地段", "en": "Prime location" }
+      ]
+    },
+    {
+      "slug": "mixcworld",
+      "name": "万象天地",
+      "nameEn": "MixC World",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.9,
+      "image": "assets/images/shop_mixcworld.svg",
+      "seo": {
+        "title": { "zh": "万象天地 | MixC World", "en": "MixC World | 万象天地" },
+        "description": {
+          "zh": "漫步式城市创作空间，标志性的大象装置",
+          "en": "Strolling urban creative space, iconic elephant installation"
+        }
+      },
+      "intro": {
+        "zh": ["街区+mall的创新设计，汇聚众多潮流品牌和艺术展览。"],
+        "en": ["Innovative design of block + mall, gathering many trendy brands and art exhibitions."]
+      },
+      "highlights": [
+        { "icon": "fas fa-camera", "zh": "艺术地标", "en": "Art landmark" },
+        { "icon": "fas fa-store", "zh": "旗舰店", "en": "Flagship stores" },
+        { "icon": "fas fa-walking", "zh": "漫步街区", "en": "Walking block" }
+      ]
+    },
+    {
+      "slug": "unifalk",
+      "name": "壹方城",
+      "nameEn": "Uniwalk",
+      "district": { "zh": "宝安区", "en": "Bao'an District" },
+      "rating": 4.8,
+      "image": "assets/images/shop_uniwalk.svg",
+      "seo": {
+        "title": { "zh": "壹方城 | Uniwalk", "en": "Uniwalk | 壹方城" },
+        "description": {
+          "zh": "深圳单体面积最大的购物中心，前海商业旗舰",
+          "en": "Shenzhen's largest single shopping mall, Qianhai commercial flagship"
+        }
+      },
+      "intro": {
+        "zh": ["超大体量，全业态覆盖，家庭亲子与年轻潮流兼顾。"],
+        "en": ["Super large scale, full format coverage, suitable for families and young trends."]
+      },
+      "highlights": [
+        { "icon": "fas fa-expand-arrows-alt", "zh": "超大体量", "en": "Huge scale" },
+        { "icon": "fas fa-child", "zh": "亲子乐园", "en": "Family fun" },
+        { "icon": "fas fa-utensils", "zh": "美食荟萃", "en": "Gourmet gathering" }
       ]
     }
   ]

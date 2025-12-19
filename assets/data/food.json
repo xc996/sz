@@ -6,7 +6,7 @@
       "nameEn": "Chaoshan Beef Hotpot",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.9,
-      "image": "assets/images/food_beef.jpg",
+      "image": "assets/images/food_beef.svg",
       "seo": {
         "title": { "zh": "潮汕牛肉火锅 | Chaoshan Beef Hotpot", "en": "Chaoshan Beef Hotpot | 潮汕牛肉火锅" },
         "description": {
@@ -30,7 +30,7 @@
       "nameEn": "Coconut Chicken Hotpot",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.8,
-      "image": "assets/images/food_coconut.jpg",
+      "image": "assets/images/food_coconut.svg",
       "seo": {
         "title": { "zh": "椰子鸡 | Coconut Chicken Hotpot", "en": "Coconut Chicken Hotpot | 椰子鸡" },
         "description": {
@@ -54,7 +54,7 @@
       "nameEn": "Cantonese Dim Sum",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.9,
-      "image": "assets/images/food_dimsum.jpg",
+      "image": "assets/images/food_dimsum.svg",
       "seo": {
         "title": { "zh": "广式早茶 | Cantonese Dim Sum", "en": "Cantonese Dim Sum | 广式早茶" },
         "description": {
@@ -78,7 +78,7 @@
       "nameEn": "Seafood Feast",
       "district": { "zh": "盐田区/大鹏新区", "en": "Yantian/Dapeng" },
       "rating": 4.7,
-      "image": "assets/images/food_seafood.jpg",
+      "image": "assets/images/food_seafood.svg",
       "seo": {
         "title": { "zh": "海鲜大餐 | Seafood Feast", "en": "Seafood Feast | 海鲜大餐" },
         "description": {
@@ -102,7 +102,7 @@
       "nameEn": "Street Food",
       "district": { "zh": "罗湖区/福田区", "en": "Luohu/Futian" },
       "rating": 4.6,
-      "image": "assets/images/food_street.jpg",
+      "image": "assets/images/food_street.svg",
       "seo": {
         "title": { "zh": "街头小吃 | Street Food", "en": "Street Food | 街头小吃" },
         "description": {
@@ -118,6 +118,54 @@
         { "icon": "fas fa-fire", "zh": "烟火气息", "en": "Lively atmosphere" },
         { "icon": "fas fa-wallet", "zh": "价格亲民", "en": "Affordable" },
         { "icon": "fas fa-walking", "zh": "边走边吃", "en": "Eat on the go" }
+      ]
+    },
+    {
+      "slug": "porkrice",
+      "name": "隆江猪脚饭",
+      "nameEn": "Pork Leg Rice",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.5,
+      "image": "assets/images/food_porkrice.svg",
+      "seo": {
+        "title": { "zh": "隆江猪脚饭 | Pork Leg Rice", "en": "Pork Leg Rice | 隆江猪脚饭" },
+        "description": {
+          "zh": "深圳打工人的灵魂美食，肥而不腻",
+          "en": "Soul food for Shenzhen workers, fatty but not greasy"
+        }
+      },
+      "intro": {
+        "zh": ["软糯入味的猪脚，搭配酸菜和卤汁，是深圳最常见的快餐之一。"],
+        "en": ["Soft and flavorful pork leg, served with pickled vegetables and gravy, one of the most common fast foods in Shenzhen."]
+      },
+      "highlights": [
+        { "icon": "fas fa-bowl-rice", "zh": "软糯入味", "en": "Soft & Flavorful" },
+        { "icon": "fas fa-clock", "zh": "方便快捷", "en": "Convenient" },
+        { "icon": "fas fa-thumbs-up", "zh": "分量十足", "en": "Big portion" }
+      ]
+    },
+    {
+      "slug": "pigeon",
+      "name": "光明乳鸽",
+      "nameEn": "Guangming Squab",
+      "district": { "zh": "光明区", "en": "Guangming District" },
+      "rating": 4.8,
+      "image": "assets/images/food_pigeon.svg",
+      "seo": {
+        "title": { "zh": "光明乳鸽 | Guangming Squab", "en": "Guangming Squab | 光明乳鸽" },
+        "description": {
+          "zh": "皮脆肉嫩，骨香多汁，深圳经典名菜",
+          "en": "Crispy skin, tender meat, juicy and fragrant, a classic Shenzhen dish"
+        }
+      },
+      "intro": {
+        "zh": ["以润、滑、甜、嫩为特点，是深圳的一张美食名片。"],
+        "en": ["Characterized by moist, smooth, sweet, and tender texture, a culinary card of Shenzhen."]
+      },
+      "highlights": [
+        { "icon": "fas fa-drumstick-bite", "zh": "皮脆肉嫩", "en": "Crispy & Tender" },
+        { "icon": "fas fa-award", "zh": "经典名菜", "en": "Classic dish" },
+        { "icon": "fas fa-history", "zh": "历史悠久", "en": "Historic" }
       ]
     }
   ]
