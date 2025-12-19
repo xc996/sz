@@ -867,6 +867,71 @@ body {
 
 .heritage-content {
     padding: 20px;
+    position: relative;
+}
+
+.heritage-intro-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
+    transform: translateY(10px);
+    opacity: 0;
+    animation: btnSlideUp 0.5s ease forwards 0.2s;
+}
+
+@keyframes btnSlideUp {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.heritage-intro-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(var(--accent-rgb), 0.4);
+    background: var(--accent-hover);
+}
+
+.heritage-intro-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.5);
+    transition: all 0.1s ease;
+}
+
+.heritage-intro-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.heritage-intro-btn:hover i {
+    transform: rotate(360deg);
+}
+
+[data-theme="dark"] .heritage-intro-btn {
+    background: var(--accent-dark);
+    box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.4);
+}
+
+[data-theme="dark"] .heritage-intro-btn:hover {
+    background: var(--accent-dark-hover);
+    box-shadow: 0 6px 16px rgba(var(--accent-rgb), 0.5);
 }
 
 .heritage-title {

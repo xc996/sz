@@ -608,6 +608,10 @@ function renderHeritage() {
                 <h3 class="heritage-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
                 <p class="heritage-description">${currentLang === 'zh' ? item.description : item.descriptionEn}</p>
                 <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
+                <button class="heritage-intro-btn">
+                    <i class="fas fa-info-circle"></i>
+                    <span>${currentLang === 'zh' ? '介绍' : 'Introduction'}</span>
+                </button>
             </div>
         `;
         grid.appendChild(heritageItem);
