@@ -33,7 +33,7 @@ const translations = {
         'history.slide2.desc': '传承千年的地方文化',
         'history.slide3.title': '文化遗产',
         'history.slide3.desc': '保护和传承文化遗产与古迹',
-        'history.slide4.title': '传统节日',
+        'history.slide4.title': '现代与传统的交融',
         'history.slide4.desc': '丰富多彩的民俗活动',
         'history.slide5.title': '文化融合',
         'history.slide5.desc': '传统与现代的完美结合',
@@ -64,9 +64,9 @@ const translations = {
         'history.heritage.level.national': '国家级',
         'history.heritage.level.provincial': '省级',
         
-        // 传统节日
-        'history.festivals.title': '传统节日',
-        'history.festivals.subtitle': '深圳的传统节日庆典',
+        // 现代与传统的交融
+        'history.festivals.title': '现代与传统的交融',
+        'history.festivals.subtitle': '深圳在飞速发展的同时，也非常重视历史文化的保护与传承。通过"城市更新"计划，许多古村落得到了保护性开发，成为现代都市中的文化绿洲。',
         
         // Footer
         'footer.about': '关于深圳',
@@ -104,7 +104,7 @@ const translations = {
         'history.slide2.desc': 'Thousand-year-old local cultural heritage',
         'history.slide3.title': 'Cultural Heritage',
         'history.slide3.desc': 'Protecting and inheriting cultural heritage and monuments',
-        'history.slide4.title': 'Traditional Festivals',
+        'history.slide4.title': 'Blending of Modern and Traditional',
         'history.slide4.desc': 'Colorful folk activities',
         'history.slide5.title': 'Cultural Integration',
         'history.slide5.desc': 'Perfect combination of tradition and modernity',
@@ -135,9 +135,9 @@ const translations = {
         'history.heritage.level.national': 'National',
         'history.heritage.level.provincial': 'Provincial',
         
-        // Traditional Festivals
-        'history.festivals.title': 'Traditional Festivals',
-        'history.festivals.subtitle': 'Traditional festival celebrations in Shenzhen',
+        // Blending of Modern and Traditional
+        'history.festivals.title': 'Blending of Modern and Traditional',
+        'history.festivals.subtitle': 'While developing rapidly, Shenzhen also attaches great importance to the protection and inheritance of historical culture. Through the "urban renewal" plan, many ancient villages have been protected and developed, becoming cultural oases in the modern metropolis.',
         
         // Footer
         'footer.about': 'About Shenzhen',
@@ -284,47 +284,55 @@ const heritageData = [
     }
 ];
 
-// 传统节日数据
-const festivalsData = [
+// 现代与传统的交融数据
+const blendingData = [
     {
-        name: '春节',
-        nameEn: 'Spring Festival',
-        date: '农历正月初一',
-        dateEn: 'Lunar New Year',
-        description: '中国最重要的传统节日，家人团聚，喜庆祥和',
-        descriptionEn: 'China\'s most important traditional festival, family reunion and joy',
-        icon: 'fas fa-fire-alt',
+        name: '博物馆体系',
+        nameEn: 'Museum System',
+        description: '深圳博物馆、南头古城博物馆等机构系统地展示城市历史',
+        descriptionEn: 'Shenzhen Museum, Nantou Ancient City Museum and other institutions systematically display the city\'s history',
+        icon: 'fas fa-building',
         image: 'assets/images/轮1.jpg'
     },
     {
-        name: '元宵节',
-        nameEn: 'Lantern Festival',
-        date: '农历正月十五',
-        dateEn: 'Lunar January 15th',
-        description: '赏花灯、吃汤圆，象征团圆美满',
-        descriptionEn: 'Appreciate lanterns and eat tangyuan, symbolizing reunion and happiness',
-        icon: 'fas fa-lightbulb',
+        name: '非遗传承',
+        nameEn: 'Intangible Cultural Heritage',
+        description: '200多项非物质文化遗产得到保护和活态传承',
+        descriptionEn: 'More than 200 intangible cultural heritages have been protected and dynamically inherited',
+        icon: 'fas fa-masks-theater',
         image: 'assets/images/轮2.jpg'
     },
     {
-        name: '端午节',
-        nameEn: 'Dragon Boat Festival',
-        date: '农历五月初五',
-        dateEn: 'Lunar May 5th',
-        description: '赛龙舟、吃粽子，纪念屈原',
-        descriptionEn: 'Dragon boat races and eating zongzi, commemorating Qu Yuan',
-        icon: 'fas fa-anchor',
+        name: '古村新生',
+        nameEn: 'Ancient Villages Revival',
+        description: '大芬油画村、观澜版画村等成为文化创意产业基地',
+        descriptionEn: 'Dafen Oil Painting Village, Guanlan Printmaking Village and others have become cultural and creative industry bases',
+        icon: 'fas fa-city',
         image: 'assets/images/轮3.jpg'
     },
     {
-        name: '中秋节',
-        nameEn: 'Mid-Autumn Festival',
-        date: '农历八月十五',
-        dateEn: 'Lunar August 15th',
-        description: '赏月、吃月饼，家人团聚的节日',
-        descriptionEn: 'Appreciate the moon and eat mooncakes, a festival for family reunion',
-        icon: 'fas fa-moon',
+        name: '文化教育',
+        nameEn: 'Cultural Education',
+        description: '将历史文化纳入中小学教育体系，培养文化认同',
+        descriptionEn: 'Integrate historical culture into the education system of primary and secondary schools to cultivate cultural identity',
+        icon: 'fas fa-book-open',
         image: 'assets/images/轮4.jpg'
+    },
+    {
+        name: '数字博物馆',
+        nameEn: 'Digital Museum',
+        description: '运用VR/AR技术打造线上数字博物馆，让文物"活"起来',
+        descriptionEn: 'Use VR/AR technology to create online digital museums, bringing cultural relics "to life"',
+        icon: 'fas fa-laptop-code',
+        image: 'assets/images/轮1.jpg'
+    },
+    {
+        name: '文化街区活化',
+        nameEn: 'Cultural Block Revitalization',
+        description: '将历史街区改造为集商业、文化、旅游于一体的综合体',
+        descriptionEn: 'Transform historical blocks into complexes integrating business, culture and tourism',
+        icon: 'fas fa-map-marker-alt',
+        image: 'assets/images/轮2.jpg'
     }
 ];
 
@@ -606,26 +614,22 @@ function renderHeritage() {
     });
 }
 
-// 渲染传统节日
+// 渲染现代与传统的交融
 function renderFestivals() {
     const grid = document.getElementById('festivalsGrid');
     if (!grid) return;
     
     grid.innerHTML = '';
     
-    festivalsData.forEach((item, index) => {
+    blendingData.forEach((item, index) => {
         const festivalItem = document.createElement('div');
         festivalItem.className = 'festival-item';
         festivalItem.innerHTML = `
-            <div class="festival-image">
-                <img src="${item.image}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
-            </div>
             <div class="festival-content">
                 <h3 class="festival-title">
                     <i class="${item.icon}"></i>
                     ${currentLang === 'zh' ? item.name : item.nameEn}
                 </h3>
-                <p class="festival-date">${currentLang === 'zh' ? item.date : item.dateEn}</p>
                 <p class="festival-description">${currentLang === 'zh' ? item.description : item.descriptionEn}</p>
             </div>
         `;
