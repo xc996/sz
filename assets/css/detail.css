@@ -45,7 +45,8 @@
 
 .detail-image img {
     width: 100%;
-    height: auto;
+    height: 500px;
+    object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
 }
@@ -174,6 +175,10 @@
 
 /* 响应式设计 */
 @media (max-width: 768px) {
+    .detail-image img {
+        height: 300px;
+    }
+
     .detail-title {
         font-size: 2rem;
     }
@@ -218,38 +223,45 @@
 }
 
 /* 添加到详情页面的通用样式 */
-.attraction-detail-section {
+.attraction-detail-section,
+.heritage-detail-section {
     padding: 100px 0;
     background: var(--bg-secondary);
     overflow: visible; /* 中文：防止卡片阴影被裁剪 */
 }
 
 /* 详情页面导航栏样式 */
-body:has(.attraction-detail-section) #navbar {
+body:has(.attraction-detail-section) #navbar,
+body:has(.heritage-detail-section) #navbar {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow);
     padding: 15px 0;
 }
 
-body:has(.attraction-detail-section) [data-theme="dark"] #navbar {
+body:has(.attraction-detail-section) [data-theme="dark"] #navbar,
+body:has(.heritage-detail-section) [data-theme="dark"] #navbar {
     background: rgba(18, 18, 18, 0.95);
 }
 
-body:has(.attraction-detail-section) .logo {
+body:has(.attraction-detail-section) .logo,
+body:has(.heritage-detail-section) .logo {
     color: var(--text-primary);
 }
 
-body:has(.attraction-detail-section) .nav-menu a {
+body:has(.attraction-detail-section) .nav-menu a,
+body:has(.heritage-detail-section) .nav-menu a {
     color: var(--text-primary);
 }
 
-body:has(.attraction-detail-section) .icon-btn {
+body:has(.attraction-detail-section) .icon-btn,
+body:has(.heritage-detail-section) .icon-btn {
     background: var(--bg-secondary);
     color: var(--text-primary);
 }
 
-body:has(.attraction-detail-section) .menu-toggle span {
+body:has(.attraction-detail-section) .menu-toggle span,
+body:has(.heritage-detail-section) .menu-toggle span {
     background: var(--text-primary);
 }
 
