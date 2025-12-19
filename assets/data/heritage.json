@@ -1,0 +1,118 @@
+{
+  "items": [
+    {
+      "slug": "dapeng",
+      "name": "大鹏所城",
+      "nameEn": "Dapeng Ancient City",
+      "description": "明代海防要塞，保存完好的明清海防体系，被誉为'沿海所城，大鹏为最'。大鹏所城是深圳目前唯一的国家级文保单位，始建于明洪武二十七年（1394年），是明清两代中国海防的军事要塞，有着600多年抵御外侮的历史，涌现了赖恩爵、刘起龙、刘黑仔等一批杰出的民族英雄。",
+      "descriptionEn": "A well-preserved Ming and Qing coastal defense fortress, known as 'the best among coastal defense cities'. It is Shenzhen's only national cultural relic protection unit, built in 1394 during the 27th year of the Hongwu reign of the Ming Dynasty. It has a history of more than 600 years of resisting foreign aggression, producing outstanding national heroes such as Lai Enjue, Liu Qilong, and Liu Heizai.",
+      "level": "national",
+      "image": "assets/images/大鹏所城.jpg",
+      "seo": {
+        "title": {
+          "zh": "大鹏所城 - 深圳文化遗产",
+          "en": "Dapeng Ancient City - Shenzhen Cultural Heritage"
+        },
+        "description": {
+          "zh": "大鹏所城是深圳目前唯一的国家级文保单位，始建于明洪武二十七年（1394年），是明清两代中国海防的军事要塞，有着600多年抵御外侮的历史。",
+          "en": "Dapeng Ancient City is Shenzhen's only national cultural relic protection unit, built in 1394 during the Ming Dynasty, with over 600 years of history in coastal defense."
+        }
+      }
+    },
+    {
+      "slug": "nantou",
+      "name": "南头古城",
+      "nameEn": "Nantou Ancient City",
+      "description": "深圳历史最悠久的古城，见证了深圳从汉代到现代的历史变迁。南头古城又称新安故城，建于明洪武二十七年（1394年），是明清时期广东海防的重要军事基地，也是深圳历史文化的重要发源地。",
+      "descriptionEn": "Shenzhen's oldest ancient city, witnessing Shenzhen's historical changes from the Han Dynasty to modern times. Also known as Xin'an Ancient City, it was built in 1394 during the Ming Dynasty, serving as an important military base for coastal defense in Guangdong during the Ming and Qing dynasties, and is also an important birthplace of Shenzhen's historical culture.",
+      "level": "national",
+      "image": "assets/images/南头古城.jpg",
+      "seo": {
+        "title": {
+          "zh": "南头古城 - 深圳文化遗产",
+          "en": "Nantou Ancient City - Shenzhen Cultural Heritage"
+        },
+        "description": {
+          "zh": "南头古城是深圳历史最悠久的古城，见证了深圳从汉代到现代的历史变迁。",
+          "en": "Nantou Ancient City is Shenzhen's oldest ancient city, witnessing Shenzhen's historical changes from the Han Dynasty to modern times."
+        }
+      }
+    },
+    {
+      "slug": "hehu",
+      "name": "鹤湖新居",
+      "nameEn": "Hehu Xingu",
+      "description": "深圳保存最完整、规模最大的客家围屋建筑群，被誉为'客家围屋博物馆'。鹤湖新居建于清嘉庆二十二年（1817年），是深圳地区保存最完整、规模最大的客家围屋建筑群，占地面积约25000平方米，建筑面积约14530平方米，共有179间房。",
+      "descriptionEn": "The most complete and largest preserved Hakka enclosed house complex in Shenzhen, known as the 'Hakka Enclosed House Museum'. Built in 1817 during the Qing Dynasty, it covers an area of about 25,000 square meters with a construction area of about 14,530 square meters, containing 179 rooms.",
+      "level": "national",
+      "image": "assets/images/鹤湖新居.jpg",
+      "seo": {
+        "title": {
+          "zh": "鹤湖新居 - 深圳文化遗产",
+          "en": "Hehu Xingu - Shenzhen Cultural Heritage"
+        },
+        "description": {
+          "zh": "鹤湖新居是深圳保存最完整、规模最大的客家围屋建筑群，被誉为'客家围屋博物馆'。",
+          "en": "Hehu Xingu is the most complete and largest preserved Hakka enclosed house complex in Shenzhen, known as the 'Hakka Enclosed House Museum'."
+        }
+      }
+    },
+    {
+      "slug": "xiantouling",
+      "name": "咸头岭遗址",
+      "nameEn": "Xiantouling Site",
+      "description": "深圳最早的史前文化遗址，距今约7000年，展现了珠三角地区早期人类文明。咸头岭遗址是一处新石器时代中期至晚期的贝丘遗址，位于深圳市大鹏新区南澳街道，总面积约30000平方米，出土了大量陶器、石器、玉器等文物，为研究珠三角地区早期人类文明提供了重要资料。",
+      "descriptionEn": "Shenzhen's earliest prehistoric cultural site, dating back about 7000 years, showing early human civilization in the Pearl River Delta region. Xiantouling Site is a shell mound site from the mid to late Neolithic period, located in Nan'ao Street, Dapeng New District, Shenzhen, covering an area of about 30,000 square meters. A large number of pottery, stone tools, jade articles and other cultural relics were unearthed, providing important materials for studying early human civilization in the Pearl River Delta region.",
+      "level": "national",
+      "image": "assets/images/咸头岭遗址.jpg",
+      "seo": {
+        "title": {
+          "zh": "咸头岭遗址 - 深圳文化遗产",
+          "en": "Xiantouling Site - Shenzhen Cultural Heritage"
+        },
+        "description": {
+          "zh": "深圳最早的史前文化遗址，距今约7000年，展现了珠三角地区早期人类文明。",
+          "en": "Shenzhen's earliest prehistoric cultural site, dating back about 7000 years, showing early human civilization in the Pearl River Delta region."
+        }
+      }
+    },
+    {
+      "slug": "wentianxiang",
+      "name": "文天祥纪念馆",
+      "nameEn": "Wen Tianxiang Memorial Hall",
+      "description": "纪念南宋民族英雄文天祥的纪念馆，展示其生平事迹和崇高精神。文天祥纪念馆位于深圳市南山区，建筑面积约1200平方米，分为生平事迹、文学成就、后世影响三个部分，通过文物、图片、文字等多种形式，全面展示了文天祥的生平事迹和崇高精神。",
+      "descriptionEn": "Memorial hall commemorating Wen Tianxiang, a national hero of the Southern Song Dynasty, showcasing his life story and noble spirit. Located in Nanshan District, Shenzhen, with a construction area of about 1,200 square meters, it is divided into three parts: life story, literary achievements, and influence. Through cultural relics, pictures, texts and other forms, it comprehensively displays Wen Tianxiang's life story and noble spirit.",
+      "level": "provincial",
+      "image": "assets/images/文天祥纪念馆.jpg",
+      "seo": {
+        "title": {
+          "zh": "文天祥纪念馆 - 深圳文化遗产",
+          "en": "Wen Tianxiang Memorial Hall - Shenzhen Cultural Heritage"
+        },
+        "description": {
+          "zh": "纪念南宋民族英雄文天祥的纪念馆，展示其生平事迹和崇高精神。",
+          "en": "Memorial hall commemorating Wen Tianxiang, a national hero of the Southern Song Dynasty, showcasing his life story and noble spirit."
+        }
+      }
+    },
+    {
+      "slug": "dawanshiju",
+      "name": "大万世居",
+      "nameEn": "Dawanshiju",
+      "description": "深圳第二大客家围屋，保存完好的清代客家建筑群。大万世居建于清乾隆五十六年（1791年），是深圳地区保存完好的清代客家建筑群，占地面积约15000平方米，建筑面积约12000平方米，共有144间房。",
+      "descriptionEn": "Shenzhen's second largest Hakka enclosed house, well-preserved Qing Dynasty Hakka architectural complex. Built in 1791 during the Qing Dynasty, it is a well-preserved Qing Dynasty Hakka architectural complex in Shenzhen, covering an area of about 15,000 square meters with a construction area of about 12,000 square meters, containing 144 rooms.",
+      "level": "provincial",
+      "image": "assets/images/大万世居.jpg",
+      "seo": {
+        "title": {
+          "zh": "大万世居 - 深圳文化遗产",
+          "en": "Dawanshiju - Shenzhen Cultural Heritage"
+        },
+        "description": {
+          "zh": "深圳第二大客家围屋，保存完好的清代客家建筑群。",
+          "en": "Shenzhen's second largest Hakka enclosed house, well-preserved Qing Dynasty Hakka architectural complex."
+        }
+      }
+    }
+  ]
+}

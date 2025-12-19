@@ -607,13 +607,31 @@ function renderHeritage() {
             <div class="heritage-content">
                 <h3 class="heritage-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
                 <p class="heritage-description">${currentLang === 'zh' ? item.description : item.descriptionEn}</p>
-                <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
-                <button class="heritage-intro-btn">
-                    <i class="fas fa-info-circle"></i>
-                    <span>${currentLang === 'zh' ? '介绍' : 'Introduction'}</span>
-                </button>
+                <div class="heritage-footer">
+                    <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
+                    <button class="heritage-intro-btn">介绍</button>
+                </div>
             </div>
         `;
+        
+        // 添加点击事件
+        const introBtn = heritageItem.querySelector('.heritage-intro-btn');
+        if (introBtn) {
+            // 生成slug
+            let slug = item.name.toLowerCase().replace(/[\s\u4e00-\u9fa5]/g, '-').replace(/--+/g, '-').replace(/^-|-$/g, '');
+            // 特殊处理
+            if (item.name === '大鹏所城') slug = 'dapeng';
+            if (item.name === '南头古城') slug = 'nantou';
+            if (item.name === '鹤湖新居') slug = 'hehu';
+            if (item.name === '咸头岭遗址') slug = 'xiantouling';
+            if (item.name === '文天祥纪念馆') slug = 'wentianxiang';
+            if (item.name === '大万世居') slug = 'dawanshiju';
+            
+            introBtn.addEventListener('click', () => {
+                window.location.href = `history/detail.html?slug=${slug}&type=heritage`;
+            });
+        }
+        
         grid.appendChild(heritageItem);
     });
 }
