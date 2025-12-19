@@ -241,3 +241,11 @@ tests/
     - 为所有状态预设透明边框，防止切换主题时产生布局偏移。
 - **覆盖范围**：
   - 涉及所有 CSS 文件（`index/attractions/food/history/shopping/traffic.css`）及 `map.html`。
+
+### 首屏可读性增强与高度统一（2025-12-19 深夜补充）
+
+- 顶部导航在首屏由透明改为“顶部渐变”以增强深色底图下可读性（`linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.25), rgba(0,0,0,0))`）。
+- 为 `.logo` 与 `.nav-menu a` 增加轻微文字阴影提升对比度；在滚动后的浅色毛玻璃背景中移除阴影，避免白色主题下出现模糊（`#navbar.scrolled .logo, #navbar.scrolled .nav-menu a { text-shadow: none; }`）。
+- 统一导航栏的垂直内边距：首屏与滚动态均为 `padding: 15px 0`，消除各页面之间的视觉高度差。
+- 统一导航链接下划线伪元素位置：`bottom: 5px`（此前首页为 `-5px`，现已修复），确保基线对齐一致。
+- 地图页 `map.html` 保持浅色固定背景（等同滚动态），与其他页面在选中态高度与视觉风格保持一致。
