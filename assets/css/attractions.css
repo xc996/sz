@@ -219,16 +219,53 @@ body {
     font-weight: 500;
     position: relative;
     transition: var(--transition);
+    /* 统一尺寸，避免选中时跳动 */
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    border: 1px solid transparent;
+}
+
+/* 选中态样式 */
+.nav-menu a.active {
+    background: var(--primary-color) !important;
+    color: white !important;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3);
+}
+
+/* 夜间模式选中态样式 */
+[data-theme="dark"] .nav-menu a.active {
+    background: rgba(0, 184, 212, 0.15) !important;
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 184, 212, 0.4);
+}
+
+/* 选中态移除下划线 */
+.nav-menu a.active::after {
+    display: none !important;
 }
 
 #navbar.scrolled .nav-menu a {
     color: var(--text-primary);
 }
 
+/* 滚动后的选中态 - 保持一致 */
+#navbar.scrolled .nav-menu a.active {
+    background: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* 夜间模式滚动后的选中态 */
+[data-theme="dark"] #navbar.scrolled .nav-menu a.active {
+    box-shadow: 0 0 15px var(--glow-color);
+}
+
 .nav-menu a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 5px;
     left: 0;
     width: 0;
     height: 2px;

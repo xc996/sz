@@ -468,6 +468,38 @@ function initTheme() {
 // 导航栏功能
 // ------------------------------
 
+// 自动高亮当前页面导航
+function initActiveNav() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    console.log('[Nav] Init active nav check. Path:', currentPath);
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        
+        // 移除所有 active 类
+        link.classList.remove('active');
+        
+        if (href === '#' || href.startsWith('#')) return;
+
+        // 简单匹配
+        const isMatch = currentPath.endsWith(href);
+        const isHomeMatch = currentPath.endsWith('/') && href === 'index.html';
+        
+        console.log(`[Nav] Checking link: href="${href}", match=${isMatch}, homeMatch=${isHomeMatch}`);
+
+        if (isMatch) {
+             link.classList.add('active');
+             console.log('[Nav] Activated:', href);
+        }
+        else if (isHomeMatch) {
+            link.classList.add('active');
+            console.log('[Nav] Activated (Home):', href);
+        }
+    });
+}
+
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
@@ -753,6 +785,7 @@ function init() {
     
     // 初始化导航栏
     initNavbarScroll();
+    initActiveNav();
     initMobileMenu();
     
     // 初始化返回顶部按钮

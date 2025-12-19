@@ -6,7 +6,7 @@
     <meta name="description" content="深圳互动地图 | Shenzhen Interactive Map">
     <title>深圳地图 | Shenzhen Map</title>
     <link rel="icon" href="assets/images/深圳logo.png">
-    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/index.css?v=2">
     <link rel="stylesheet" href="assets/vendor/all.min.css">
     <link href="assets/vendor/aos.css" rel="stylesheet">
     <style>
@@ -27,6 +27,11 @@
         
         #navbar .nav-menu a {
             color: var(--text-primary);
+            /* 统一尺寸，避免选中时跳动 */
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid transparent;
         }
         
         #navbar .icon-btn {
@@ -36,6 +41,45 @@
         
         #navbar .menu-toggle span {
             background: var(--text-primary);
+        }
+        
+        /* 选中态样式 - 增强优先级 */
+        #navbar .nav-menu a.active {
+            background: var(--primary-color) !important;
+            color: white !important;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3);
+        }
+
+        /* 夜间模式选中态样式 */
+        [data-theme="dark"] #navbar .nav-menu a.active {
+            background: rgba(0, 184, 212, 0.15) !important;
+            color: var(--primary-color) !important;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 184, 212, 0.4);
+        }
+
+        #navbar .nav-menu a.active::after {
+            display: none !important;
+        }
+
+        #navbar .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        #navbar .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        [data-theme="dark"] #navbar .nav-menu a.active {
+            box-shadow: 0 0 15px var(--glow-color);
         }
     </style>
 </head>
@@ -129,7 +173,7 @@
     </button>
 
     <script src="assets/vendor/aos.js"></script>
-    <script src="assets/js/index.js"></script>
+    <script src="assets/js/index.js?v=2"></script>
     <script>
         // 覆盖导航栏滚动监听行为，确保map.html页面导航栏始终显示固定背景
         document.addEventListener('DOMContentLoaded', function() {
@@ -147,6 +191,17 @@
                     };
                 }
             }
+            
+            // 手动激活地图导航项
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === 'map.html') {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
         });
     </script>
 </body>

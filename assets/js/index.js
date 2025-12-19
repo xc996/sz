@@ -509,6 +509,36 @@ function initTheme() {
 // 导航栏功能
 // ------------------------------
 
+// 自动高亮当前页面导航
+function initActiveNav() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    console.log('[Home Nav] Init active nav check. Path:', currentPath);
+
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        
+        // 移除所有 active 类
+        link.classList.remove('active');
+        
+        // 处理首页 (#home)
+        // 如果路径以 / 结尾或以 index.html 结尾，且链接是 #home，则高亮
+        const isHome = currentPath.endsWith('/') || currentPath.endsWith('index.html');
+        
+        if (isHome && href === '#home') {
+            link.classList.add('active');
+            console.log('[Home Nav] Activated Home:', href);
+        }
+        // 处理其他页面 (xxx.html)
+        // 排除锚点链接和空链接
+        else if (href && href !== '#' && !href.startsWith('#') && currentPath.includes(href)) {
+            link.classList.add('active');
+             console.log('[Home Nav] Activated Other:', href);
+        }
+    });
+}
+
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
@@ -641,6 +671,7 @@ function init() {
     
     // 初始化导航栏
     initNavbarScroll();
+    initActiveNav();
     initMobileMenu();
     
     // 初始化返回顶部按钮

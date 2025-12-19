@@ -470,6 +470,29 @@ function initTheme() {
 // 导航栏功能
 // ------------------------------
 
+// 自动高亮当前页面导航
+function initActiveNav() {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        
+        // 移除所有 active 类
+        link.classList.remove('active');
+        
+        if (href === '#' || href.startsWith('#')) return;
+
+        // 简单匹配
+        if (currentPath.endsWith(href)) {
+             link.classList.add('active');
+        }
+        else if (currentPath.endsWith('/') && href === 'index.html') {
+            link.classList.add('active');
+        }
+    });
+}
+
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
@@ -800,6 +823,7 @@ function init() {
     
     // 初始化导航栏
     initNavbarScroll();
+    initActiveNav();
     initMobileMenu();
     
     // 初始化返回顶部按钮
