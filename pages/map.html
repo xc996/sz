@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -6,11 +6,10 @@
     <meta name="description" content="深圳互动地图 | Shenzhen Interactive Map">
     <title>深圳地图 | Shenzhen Map</title>
     <link rel="icon" href="../assets/images/深圳logo.png">
-    <link rel="stylesheet" href="../assets/css/common.css?v=20251221">
-    <link rel="stylesheet" href="../assets/css/index.css?v=20251221">
-    <link rel="stylesheet" href="../assets/css/map.css?v=20251221">
-    <link rel="stylesheet" href="../assets/vendor/all.min.css?v=20251221">
-    <link href="../assets/vendor/aos.css?v=20251221" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/common.css?v=20251221_ui_fixed">
+    <link rel="stylesheet" href="../assets/css/map.css?v=20251221_ui_fixed">
+    <link rel="stylesheet" href="../assets/vendor/all.min.css?v=20251221_fixed">
+    <link href="../assets/vendor/aos.css?v=20251221_fixed" rel="stylesheet">
 </head>
 <body data-theme="light" data-lang="zh">
     <nav id="navbar">
@@ -28,7 +27,7 @@
                 <li><a href="food.html" data-i18n="nav.food">美食</a></li>
                 <li><a href="shopping.html" data-i18n="nav.shopping">购物</a></li>
                 <li><a href="traffic.html" data-i18n="nav.transport">交通</a></li>
-                <li><a href="map.html" data-i18n="nav.map">地图</a></li>
+                <li><a href="map.html" class="active" data-i18n="nav.map">地图</a></li>
             </ul>
             <div class="nav-actions">
                 <button id="langSwitch" class="icon-btn" title="切换语言">
@@ -125,18 +124,7 @@
     <script src="../assets/vendor/aos.js?v=20251221"></script>
     <script src="../assets/js/index.js?v=20251221"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 手动激活地图导航项
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === 'map.html') {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        });
+        // 页面特定的脚本逻辑（如果有）
     </script>
 </body>
 </html>

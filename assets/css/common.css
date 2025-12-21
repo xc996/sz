@@ -81,6 +81,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     transition: var(--transition-slow);
+    border-top: none !important; /* 强制移除可能存在的顶部边框 */
 }
 
 .container {
@@ -145,6 +146,7 @@ body {
     background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 100%);
     z-index: 1000;
     transition: var(--transition);
+    border-top: none !important; /* 强制移除可能存在的顶部边框 */
 }
 
 #navbar.scrolled {
@@ -216,25 +218,27 @@ body {
     border: 1px solid transparent;
 }
 
-/* 选中态样式 */
+/* 选中态样式 - 统一改为下划线风格 */
 .nav-menu a.active {
-    background: var(--primary-color) !important;
-    color: white !important;
+    background: transparent !important;
+    color: var(--primary-color) !important;
     font-weight: 700;
-    box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3);
+    box-shadow: none;
 }
 
 /* 夜间模式选中态样式 */
 [data-theme="dark"] .nav-menu a.active {
-    background: rgba(0, 184, 212, 0.15) !important;
+    background: transparent !important;
     color: var(--primary-color) !important;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 15px rgba(0, 184, 212, 0.4);
+    border-color: transparent;
+    box-shadow: none;
+    text-shadow: 0 0 10px var(--glow-color);
 }
 
-/* 选中态移除下划线 */
+/* 选中态显示下划线 */
 .nav-menu a.active::after {
-    display: none !important;
+    display: block !important;
+    width: 100%;
 }
 
 #navbar.scrolled .nav-menu a {
@@ -243,13 +247,14 @@ body {
 
 /* 滚动后的选中态 - 保持一致 */
 #navbar.scrolled .nav-menu a.active {
-    background: var(--primary-color) !important;
-    color: white !important;
+    background: transparent !important;
+    color: var(--primary-color) !important;
 }
 
 /* 夜间模式滚动后的选中态 */
 [data-theme="dark"] #navbar.scrolled .nav-menu a.active {
-    box-shadow: 0 0 15px var(--glow-color);
+    box-shadow: none;
+    text-shadow: 0 0 10px var(--glow-color);
 }
 
 .nav-menu a::after {
@@ -318,6 +323,143 @@ body {
 
 #navbar.scrolled .menu-toggle span {
     background: var(--text-primary);
+}
+
+/* ===================================
+   Hero 区域 (通用样式)
+   =================================== */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.video-container img,
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 184, 212, 0.3), rgba(255, 107, 53, 0.3));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.title-line {
+    display: block;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.title-line-2 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 10px;
+    animation-delay: 0.3s;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeInUp 1s ease 0.6s forwards;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.arrow-down {
+    color: white;
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.wheel {
+    width: 4px;
+    height: 8px;
+    background: white;
+    border-radius: 2px;
+    animation: scroll 1.5s ease-in-out infinite;
+}
+
+@keyframes scroll {
+    0% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
 }
 
 /* ===================================
@@ -716,7 +858,7 @@ body {
 
 
 /* ===================================
-   �ֲ�ͼ��ʽ (Carousel)
+   轮播图样式 (Carousel)
    =================================== */
 
 .carousel-section {
@@ -724,6 +866,8 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .carousel-container, .carousel-wrapper {
@@ -758,7 +902,7 @@ body {
     object-fit: cover;
 }
 
-/* �ֲ�����/��Ļ */
+/* �ֲ�����/��Ļ */
 .carousel-caption {
     position: absolute;
     bottom: 50px;
@@ -786,7 +930,7 @@ body {
     opacity: 0.9;
 }
 
-/* ��ҳ���еľ��д���� (SHENZHEN) */
+/* ��ҳ���еľ��д���� (SHENZHEN) */
 .carousel-title {
     position: absolute;
     top: 50%;
@@ -823,7 +967,7 @@ body {
     transform: translateY(50px);
 }
 
-/* �ֲ����ư�ť */
+/* �ֲ����ư�ť */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -851,7 +995,7 @@ body {
 .prev-btn { left: 30px; }
 .next-btn { right: 30px; }
 
-/* �ֲ�ָʾ�� */
+/* �ֲ�ָʾ�� */
 .carousel-indicators {
     position: absolute;
     bottom: 30px;
@@ -879,7 +1023,7 @@ body {
 }
 
 /* ===================================
-   ͨ����Դչʾ (Grid & Card)
+   ͨ����Դչʾ (Grid & Card)
    =================================== */
 
 .attractions-detail-section {
@@ -979,7 +1123,7 @@ body {
     background: var(--secondary-color);
 }
 
-/* ��Ӧʽ���� */
+/* ��Ӧʽ���� */
 @media (max-width: 768px) {
     .carousel-section { height: 60vh; }
     .carousel-caption h2 { font-size: 1.8rem; }

@@ -519,22 +519,29 @@ function initActiveNav() {
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         
-        // 移除所有 active 类
-        link.classList.remove('active');
-        
         // 处理首页 (#home)
         // 如果路径以 / 结尾或以 index.html 结尾，且链接是 #home，则高亮
         const isHome = currentPath.endsWith('/') || currentPath.endsWith('index.html');
+        const isHomeLink = href === '#home';
         
-        if (isHome && href === '#home') {
-            link.classList.add('active');
-            console.log('[Home Nav] Activated Home:', href);
-        }
         // 处理其他页面 (xxx.html)
         // 排除锚点链接和空链接
-        else if (href && href !== '#' && !href.startsWith('#') && currentPath.includes(href)) {
-            link.classList.add('active');
-             console.log('[Home Nav] Activated Other:', href);
+        // 简单判断：当前路径包含 href (例如 /pages/map.html 包含 map.html)
+        const isOtherMatch = href && href !== '#' && !href.startsWith('#') && currentPath.includes(href);
+        
+        if ((isHome && isHomeLink) || isOtherMatch) {
+            if (!link.classList.contains('active')) {
+                link.classList.add('active');
+                console.log('[Home Nav] Added active class:', href);
+            } else {
+                console.log('[Home Nav] Active class already present:', href);
+            }
+        } else {
+            // 如果不匹配，但有 active 类，则移除
+            if (link.classList.contains('active')) {
+                link.classList.remove('active');
+                console.log('[Home Nav] Removed active class from mismatch:', href);
+            }
         }
     });
 }
