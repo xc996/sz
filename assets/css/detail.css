@@ -147,31 +147,7 @@
     visibility: visible; /* 中文：避免被动画库默认隐藏 */
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    box-shadow: 0 10px 30px rgba(0, 184, 212, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 184, 212, 0.5);
-}
+/* 按钮样式已移至 common.css */
 
 /* 响应式设计 */
 @media (max-width: 768px) {

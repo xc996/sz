@@ -1,47 +1,45 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="深圳互动地图 | Shenzhen Interactive Map">
-    <title>深圳地图 | Shenzhen Map</title>
-    <link rel="icon" href="assets/images/深圳logo.png">
-    <link rel="stylesheet" href="assets/css/index.css?v=3">
-    <link rel="stylesheet" href="assets/vendor/all.min.css">
-    <link href="assets/vendor/aos.css" rel="stylesheet">
-    <style>
-        /* 地图页面特定样式 */
-        .map-hero {
-            height: 60vh;
-            min-height: 400px;
-        }
-        
-        /* 夜间模式地图滤镜 */
-        [data-theme="dark"] .map-container {
-            filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.2);
-        }
-        
-        /* 避免地图控件也被反色，如果可能的话（iframe内很难控制，所以整体反色是折中方案） */
-    </style>
+    <meta name="description" content="深圳美食 | Shenzhen Food">
+    <title>深圳美食 | Shenzhen Food</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/深圳logo.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/common.css?v=20251221">
+    <link rel="stylesheet" href="../assets/css/food.css?v=20251221">
+    
+    <!-- Font Awesome (本地化) -->
+    <link rel="stylesheet" href="../assets/vendor/all.min.css?v=20251221">
+    
+    <!-- AOS Animation (本地化) -->
+    <link href="../assets/vendor/aos.css?v=20251221" rel="stylesheet">
 </head>
 <body data-theme="light" data-lang="zh">
+    <!-- 导航栏 -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="assets/images/深圳logo.png" alt="深圳logo">
+                    <img src="../assets/images/深圳logo.png" alt="深圳logo">
                 </div>
                 <span class="logo-text" data-i18n="nav.logo">深圳</span>
             </div>
+            
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="../index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="attractions.html" data-i18n="nav.attractions">景点</a></li>
                 <li><a href="history.html" data-i18n="nav.culture">历史文化</a></li>
-                <li><a href="food.html" data-i18n="nav.food">美食</a></li>
+                <li><a href="food.html" class="active" data-i18n="nav.food">美食</a></li>
                 <li><a href="shopping.html" data-i18n="nav.shopping">购物</a></li>
                 <li><a href="traffic.html" data-i18n="nav.transport">交通</a></li>
                 <li><a href="map.html" data-i18n="nav.map">地图</a></li>
             </ul>
+            
             <div class="nav-actions">
                 <button id="langSwitch" class="icon-btn" title="切换语言">
                     <i class="fas fa-globe"></i>
@@ -59,46 +57,66 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero map-hero">
-        <div class="video-container">
-            <img src="assets/images/轮1.jpg" id="bgVideo" alt="深圳地图">
-            <div class="video-overlay"></div>
-        </div>
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="title-line" data-i18n="map.title">互动地图</span>
-                <span class="title-line-2">SHENZHEN MAP</span>
-            </h1>
-            <p class="hero-subtitle" data-i18n="map.subtitle">探索深圳的每一个角落</p>
-        </div>
-        <div class="scroll-indicator" onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">
-            <div class="mouse">
-                <div class="wheel"></div>
+    <!-- 大屏图片轮播 (复用景点轮播，或者可以替换为美食相关图片) -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <!-- 轮播项 -->
+                <div class="carousel-item active">
+                    <img src="../assets/images/轮1.jpg" alt="轮播图1">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/images/轮2.jpg" alt="轮播图2">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/images/轮3.jpg" alt="轮播图3">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/images/轮4.jpg" alt="轮播图4">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/images/轮5.jpg" alt="轮播图5">
+                </div>
             </div>
-            <i class="fas fa-chevron-down arrow-down"></i>
+            
+            <!-- 轮播中间的标题 -->
+            <div class="carousel-title">
+                <h1 data-i18n="food.title">美食天堂</h1>
+                <h2 data-i18n="food.subtitle">品味深圳的多元美食文化</h2>
+            </div>
+            
+            <!-- 轮播控制按钮 -->
+            <button class="carousel-btn prev-btn" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <!-- 轮播指示器 -->
+            <div class="carousel-indicators" id="carouselIndicators">
+                <!-- 指示器由JS生成 -->
+            </div>
         </div>
     </section>
 
-    <section id="map" class="section">
+    <!-- 美食展示区域 -->
+    <section class="attractions-detail-section">
         <div class="container">
             <h2 class="section-title">
-                <span data-i18n="footer.map">互动地图</span>
+                <span data-i18n="food.title">美食天堂</span>
                 <div class="title-underline"></div>
             </h2>
-            <p class="section-subtitle" data-i18n="map.subtitle">基于高德地图，支持缩放与互动</p>
-            <iframe
-                id="mapContainer"
-                class="map-container"
-                src="https://www.amap.com/place/440300"
-                title="高德地图 - 深圳互动地图"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen>
-            </iframe>
+            <p class="section-subtitle" data-i18n="food.subtitle">品味深圳的多元美食文化</p>
+            
+            <!-- 美食卡片区域 -->
+            <div class="attractions-grid" id="foodGrid">
+                <!-- 美食卡片由JS动态生成 -->
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -106,6 +124,7 @@
                     <h3 data-i18n="footer.about">关于深圳</h3>
                     <p data-i18n="footer.desc">中国改革开放的窗口，创新创业的热土</p>
                 </div>
+                
                 <div class="footer-section">
                     <h3 data-i18n="footer.quick">快速链接</h3>
                     <ul>
@@ -115,6 +134,7 @@
                         <li><a href="food.html" data-i18n="footer.food">美食推荐</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3 data-i18n="footer.contact">联系我们</h3>
                     <ul>
@@ -124,31 +144,22 @@
                     </ul>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p>&copy; 2025 Shenzhen Tourism. <span data-i18n="footer.rights">保留所有权利</span></p>
             </div>
         </div>
     </footer>
 
+    <!-- 返回顶部 -->
     <button id="backToTop" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="assets/vendor/aos.js"></script>
-    <script src="assets/js/index.js?v=2"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 手动激活地图导航项
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === 'map.html') {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        });
-    </script>
+    <!-- JS Libraries -->
+    <script src="../assets/vendor/aos.js?v=20251221"></script>
+    
+    <!-- Custom JS -->
+    <script src="../assets/js/food.js?v=20251221"></script>
 </body>
 </html>

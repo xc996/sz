@@ -940,11 +940,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 初始化轮播
     if (document.querySelector('.carousel-section')) {
+        console.log('Carousel section found, initializing...');
         carousel.init();
+    } else {
+        console.warn('Carousel section NOT found');
     }
     
     // 绑定景点卡片点击事件
     if (document.querySelector('.attractions-grid')) {
+        console.log('Attractions grid found, binding events...');
         bindAttractionClickEvents();
     }
 
