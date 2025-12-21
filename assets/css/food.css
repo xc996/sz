@@ -604,17 +604,19 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
+    min-width: 35px;
     height: 35px;
+    padding: 0 15px;
     background: var(--primary-color);
     color: white;
     text-decoration: none;
-    border-radius: 50%;
+    border-radius: 35px;
     font-size: 0.9rem;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
     margin-left: auto;
+    white-space: nowrap;
 }
 
 .detail-btn:hover {

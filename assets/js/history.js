@@ -632,7 +632,7 @@ function renderHeritage() {
                 <p class="heritage-description">${currentLang === 'zh' ? item.description : item.descriptionEn}</p>
                 <div class="heritage-footer">
                     <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
-                    <button class="heritage-intro-btn">介绍</button>
+                    <button class="heritage-intro-btn">${currentLang === 'zh' ? '介绍' : 'Introduction'}</button>
                 </div>
             </div>
         `;

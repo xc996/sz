@@ -314,7 +314,7 @@ async function renderTraffic() {
                         <i class="fas fa-map-marker-alt"></i>
                         <span>${currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '')}</span>
                     </div>
-                    <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="查看详情">详</a>
+                    <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="${currentLang === 'zh' ? '查看详情' : 'View Details'}">${currentLang === 'zh' ? '详' : 'Detail'}</a>
                 </div>
             </div>
         `;
@@ -369,6 +369,7 @@ async function updateTrafficCardsText() {
         
         const detailBtn = card.querySelector('.detail-btn');
         if (detailBtn) {
+            detailBtn.textContent = currentLang === 'zh' ? '详' : 'Detail';
             detailBtn.setAttribute('title', currentLang === 'zh' ? '查看详情' : 'View Details');
         }
     });
