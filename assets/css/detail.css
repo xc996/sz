@@ -63,31 +63,15 @@
     margin: 0px 0 120px; /* 中文：上方内容与按钮区之间拉大距离，避免视觉重叠 */
 }
 
-.detail-info, .detail-highlights, .detail-section {
+.detail-info, .detail-highlights {
     background: var(--bg-primary);
     padding: 30px;
     border-radius: 15px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px;
 }
 
-.detail-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.detail-section p {
-    margin-bottom: 15px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-}
-
-.detail-info:hover, .detail-highlights:hover, .detail-section:hover {
+.detail-info:hover, .detail-highlights:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }

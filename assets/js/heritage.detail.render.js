@@ -128,43 +128,6 @@ function renderDetail(item) {
   const base = getAssetsBase();
   const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
 
-  let additionalContent = '';
-  
-  // 只有大鹏所城添加额外内容
-  if (item.slug === 'dapeng') {
-    additionalContent = `
-      <div class="detail-section" data-aos="fade-up">
-        <h2>历史沿革</h2>
-        <p>清初大鹏所原设防守千总一员，兵三百名。
-        顺治十三年（1656年），历史城墙新安县知县傅尔植奏请改设大鹏所防守营，官兵五百名。
-        康熙七年（1668年），并大鹏所防守营入惠州协，归惠州协副将管辖，时该营官兵凡四百员名。
-        康熙四十三年（1704年），改大鹏所防守营为大鹏水师营，官兵九百三十一名。防所大炮共一百六十八位。
-        雍正四年（1726年），裁游击，改设参将一员，添设外委千把总七员，改隶广东水陆提标统辖。
-        嘉庆十五年（1810年），水陆区分，广东增设水师提督，驻虎门，设五营，大鹏为外海水师营，设参将一员，兵额八百名。
-        道光十一年（1831年），以该营所辖之洋面宽广，难于防卫，遂分设左右二营。左营即原大鹏营，兵额五百零五名，右营驻东涌所城，兵四百八十二名。
-        道光二十年（1840年），以鸦片走私盛行及英人威胁日大，遂将大鹏营提升为协，增设副将一员，移驻九龙。
-        咸丰十年（1860年），九龙地区转归英属，大鹏协所辖部分台汛位英界内，故被废置。
-        同治八年（1869年），该协左营实存兵四百三十名，右营实存兵三百二十名。
-        光绪二十四年（1898年），英人租界新界及离岛地区，该协所辖汛台内全位英界内，故亦被裁设。
-        光绪二十五年（1899年），九龙寨城内之清朝官兵被英军驱逐，该协两营故亦被裁。
-        2024年6月15日16时许，深圳市大鹏所城南门城墙发生小范围坍塌。大鹏新区应急、文体、街道办事处等部门已第一时间赶赴现场处置。坍塌区域周围已设立安全围挡，并正组织应急、文物等领域专家对坍塌情况进行全面评估。</p>
-      </div>
-      <div class="detail-section" data-aos="fade-up">
-        <h2>建筑特点</h2>
-        <p>据清代《新安县志》记载，大鹏所城为广州左卫千户张斌开筑，内外砌以砖石，沿海所城，大鹏为最，周围三百二十五丈，高一丈八尺，面广六尺，址广一丈四尺，门楼四，敌楼如之，警铺一十六，雉堞六百五十四。所城平面呈近梯形布局，占地约10万平方米，城墙高6米、长1200米，上设雉堞654个，并辟有马道。全城分东、西、南、北四个城门（北门于明万历年间被堵塞），每个城门上建有一座敌楼，两边各设两个警铺。城外东、西、南三面，环绕着一条长1200米、宽5米、深3米的护城濠。</p>
-      </div>
-      <div class="detail-section" data-aos="fade-up">
-        <h2>研究价值</h2>
-        <p>大鹏所城主要格局、街道及建筑保存相当完整。体现城外观的部分城墙及东、南两城门保存完好，城内现存有赵公祠、天后庙、华光庙、候王庙和十余座清代将军府第以及一批清代民居，其中尤以赖恩爵的“振威将军第”保存最为完整和突出，对研究中国古代建筑史、城镇规划建设史、明清民俗文化及岭南地区古建筑发展史等均具有重要的价值。</p>
-      </div>
-      <div class="detail-section" data-aos="fade-up">
-        <h2>历史文化</h2>
-        <p>大鹏所城，全称为“大鹏守御千户所城”，为明清两代中国海防的军事要塞，有“沿海所城，大鹏为最”之称。大鹏所城文化根脉深厚，聚集了来自天南地北的兵将，融合了客家文化、疍家文化、广府文化和海防文化，诞生了深圳最早的移民文化。大鹏所城历经600多年风雨，仍完好地保留着旧时的古庙、古城楼、古民居、古宅院、古街道、古粮仓等古代建筑遗址。如今，大鹏所城已成为一个重要的旅游胜地和文化遗产，是国内现存最完好的明清海防卫所遗存之一。
-        大鹏所城是深圳“鹏城”别名的源头与根脉，也是明代为了抗击倭寇而设立的“大鹏守御千户所城”，在明清两代是南中国海防军事要塞，因抗击英军而名动天下。历经600多年风雨的海防所城，有久远的历史和文化。明代大鹏所城有武略将军刘钟、徐勋，清代大鹏所城有赖氏“三代五将”、刘氏“父子将军”等明清两代十几个将军，为大鹏所城赢得了“将军村”的荣誉。清代的大鹏所城及守城的赖恩爵将军取得了鸦片战争首战——九龙海战的胜利，载入中国近代史册。</p>
-      </div>
-    `;
-  }
-  
   root.innerHTML = `
     <div class="detail-header" data-aos="fade-up">
       <h1 class="detail-title">${name}</h1>
@@ -180,8 +143,39 @@ function renderDetail(item) {
         <h2>${lang === 'en' ? 'Introduction' : '遗产介绍'}</h2>
         <p>${description}</p>
       </div>
-      ${additionalContent}
     </div>
+    ${item.history ? `
+    <div class="detail-content">
+      <div class="detail-info" data-aos="fade-right">
+        <h2>${lang === 'en' ? 'Historical Evolution' : '历史沿革'}</h2>
+        <p>${lang === 'en' ? item.historyEn : item.history}</p>
+      </div>
+    </div>
+    ` : ''}
+    ${item.architecture ? `
+    <div class="detail-content">
+      <div class="detail-info" data-aos="fade-right">
+        <h2>${lang === 'en' ? 'Architectural Features' : '建筑特点'}</h2>
+        <p>${lang === 'en' ? item.architectureEn : item.architecture}</p>
+      </div>
+    </div>
+    ` : ''}
+    ${item.research ? `
+    <div class="detail-content">
+      <div class="detail-info" data-aos="fade-right">
+        <h2>${lang === 'en' ? 'Research Value' : '研究价值'}</h2>
+        <p>${lang === 'en' ? item.researchEn : item.research}</p>
+      </div>
+    </div>
+    ` : ''}
+    ${item.culture ? `
+    <div class="detail-content">
+      <div class="detail-info" data-aos="fade-right">
+        <h2>${lang === 'en' ? 'Historical Culture' : '历史文化'}</h2>
+        <p>${lang === 'en' ? item.cultureEn : item.culture}</p>
+      </div>
+    </div>
+    ` : ''}
     <div class="back-button" data-aos="fade-up">
       <a href="../history.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back' : '返回'}</a>
     </div>
