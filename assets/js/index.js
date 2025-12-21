@@ -696,18 +696,24 @@ function init() {
         themeToggle.addEventListener('click', toggleTheme);
     }
     
-    if (ctaBtn) {
-        ctaBtn.addEventListener('click', () => {
-            // 滚动到景点展示区
-            const attractionsSection = document.getElementById('attractions');
-            if (attractionsSection) {
-                attractionsSection.scrollIntoView({
+    // 绑定滚动提示箭头点击事件
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const introSection = document.querySelector('.intro-section');
+            if (introSection) {
+                // 计算导航栏高度作为偏移量
+                const navbarHeight = document.getElementById('navbar').offsetHeight || 0;
+                const targetPosition = introSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             }
         });
     }
-    
+
     // 监听滚动事件，为新进入视口的元素添加动画
     window.addEventListener('scroll', () => {
         // 可以在这里添加滚动触发的动画逻辑
