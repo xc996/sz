@@ -1,0 +1,26 @@
+/* 地图页面特定样式 */
+.map-hero {
+    height: 60vh;
+    min-height: 400px;
+}
+
+.map-container {
+    width: 100%;
+    height: 600px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    display: block;
+    background: #f0f0f0; /* 加个背景色，万一加载慢 */
+}
+
+/* 夜间模式地图滤镜 */
+[data-theme="dark"] .map-container {
+    filter: invert(1) hue-rotate(180deg) brightness(0.8) contrast(1.2);
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        height: 400px;
+    }
+}
