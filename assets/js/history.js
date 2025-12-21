@@ -277,8 +277,8 @@ const heritageData = [
     {
         name: '大万世居',
         nameEn: 'Dawanshiju',
-        description: '深圳第二大客家围屋，保存完好的清代客家建筑群',
-        descriptionEn: 'Shenzhen\'s second largest Hakka enclosed house, well-preserved Qing Dynasty Hakka architectural complex',
+        description: '大万世居，又称"大万围"，是全国最大且保存最完整的方形客家围屋之一',
+        descriptionEn: 'Dawanshiju, also known as "Dawan Wei", is one of the largest and best-preserved square Hakka enclosed houses in China',
         level: 'provincial',
         image: 'assets/images/大万世居.jpg'
     }

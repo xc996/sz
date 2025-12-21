@@ -100,8 +100,8 @@
       "slug": "dawanshiju",
       "name": "大万世居",
       "nameEn": "Dawanshiju",
-      "description": "深圳第二大客家围屋，保存完好的清代客家建筑群。大万世居建于清乾隆五十六年（1791年），是深圳地区保存完好的清代客家建筑群，占地面积约15000平方米，建筑面积约12000平方米，共有144间房。",
-      "descriptionEn": "Shenzhen's second largest Hakka enclosed house, well-preserved Qing Dynasty Hakka architectural complex. Built in 1791 during the Qing Dynasty, it is a well-preserved Qing Dynasty Hakka architectural complex in Shenzhen, covering an area of about 15,000 square meters with a construction area of about 12,000 square meters, containing 144 rooms.",
+      "description": "大万世居，又称'大万围'，位于广东省深圳市坪山区大万路33号的大万围村，始建于清乾隆五十六年（1791年），是全国最大且保存最完整的方形客家围屋之一，占地2.5万平方米，建筑面积1.66万平方米，共有房屋400余间。\n大万世居平面呈方形，四角建有炮楼，正面有大六楼，均为高高的围墙相连，围墙上有走马廊相通。围村大门向南，门楼上塑有'大万世居'4个大字。大门前为禾坪，再前是月形池塘，禾坪侧仍保留有旗杆石。大万世居是曾姓家族居住、生活和工作的地方，保留了客家人的历史民俗遗物和文化精粹。反映了各个时期的社会文化特点和客家人的流连变迁，极具历史艺术价值，也是研究和体验深圳客家源流、民俗、建筑艺术和水利工程的活化石，对了解汉族客家民系及其源流和迁徙史有重大价值。\n1984年，'大万世居'被列为深圳市重点文物保护单位。2002年7月，大万世居被列为广东省重点文物保护单位，并成立大万世居客家民俗文化博物馆。2018年，大万世居被列入深圳市提升改造的'十大特色文化街区'之一。",
+      "descriptionEn": "Dawanshiju, also known as 'Dawan Wei', is located in Dawanwei Village, No. 33, Dawan Road, Pingshan District, Shenzhen City, Guangdong Province. It was built in the 56th year of Qianlong in the Qing Dynasty (1791) and is one of the largest and best-preserved square Hakka enclosed houses in China, covering an area of 25,000 square meters, with a construction area of 16,600 square meters and more than 400 houses.\nDawanshiju is square in plan, with watchtowers at the four corners and a large six-story building at the front, all connected by high walls with a corridor on the wall. The gate of the enclosed village faces south, with four large characters 'Dawanshiju' sculpted on the gate tower. In front of the gate is a threshing ground, and further ahead is a moon-shaped pond, with flagpole stones still preserved on the side of the threshing ground. Dawanshiju is the place where the Zeng family lived, worked and lived, preserving the historical folk relics and cultural essence of the Hakka people. It reflects the social and cultural characteristics of various periods and the changes of the Hakka people, and has great historical and artistic value. It is also a living fossil for studying and experiencing the origin, folk customs, architectural art and water conservancy projects of the Hakka people in Shenzhen, and has great value for understanding the Hakka ethnic group of the Han nationality and its origin and migration history.\nIn 1984, 'Dawanshiju' was listed as a key cultural relic protection unit in Shenzhen. In July 2002, Dawanshiju was listed as a key cultural relic protection unit in Guangdong Province, and the Dawanshiju Hakka Folk Culture Museum was established. In 2018, Dawanshiju was listed as one of the 'Top Ten Characteristic Cultural Blocks' for upgrading and renovation in Shenzhen.",
       "level": "provincial",
       "image": "assets/images/大万世居.jpg",
       "seo": {
@@ -110,8 +110,8 @@
           "en": "Dawanshiju - Shenzhen Cultural Heritage"
         },
         "description": {
-          "zh": "深圳第二大客家围屋，保存完好的清代客家建筑群。",
-          "en": "Shenzhen's second largest Hakka enclosed house, well-preserved Qing Dynasty Hakka architectural complex."
+          "zh": "大万世居，又称'大万围'，是全国最大且保存最完整的方形客家围屋之一，占地2.5万平方米，建筑面积1.66万平方米，共有房屋400余间。",
+          "en": "Dawanshiju, also known as 'Dawan Wei', is one of the largest and best-preserved square Hakka enclosed houses in China, covering an area of 25,000 square meters with a construction area of 16,600 square meters and more than 400 houses."
         }
       }
     }
