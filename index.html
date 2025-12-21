@@ -108,162 +108,100 @@
                     <span class="stat-label" data-i18n="hero.stat3">万常住人口</span>
                 </div>
             </div>
-            
-            <button class="cta-btn">
-                <span data-i18n="hero.explore">探索更多</span>
-                <i class="fas fa-arrow-down"></i>
-            </button>
         </div>
         
+        <!-- 滚动提示箭头 -->
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow-down">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
         
     </section>
 
-    <!-- 景点展示区 -->
-    <section id="attractions" class="section">
+    <!-- 城市简介区 -->
+    <section class="section intro-section">
         <div class="container">
-            <h2 class="section-title">
-                <span data-i18n="attractions.title">热门景点</span>
-                <div class="title-underline"></div>
-            </h2>
-            <p class="section-subtitle" data-i18n="attractions.subtitle">探索深圳最具代表性的地标建筑与自然风光</p>
-            
-            <!-- 景点网格 -->
-            <div class="attractions-grid" id="attractionsGrid">
-                <!-- 由 JS 动态生成 -->
+            <div class="intro-content" data-aos="fade-up">
+                <h2 class="section-title">
+                    <span data-i18n="intro.title">遇见深圳</span>
+                    <div class="title-underline"></div>
+                </h2>
+                <p class="intro-text" data-i18n="intro.desc">
+                    深圳，一座充满活力与梦想的年轻城市。这里有山海连城的自然风光，也有引领未来的科技创新。
+                    从边陲小镇到国际化大都市，深圳的每一步都写满了奇迹。
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- 历史文化区 -->
-    <section id="culture" class="section section-dark">
+    <!-- 探索导览区 -->
+    <section id="explore" class="section section-gray">
         <div class="container">
-            <h2 class="section-title">
-                <span data-i18n="culture.title">深圳故事</span>
-                <div class="title-underline"></div>
-            </h2>
-            <p class="section-subtitle" data-i18n="culture.subtitle">从小渔村到国际化大都市的华丽蜕变</p>
-            
-            <div class="timeline" id="timeline">
-                <!-- 时间轴由 JS 生成 -->
-            </div>
-        </div>
-    </section>
+            <div class="explore-grid">
+                <!-- 景点 -->
+                <a href="attractions.html" class="explore-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-bg" style="background-image: url('assets/images/平安金融中心.jpg')"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-landmark"></i>
+                        <h3 data-i18n="nav.attractions">热门景点</h3>
+                        <p data-i18n="explore.attractions.desc">打卡地标建筑与自然风光</p>
+                        <span class="card-btn"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                
+                <!-- 美食 -->
+                <a href="food.html" class="explore-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-bg" style="background-image: url('assets/images/欢乐谷.jpg')"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-utensils"></i>
+                        <h3 data-i18n="nav.food">美食天堂</h3>
+                        <p data-i18n="explore.food.desc">品味从早茶到夜宵的美味</p>
+                        <span class="card-btn"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
 
-    <!-- 美食区 -->
-    <section id="food" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <span data-i18n="food.title">美食天堂</span>
-                <div class="title-underline"></div>
-            </h2>
-            <p class="section-subtitle" data-i18n="food.subtitle">品味深圳的多元美食文化</p>
-            
-            <div class="food-grid">
-                <div class="food-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-utensils"></i>
-                    <h3 data-i18n="food.item1">潮汕牛肉火锅</h3>
-                    <p data-i18n="food.desc1">鲜嫩多汁的牛肉，浓郁的牛骨汤，深圳必尝美食</p>
-                </div>
-                <div class="food-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-drumstick-bite"></i>
-                    <h3 data-i18n="food.item2">客家盐焗鸡</h3>
-                    <p data-i18n="food.desc2">皮脆肉嫩，咸香入骨，经典客家名菜</p>
-                </div>
-                <div class="food-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-fish"></i>
-                    <h3 data-i18n="food.item3">粤菜海鲜</h3>
-                    <p data-i18n="food.desc3">新鲜海鲜，原汁原味，地道粤菜风味</p>
-                </div>
-                <div class="food-item" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-bread-slice"></i>
-                    <h3 data-i18n="food.item4">深圳小吃</h3>
-                    <p data-i18n="food.desc4">东门老街、车公庙美食街，各种特色小吃</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- 购物 -->
+                <a href="shopping.html" class="explore-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-bg" style="background-image: url('assets/images/华强北.jpg')"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3 data-i18n="nav.shopping">购物胜地</h3>
+                        <p data-i18n="explore.shopping.desc">国际大牌与潮流街区的聚集地</p>
+                        <span class="card-btn"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
 
-    <!-- 购物区 -->
-    <section id="shopping" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <a href="shopping.html" style="text-decoration: none; color: inherit;"><span data-i18n="shopping.title">购物天堂</span></a>
-                <div class="title-underline"></div>
-            </h2>
-            <p class="section-subtitle" data-i18n="shopping.subtitle">从高端商场到特色街区，满足你的购物欲望</p>
-            
-            <div class="shopping-grid">
-                <div class="shopping-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-shopping-mall"></i>
-                    <h3 data-i18n="shopping.item1">高端商场</h3>
-                    <p data-i18n="shopping.desc1">万象城、海岸城、益田假日广场，国际品牌云集</p>
-                </div>
-                <div class="shopping-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-store"></i>
-                    <h3 data-i18n="shopping.item2">特色街区</h3>
-                    <p data-i18n="shopping.desc2">东门老街、华强北、海上世界，各具特色</p>
-                </div>
-                <div class="shopping-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3 data-i18n="shopping.item3">电子产品</h3>
-                    <p data-i18n="shopping.desc3">华强北电子市场，全球最大的电子集散地</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- 历史 -->
+                <a href="history.html" class="explore-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-bg" style="background-image: url('assets/images/南头古城.jpg')"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-history"></i>
+                        <h3 data-i18n="nav.culture">历史文化</h3>
+                        <p data-i18n="explore.history.desc">探寻鹏城千年的文化脉络</p>
+                        <span class="card-btn"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
 
-    <!-- 交通区 -->
-    <section id="transport" class="section section-dark">
-        <div class="container">
-            <h2 class="section-title">
-                <span data-i18n="transport.title">便捷交通</span>
-                <div class="title-underline"></div>
-            </h2>
-            <p class="section-subtitle" data-i18n="transport.subtitle">四通八达的交通网络，轻松畅游深圳</p>
-            
-            <div class="transport-grid">
-                <div class="transport-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-subway"></i>
-                    <h3 data-i18n="transport.item1">地铁</h3>
-                    <p data-i18n="transport.desc1">覆盖全市主要区域，运营时间：6:30-23:00</p>
-                </div>
-                <div class="transport-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-bus"></i>
-                    <h3 data-i18n="transport.item2">公交</h3>
-                    <p data-i18n="transport.desc2">线路密集，票价优惠，适合深度游览</p>
-                </div>
-                <div class="transport-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-taxi"></i>
-                    <h3 data-i18n="transport.item3">出租车</h3>
-                    <p data-i18n="transport.desc3">起步价10元，滴滴打车也很方便</p>
-                </div>
-                <div class="transport-item" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-plane"></i>
-                    <h3 data-i18n="transport.item4">机场</h3>
-                    <p data-i18n="transport.desc4">深圳宝安国际机场，连接全球主要城市</p>
-                </div>
+                <!-- 交通 -->
+                <a href="traffic.html" class="explore-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-bg" style="background-image: url('assets/images/深圳logo.png'); background-size: contain;"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-subway"></i>
+                        <h3 data-i18n="nav.transport">交通指南</h3>
+                        <p data-i18n="explore.traffic.desc">地铁、公交、机场全攻略</p>
+                        <span class="card-btn"><i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
             </div>
-        </div>
-    </section>
-
-    <!-- 地图区域 -->
-    <section id="map" class="section">
-        <div class="container">
-            <h2 class="section-title">
-                <span data-i18n="footer.map">互动地图</span>
-                <div class="title-underline"></div>
-            </h2>
-            <p class="section-subtitle" data-i18n="map.subtitle">基于高德地图，支持缩放与互动</p>
-            <iframe
-                id="mapContainer"
-                class="map-container"
-                data-src="https://www.amap.com/place/440300"
-                title="高德地图 - 深圳互动地图"
-                loading="lazy"
-                referrerpolicy="strict-origin-when-cross-origin"
-                tabindex="-1"
-                allowfullscreen>
-            </iframe>
         </div>
     </section>
 
