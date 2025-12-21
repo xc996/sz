@@ -237,7 +237,7 @@ const heritageData = [
     {
         name: '大鹏所城',
         nameEn: 'Dapeng Ancient City',
-        description: '大鹏所城，全称为"大鹏守御千户所城"，位于广东省深圳市大鹏新区鹏城社区，是明清两代中国海防的军事要塞，有"沿海所城，大鹏为最"之称，是鸦片战争肇始地，有明清的海防历史和滨海客家文化氛围。深圳又别称"鹏城"，即源于此，被誉为"鹏城之根"。',
+        description: '明代海防要塞，保存完好的明清海防体系，被誉为"沿海所城，大鹏为最"',
         descriptionEn: 'Ming Dynasty coastal defense fortress with well-preserved Ming and Qing coastal defense system, known as "among coastal defense cities, Dapeng is the best"',
         level: 'national',
         image: 'assets/images/大鹏所城.jpg'
