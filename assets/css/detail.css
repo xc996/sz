@@ -59,8 +59,8 @@
 .detail-content {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 20px; /* 中文：统一与规范一致的左右间距 */
-    margin: 0px 0 120px; /* 中文：上方内容与按钮区之间拉大距离，避免视觉重叠 */
+    gap: 20px; /* 中文：统一与规范一致的间距 */
+    margin: 0 0 20px; /* 中文：调整上方内容与按钮区之间的距离，与区块内部间距一致 */
 }
 
 .detail-info, .detail-highlights {
