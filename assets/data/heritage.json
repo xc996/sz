@@ -62,8 +62,8 @@
       "slug": "xiantouling",
       "name": "咸头岭遗址",
       "nameEn": "Xiantouling Site",
-      "description": "深圳最早的史前文化遗址，距今约7000年，展现了珠三角地区早期人类文明。咸头岭遗址是一处新石器时代中期至晚期的贝丘遗址，位于深圳市大鹏新区南澳街道，总面积约30000平方米，出土了大量陶器、石器、玉器等文物，为研究珠三角地区早期人类文明提供了重要资料。",
-      "descriptionEn": "Shenzhen's earliest prehistoric cultural site, dating back about 7000 years, showing early human civilization in the Pearl River Delta region. Xiantouling Site is a shell mound site from the mid to late Neolithic period, located in Nan'ao Street, Dapeng New District, Shenzhen, covering an area of about 30,000 square meters. A large number of pottery, stone tools, jade articles and other cultural relics were unearthed, providing important materials for studying early human civilization in the Pearl River Delta region.",
+      "description": "咸头岭遗址位于深圳市东南部大鹏街道办事处咸头岭村， 面积30000平方米。该遗址是1981年在考古普查中发现的，出土的遗存有新石器时代和商时期的，其中新石器时代的遗存最为重要。根据碳十四测定的数据，该遗址应距今7000―6000年。 1981年全市文物调查时发现。现已先后进行过五次考古发掘，出土了大量白陶、彩陶、石器等史前人类文化遗存。经科学鉴定，最早的遗物距今近7000年，是珠三角地区已发现的年代最早的史前文化遗址之一，为建立珠江三角洲地区史前文化编年序列提供了重要标尺，具有重要的历史、文化、艺术和科学价值。 2014年12月1日，被深圳市人民政府公布为第六批深圳市文物保护单位。",
+      "descriptionEn": "Xiantouling Site is located in Xiantouling Village, Dapeng Street Office, southeastern Shenzhen, covering an area of 30,000 square meters. Discovered in the 1981 archaeological survey, it contains remains from the Neolithic Age and the Shang Dynasty, with the Neolithic remains being the most important. According to carbon-14 dating, the site dates back to 7000-6000 years ago. Discovered during the 1981 city-wide cultural relics survey, five archaeological excavations have been conducted, unearthing a large number of prehistoric cultural relics such as white pottery, painted pottery, and stone tools. Scientific identification shows that the earliest relics date back nearly 7000 years, making it one of the earliest prehistoric cultural sites discovered in the Pearl River Delta region. It provides an important benchmark for establishing the prehistoric cultural chronological sequence in the Pearl River Delta region and has significant historical, cultural, artistic, and scientific value. On December 1, 2014, it was announced as the sixth batch of Shenzhen Cultural Relics Protection Units by the Shenzhen Municipal People's Government.",
       "level": "national",
       "image": "assets/images/咸头岭遗址.jpg",
       "seo": {
@@ -72,8 +72,8 @@
           "en": "Xiantouling Site - Shenzhen Cultural Heritage"
         },
         "description": {
-          "zh": "深圳最早的史前文化遗址，距今约7000年，展现了珠三角地区早期人类文明。",
-          "en": "Shenzhen's earliest prehistoric cultural site, dating back about 7000 years, showing early human civilization in the Pearl River Delta region."
+          "zh": "咸头岭遗址位于深圳市东南部大鹏街道办事处咸头岭村，是珠三角地区已发现的年代最早的史前文化遗址之一，距今7000-6000年，具有重要的历史、文化、艺术和科学价值。",
+          "en": "Xiantouling Site is located in Xiantouling Village, Dapeng Street Office, southeastern Shenzhen. It is one of the earliest prehistoric cultural sites discovered in the Pearl River Delta region, dating back to 7000-6000 years ago, with significant historical, cultural, artistic, and scientific value."
         }
       }
     },
@@ -81,8 +81,8 @@
       "slug": "wentianxiang",
       "name": "文天祥纪念馆",
       "nameEn": "Wen Tianxiang Memorial Hall",
-      "description": "纪念南宋民族英雄文天祥的纪念馆，展示其生平事迹和崇高精神。文天祥纪念馆位于深圳市南山区，建筑面积约1200平方米，分为生平事迹、文学成就、后世影响三个部分，通过文物、图片、文字等多种形式，全面展示了文天祥的生平事迹和崇高精神。",
-      "descriptionEn": "Memorial hall commemorating Wen Tianxiang, a national hero of the Southern Song Dynasty, showcasing his life story and noble spirit. Located in Nanshan District, Shenzhen, with a construction area of about 1,200 square meters, it is divided into three parts: life story, literary achievements, and influence. Through cultural relics, pictures, texts and other forms, it comprehensively displays Wen Tianxiang's life story and noble spirit.",
+      "description": "文天祥纪念公园位于深圳市南山区赤湾六路与兴海大道交汇处西南侧，是以纪念南宋民族英雄文天祥为主题建设的文化公园。公园依托赤湾山地形设计，通过叙事性景观布局展现文天祥'读书报国'、'宦海沉浮'、'积极抗元'、'英勇就义'四大人生阶段，沿途设置书法石刻、人物雕塑和浮雕艺术装置。园区海拔213米，登山步道全程约20-30分钟可达山顶观景台，适合休闲健身与历史人文体验相结合的游览方式。",
+      "descriptionEn": "Wen Tianxiang Memorial Park is located at the southwest side of the intersection of Chiwan Sixth Road and Xinghai Avenue in Nanshan District, Shenzhen. It is a cultural park built with the theme of commemorating Wen Tianxiang, a national hero of the Southern Song Dynasty. The park is designed based on the terrain of Chiwan Mountain, displaying Wen Tianxiang's four major life stages of 'studying for the country', 'ups and downs in official career', 'actively resisting Yuan Dynasty', and 'heroic martyrdom' through narrative landscape layout. Calligraphy stone carvings, character sculptures and relief art installations are set along the way. The park is 213 meters above sea level, and it takes about 20-30 minutes to reach the summit viewing platform via the hiking trail, suitable for a combination of leisure fitness and historical and cultural experience.",
       "level": "provincial",
       "image": "assets/images/文天祥纪念馆.jpg",
       "seo": {
