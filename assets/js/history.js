@@ -475,20 +475,26 @@ function initActiveNav() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-menu a');
     
+    console.log('[Nav] Init active nav check. Path:', currentPath);
+    
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         
-        // 移除所有 active 类
-        link.classList.remove('active');
-        
         if (href === '#' || href.startsWith('#')) return;
 
-        // 简单匹配
-        if (currentPath.endsWith(href)) {
+        const isMatch = currentPath.endsWith(href);
+        const isHomeMatch = currentPath.endsWith('/') && href === 'index.html';
+        
+        if (isMatch || isHomeMatch) {
              link.classList.add('active');
-        }
-        else if (currentPath.endsWith('/') && href === 'index.html') {
-            link.classList.add('active');
+             console.log('[Nav] Activated via JS:', href);
+        } else {
+             if (link.classList.contains('active')) {
+                 if (!isMatch && !isHomeMatch) {
+                     link.classList.remove('active');
+                     console.log('[Nav] Removed active class from mismatch:', href);
+                 }
+             }
         }
     });
 }
@@ -496,14 +502,27 @@ function initActiveNav() {
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-    if (!navbar) return;
+    if (!navbar) {
+        console.error('[Navbar] Element not found!');
+        return;
+    }
+    
     function updateNavbar() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+        const scrollY = window.scrollY;
+        
+        if (scrollY > 50) {
+            if (!navbar.classList.contains('scrolled')) {
+                navbar.classList.add('scrolled');
+                console.log('[Navbar] Added .scrolled class');
+            }
         } else {
-            navbar.classList.remove('scrolled');
+            if (navbar.classList.contains('scrolled')) {
+                navbar.classList.remove('scrolled');
+                console.log('[Navbar] Removed .scrolled class');
+            }
         }
     }
+    
     updateNavbar();
     window.addEventListener('scroll', updateNavbar);
 }

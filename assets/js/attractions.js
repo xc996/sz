@@ -478,8 +478,9 @@ function initActiveNav() {
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         
-        // 移除所有 active 类
-        link.classList.remove('active');
+        // 注意：HTML中可能已经硬编码了 class="active"，这里只负责纠正或再次确认
+        // 如果我们希望完全依赖JS，可以先 remove('active')
+        // 但为了避免闪烁，建议保留 HTML 中的 active，这里只做“如果不匹配则移除”的逻辑，或者“如果匹配则添加”
         
         if (href === '#' || href.startsWith('#')) return;
 
@@ -487,15 +488,26 @@ function initActiveNav() {
         const isMatch = currentPath.endsWith(href);
         const isHomeMatch = currentPath.endsWith('/') && href === 'index.html';
         
-        console.log(`[Nav] Checking link: href="${href}", match=${isMatch}, homeMatch=${isHomeMatch}`);
-
-        if (isMatch) {
+        if (isMatch || isHomeMatch) {
              link.classList.add('active');
-             console.log('[Nav] Activated:', href);
-        }
-        else if (isHomeMatch) {
-            link.classList.add('active');
-            console.log('[Nav] Activated (Home):', href);
+             console.log('[Nav] Activated via JS:', href);
+        } else {
+             // 只有当确信不匹配时才移除？或者不移除，让 HTML 默认生效？
+             // 通常逻辑是：除了当前页，其他都移除。
+             // 但由于 href 是相对路径（如 "attractions.html"），而 currentPath 是绝对路径
+             // 我们必须非常小心。
+             
+             // 如果当前页是 attractions.html，而 link 是 history.html，那肯定要移除 history 的 active
+             // 简单起见，我们还是执行严格匹配逻辑：
+             
+             // 如果当前 link 已经被硬编码为 active，但 JS 发现不匹配，则移除
+             if (link.classList.contains('active')) {
+                 // 再次确认是否真的不匹配
+                 if (!isMatch && !isHomeMatch) {
+                     link.classList.remove('active');
+                     console.log('[Nav] Removed active class from mismatch:', href);
+                 }
+             }
         }
     });
 }
@@ -503,14 +515,29 @@ function initActiveNav() {
 // 导航栏滚动效果
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-    if (!navbar) return;
+    if (!navbar) {
+        console.error('[Navbar] Element not found!');
+        return;
+    }
+    
     function updateNavbar() {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
+        const scrollY = window.scrollY;
+        // 添加日志排查滚动问题
+        // console.log('[Navbar] ScrollY:', scrollY); 
+        
+        if (scrollY > 50) {
+            if (!navbar.classList.contains('scrolled')) {
+                navbar.classList.add('scrolled');
+                console.log('[Navbar] Added .scrolled class');
+            }
         } else {
-            navbar.classList.remove('scrolled');
+            if (navbar.classList.contains('scrolled')) {
+                navbar.classList.remove('scrolled');
+                console.log('[Navbar] Removed .scrolled class');
+            }
         }
     }
+    
     updateNavbar();
     window.addEventListener('scroll', updateNavbar);
 }
