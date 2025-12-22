@@ -657,13 +657,18 @@ function renderHeritage() {
     if (!grid) return;
     
     grid.innerHTML = '';
+    const base = getAssetsBase();
     
     heritageData.forEach((item, index) => {
         const heritageItem = document.createElement('div');
         heritageItem.className = 'heritage-item';
+        
+        // 动态处理图片路径
+        const imgSrc = item.image.startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : item.image;
+        
         heritageItem.innerHTML = `
             <div class="heritage-image">
-                <img src="${item.image}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
             </div>
             <div class="heritage-content">
                 <h3 class="heritage-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
