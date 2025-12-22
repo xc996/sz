@@ -6,7 +6,7 @@
       "nameEn": "The MixC",
       "district": { "zh": "罗湖区/南山区", "en": "Luohu/Nanshan" },
       "rating": 4.9,
-      "image": "assets/images/shop_mixc.svg",
+      "image": "assets/images/万象城.jpg",
       "seo": {
         "title": { "zh": "万象城 | The MixC", "en": "The MixC | 万象城" },
         "description": {
@@ -15,8 +15,8 @@
         }
       },
       "intro": {
-        "zh": ["集购物、餐饮、娱乐、休闲于一体的高端商业综合体。"],
-        "en": ["High-end commercial complex integrating shopping, dining, entertainment and leisure."]
+        "zh": ["集购物、餐饮、娱乐、休闲于一体的高端商业综合体。汇聚了LV、GUCCI、Prada等国际顶级奢侈品牌，同时拥有高端餐厅、IMAX影院等休闲娱乐设施。"],
+        "en": ["High-end commercial complex integrating shopping, dining, entertainment and leisure. It gathers international top luxury brands such as LV, GUCCI, Prada, and also has high-end restaurants, IMAX cinemas and other leisure and entertainment facilities."]
       },
       "highlights": [
         { "icon": "fas fa-gem", "zh": "顶级奢华", "en": "Top luxury" },
@@ -30,7 +30,7 @@
       "nameEn": "COCO Park",
       "district": { "zh": "福田区", "en": "Futian District" },
       "rating": 4.7,
-      "image": "assets/images/shop_coco.svg",
+      "image": "assets/images/COCO Park.jpg",
       "seo": {
         "title": { "zh": "COCO Park | COCO Park", "en": "COCO Park | COCO Park" },
         "description": {
@@ -39,8 +39,8 @@
         }
       },
       "intro": {
-        "zh": ["独特的露天广场设计，汇聚众多时尚品牌和网红餐厅。"],
-        "en": ["Unique open-air plaza design, gathering many fashion brands and popular restaurants."]
+        "zh": ["独特的露天广场设计，汇聚众多时尚品牌和网红餐厅。拥有ZARA、H&M、UNIQLO等国际快时尚品牌，同时还有各种特色餐饮、酒吧和娱乐设施，是年轻人购物休闲的热门场所。"],
+        "en": ["Unique open-air plaza design, gathering many fashion brands and popular restaurants. It has international fast fashion brands such as ZARA, H&M, UNIQLO, as well as various characteristic catering, bars and entertainment facilities, making it a popular place for young people to shop and relax."]
       },
       "highlights": [
         { "icon": "fas fa-glass-cheers", "zh": "酒吧街区", "en": "Bar street" },
@@ -54,7 +54,7 @@
       "nameEn": "Huaqiangbei",
       "district": { "zh": "福田区", "en": "Futian District" },
       "rating": 4.6,
-      "image": "assets/images/shop_hqb.svg",
+      "image": "assets/images/华强北1.jpg",
       "seo": {
         "title": { "zh": "华强北 | Huaqiangbei", "en": "Huaqiangbei | 华强北" },
         "description": {
@@ -63,8 +63,8 @@
         }
       },
       "intro": {
-        "zh": ["各类电子元器件、数码产品、智能硬件应有尽有。"],
-        "en": ["All kinds of electronic components, digital products, and intelligent hardware are available."]
+        "zh": ["各类电子元器件、数码产品、智能硬件应有尽有。是中国最大的电子市场，汇聚了手机、电脑、相机等数码产品，以及各种电子元器件、配件和智能设备，价格实惠，种类齐全。"],
+        "en": ["All kinds of electronic components, digital products, and intelligent hardware are available. It is China's largest electronic market, gathering mobile phones, computers, cameras and other digital products, as well as various electronic components, accessories and smart devices, with affordable prices and complete varieties."]
       },
       "highlights": [
         { "icon": "fas fa-microchip", "zh": "电子数码", "en": "Electronics" },
@@ -78,7 +78,7 @@
       "nameEn": "Dongmen Pedestrian Street",
       "district": { "zh": "罗湖区", "en": "Luohu District" },
       "rating": 4.5,
-      "image": "assets/images/shop_dongmen.svg",
+      "image": "assets/images/东门老街.jpg",
       "seo": {
         "title": { "zh": "东门老街 | Dongmen Pedestrian Street", "en": "Dongmen Pedestrian Street | 东门老街" },
         "description": {
@@ -87,8 +87,8 @@
         }
       },
       "intro": {
-        "zh": ["服装批发、特色小吃、美容美甲，热闹非凡。"],
-        "en": ["Clothing wholesale, snacks, beauty services, bustling atmosphere."]
+        "zh": ["服装批发、特色小吃、美容美甲，热闹非凡。这里是深圳最古老的商业街，主要售卖各种时尚服装、鞋子、配饰等，价格亲民，同时还有各种特色小吃和美容美甲店，是年轻人淘宝的好去处。"],
+        "en": ["Clothing wholesale, snacks, beauty services, bustling atmosphere. This is Shenzhen's oldest commercial street, mainly selling various fashion clothing, shoes, accessories, etc., with affordable prices, and there are also various specialty snacks and beauty nail salons, making it a good place for young people to shop."]
       },
       "highlights": [
         { "icon": "fas fa-history", "zh": "历史悠久", "en": "Historic" },
@@ -102,7 +102,7 @@
       "nameEn": "Coastal City",
       "district": { "zh": "南山区", "en": "Nanshan District" },
       "rating": 4.8,
-      "image": "assets/images/shop_coastal.svg",
+      "image": "assets/images/海岸城.jpg",
       "seo": {
         "title": { "zh": "海岸城 | Coastal City", "en": "Coastal City | 海岸城" },
         "description": {
@@ -111,8 +111,8 @@
         }
       },
       "intro": {
-        "zh": ["集购物、餐饮、娱乐于一体，拥有大型影院和溜冰场。"],
-        "en": ["Integrates shopping, dining, and entertainment, featuring a large cinema and ice rink."]
+        "zh": ["集购物、餐饮、娱乐于一体，拥有大型影院和溜冰场。汇聚了众多国际时尚品牌和国内知名品牌，如ZARA、H&M、MUJI、优衣库等，同时还有美食广场、IMAX影院、真冰溜冰场等休闲娱乐设施。"],
+        "en": ["Integrates shopping, dining, and entertainment, featuring a large cinema and ice rink. It gathers many international fashion brands and domestic well-known brands, such as ZARA, H&M, MUJI, Uniqlo, etc., and also has food courts, IMAX cinemas, real ice rinks and other leisure and entertainment facilities."]
       },
       "highlights": [
         { "icon": "fas fa-film", "zh": "娱乐休闲", "en": "Entertainment" },
@@ -126,7 +126,7 @@
       "nameEn": "MixC World",
       "district": { "zh": "南山区", "en": "Nanshan District" },
       "rating": 4.9,
-      "image": "assets/images/shop_mixcworld.svg",
+      "image": "assets/images/万象天地.jpg",
       "seo": {
         "title": { "zh": "万象天地 | MixC World", "en": "MixC World | 万象天地" },
         "description": {
@@ -135,8 +135,8 @@
         }
       },
       "intro": {
-        "zh": ["街区+mall的创新设计，汇聚众多潮流品牌和艺术展览。"],
-        "en": ["Innovative design of block + mall, gathering many trendy brands and art exhibitions."]
+        "zh": ["街区+mall的创新设计，汇聚众多潮流品牌和艺术展览。拥有Gucci、Balenciaga、Saint Laurent等国际潮流品牌，同时还有艺术画廊、街头艺术装置等文化元素，是年轻人追求潮流和艺术的热门去处。"],
+        "en": ["Innovative design of block + mall, gathering many trendy brands and art exhibitions. It has international trendy brands such as Gucci, Balenciaga, Saint Laurent, and also has cultural elements such as art galleries and street art installations, making it a popular place for young people to pursue trends and art."]
       },
       "highlights": [
         { "icon": "fas fa-camera", "zh": "艺术地标", "en": "Art landmark" },
@@ -150,7 +150,7 @@
       "nameEn": "Uniwalk",
       "district": { "zh": "宝安区", "en": "Bao'an District" },
       "rating": 4.8,
-      "image": "assets/images/shop_uniwalk.svg",
+      "image": "assets/images/壹方城.jpg",
       "seo": {
         "title": { "zh": "壹方城 | Uniwalk", "en": "Uniwalk | 壹方城" },
         "description": {
@@ -159,13 +159,61 @@
         }
       },
       "intro": {
-        "zh": ["超大体量，全业态覆盖，家庭亲子与年轻潮流兼顾。"],
-        "en": ["Super large scale, full format coverage, suitable for families and young trends."]
+        "zh": ["超大体量，全业态覆盖，家庭亲子与年轻潮流兼顾。是深圳单体面积最大的购物中心，拥有众多国际品牌和国内知名品牌，如LV、Dior、Nike、Adidas等，同时还有亲子乐园、IMAX影院、美食广场等设施，适合全家一起购物休闲。"],
+        "en": ["Super large scale, full format coverage, suitable for families and young trends. It is Shenzhen's largest single shopping mall, with many international brands and domestic well-known brands, such as LV, Dior, Nike, Adidas, etc., and also has parent-child parks, IMAX cinemas, food courts and other facilities, suitable for family shopping and leisure."]
       },
       "highlights": [
         { "icon": "fas fa-expand-arrows-alt", "zh": "超大体量", "en": "Huge scale" },
         { "icon": "fas fa-child", "zh": "亲子乐园", "en": "Family fun" },
         { "icon": "fas fa-utensils", "zh": "美食荟萃", "en": "Gourmet gathering" }
+      ]
+    },
+    {
+      "slug": "yifangtiandi",
+      "name": "壹方天地",
+      "nameEn": "Universe Mall",
+      "district": { "zh": "龙华区", "en": "Longhua District" },
+      "rating": 4.8,
+      "image": "assets/images/壹方天地.jpg",
+      "seo": {
+        "title": { "zh": "壹方天地 | Universe Mall", "en": "Universe Mall | 壹方天地" },
+        "description": {
+          "zh": "龙华区的大型商业综合体，打造全新的购物体验",
+          "en": "Large commercial complex in Longhua District, creating a new shopping experience"
+        }
+      },
+      "intro": {
+        "zh": ["集购物、餐饮、娱乐、休闲于一体的超大型商业综合体，拥有多个主题区域。汇聚了ZARA、H&M、优衣库等时尚品牌，以及各种特色餐饮、亲子乐园、电影院等设施，分为A、B、C、D、E五个主题区域，满足不同消费群体的需求。"],
+        "en": ["Ultra-large commercial complex integrating shopping, dining, entertainment and leisure, with multiple theme areas. It gathers fashion brands such as ZARA, H&M, Uniqlo, as well as various specialty catering, parent-child parks, cinemas and other facilities, divided into five theme areas A, B, C, D and E to meet the needs of different consumer groups."]
+      },
+      "highlights": [
+        { "icon": "fas fa-expand-arrows-alt", "zh": "超大体量", "en": "Huge scale" },
+        { "icon": "fas fa-child", "zh": "亲子友好", "en": "Family-friendly" },
+        { "icon": "fas fa-shopping-bag", "zh": "品牌多样", "en": "Diverse brands" }
+      ]
+    },
+    {
+      "slug": "mixcphase2",
+      "name": "万象城二期",
+      "nameEn": "The MixC Phase 2",
+      "district": { "zh": "南山区", "en": "Nanshan District" },
+      "rating": 4.9,
+      "image": "assets/images/万象城二期.jpg",
+      "seo": {
+        "title": { "zh": "万象城二期 | The MixC Phase 2", "en": "The MixC Phase 2 | 万象城二期" },
+        "description": {
+          "zh": "南山万象城的扩建项目，打造更奢华的购物体验",
+          "en": "Expansion project of Nanshan The MixC, creating a more luxurious shopping experience"
+        }
+      },
+      "intro": {
+        "zh": ["万象城二期延续了一期的奢华定位，引入更多国际顶级品牌，提供更丰富的购物和休闲体验。新增了Chanel、Hermès、Cartier等国际顶级奢侈品牌，同时扩大了餐饮和娱乐区域，拥有更多高端餐厅和精品店，为消费者提供更加奢华的购物体验。"],
+        "en": ["The MixC Phase 2 continues the luxury positioning of Phase 1, introducing more international top brands and providing a richer shopping and leisure experience. It has added international top luxury brands such as Chanel, Hermès, Cartier, while expanding the dining and entertainment area, with more high-end restaurants and boutiques, providing consumers with a more luxurious shopping experience."]
+      },
+      "highlights": [
+        { "icon": "fas fa-gem", "zh": "顶级奢华", "en": "Top luxury" },
+        { "icon": "fas fa-tshirt", "zh": "国际品牌", "en": "International brands" },
+        { "icon": "fas fa-utensils", "zh": "高端餐饮", "en": "High-end dining" }
       ]
     }
   ]

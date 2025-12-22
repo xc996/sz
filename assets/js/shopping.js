@@ -15,6 +15,8 @@ const translations = {
         'nav.map': '地图',
         'btn.lang': '切换语言',
         'btn.theme': '切换主题',
+        'hero.shopping.title1': '购物',
+        'hero.shopping.title2': 'SHOPPING',
         'shopping.title': '购物天堂',
         'shopping.subtitle': '从高端商场到特色街区，满足你的购物欲望',
         'footer.about': '关于深圳',
@@ -38,6 +40,8 @@ const translations = {
         'nav.map': 'Map',
         'btn.lang': 'Switch Language',
         'btn.theme': 'Switch Theme',
+        'hero.shopping.title1': 'SHOPPING',
+        'hero.shopping.title2': '购物',
         'shopping.title': 'Shopping Paradise',
         'shopping.subtitle': 'From high-end malls to characteristic streets, satisfy your shopping desires',
         'footer.about': 'About Shenzhen',
@@ -400,6 +404,108 @@ function bindDetailEntryScroll() {
 }
 
 // ------------------------------
+// 轮播图功能
+// ------------------------------
+
+function initCarousel() {
+    const carouselWrapper = document.getElementById('carouselWrapper');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
+    
+    if (!carouselWrapper || !prevBtn || !nextBtn || !indicatorsContainer) {
+        return;
+    }
+    
+    const carouselItems = carouselWrapper.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+    const totalItems = carouselItems.length;
+    let autoPlayInterval;
+    
+    // 添加轮播标题文字
+    const carouselTitle = document.createElement('div');
+    carouselTitle.className = 'carousel-title';
+    carouselTitle.innerHTML = `
+        <h1 data-i18n="hero.shopping.title1">${currentLang === 'zh' ? '购物' : 'SHOPPING'}</h1>
+        <h2 data-i18n="hero.shopping.title2">${currentLang === 'zh' ? 'SHOPPING' : '购物'}</h2>
+    `;
+    carouselWrapper.parentNode.insertBefore(carouselTitle, carouselWrapper);
+    
+    // 生成指示器
+    function generateIndicators() {
+        indicatorsContainer.innerHTML = '';
+        for (let i = 0; i < totalItems; i++) {
+            const indicator = document.createElement('button');
+            indicator.className = `carousel-indicator ${i === currentIndex ? 'active' : ''}`;
+            indicator.setAttribute('data-index', i);
+            indicator.addEventListener('click', () => goToSlide(i));
+            indicatorsContainer.appendChild(indicator);
+        }
+    }
+    
+    // 切换到指定幻灯片
+    function goToSlide(index) {
+        if (index < 0 || index >= totalItems) {
+            return;
+        }
+        
+        // 更新当前幻灯片
+        carouselItems[currentIndex].classList.remove('active');
+        carouselItems[index].classList.add('active');
+        currentIndex = index;
+        
+        // 更新指示器
+        const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === currentIndex);
+        });
+    }
+    
+    // 下一张
+    function nextSlide() {
+        goToSlide((currentIndex + 1) % totalItems);
+    }
+    
+    // 上一张
+    function prevSlide() {
+        goToSlide((currentIndex - 1 + totalItems) % totalItems);
+    }
+    
+    // 自动播放
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+    
+    // 停止自动播放
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+        }
+    }
+    
+    // 初始化
+    generateIndicators();
+    startAutoPlay();
+    
+    // 绑定事件
+    prevBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        prevSlide();
+        startAutoPlay();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        stopAutoPlay();
+        nextSlide();
+        startAutoPlay();
+    });
+    
+    // 鼠标悬停时停止自动播放
+    carouselWrapper.parentNode.addEventListener('mouseenter', stopAutoPlay);
+    carouselWrapper.parentNode.addEventListener('mouseleave', startAutoPlay);
+}
+
+// ------------------------------
 // 初始化函数
 // ------------------------------
 
@@ -420,6 +526,7 @@ function init() {
     initMobileMenu();
     initBackToTop();
     renderShopping();
+    initCarousel();
     
     const langSwitch = document.getElementById('langSwitch');
     const themeToggle = document.getElementById('themeToggle');

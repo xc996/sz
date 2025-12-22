@@ -122,12 +122,32 @@ function renderDetail(item) {
   // 根据数据类型选择合适的标题
   const type = getDataType();
   const isFood = type === 'food';
-  const introTitle = isFood ? (lang === 'en' ? 'Food Introduction' : '美食介绍') : (lang === 'en' ? 'Introduction' : '景区介绍');
-  const highlightsTitle = isFood ? (lang === 'en' ? 'Food Features' : '美食特色') : (lang === 'en' ? 'Highlights' : '景区亮点');
+  const isShopping = type === 'shopping';
+  const isTraffic = type === 'traffic';
+  
+  let introTitle, highlightsTitle;
+  
+  if (isFood) {
+    introTitle = lang === 'en' ? 'Food Introduction' : '美食介绍';
+    highlightsTitle = lang === 'en' ? 'Food Features' : '美食特色';
+  } else if (isShopping) {
+    introTitle = lang === 'en' ? 'Shopping Introduction' : '购物介绍';
+    highlightsTitle = lang === 'en' ? 'Shopping Highlights' : '购物亮点';
+  } else if (isTraffic) {
+    introTitle = lang === 'en' ? 'Transportation Introduction' : '交通介绍';
+    highlightsTitle = lang === 'en' ? 'Transportation Features' : '交通特色';
+  } else {
+    introTitle = lang === 'en' ? 'Introduction' : '景区介绍';
+    highlightsTitle = lang === 'en' ? 'Highlights' : '景区亮点';
+  }
 
   root.innerHTML = `
     <div class="detail-header" data-aos="fade-up">
       <h1 class="detail-title">${name}</h1>
+      ${!isFood ? `<div class="detail-district">
+        <span class="district-label">${lang === 'en' ? 'District' : '所属区域'}</span>
+        <span class="district-value">${district}</span>
+      </div>` : ''}
     </div>
     <div class="detail-image" data-aos="zoom-in">
       <img src="${imgSrc}" alt="${name}" onerror="this.onerror=null;this.src='/assets/images/placeholder.svg'">

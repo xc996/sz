@@ -27,16 +27,24 @@ jobs:
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
+      - name: 配置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: 安装依赖
+        run: npm ci
+      - name: 构建项目
+        run: npm run build
       - name: 配置 Pages 环境
         uses: actions/configure-pages@v5
       - name: 生成 .nojekyll（禁用 Jekyll）
         run: |
-          touch .nojekyll
+          touch dist/.nojekyll
       - name: 上传站点制品
         uses: actions/upload-pages-artifact@v3
         with:
-          # 这里将整个仓库根目录作为静态站点内容上传
-          path: .
+          # 使用 Vite 构建输出目录
+          path: ./dist
       - name: 部署到 GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
