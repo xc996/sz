@@ -519,22 +519,29 @@ function initActiveNav() {
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         
-        // 移除所有 active 类
-        link.classList.remove('active');
-        
         // 处理首页 (#home)
         // 如果路径以 / 结尾或以 index.html 结尾，且链接是 #home，则高亮
         const isHome = currentPath.endsWith('/') || currentPath.endsWith('index.html');
+        const isHomeLink = href === '#home';
         
-        if (isHome && href === '#home') {
-            link.classList.add('active');
-            console.log('[Home Nav] Activated Home:', href);
-        }
         // 处理其他页面 (xxx.html)
         // 排除锚点链接和空链接
-        else if (href && href !== '#' && !href.startsWith('#') && currentPath.includes(href)) {
-            link.classList.add('active');
-             console.log('[Home Nav] Activated Other:', href);
+        // 简单判断：当前路径包含 href (例如 /pages/map.html 包含 map.html)
+        const isOtherMatch = href && href !== '#' && !href.startsWith('#') && currentPath.includes(href);
+        
+        if ((isHome && isHomeLink) || isOtherMatch) {
+            if (!link.classList.contains('active')) {
+                link.classList.add('active');
+                console.log('[Home Nav] Added active class:', href);
+            } else {
+                console.log('[Home Nav] Active class already present:', href);
+            }
+        } else {
+            // 如果不匹配，但有 active 类，则移除
+            if (link.classList.contains('active')) {
+                link.classList.remove('active');
+                console.log('[Home Nav] Removed active class from mismatch:', href);
+            }
         }
     });
 }
@@ -696,18 +703,24 @@ function init() {
         themeToggle.addEventListener('click', toggleTheme);
     }
     
-    if (ctaBtn) {
-        ctaBtn.addEventListener('click', () => {
-            // 滚动到景点展示区
-            const attractionsSection = document.getElementById('attractions');
-            if (attractionsSection) {
-                attractionsSection.scrollIntoView({
+    // 绑定滚动提示箭头点击事件
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const introSection = document.querySelector('.intro-section');
+            if (introSection) {
+                // 计算导航栏高度作为偏移量
+                const navbarHeight = document.getElementById('navbar').offsetHeight || 0;
+                const targetPosition = introSection.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
                     behavior: 'smooth'
                 });
             }
         });
     }
-    
+
     // 监听滚动事件，为新进入视口的元素添加动画
     window.addEventListener('scroll', () => {
         // 可以在这里添加滚动触发的动画逻辑
@@ -934,11 +947,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 初始化轮播
     if (document.querySelector('.carousel-section')) {
+        console.log('Carousel section found, initializing...');
         carousel.init();
+    } else {
+        console.warn('Carousel section NOT found');
     }
     
     // 绑定景点卡片点击事件
     if (document.querySelector('.attractions-grid')) {
+        console.log('Attractions grid found, binding events...');
         bindAttractionClickEvents();
     }
 

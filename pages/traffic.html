@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="深圳美食 | Shenzhen Food">
-    <title>深圳美食 | Shenzhen Food</title>
+    <meta name="description" content="深圳交通 | Shenzhen Transport">
+    <title>深圳交通 | Shenzhen Transport</title>
     
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/深圳logo.png">
+    <link rel="icon" href="../assets/images/深圳logo.png">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/food.css">
+    <link rel="stylesheet" href="../assets/css/common.css?v=20251221">
+    <link rel="stylesheet" href="../assets/css/traffic.css?v=20251221">
     
     <!-- Font Awesome (本地化) -->
-    <link rel="stylesheet" href="assets/vendor/all.min.css">
+    <link rel="stylesheet" href="../assets/vendor/all.min.css?v=20251221">
     
     <!-- AOS Animation (本地化) -->
-    <link href="assets/vendor/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/aos.css?v=20251221" rel="stylesheet">
 </head>
 <body data-theme="light" data-lang="zh">
     <!-- 导航栏 -->
@@ -24,18 +25,18 @@
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="assets/images/深圳logo.png" alt="深圳logo">
+                    <img src="../assets/images/深圳logo.png" alt="深圳logo">
                 </div>
                 <span class="logo-text" data-i18n="nav.logo">深圳</span>
             </div>
             
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="../index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="attractions.html" data-i18n="nav.attractions">景点</a></li>
                 <li><a href="history.html" data-i18n="nav.culture">历史文化</a></li>
-                <li><a href="food.html" class="active" data-i18n="nav.food">美食</a></li>
+                <li><a href="food.html" data-i18n="nav.food">美食</a></li>
                 <li><a href="shopping.html" data-i18n="nav.shopping">购物</a></li>
-                <li><a href="traffic.html" data-i18n="nav.transport">交通</a></li>
+                <li><a href="traffic.html" class="active" data-i18n="nav.transport">交通</a></li>
                 <li><a href="map.html" data-i18n="nav.map">地图</a></li>
             </ul>
             
@@ -56,32 +57,32 @@
         </div>
     </nav>
 
-    <!-- 大屏图片轮播 (复用景点轮播，或者可以替换为美食相关图片) -->
+    <!-- 大屏图片轮播 -->
     <section class="carousel-section">
         <div class="carousel-container">
             <div class="carousel-wrapper" id="carouselWrapper">
                 <!-- 轮播项 -->
                 <div class="carousel-item active">
-                    <img src="assets/images/轮1.jpg" alt="轮播图1">
+                    <img src="../assets/images/轮1.jpg" alt="轮播图1">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/轮2.jpg" alt="轮播图2">
+                    <img src="../assets/images/轮2.jpg" alt="轮播图2">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/轮3.jpg" alt="轮播图3">
+                    <img src="../assets/images/轮3.jpg" alt="轮播图3">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/轮4.jpg" alt="轮播图4">
+                    <img src="../assets/images/轮4.jpg" alt="轮播图4">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/images/轮5.jpg" alt="轮播图5">
+                    <img src="../assets/images/轮5.jpg" alt="轮播图5">
                 </div>
             </div>
             
             <!-- 轮播中间的标题 -->
             <div class="carousel-title">
-                <h1 data-i18n="food.title">美食天堂</h1>
-                <h2 data-i18n="food.subtitle">品味深圳的多元美食文化</h2>
+                <h1 data-i18n="transport.title">便捷交通</h1>
+                <h2 data-i18n="transport.subtitle">四通八达的交通网络，轻松畅游深圳</h2>
             </div>
             
             <!-- 轮播控制按钮 -->
@@ -99,18 +100,18 @@
         </div>
     </section>
 
-    <!-- 美食展示区域 -->
+    <!-- 交通展示区域 -->
     <section class="attractions-detail-section">
         <div class="container">
             <h2 class="section-title">
-                <span data-i18n="food.title">美食天堂</span>
+                <span data-i18n="transport.title">便捷交通</span>
                 <div class="title-underline"></div>
             </h2>
-            <p class="section-subtitle" data-i18n="food.subtitle">品味深圳的多元美食文化</p>
+            <p class="section-subtitle" data-i18n="transport.subtitle">四通八达的交通网络，轻松畅游深圳</p>
             
-            <!-- 美食卡片区域 -->
-            <div class="attractions-grid" id="foodGrid">
-                <!-- 美食卡片由JS动态生成 -->
+            <!-- 交通卡片区域 -->
+            <div class="attractions-grid" id="trafficGrid">
+                <!-- 交通卡片由JS动态生成 -->
             </div>
         </div>
     </section>
@@ -156,9 +157,9 @@
     </button>
 
     <!-- JS Libraries -->
-    <script src="assets/vendor/aos.js"></script>
+    <script src="../assets/vendor/aos.js?v=20251221"></script>
     
     <!-- Custom JS -->
-    <script src="assets/js/food.js"></script>
+    <script src="../assets/js/traffic.js?v=20251221"></script>
 </body>
 </html>

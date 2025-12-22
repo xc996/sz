@@ -5,101 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="深圳互动地图 | Shenzhen Interactive Map">
     <title>深圳地图 | Shenzhen Map</title>
-    <link rel="icon" href="assets/images/深圳logo.png">
-    <link rel="stylesheet" href="assets/css/index.css?v=2">
-    <link rel="stylesheet" href="assets/vendor/all.min.css">
-    <link href="assets/vendor/aos.css" rel="stylesheet">
-    <style>
-        #navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
-            padding: 15px 0;
-        }
-        
-        [data-theme="dark"] #navbar {
-            background: rgba(18, 18, 18, 0.95);
-        }
-        
-        #navbar .logo {
-            color: var(--text-primary);
-        }
-        
-        #navbar .nav-menu a {
-            color: var(--text-primary);
-            /* 统一尺寸，避免选中时跳动 */
-            padding: 8px 16px;
-            border-radius: 20px;
-            display: inline-block;
-            border: 1px solid transparent;
-        }
-        
-        #navbar .icon-btn {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-        
-        #navbar .menu-toggle span {
-            background: var(--text-primary);
-        }
-        
-        /* 选中态样式 - 增强优先级 */
-        #navbar .nav-menu a.active {
-            background: var(--primary-color) !important;
-            color: white !important;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0, 184, 212, 0.3);
-        }
-
-        /* 夜间模式选中态样式 */
-        [data-theme="dark"] #navbar .nav-menu a.active {
-            background: rgba(0, 184, 212, 0.15) !important;
-            color: var(--primary-color) !important;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(0, 184, 212, 0.4);
-        }
-
-        #navbar .nav-menu a.active::after {
-            display: none !important;
-        }
-
-        #navbar .nav-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        #navbar .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        [data-theme="dark"] #navbar .nav-menu a.active {
-            box-shadow: 0 0 15px var(--glow-color);
-        }
-    </style>
+    <link rel="icon" href="../assets/images/深圳logo.png">
+    <link rel="stylesheet" href="../assets/css/common.css?v=20251221_ui_fixed">
+    <link rel="stylesheet" href="../assets/css/map.css?v=20251221_ui_fixed">
+    <link rel="stylesheet" href="../assets/vendor/all.min.css?v=20251221_fixed">
+    <link href="../assets/vendor/aos.css?v=20251221_fixed" rel="stylesheet">
 </head>
 <body data-theme="light" data-lang="zh">
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-icon">
-                    <img src="assets/images/深圳logo.png" alt="深圳logo">
+                    <img src="../assets/images/深圳logo.png" alt="深圳logo">
                 </div>
                 <span class="logo-text" data-i18n="nav.logo">深圳</span>
             </div>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" data-i18n="nav.home">首页</a></li>
+                <li><a href="../index.html" data-i18n="nav.home">首页</a></li>
                 <li><a href="attractions.html" data-i18n="nav.attractions">景点</a></li>
                 <li><a href="history.html" data-i18n="nav.culture">历史文化</a></li>
                 <li><a href="food.html" data-i18n="nav.food">美食</a></li>
                 <li><a href="shopping.html" data-i18n="nav.shopping">购物</a></li>
                 <li><a href="traffic.html" data-i18n="nav.transport">交通</a></li>
-                <li><a href="map.html" data-i18n="nav.map">地图</a></li>
+                <li><a href="map.html" class="active" data-i18n="nav.map">地图</a></li>
             </ul>
             <div class="nav-actions">
                 <button id="langSwitch" class="icon-btn" title="切换语言">
@@ -117,6 +45,27 @@
             </div>
         </div>
     </nav>
+
+    <!-- Hero Section -->
+    <section class="hero map-hero">
+        <div class="video-container">
+            <img src="../assets/images/轮1.jpg" id="bgVideo" alt="深圳地图">
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line" data-i18n="map.title">互动地图</span>
+                <span class="title-line-2">SHENZHEN MAP</span>
+            </h1>
+            <p class="hero-subtitle" data-i18n="map.subtitle">探索深圳的每一个角落</p>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('map').scrollIntoView({behavior: 'smooth'})">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <i class="fas fa-chevron-down arrow-down"></i>
+        </div>
+    </section>
 
     <section id="map" class="section">
         <div class="container">
@@ -172,37 +121,10 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="assets/vendor/aos.js"></script>
-    <script src="assets/js/index.js?v=2"></script>
+    <script src="../assets/vendor/aos.js?v=20251221"></script>
+    <script src="../assets/js/index.js?v=20251221"></script>
     <script>
-        // 覆盖导航栏滚动监听行为，确保map.html页面导航栏始终显示固定背景
-        document.addEventListener('DOMContentLoaded', function() {
-            // 移除可能存在的滚动监听
-            const navbar = document.getElementById('navbar');
-            if (navbar) {
-                // 确保导航栏始终显示固定背景
-                navbar.classList.add('scrolled');
-                
-                // 移除滚动监听事件（如果存在）
-                // 这里我们重新定义导航栏初始化函数，覆盖原有的滚动监听
-                if (window.initNavbarScroll) {
-                    window.initNavbarScroll = function() {
-                        // 空函数，不执行任何滚动监听
-                    };
-                }
-            }
-            
-            // 手动激活地图导航项
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            navLinks.forEach(link => {
-                const href = link.getAttribute('href');
-                if (href === 'map.html') {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-        });
+        // 页面特定的脚本逻辑（如果有）
     </script>
 </body>
 </html>

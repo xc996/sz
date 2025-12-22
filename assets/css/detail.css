@@ -147,31 +147,7 @@
     visibility: visible; /* 中文：避免被动画库默认隐藏 */
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 25px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    box-shadow: 0 10px 30px rgba(0, 184, 212, 0.3);
-}
-
-.btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0, 184, 212, 0.5);
-}
+/* 按钮样式已移至 common.css */
 
 /* 响应式设计 */
 @media (max-width: 768px) {
@@ -230,20 +206,7 @@
     overflow: visible; /* 中文：防止卡片阴影被裁剪 */
 }
 
-/* 详情页面导航栏样式 */
-body:has(.attraction-detail-section) #navbar,
-body:has(.heritage-detail-section) #navbar {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow);
-    padding: 15px 0;
-}
-
-body:has(.attraction-detail-section) [data-theme="dark"] #navbar,
-body:has(.heritage-detail-section) [data-theme="dark"] #navbar {
-    background: rgba(18, 18, 18, 0.95);
-}
-
+/* 详情页面导航栏样式 - 保持与首页一致的透明/滚动变色效果 */
 body:has(.attraction-detail-section) .logo,
 body:has(.heritage-detail-section) .logo {
     color: var(--text-primary);
@@ -256,6 +219,23 @@ body:has(.heritage-detail-section) .nav-menu a {
 
 body:has(.attraction-detail-section) .icon-btn,
 body:has(.heritage-detail-section) .icon-btn {
+    background: rgba(0, 0, 0, 0.05); /* 浅色背景下给按钮加淡底色 */
+    color: var(--text-primary);
+}
+
+/* 滚动后覆盖上面的颜色设置，使用 common.css 定义的 .scrolled 样式 */
+body:has(.attraction-detail-section) #navbar.scrolled .logo,
+body:has(.heritage-detail-section) #navbar.scrolled .logo {
+    color: var(--text-primary);
+}
+
+body:has(.attraction-detail-section) #navbar.scrolled .nav-menu a,
+body:has(.heritage-detail-section) #navbar.scrolled .nav-menu a {
+    color: var(--text-primary);
+}
+
+body:has(.attraction-detail-section) #navbar.scrolled .icon-btn,
+body:has(.heritage-detail-section) #navbar.scrolled .icon-btn {
     background: var(--bg-secondary);
     color: var(--text-primary);
 }
