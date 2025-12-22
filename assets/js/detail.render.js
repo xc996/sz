@@ -54,21 +54,6 @@ const ConfigStore = (function () {
 window.ConfigStore = ConfigStore;
 
 /**
- * 功能：获取静态资源基础路径（中文注释）
- * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
- */
-function getAssetsBase() {
-  const host = window.location.hostname || '';
-  const path = window.location.pathname || '';
-  const isGh = host.endsWith('github.io');
-  if (isGh) {
-    const seg = path.split('/').filter(Boolean)[0] || '';
-    return seg ? `/${seg}/assets/` : '/assets/';
-  }
-  return '/assets/';
-}
-
-/**
  * 功能：校验配置项（中文注释）
  * 说明：检查必填字段及类型范围，返回错误列表
  */

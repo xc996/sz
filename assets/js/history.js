@@ -240,7 +240,7 @@ const heritageData = [
         description: '明代海防要塞，保存完好的明清海防体系，被誉为"沿海所城，大鹏为最"',
         descriptionEn: 'Ming Dynasty coastal defense fortress with well-preserved Ming and Qing coastal defense system, known as "among coastal defense cities, Dapeng is the best"',
         level: 'national',
-        image: '/assets/images/大鹏所城.jpg'
+        image: 'assets/images/大鹏所城.jpg'
     },
     {
         name: '南头古城',
@@ -248,7 +248,7 @@ const heritageData = [
         description: '深圳历史最悠久的古城，见证了深圳从汉代到现代的历史变迁',
         descriptionEn: 'Shenzhen\'s oldest ancient city, witnessing Shenzhen\'s historical changes from Han Dynasty to modern times',
         level: 'national',
-        image: '/assets/images/南头古城.jpg'
+        image: 'assets/images/南头古城.jpg'
     },
     {
         name: '鹤湖新居',
@@ -256,7 +256,7 @@ const heritageData = [
         description: '深圳保存最完整、规模最大的客家围屋建筑群，被誉为"客家围屋博物馆"',
         descriptionEn: 'The most complete and largest preserved Hakka enclosed house complex in Shenzhen, known as the "Hakka Enclosed House Museum"',
         level: 'national',
-        image: '/assets/images/鹤湖新居.jpg'
+        image: 'assets/images/鹤湖新居.jpg'
     },
     {
         name: '咸头岭遗址',
@@ -264,7 +264,7 @@ const heritageData = [
         description: '深圳最早的史前文化遗址，距今约7000年，展现了珠三角地区早期人类文明',
         descriptionEn: 'Shenzhen\'s earliest prehistoric cultural site, dating back about 7000 years, showing early human civilization in the Pearl River Delta region',
         level: 'national',
-        image: '/assets/images/咸头岭遗址.jpg'
+        image: 'assets/images/咸头岭遗址.jpg'
     },
     {
         name: '文天祥纪念馆',
@@ -272,7 +272,7 @@ const heritageData = [
         description: '纪念南宋民族英雄文天祥的纪念馆，展示其生平事迹和崇高精神',
         descriptionEn: 'Memorial hall commemorating Wen Tianxiang, a national hero of the Southern Song Dynasty, showcasing his life story and noble spirit',
         level: 'provincial',
-        image: '/assets/images/文天祥纪念馆.jpg'
+        image: 'assets/images/文天祥纪念馆.jpg'
     },
     {
         name: '大万世居',
@@ -280,7 +280,7 @@ const heritageData = [
         description: '大万世居，又称"大万围"，是全国最大且保存最完整的方形客家围屋之一',
         descriptionEn: 'Dawanshiju, also known as "Dawan Wei", is one of the largest and best-preserved square Hakka enclosed houses in China',
         level: 'provincial',
-        image: '/assets/images/大万世居.jpg'
+        image: 'assets/images/大万世居.jpg'
     }
 ];
 
@@ -292,7 +292,7 @@ const blendingData = [
         description: '深圳博物馆、南头古城博物馆等机构系统地展示城市历史',
         descriptionEn: 'Shenzhen Museum, Nantou Ancient City Museum and other institutions systematically display the city\'s history',
         icon: 'fas fa-building',
-        image: '../assets/images/轮1.jpg'
+        image: 'assets/images/轮1.jpg'
     },
     {
         name: '非遗传承',
@@ -300,7 +300,7 @@ const blendingData = [
         description: '200多项非物质文化遗产得到保护和活态传承',
         descriptionEn: 'More than 200 intangible cultural heritages have been protected and dynamically inherited',
         icon: 'fas fa-masks-theater',
-        image: '../assets/images/轮2.jpg'
+        image: 'assets/images/轮2.jpg'
     },
     {
         name: '古村新生',
@@ -308,7 +308,7 @@ const blendingData = [
         description: '大芬油画村、观澜版画村等成为文化创意产业基地',
         descriptionEn: 'Dafen Oil Painting Village, Guanlan Printmaking Village and others have become cultural and creative industry bases',
         icon: 'fas fa-city',
-        image: '../assets/images/轮3.jpg'
+        image: 'assets/images/轮3.jpg'
     },
     {
         name: '文化教育',
@@ -316,7 +316,7 @@ const blendingData = [
         description: '将历史文化纳入中小学教育体系，培养文化认同',
         descriptionEn: 'Integrate historical culture into the education system of primary and secondary schools to cultivate cultural identity',
         icon: 'fas fa-book-open',
-        image: '../assets/images/轮4.jpg'
+        image: 'assets/images/轮4.jpg'
     },
     {
         name: '数字博物馆',
@@ -324,7 +324,7 @@ const blendingData = [
         description: '运用VR/AR技术打造线上数字博物馆，让文物"活"起来',
         descriptionEn: 'Use VR/AR technology to create online digital museums, bringing cultural relics "to life"',
         icon: 'fas fa-laptop-code',
-        image: '../assets/images/轮1.jpg'
+        image: 'assets/images/轮1.jpg'
     },
     {
         name: '文化街区活化',
@@ -332,7 +332,7 @@ const blendingData = [
         description: '将历史街区改造为集商业、文化、旅游于一体的综合体',
         descriptionEn: 'Transform historical blocks into complexes integrating business, culture and tourism',
         icon: 'fas fa-map-marker-alt',
-        image: '../assets/images/轮2.jpg'
+        image: 'assets/images/轮2.jpg'
     }
 ];
 
@@ -639,13 +639,18 @@ function renderHeritage() {
     if (!grid) return;
     
     grid.innerHTML = '';
+    const base = getAssetsBase();
     
     heritageData.forEach((item, index) => {
         const heritageItem = document.createElement('div');
         heritageItem.className = 'heritage-item';
+        
+        // 动态处理图片路径
+        const imgSrc = item.image.startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : item.image;
+        
         heritageItem.innerHTML = `
             <div class="heritage-image">
-                <img src="${item.image}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
             </div>
             <div class="heritage-content">
                 <h3 class="heritage-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
@@ -685,11 +690,18 @@ function renderFestivals() {
     if (!grid) return;
     
     grid.innerHTML = '';
+    const base = getAssetsBase();
     
     blendingData.forEach((item, index) => {
         const festivalItem = document.createElement('div');
         festivalItem.className = 'festival-item';
+        // 动态处理图片路径
+        const imgSrc = item.image.startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : item.image;
+        
         festivalItem.innerHTML = `
+            <div class="festival-image">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
+            </div>
             <div class="festival-content">
                 <h3 class="festival-title">
                     <i class="${item.icon}"></i>

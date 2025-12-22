@@ -742,13 +742,19 @@ function showAttractionDetail(attractionKey) {
     const desc = lang === 'en' ? attraction.descriptionEn : attraction.description;
     const location = lang === 'en' ? attraction.locationEn : attraction.location;
     
+    // 处理图片路径
+    const base = getAssetsBase();
+    // 如果是网络图片(http开头)则保持原样，如果是本地资源(assets开头)则拼接路径
+    const imgSrc = (attraction.image || '').startsWith('http') ? attraction.image : 
+                  ((attraction.image || '').startsWith('assets/') ? `${base}${attraction.image.replace('assets/','')}` : attraction.image);
+
     // 创建模态框
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
     modal.innerHTML = `
         <div class="modal-content">
             <button class="modal-close">&times;</button>
-            <img src="${attraction.image}" alt="${name}">
+            <img src="${imgSrc}" alt="${name}">
             <h2>${name}</h2>
             <p>${desc}</p>
             <div class="modal-info">
