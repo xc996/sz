@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳之旅 - 探索非凡</title>
+    <!-- 引入 Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- 引入 Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #f0f0f0;
+            --accent-color: #e74c3c;
+            --text-color: #ffffff;
+            --overlay-color: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Noto Serif SC', serif;
+            background-color: #000;
+            color: var(--text-color);
+            overflow: hidden; /* 防止滚动 */
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 3rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference; /* 确保在任何背景下可见 */
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 轮播容器 */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            visibility: hidden; /* 默认隐藏，由 GSAP 控制 */
+            overflow: hidden;
+        }
+
+        .slide.active {
+            visibility: visible;
+            z-index: 1;
+        }
+
+        .slide.next {
+            visibility: visible;
+            z-index: 2;
+            /* 初始状态：中心小圆，由 GSAP 控制 */
+            clip-path: circle(0% at 50% 50%); 
+        }
+
+        .slide-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 初始稍微放大，用于视差效果 */
+            transform: scale(1.1); 
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--overlay-color);
+        }
+
+        /* 文字内容 */
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .slide-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            font-family: sans-serif;
+            font-weight: 300;
+        }
+
+        .slide-title {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .slide-desc {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* 按钮 */
+        .explore-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .explore-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* 控制器/指示器 */
+        .controls {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            width: 100%;
+            z-index: 20;
+        }
+
+        .progress {
+            height: 100%;
+            background: #fff;
+            width: 0%;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .slide-title {
+                font-size: 3rem;
+            }
+            .navbar {
+                padding: 1.5rem;
+            }
+            .controls {
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">Shenzhen</a>
+        <div class="nav-links">
+            <a href="index.html">返回旧版</a>
+            <a href="pages/attractions.html">景点</a>
+            <a href="pages/food.html">美食</a>
+            <a href="pages/traffic.html">交通</a>
+        </div>
+    </nav>
+
+    <div class="slider-container">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <img src="assets/images/平安金融中心.jpg" alt="Modern City" class="slide-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <p class="slide-subtitle">Modern Metropolis</p>
+                <h1 class="slide-title">都市奇迹</h1>
+                <p class="slide-desc">探索深圳天际线，感受科技与现代建筑的完美融合。在云端俯瞰这座不夜城。</p>
+                <a href="pages/attractions.html" class="explore-btn">开始探索</a>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+            <img src="assets/images/莲花山公园.jpg" alt="Nature" class="slide-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <p class="slide-subtitle">Urban Oasis</p>
+                <h1 class="slide-title">自然之息</h1>
+                <p class="slide-desc">城市中心的绿肺，在繁忙中寻找一片宁静。登高望远，致敬改革开放的足迹。</p>
+                <a href="pages/attractions.html" class="explore-btn">发现更多</a>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+            <img src="assets/images/大梅沙.jpg" alt="Beach" class="slide-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <p class="slide-subtitle">Coastal Charm</p>
+                <h1 class="slide-title">海滨风情</h1>
+                <p class="slide-desc">漫步在金色的沙滩，聆听海浪的声音。享受阳光、海风与自由的时光。</p>
+                <a href="pages/attractions.html" class="explore-btn">查看详情</a>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+            <img src="assets/images/深圳湾公园.jpg" alt="Bay Park" class="slide-img">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <p class="slide-subtitle">Ecological Bay</p>
+                <h1 class="slide-title">生态湾区</h1>
+                <p class="slide-desc">骑行在最美的滨海栈道，观赏候鸟迁徙。人与自然和谐共生的典范。</p>
+                <a href="pages/attractions.html" class="explore-btn">立即出发</a>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+
+    <!-- 引入 GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        /**
+         * 全屏轮播逻辑
+         * 使用 GSAP 实现圆形遮罩转场和视差效果
+         */
+        
+        const slides = document.querySelectorAll('.slide');
+        const nextBtn = document.querySelector('.next');
+        const prevBtn = document.querySelector('.prev');
+        const progress = document.querySelector('.progress');
+        
+        let currentSlide = 0;
+        let isAnimating = false;
+        const totalSlides = slides.length;
+
+        // 初始化第一张幻灯片的文字动画
+        function initFirstSlide() {
+            const slide = slides[0];
+            const title = slide.querySelector('.slide-title');
+            const subtitle = slide.querySelector('.slide-subtitle');
+            const desc = slide.querySelector('.slide-desc');
+            const btn = slide.querySelector('.explore-btn');
+            
+            gsap.to([subtitle, title, desc, btn], {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+            
+            updateProgress(0);
+        }
+
+        // 更新进度条
+        function updateProgress(index) {
+            gsap.to(progress, {
+                width: `${((index + 1) / totalSlides) * 100}%`,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        }
+
+        // 切换幻灯片的核心函数
+        function changeSlide(direction) {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const nextIndex = direction === 'next' 
+                ? (currentSlide + 1) % totalSlides 
+                : (currentSlide - 1 + totalSlides) % totalSlides;
+
+            const currentSlideEl = slides[currentSlide];
+            const nextSlideEl = slides[nextIndex];
+
+            // 准备下一张幻灯片
+            // 确保它在最上层，并且 clip-path 是一个小圆圈
+            gsap.set(nextSlideEl, { 
+                zIndex: 2,
+                visibility: 'visible',
+                clipPath: 'circle(0% at 50% 50%)'
+            });
+            
+            // 当前幻灯片层级降低
+            gsap.set(currentSlideEl, { zIndex: 1 });
+
+            // 下一张幻灯片的内容初始状态（用于进场动画）
+            const nextTexts = nextSlideEl.querySelectorAll('.slide-title, .slide-subtitle, .slide-desc, .explore-btn');
+            gsap.set(nextTexts, { y: 30, opacity: 0 });
+            
+            // 下一张幻灯片的图片初始状态（用于视差）
+            const nextImg = nextSlideEl.querySelector('.slide-img');
+            gsap.set(nextImg, { scale: 1.5 });
+
+            // 创建时间轴
+            const tl = gsap.timeline({
+                onComplete: () => {
+                    // 动画结束后清理状态
+                    currentSlideEl.classList.remove('active');
+                    gsap.set(currentSlideEl, { visibility: 'hidden', zIndex: 0 });
+                    
+                    nextSlideEl.classList.add('active');
+                    currentSlide = nextIndex;
+                    isAnimating = false;
+                }
+            });
+
+            // 1. 圆形遮罩扩散动画
+            tl.to(nextSlideEl, {
+                clipPath: 'circle(150% at 50% 50%)',
+                duration: 1.5,
+                ease: "power4.inOut"
+            }, 0);
+
+            // 2. 图片视差效果 (Scale down)
+            tl.to(nextImg, {
+                scale: 1.1,
+                duration: 1.5,
+                ease: "power4.inOut"
+            }, 0);
+            
+            // 当前图片稍微缩小一点，增加深度感
+            tl.to(currentSlideEl.querySelector('.slide-img'), {
+                scale: 1,
+                duration: 1.5,
+                ease: "power4.inOut"
+            }, 0);
+
+            // 3. 文字内容进场动画
+            tl.to(nextTexts, {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.1,
+                ease: "power3.out"
+            }, "-=0.8"); // 稍微提前开始
+
+            updateProgress(nextIndex);
+        }
+
+        // 事件监听
+        nextBtn.addEventListener('click', () => changeSlide('next'));
+        prevBtn.addEventListener('click', () => changeSlide('prev'));
+
+        // 键盘控制
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') changeSlide('next');
+            if (e.key === 'ArrowLeft') changeSlide('prev');
+        });
+
+        // 滚轮控制 (简单防抖)
+        let wheelTimeout;
+        document.addEventListener('wheel', (e) => {
+            clearTimeout(wheelTimeout);
+            wheelTimeout = setTimeout(() => {
+                if (e.deltaY > 0) {
+                    changeSlide('next');
+                } else {
+                    changeSlide('prev');
+                }
+            }, 100);
+        });
+
+        // 初始化
+        initFirstSlide();
+
+    </script>
+</body>
+</html>

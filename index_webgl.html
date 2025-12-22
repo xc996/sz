@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳之旅 - 沉浸体验</title>
+    <!-- 字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Noto Serif SC', serif;
+            background-color: #000;
+            color: var(--text-color);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* WebGL 容器 */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 3rem;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 文字内容层 */
+        .content-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none; /* 让鼠标事件穿透到 Canvas (如果有交互需求) 或 按钮 */
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+            max-width: 1200px;
+            pointer-events: auto; /* 恢复按钮点击 */
+            display: none; /* 默认隐藏，JS控制显示 */
+        }
+
+        .slide-content.active {
+            display: block;
+        }
+
+        .slide-subtitle {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            font-family: sans-serif;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .slide-title {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .slide-desc {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(20px);
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255,255,255,0.5);
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+        }
+
+        .explore-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* 控制器 */
+        .controls {
+            position: absolute;
+            bottom: 3rem;
+            right: 3rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .slide-title { font-size: 3rem; }
+            .navbar { padding: 1.5rem; }
+            .controls { bottom: 1.5rem; right: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">Shenzhen</a>
+        <div class="nav-links">
+            <a href="index.html">返回旧版</a>
+            <a href="pages/attractions.html">景点</a>
+        </div>
+    </nav>
+
+    <div id="canvas-container"></div>
+
+    <div class="content-layer">
+        <!-- Content 1 -->
+        <div class="slide-content active" data-index="0">
+            <p class="slide-subtitle">Modern Metropolis</p>
+            <h1 class="slide-title">都市奇迹</h1>
+            <p class="slide-desc">探索深圳天际线，感受科技与现代建筑的完美融合。在云端俯瞰这座不夜城。</p>
+            <a href="pages/attractions.html" class="explore-btn">开始探索</a>
+        </div>
+
+        <!-- Content 2 -->
+        <div class="slide-content" data-index="1">
+            <p class="slide-subtitle">Urban Oasis</p>
+            <h1 class="slide-title">自然之息</h1>
+            <p class="slide-desc">城市中心的绿肺，在繁忙中寻找一片宁静。登高望远，致敬改革开放的足迹。</p>
+            <a href="pages/attractions.html" class="explore-btn">发现更多</a>
+        </div>
+
+        <!-- Content 3 -->
+        <div class="slide-content" data-index="2">
+            <p class="slide-subtitle">Coastal Charm</p>
+            <h1 class="slide-title">海滨风情</h1>
+            <p class="slide-desc">漫步在金色的沙滩，聆听海浪的声音。享受阳光、海风与自由的时光。</p>
+            <a href="pages/attractions.html" class="explore-btn">查看详情</a>
+        </div>
+
+        <!-- Content 4 -->
+        <div class="slide-content" data-index="3">
+            <p class="slide-subtitle">Ecological Bay</p>
+            <h1 class="slide-title">生态湾区</h1>
+            <p class="slide-desc">骑行在最美的滨海栈道，观赏候鸟迁徙。人与自然和谐共生的典范。</p>
+            <a href="pages/attractions.html" class="explore-btn">立即出发</a>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- 依赖库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- WebGL 逻辑 -->
+    <script>
+        // 1. 数据配置
+        const images = [
+            'assets/images/平安金融中心.jpg',
+            'assets/images/莲花山公园.jpg',
+            'assets/images/大梅沙.jpg',
+            'assets/images/深圳湾公园.jpg'
+        ];
+
+        // 2. Vertex Shader (顶点着色器 - 处理几何体位置)
+        const vertexShader = `
+            varying vec2 vUv;
+            void main() {
+                vUv = uv;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+        `;
+
+        // 3. Fragment Shader (片元着色器 - 处理像素颜色和过渡)
+        // 核心效果：同心圆环流体反向旋转 (Concentric Fluid Rings)
+        const fragmentShader = `
+            uniform float uTime;
+            uniform float uProgress; // 0.0 到 1.0
+            uniform float uDirection; // 1.0 或 -1.0
+            uniform sampler2D uTexture1; // 当前图
+            uniform sampler2D uTexture2; // 下一张图
+            uniform vec2 uResolution;
+            uniform vec2 uImageResolution;
+
+            varying vec2 vUv;
+
+            #define PI 3.14159265359
+
+            // 保持图片比例 cover 效果的 UV 计算
+            vec2 getCoverUv(vec2 uv, vec2 resolution, vec2 texResolution) {
+                vec2 s = resolution;
+                vec2 i = texResolution;
+                float rs = s.x / s.y;
+                float ri = i.x / i.y;
+                vec2 newUv = rs < ri ? vec2(i.x * s.y / i.y, s.y) : vec2(s.x, i.y * s.x / i.x);
+                vec2 offset = (rs < ri ? vec2((newUv.x - s.x) / 2.0, 0.0) : vec2(0.0, (newUv.y - s.y) / 2.0)) / newUv;
+                vec2 uvCover = uv * s / newUv + offset;
+                return uvCover;
+            }
+
+            // 伪随机函数
+            float hash(vec2 p) {
+                return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+            }
+
+            // 噪声函数，制造液体的不规则感
+            float noise(vec2 p) {
+                vec2 i = floor(p);
+                vec2 f = fract(p);
+                f = f * f * (3.0 - 2.0 * f);
+                return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), f.x),
+                           mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x), f.y);
+            }
+
+            void main() {
+                vec2 uv = getCoverUv(vUv, uResolution, uImageResolution);
+                vec2 center = vec2(0.5);
+                
+                // 修正宽高比
+                float aspect = uResolution.x / uResolution.y;
+                vec2 aspectUv = (vUv - center) * vec2(aspect, 1.0) + center;
+                
+                // 极坐标转换
+                vec2 delta = aspectUv - center;
+                float dist = length(delta);
+                float angle = atan(delta.y, delta.x);
+
+                // --- 核心逻辑：同心圆环分割 ---
+                float ringCount = 3.0; // 环的数量
+                float ringWidth = 1.0 / ringCount;
+                
+                // 规则圆形：去掉噪声干扰
+                float fluidDist = dist;
+                
+                // --- 核心修改：离散化 Ring Index ---
+                // 之前是 floor，但计算 theta 时用了 dist (连续值)，导致变成了 continuous swirl
+                // 现在我们要强制让 theta 基于 discrete index
+                float discreteRingIndex = floor(fluidDist * ringCount);
+                
+                // 旋转方向：由 JS 传入
+                float dir = uDirection; 
+                
+                // 滞后因子：基于离散的圈数，而不是连续距离
+                // 内圈 (index=0) 滞后少，外圈 (index=2) 滞后多
+                // 为了让效果更明显，加大滞后差距
+                float lag = discreteRingIndex * 0.2; 
+                
+                // 计算滞后后的进度
+                float effectiveProgress = smoothstep(0.0, 1.0, uProgress * (1.0 + lag) - lag);
+                
+                // 加速曲线
+                float rotationStrength = effectiveProgress * effectiveProgress * 15.0; // 加大力度
+                
+                // 旋转角度：
+                // 基于离散 index 计算速度系数
+                // 内圈 (0) 系数大，外圈 (2) 系数小
+                // 1.0 - index * 0.2 -> 1.0, 0.8, 0.6
+                float speedFactor = 1.0 - discreteRingIndex * 0.15;
+                
+                // 这里的 theta 对于同一个环内的所有像素是常数 -> 刚体旋转
+                float theta = angle + dir * rotationStrength * speedFactor;
+                
+                // 修正回原始比例的旋转矩阵
+                float s = sin(theta - angle); 
+                float c = cos(theta - angle);
+                mat2 rot = mat2(c, -s, s, c);
+                
+                // --- 坐标计算 ---
+                // 1. 旧图 (t1) 使用旋转后的坐标
+                vec2 t1_uv = rot * (uv - center) + center;
+                
+                // 2. 新图 (t2) 保持静止，不旋转
+                vec2 t2_uv = uv;
+
+                // --- 混合过渡 ---
+                // 使用规则圆形遮罩
+                float maskDist = dist;
+                // 让遮罩稍微慢一点，确保能看到更多的旋转
+                float maskRadius = uProgress * 1.5; 
+                float mask = smoothstep(maskRadius - 0.05, maskRadius, maskDist);
+                mask = 1.0 - mask;
+
+                // 采样
+                vec4 t1 = texture2D(uTexture1, t1_uv);
+                vec4 t2 = texture2D(uTexture2, t2_uv);
+                
+                // RGB 分离 (仅加在旋转的旧图上，增加动感)
+                float rgbOff = rotationStrength * 0.01;
+                vec4 t1_r = texture2D(uTexture1, t1_uv + vec2(rgbOff, 0.0));
+                vec4 t1_b = texture2D(uTexture1, t1_uv - vec2(rgbOff, 0.0));
+                vec4 t1_final = vec4(t1_r.r, t1.g, t1_b.b, 1.0);
+
+                // 混合结果
+                vec4 finalColor = mix(t1_final, t2, mask);
+
+                // --- 第二环遮罩 (半透明黑色) ---
+                // ringIndex 为 1.0 是第二环
+                float isSecondRing = 1.0 - step(0.1, abs(discreteRingIndex - 1.0));
+                
+                // 常驻遮罩：调低阈值
+                // 静止时 0.15 (原来 0.3)
+                // 旋转时最大 0.35 (原来 0.6)
+                float baseDarken = 0.15;
+                float darkenStrength = isSecondRing * clamp(baseDarken + rotationStrength * 0.05, 0.0, 0.35);
+                
+                finalColor.rgb *= (1.0 - darkenStrength);
+
+                gl_FragColor = finalColor;
+            }
+        `;
+
+        // 4. Three.js 初始化与逻辑
+        class WebGLSlider {
+            constructor() {
+                this.container = document.getElementById('canvas-container');
+                this.width = this.container.offsetWidth;
+                this.height = this.container.offsetHeight;
+                
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.OrthographicCamera(
+                    this.width / -2, this.width / 2, 
+                    this.height / 2, this.height / -2, 
+                    1, 1000
+                );
+                this.camera.position.z = 1;
+
+                this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                this.renderer.setSize(this.width, this.height);
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                this.container.appendChild(this.renderer.domElement);
+
+                this.textures = [];
+                this.currentIdx = 0;
+                this.isAnimating = false;
+                this.time = 0;
+
+                this.loadTextures().then(() => {
+                    this.initMesh();
+                    this.addEvents();
+                    this.animate();
+                    this.showText(0); // Show initial text
+                });
+            }
+
+            loadTextures() {
+                const loader = new THREE.TextureLoader();
+                const promises = images.map(url => {
+                    return new Promise(resolve => {
+                        loader.load(url, (tex) => {
+                            tex.minFilter = THREE.LinearFilter;
+                            tex.magFilter = THREE.LinearFilter;
+                            resolve(tex);
+                        });
+                    });
+                });
+                return Promise.all(promises).then(loaded => {
+                    this.textures = loaded;
+                });
+            }
+
+            initMesh() {
+                // 全屏平面
+                const geometry = new THREE.PlaneGeometry(this.width, this.height, 1, 1);
+                
+                this.material = new THREE.ShaderMaterial({
+                    vertexShader,
+                    fragmentShader,
+                    uniforms: {
+                        uTime: { value: 0 },
+                        uProgress: { value: 0 },
+                        uDirection: { value: -1.0 }, // 默认顺时针
+                        uTexture1: { value: this.textures[0] },
+                        uTexture2: { value: this.textures[1] },
+                        uResolution: { value: new THREE.Vector2(this.width, this.height) },
+                        uImageResolution: { value: new THREE.Vector2(1920, 1080) } // 假设图片尺寸，Shader里会做cover计算
+                    }
+                });
+
+                this.mesh = new THREE.Mesh(geometry, this.material);
+                this.scene.add(this.mesh);
+            }
+
+            resize() {
+                this.width = this.container.offsetWidth;
+                this.height = this.container.offsetHeight;
+                this.renderer.setSize(this.width, this.height);
+                
+                // 更新相机
+                this.camera.left = this.width / -2;
+                this.camera.right = this.width / 2;
+                this.camera.top = this.height / 2;
+                this.camera.bottom = this.height / -2;
+                this.camera.updateProjectionMatrix();
+
+                // 更新 Shader 尺寸
+                if (this.material) {
+                    this.material.uniforms.uResolution.value.set(this.width, this.height);
+                    this.mesh.geometry = new THREE.PlaneGeometry(this.width, this.height, 1, 1);
+                }
+            }
+
+            changeSlide(direction) {
+                if (this.isAnimating) return;
+                this.isAnimating = true;
+
+                let nextIdx;
+                let dirVal = -1.0; // 默认 Next -> 顺时针
+
+                if (direction === 'next') {
+                    nextIdx = (this.currentIdx + 1) % this.textures.length;
+                    dirVal = -1.0;
+                } else {
+                    nextIdx = (this.currentIdx - 1 + this.textures.length) % this.textures.length;
+                    dirVal = 1.0; // Prev -> 逆时针
+                }
+
+                // 1. 设置纹理
+                this.material.uniforms.uTexture1.value = this.textures[this.currentIdx];
+                this.material.uniforms.uTexture2.value = this.textures[nextIdx];
+                this.material.uniforms.uDirection.value = dirVal;
+                this.material.uniforms.uProgress.value = 0;
+
+                // 2. 文字出场
+                this.hideText(this.currentIdx);
+
+                // 3. WebGL 动画
+                gsap.to(this.material.uniforms.uProgress, {
+                    value: 1,
+                    duration: 1.5,
+                    ease: "power2.inOut",
+                    onComplete: () => {
+                        this.currentIdx = nextIdx;
+                        this.isAnimating = false;
+                        this.material.uniforms.uProgress.value = 0;
+                        this.material.uniforms.uTexture1.value = this.textures[nextIdx];
+                    }
+                });
+
+                // 4. 文字进场 (稍微延迟)
+                setTimeout(() => {
+                    this.showText(nextIdx);
+                }, 800);
+            }
+
+            showText(index) {
+                const els = document.querySelectorAll('.slide-content');
+                els.forEach(el => el.classList.remove('active'));
+                
+                const target = document.querySelector(`.slide-content[data-index="${index}"]`);
+                if (target) {
+                    target.classList.add('active');
+                    const children = target.querySelectorAll('.slide-subtitle, .slide-title, .slide-desc, .explore-btn');
+                    
+                    gsap.fromTo(children, 
+                        { y: 30, opacity: 0 },
+                        { y: 0, opacity: 1, duration: 1, stagger: 0.1, ease: "power3.out" }
+                    );
+                }
+            }
+
+            hideText(index) {
+                const target = document.querySelector(`.slide-content[data-index="${index}"]`);
+                if (target) {
+                    const children = target.querySelectorAll('.slide-subtitle, .slide-title, .slide-desc, .explore-btn');
+                    gsap.to(children, {
+                        y: -30,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: "power3.in"
+                    });
+                }
+            }
+
+            addEvents() {
+                window.addEventListener('resize', () => this.resize());
+                
+                document.querySelector('.next').addEventListener('click', () => this.changeSlide('next'));
+                document.querySelector('.prev').addEventListener('click', () => this.changeSlide('prev'));
+
+                let wheelTimeout;
+                window.addEventListener('wheel', (e) => {
+                    clearTimeout(wheelTimeout);
+                    wheelTimeout = setTimeout(() => {
+                        if (e.deltaY > 0) this.changeSlide('next');
+                        else this.changeSlide('prev');
+                    }, 100);
+                });
+            }
+
+            animate() {
+                requestAnimationFrame(this.animate.bind(this));
+                this.time += 0.05;
+                if (this.material) {
+                    this.material.uniforms.uTime.value = this.time;
+                }
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // 启动
+        new WebGLSlider();
+
+    </script>
+</body>
+</html>
