@@ -68,7 +68,7 @@ npx http-server -p 8000
 
 ## � 部署到 GitHub Pages (Deploy to GitHub Pages)
 
-- 访问地址：`https://xc996.github.io/sz/`
+ - 访问地址：`https://<GitHub用户名>.github.io/<仓库名>/`
 - 分支：`master`；工作流：`.github/workflows/pages.yml`
 - 构建命令：`npm run build`
 
@@ -81,7 +81,7 @@ npx http-server -p 8000
 - 等待 GitHub Actions 自动部署完成（通常 1-2 分钟）
 
 ### 常见问题与修复
-- 子页 404：`https://xc996.github.io/sz/pages/attractions.html` 返回 404
+ - 子页 404：`https://<GitHub用户名>.github.io/<仓库名>/pages/attractions.html` 返回 404
   - 原因：仅发布了 `dist/index.html`，未包含 `pages/**` 子页与 `assets/**` 静态目录
   - 修复：`scripts/copy-static.mjs` 在构建后复制 `pages/` 与 `assets/` 至 `dist/`，并写入 `dist/.nojekyll`
   - 现状：构建后 `dist/` 应包含 `pages/*.html`、`assets/**` 以及首页与哈希资源
@@ -103,9 +103,9 @@ npx http-server -p 8000
 
 - 统一资源路径：所有页面脚本统一调用 `window.getAssetsBase()`（位于 `assets/js/utils.js`）生成资源基路径，避免各处重复实现与路径不一致。
 - 构建后复制：始终通过 `scripts/copy-static.mjs` 将 `pages/` 和 `assets/` 一并复制到 `dist/`，确保子页与静态资源发布完整。
-- 发布前自动巡检（CI）：工作流 `.github/workflows/pages.yml` 在构建后执行 `npm run audit`，对 HTML/JS 中的 `href/src` 和 JSON 引用进行并发检查；发现非 200 资源将阻断部署，避免 404 再次上线。
+- 发布前自动巡检（CI）：工作流 `.github/workflows/pages.yml` 在构建后执行 `npm run audit`，对 HTML/JS 中的 `href/src` 和 JSON 引用进行并发检查；CI 会自动根据仓库上下文设置 `ORIGIN=https://<GitHub用户名>.github.io` 与 `BASE=/&lt;仓库名&gt;`，发现非 200 资源将阻断部署，避免 404 再次上线。
   - 手动运行：`npm run audit`
-  - 参数说明：`--origin https://xc996.github.io --base /sz --fail-on-404`
+  - 参数说明：`--origin https://<GitHub用户名>.github.io --base /<仓库名> --fail-on-404`
   - 检查范围：`index.html`、`pages/**`、`assets/js/**` 中的 `assets/**` 资源链接（含 `.css/.js/.png/.jpg/.jpeg/.svg/.woff2/.ttf/.json`）
 
 ## �� 最近更新 (Recent Updates) - 2025-12-21
