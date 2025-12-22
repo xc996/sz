@@ -346,24 +346,6 @@ let currentTheme = 'light';
 // 工具函数
 // ------------------------------
 
-/**
- * 功能：获取静态资源基础路径
- * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
- */
-function getAssetsBase() {
-    const host = window.location.hostname || '';
-    const path = window.location.pathname || '';
-    const isGh = host.endsWith('github.io');
-    if (isGh) {
-        // 获取仓库名称（路径的第一段）
-        const seg = path.split('/').filter(Boolean)[0] || '';
-        return seg ? `/${seg}/assets/` : '/assets/';
-    }
-    // 本地开发环境或非 GitHub Pages 环境
-    // 注意：history.html 在 pages/ 目录下，如果使用相对路径需要回退一级
-    return '../assets/';
-}
-
 // 翻译函数
 function t(key) {
     return translations[currentLang][key] || key;

@@ -65,17 +65,6 @@ const localTrafficFallback = [
     }
 ];
 
-function getAssetsBase() {
-    const host = window.location.hostname || '';
-    const path = window.location.pathname || '';
-    const isGh = host.endsWith('github.io');
-    if (isGh) {
-        const seg = path.split('/').filter(Boolean)[0] || '';
-        return seg ? `/${seg}/assets/` : '/assets/';
-    }
-    return '/assets/';
-}
-
 function isFileProtocol() {
     return (window.location.protocol || '').startsWith('file');
 }
