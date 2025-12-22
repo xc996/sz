@@ -19,6 +19,8 @@ const translations = {
         'nav.map': '地图',
         'btn.lang': '切换语言',
         'btn.theme': '切换主题',
+        'hero.food.title1': '美食',
+        'hero.food.title2': 'FOOD',
         'food.title': '美食天堂',
         'food.subtitle': '品味深圳的多元美食文化',
         'footer.about': '关于深圳',
@@ -42,6 +44,8 @@ const translations = {
         'nav.map': 'Map',
         'btn.lang': 'Switch Language',
         'btn.theme': 'Switch Theme',
+        'hero.food.title1': 'FOOD',
+        'hero.food.title2': '美食',
         'food.title': 'Food Paradise',
         'food.subtitle': 'Taste Shenzhen\'s diverse food culture',
         'footer.about': 'About Shenzhen',
@@ -66,7 +70,7 @@ const localFoodFallback = [
         name: '潮汕牛肉火锅',
         nameEn: 'Chaoshan Beef Hotpot',
         district: { zh: '全市', en: 'Citywide' },
-        image: 'assets/images/food_beef.jpg',
+        image: 'assets/images/潮汕牛肉火锅.jpg',
         seo: { description: { zh: '鲜嫩多汁的牛肉，浓郁的牛骨汤', en: 'Tender beef, rich bone broth' } }
     },
     {
@@ -74,7 +78,7 @@ const localFoodFallback = [
         name: '椰子鸡',
         nameEn: 'Coconut Chicken Hotpot',
         district: { zh: '全市', en: 'Citywide' },
-        image: 'assets/images/food_coconut.jpg',
+        image: 'assets/images/椰子鸡.jpg',
         seo: { description: { zh: '清甜椰子水煮文昌鸡', en: 'Wenchang chicken cooked in sweet coconut water' } }
     }
 ];
@@ -237,10 +241,13 @@ function initActiveNav() {
         
         if (href === '#' || href.startsWith('#')) return;
 
-        // 简单匹配
-        if (currentPath.endsWith(href)) {
+        // 简单匹配：当前路径包含 href 中的关键部分
+        // 例如：/pages/food/detail.html 包含 food，匹配 <a href="pages/food.html">
+        const hrefKey = href.replace('.html', '').split('/').pop();
+        if (currentPath.includes(hrefKey)) {
              link.classList.add('active');
-        }
+        } 
+        // 处理首页匹配
         else if (currentPath.endsWith('/') && href === 'index.html') {
             link.classList.add('active');
         }
@@ -324,11 +331,7 @@ async function renderFood() {
                 <h3 class="card-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
                 <p class="card-description">${currentLang === 'zh' ? (item.seo?.description?.zh || '') : (item.seo?.description?.en || '')}</p>
                 <div class="card-meta">
-                    <div class="card-location">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>${currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '')}</span>
-                    </div>
-                    <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="${currentLang === 'zh' ? '查看详情' : 'View Details'}">${currentLang === 'zh' ? '详' : 'Detail'}</a>
+                    <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="${currentLang === 'zh' ? '查看详情' : 'View Details'}">${currentLang === 'zh' ? '品' : 'Try'}</a>
                 </div>
             </div>
         `;
@@ -376,14 +379,11 @@ async function updateFoodCardsText() {
             description.textContent = currentLang === 'zh' ? (item.seo?.description?.zh || '') : (item.seo?.description?.en || '');
         }
         
-        const location = card.querySelector('.card-location span');
-        if (location) {
-            location.textContent = currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '');
-        }
+
         
         const detailBtn = card.querySelector('.detail-btn');
         if (detailBtn) {
-            detailBtn.textContent = currentLang === 'zh' ? '详' : 'Detail';
+            detailBtn.textContent = currentLang === 'zh' ? '品' : 'Try';
             detailBtn.setAttribute('title', currentLang === 'zh' ? '查看详情' : 'View Details');
         }
     });
@@ -422,6 +422,123 @@ function bindDetailEntryScroll() {
 }
 
 // ------------------------------
+// 轮播功能
+// ------------------------------
+
+// 轮播对象
+const carousel = {
+    currentIndex: 0,
+    items: [],
+    indicators: [],
+    interval: null,
+    autoPlay: true,
+    intervalTime: 5000,
+    
+    // 初始化轮播
+    init() {
+        this.items = document.querySelectorAll('.carousel-item');
+        this.createIndicators();
+        this.startAutoPlay();
+        this.bindEvents();
+    },
+    
+    // 创建指示器
+    createIndicators() {
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+        if (!indicatorsContainer) return;
+        
+        indicatorsContainer.innerHTML = '';
+        this.indicators = [];
+        
+        this.items.forEach((item, index) => {
+            const indicator = document.createElement('button');
+            indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
+            indicator.setAttribute('data-index', index);
+            indicator.addEventListener('click', () => this.goToSlide(index));
+            indicatorsContainer.appendChild(indicator);
+            this.indicators.push(indicator);
+        });
+    },
+    
+    // 切换到指定幻灯片
+    goToSlide(index) {
+        // 移除当前活动状态
+        this.items[this.currentIndex].classList.remove('active');
+        this.indicators[this.currentIndex].classList.remove('active');
+        
+        // 更新索引
+        this.currentIndex = index;
+        if (this.currentIndex >= this.items.length) {
+            this.currentIndex = 0;
+        } else if (this.currentIndex < 0) {
+            this.currentIndex = this.items.length - 1;
+        }
+        
+        // 添加新的活动状态
+        this.items[this.currentIndex].classList.add('active');
+        this.indicators[this.currentIndex].classList.add('active');
+        
+        // 重置自动播放
+        if (this.autoPlay) {
+            this.resetAutoPlay();
+        }
+    },
+    
+    // 下一张
+    next() {
+        this.goToSlide(this.currentIndex + 1);
+    },
+    
+    // 上一张
+    prev() {
+        this.goToSlide(this.currentIndex - 1);
+    },
+    
+    // 开始自动播放
+    startAutoPlay() {
+        if (this.autoPlay && !this.interval) {
+            this.interval = setInterval(() => {
+                this.next();
+            }, this.intervalTime);
+        }
+    },
+    
+    // 重置自动播放
+    resetAutoPlay() {
+        clearInterval(this.interval);
+        this.interval = null;
+        this.startAutoPlay();
+    },
+    
+    // 暂停自动播放
+    pauseAutoPlay() {
+        if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+    },
+    
+    // 绑定事件
+    bindEvents() {
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.prev());
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.next());
+        }
+        
+        // 点击指示器也会重置自动播放
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+    }
+};
+
+// ------------------------------
 // 初始化函数
 // ------------------------------
 
@@ -442,6 +559,9 @@ function init() {
     initMobileMenu();
     initBackToTop();
     renderFood();
+    
+    // 初始化轮播
+    carousel.init();
     
     const langSwitch = document.getElementById('langSwitch');
     const themeToggle = document.getElementById('themeToggle');

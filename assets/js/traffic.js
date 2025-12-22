@@ -223,10 +223,13 @@ function initActiveNav() {
         
         if (href === '#' || href.startsWith('#')) return;
 
-        // 简单匹配
-        if (currentPath.endsWith(href)) {
+        // 简单匹配：当前路径包含 href 中的关键部分
+        // 例如：/pages/traffic/detail.html 包含 traffic，匹配 <a href="pages/traffic.html">
+        const hrefKey = href.replace('.html', '').split('/').pop();
+        if (currentPath.includes(hrefKey)) {
              link.classList.add('active');
-        }
+        } 
+        // 处理首页匹配
         else if (currentPath.endsWith('/') && href === 'index.html') {
             link.classList.add('active');
         }

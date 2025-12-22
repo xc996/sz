@@ -16,8 +16,8 @@
         }
       },
       "intro": {
-        "zh": ["绵延15公里的海滨长廊，欣赏日落的最佳地点"],
-        "en": ["A 15km coastal promenade, the best spot to watch the sunset"]
+        "zh": ["深圳湾公园是深圳市最大的城市公园之一，总面积约128.74公顷，沿海岸线长约13公里，设有14个主题园。", "公园由中国城市规划设计研究院深圳分院和美国SWA集团完成总体规划，于2000年12月正式开放，2011年建成滨海休闲带。", "这里是东亚-澳大利西亚候鸟迁徙路线的重要站点，每年有大量候鸟在此栖息，是观鸟的绝佳场所。", "公园全天开放（6:00-23:00），免费入场，是市民和游客休闲散步、骑行、欣赏日落的热门地点。"],
+        "en": ["Shenzhen Bay Park is one of the largest urban parks in Shenzhen, covering an area of about 128.74 hectares with a coastline of approximately 13 kilometers and 14 themed gardens.", "The park was总体规划 by the Shenzhen Branch of China Urban Planning and Design Institute and the American SWA Group, officially opening in December 2000, with the coastal leisure belt completed in 2011.", "It is an important site on the East Asian-Australasian migratory bird route, where a large number of migratory birds inhabit every year, making it an excellent spot for bird watching.", "The park is open all day (6:00-23:00), free of charge, and is a popular place for citizens and tourists to walk, cycle, and enjoy the sunset."]
       },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "特色景观", "en": "Scenic features" },
@@ -41,8 +41,8 @@
         }
       },
       "intro": {
-        "zh": ["一天游遍世界，130个微缩景观"],
-        "en": ["Travel the world in one day with 130 miniature attractions"]
+        "zh": ["深圳世界之窗位于南山区深南大道9037号，是国家AAAAA级旅游景区，于1994年6月18日建成开园。", "公园占地面积48万平方米，分为世界广场、亚洲区、大洋洲区、欧洲区、非洲区、美洲区、世界雕塑园和国际街八大区域。", "这里汇集了全球130多个微缩景观，将世界奇观、历史遗迹、古今名胜、民间歌舞表演融为一体，让游客一日游遍全球。", "2001年9月28日建成环球舞台，常年上演精彩的大型文艺演出，是集文化、娱乐、休闲于一体的综合性旅游目的地。"],
+        "en": ["Shenzhen Window of the World is located at No. 9037 Shennan Avenue, Nanshan District, a national AAAAA-level tourist attraction, which opened on June 18, 1994.", "Covering an area of 480,000 square meters, the park is divided into eight regions: World Plaza, Asia, Oceania, Europe, Africa, Americas, World Sculpture Park and International Street.", "It gathers more than 130 miniature landscapes from around the world, integrating world wonders, historical sites, ancient and modern places of interest, and folk song and dance performances, allowing tourists to travel around the world in one day.", "The Global Stage was built on September 28, 2001, featuring wonderful large-scale cultural performances all year round, making it a comprehensive tourist destination integrating culture, entertainment and leisure."]
       },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "全球微缩景观", "en": "Miniature world attractions" },
@@ -64,7 +64,10 @@
           "en": "The most popular theme park in South China"
         }
       },
-      "intro": { "zh": ["华南地区最受欢迎的主题乐园"], "en": ["The most popular theme park in South China"] },
+      "intro": {
+        "zh": ["深圳欢乐谷位于南山区侨城西街18号，是国家AAAAA级旅游景区，于1998年10月建成开园。", "公园占地面积35万平方米，总投资20亿元人民币，分为西班牙广场、欢乐时光、魔幻城堡、冒险山等九大主题区。", "作为国内投资规模较大、设施先进的现代主题乐园，欢乐谷融参与性、观赏性、娱乐性、趣味性于一体，是亚太十大主题公园之一。", "这里拥有众多刺激的游乐设施，如过山车、大摆锤等，同时还有精彩的演艺节目和主题活动，适合各个年龄段的游客。"],
+        "en": ["Shenzhen Happy Valley is located at No. 18 Qiaocheng West Street, Nanshan District, a national AAAAA-level tourist attraction, which opened in October 1998.", "Covering an area of 350,000 square meters with a total investment of 2 billion yuan, the park is divided into nine themed areas including Spanish Square, Happy Time, Magic Castle, and Adventure Mountain.", "As a modern theme park with large investment scale and advanced facilities in China, Happy Valley integrates participation, appreciation, entertainment and fun, and is one of the top ten theme parks in Asia-Pacific.", "It has many thrilling amusement facilities such as roller coasters and giant swings, as well as wonderful performances and themed activities, suitable for tourists of all ages."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "刺激游乐设施", "en": "Thrilling rides" },
         { "icon": "fas fa-check-circle", "zh": "亲子活动", "en": "Family activities" },
@@ -85,7 +88,10 @@
           "en": "Eco-tourism resort combining mountains and sea"
         }
       },
-      "intro": { "zh": ["山海结合的生态旅游度假区"], "en": ["Eco-tourism resort combining mountains and sea"] },
+      "intro": {
+        "zh": ["东部华侨城位于盐田区大梅沙，是国家AAAA级旅游景区，占地面积约9平方公里。", "由华侨城集团投资建设，于2007年启动开发，是集休闲度假、观光旅游、户外运动、科普教育、生态探险等主题于一体的大型综合性国家生态旅游示范区。", "景区融合了山海自然景观与人文景观，拥有大侠谷、茶溪谷等主题区域，提供丰富的游乐设施、特色演出和度假酒店。", "2025年4月起大侠谷景区进行升级改造，预计国庆假期重新开放，将打造更具吸引力的山海生态旅游目的地。"],
+        "en": ["OCT East is located in Dameisha, Yantian District, a national AAAA-level tourist attraction covering an area of about 9 square kilometers.", "Invested and built by OCT Group, it was launched in 2007 and is a large-scale comprehensive national eco-tourism demonstration area integrating leisure vacation, sightseeing, outdoor sports, science education and ecological adventure.", "The scenic area combines mountain and sea natural landscapes with cultural landscapes, featuring themed areas such as大侠谷 (Daxia Valley) and 茶溪谷 (Tea Stream Valley), providing rich amusement facilities, characteristic performances and resort hotels.", "Since April 2025, Daxia Valley has been undergoing upgrading and renovation, expected to reopen during the National Day holiday, and will create a more attractive mountain and sea eco-tourism destination."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "自然风光", "en": "Natural scenery" },
         { "icon": "fas fa-check-circle", "zh": "主题园区", "en": "Themed zones" },
@@ -106,7 +112,10 @@
           "en": "The largest bookstore in South China, a cultural landmark"
         }
       },
-      "intro": { "zh": ["华南地区最大的书店，文化地标"], "en": ["The largest bookstore in South China, a cultural landmark"] },
+      "intro": {
+        "zh": ["深圳中心书城位于福田区福中一路2014号，建成时为世界面积最大的单层书店，是深圳重要的文化地标。", "书城毗邻深圳市少年宫，开放时间为09:30-22:00，免费向公众开放。", "这里不仅是购书胜地，还拥有深圳唯一一家全天候营业的24小时书吧，前身是成立17年的\"星光阅读栈\"，为城市点亮了温暖的灯光。", "书城还打造了\"深圳晚8点\"这一标志性公益文化品牌，持续近15年从未间断，为市民提供丰富的文化活动。"],
+        "en": ["Shenzhen Central Book City is located at No. 2014 Fuzhong 1st Road, Futian District. When completed, it was the world's largest single-storey bookstore and is an important cultural landmark in Shenzhen.", "Adjacent to Shenzhen Children's Palace, the bookstore is open from 09:30 to 22:00 and free to the public.", "It is not only a book shopping destination but also has Shenzhen's only 24-hour bookstore bar, formerly known as \"Starlight Reading Stack\" which has been established for 17 years, lighting up warm lights for the city.", "The bookstore has also created the iconic public cultural brand \"Shenzhen Evening 8 o'clock\", which has continued for nearly 15 years without interruption, providing rich cultural activities for citizens."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "丰富藏书", "en": "Extensive collection" },
         { "icon": "fas fa-check-circle", "zh": "文化活动", "en": "Cultural events" },
@@ -127,7 +136,10 @@
           "en": "Shenzhen's tallest building with 599m observation deck"
         }
       },
-      "intro": { "zh": ["深圳最高建筑，599米云际观光层"], "en": ["Shenzhen's tallest building with 599m observation deck"] },
+      "intro": {
+        "zh": ["平安金融中心是深圳最高建筑，云际观光层位于116层，海拔541米，可360°鸟瞰深圳城市风貌。", "观光层拥有吉尼斯世界纪录认证的全球最高室内悬空玻璃观景平台，让游客体验惊险刺激的高空视角。", "配备国内最快电梯，从地下二层乘坐直达电梯仅需55秒即可到达观光层，速度令人惊叹。", "开放时间：周日至周四10:00-20:00，周五-周六10:00-21:00，是感受深圳城市发展与现代化建设的绝佳地点。"],
+        "en": ["Ping An Finance Center is Shenzhen's tallest building. The Cloud Observatory is located on the 116th floor at an altitude of 541 meters, offering 360° panoramic views of Shenzhen's urban landscape.", "The observatory has the world's highest indoor suspended glass viewing platform certified by Guinness World Records, allowing visitors to experience thrilling high-altitude perspectives.", "Equipped with China's fastest elevator, it only takes 55 seconds to reach the observatory from the second basement floor by direct elevator, with amazing speed.", "Opening hours: Sunday to Thursday 10:00-20:00, Friday-Saturday 10:00-21:00, it is an excellent place to experience Shenzhen's urban development and modern construction."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "高空观景", "en": "Sky observation" },
         { "icon": "fas fa-check-circle", "zh": "地标建筑", "en": "Landmark building" },
@@ -148,7 +160,10 @@
           "en": "Beautiful beach in eastern Shenzhen, perfect for swimming and relaxation"
         }
       },
-      "intro": { "zh": ["深圳东部的美丽海滩，适合游泳和休闲"], "en": ["Beautiful beach in eastern Shenzhen, perfect for swimming and relaxation"] },
+      "intro": {
+        "zh": ["小梅沙位于深圳市盐田区，是深圳东部黄金海岸线的重要组成部分，东临大鹏新区，西接大梅沙，北靠马峦山郊野公园，南临大鹏湾。", "这里拥有优良的山海资源，包括细腻的沙滩、清澈的海水、独特的礁石景观，是深圳著名的海滨旅游景区。", "园区开放时间为9:30-21:30（20:30停止检票），常态化开放夜场，让游客可以欣赏到美丽的海滨夜景。", "2024年5月1日开始试运营，设施逐步完善，设有海马商亭、更衣淋浴区、椰树湾商亭等配套设施，为游客提供便利的服务。"],
+        "en": ["Xiaomeisha is located in Yantian District, Shenzhen, an important part of the golden coastline in eastern Shenzhen, bordering Dapeng New District to the east, Dameisha to the west, Maluan Mountain Country Park to the north, and Dapeng Bay to the south.", "It has excellent mountain and sea resources, including delicate beaches, clear seawater, and unique rock landscapes, making it a famous coastal tourist attraction in Shenzhen.", "The park is open from 9:30 to 21:30 (ticket checking stops at 20:30), with regular night opening, allowing tourists to enjoy the beautiful coastal night scenery.", "It started trial operation on May 1, 2024, with gradually improved facilities including hippocampus kiosks, changing and shower areas, coconut bay kiosks and other supporting facilities, providing convenient services for tourists."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "细腻沙滩", "en": "Fine sand" },
         { "icon": "fas fa-check-circle", "zh": "海水清澈", "en": "Clear water" },
@@ -169,7 +184,10 @@
           "en": "Shenzhen's largest free beach with complete facilities and vibrant atmosphere"
         }
       },
-      "intro": { "zh": ["深圳最大的免费海滩，设施完善，人气旺盛"], "en": ["Shenzhen's largest free beach with complete facilities and vibrant atmosphere"] },
+      "intro": {
+        "zh": ["大梅沙位于深圳市盐田区，是深圳人气最旺的免费海滩，也是深圳标志性景点之一。", "公园总面积约20.07公顷，沙滩全长约1.4公里，于1999年6月18日落成开放。", "开放时间：冬令时7:00-23:00（22:00清场），夏令时6:30-23:00（22:00清场），全年开放。", "自'山竹'台风后，2019年启动重建工作，设施更加完善，还设有电梯愿望塔观光、深海幻境等特色项目。"],
+        "en": ["Dameisha is located in Yantian District, Shenzhen, and is the most popular free beach in Shenzhen, as well as one of Shenzhen's iconic attractions.", "The park covers an area of about 20.07 hectares, with a beach length of about 1.4 kilometers, and was completed and opened on June 18, 1999.", "Opening hours: Winter schedule 7:00-23:00 (clearing at 22:00), summer schedule 6:30-23:00 (clearing at 22:00), open all year round.", "After Typhoon Mangkhut, reconstruction work was launched in 2019, with more complete facilities, and special projects such as elevator wish tower sightseeing and deep sea fantasy land."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "免费开放", "en": "Free access" },
         { "icon": "fas fa-check-circle", "zh": "设施完善", "en": "Well-equipped" },
@@ -190,7 +208,10 @@
           "en": "Urban park in Shenzhen's central area with panoramic views of Futian CBD"
         }
       },
-      "intro": { "zh": ["深圳中心区的城市公园，可以俯瞰福田CBD"], "en": ["Urban park in Shenzhen's central area with panoramic views of Futian CBD"] },
+      "intro": {
+        "zh": ["莲花山公园位于深圳市福田区红荔路6030号，总面积181公顷，是市区内面积最大的市政公园之一。", "公园因七个山头相拥，状如盛开的莲花而得名，筹建于1992年10月，1997年6月23日正式开放。", "这里是国家重点公园和国家红色旅游示范基地，开放时间为6:00-23:00（22:30停止入园）。", "公园位于市中心区最北端，从山顶可以俯瞰整个福田CBD，是欣赏深圳城市天际线的绝佳地点。"],
+        "en": ["Lianhuashan Park is located at No. 6030 Hongli Road, Futian District, Shenzhen, with a total area of 181 hectares, and is one of the largest municipal parks in the urban area.", "The park is named because seven peaks embrace each other, shaped like a blooming lotus flower. It was planned in October 1992 and officially opened on June 23, 1997.", "It is a national key park and a national red tourism demonstration base, open from 6:00 to 23:00 (entry stops at 22:30).", "Located at the northernmost end of the central urban area, you can overlook the entire Futian CBD from the top of the mountain, making it an excellent place to enjoy Shenzhen's urban skyline."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "市区绿肺", "en": "Urban green" },
         { "icon": "fas fa-check-circle", "zh": "视野开阔", "en": "Wide views" },
@@ -211,7 +232,10 @@
           "en": "Mangrove ecological park in Bao'an District, perfect for birdwatching and leisure"
         }
       },
-      "intro": { "zh": ["宝安区的红树林生态公园，适合观鸟和休闲"], "en": ["Mangrove ecological park in Bao'an District, perfect for birdwatching and leisure"] },
+      "intro": {
+        "zh": ["西湾红树林湿地公园位于宝安区西乡街道西海提沿岸，金湾大道与西海堤交汇处，是宝安区唯一的滨海休闲公园。", "公园总占地面积约55.1万平方米，一期工程于2014年12月30日开工，2015年8月26日正式开园。", "这里是深圳看日落的宝藏地，蓝天大海与郁郁葱葱的红树林交相辉映，自然与城市完美交融。", "公园融合了滨海及西乡地域文化，开放时间为6:00-23:00，是适合亲子时光、拍照打卡、漫步放松的绝佳场所。"],
+        "en": ["Xiwan Mangrove Wetland Park is located along the Xihai Embankment, Xixiang Street, Bao'an District, at the intersection of Jinwan Avenue and Xihai Embankment. It is the only coastal leisure park in Bao'an District.", "The park covers a total area of about 551,000 square meters. Phase I of the project started on December 30, 2014, and officially opened on August 26, 2015.", "It is a treasure place to watch the sunset in Shenzhen, where blue sky, sea and lush mangroves complement each other, and nature and city blend perfectly.", "The park integrates coastal and Xixiang regional culture, open from 6:00 to 23:00, and is an excellent place for parent-child time, photo taking, and leisurely walks."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "生态湿地", "en": "Wetland ecology" },
         { "icon": "fas fa-check-circle", "zh": "观鸟天堂", "en": "Birdwatching" },
@@ -232,7 +256,10 @@
           "en": "Coastal complex with dining, entertainment and shopping"
         }
       },
-      "intro": { "zh": ["集餐饮、娱乐、购物于一体的海滨综合体"], "en": ["Coastal complex with dining, entertainment and shopping"] },
+      "intro": {
+        "zh": ["海上世界位于南山区蛇口，是一个集观光、休闲、娱乐、科普教育为一体的综合性海洋主题旅游区。", "核心景点包括明华轮（原为法国豪华游轮，现改造为集旅游、美食、娱乐、购物、艺术、酒店为一体的海上旅游中心）和女娲补天雕像。", "景区全天开放，二层观景台免费拍照，是游客喜爱的打卡地，还可以到海边栈道吹海风，欣赏对面香港的美景。", "交通便利，地铁2号线直达海上世界地铁站，融合了海洋主题、国际风情和休闲娱乐，是体验深圳海洋魅力的绝佳起点。"],
+        "en": ["Sea World is located in Shekou, Nanshan District, a comprehensive marine-themed tourist area integrating sightseeing, leisure, entertainment and science education.", "Core attractions include the Minghua Ship (formerly a French luxury cruise ship, now transformed into a comprehensive maritime tourism center integrating tourism, food, entertainment, shopping, art and hotels) and the Nvwa补天 statue.", "The scenic area is open all day, with free photo taking on the second-floor observation deck, which is a popular check-in spot for tourists. You can also go to the seaside boardwalk to enjoy the sea breeze and the beautiful scenery of Hong Kong across the way.", "With convenient transportation, directly accessible via Metro Line 2 to Sea World Station, it integrates marine themes, international flavors and leisure entertainment, making it an excellent starting point to experience Shenzhen's marine charm."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "餐饮娱乐", "en": "Dining & fun" },
         { "icon": "fas fa-check-circle", "zh": "滨海风情", "en": "Coastal vibe" },
@@ -253,7 +280,10 @@
           "en": "Important place to learn about Shenzhen's history and culture"
         }
       },
-      "intro": { "zh": ["了解深圳历史和文化的重要场所"], "en": ["Important place to learn about Shenzhen's history and culture"] },
+      "intro": {
+        "zh": ["深圳博物馆成立于1981年，是深圳建立的第一家文博机构，也是全国红色旅游经典景区和全国社会科学普及基地。", "现有4处馆址：历史民俗馆、古代艺术馆、深圳改革开放展览馆和东江游击队指挥部旧址，总建筑面积约6.5万平方米。", "博物馆集收藏、保护、研究、展示、教育于一体，是了解深圳历史和文化的重要场所。", "开放时间：周二至周日9:30-17:30，位于福田区福中路市民中心，交通便利，是深圳重要的文化地标。"],
+        "en": ["Shenzhen Museum was established in 1981, it is the first cultural and museum institution established in Shenzhen, and also a national red tourism classic scenic spot and a national social science popularization base.", "It has 4 locations: History and Folklore Museum, Ancient Art Museum, Shenzhen Reform and Opening-up Exhibition Hall, and the former site of the Dongjiang Guerrilla Command, with a total construction area of about 65,000 square meters.", "The museum integrates collection, protection, research, exhibition and education, and is an important place to learn about Shenzhen's history and culture.", "Opening hours: Tuesday to Sunday 9:30-17:30, located in Civic Center, Fuzhong Road, Futian District, with convenient transportation, it is an important cultural landmark in Shenzhen."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "历史展陈", "en": "History exhibits" },
         { "icon": "fas fa-check-circle", "zh": "文化教育", "en": "Cultural education" },
@@ -274,7 +304,10 @@
           "en": "Shenzhen's oldest commercial street with bustling atmosphere"
         }
       },
-      "intro": { "zh": ["深圳最古老的商业街，热闹非凡"], "en": ["Shenzhen's oldest commercial street with bustling atmosphere"] },
+      "intro": {
+        "zh": ["东门老街位于罗湖区，是深圳最具历史文化底蕴的商业街区之一，被称为现代深圳的'根'。", "其历史可追溯至明代中期，原名'深圳旧墟'，面积约17.6万平方米，包含17条街道和众多商业设施。", "这里地理环境独特，居于香港和广州之间，聚集了广东三大民系广府、客家和潮汕的民众，融合了多元文化。", "作为深圳较老牌的商业步行街区，数以万计的商铺密布其间，全天开放，地铁罗宝线可直达老街站，是购物美食和感受老深圳记忆的绝佳场所。"],
+        "en": ["Dongmen Old Street is located in Luohu District, it is one of the most historically and culturally rich commercial districts in Shenzhen, known as the 'root' of modern Shenzhen.", "Its history dates back to the mid-Ming Dynasty, originally named 'Shenzhen Old Market', covering an area of about 176,000 square meters, including 17 streets and numerous commercial facilities.", "With a unique geographical location between Hong Kong and Guangzhou, it gathers people from three major Cantonese ethnic groups: Cantonese, Hakka and Chaozhou, integrating diverse cultures.", "As a relatively established commercial pedestrian street in Shenzhen, tens of thousands of shops are densely distributed here, open all day, and accessible by Metro Luobao Line to Laojie Station, making it an excellent place for shopping, food and experiencing old Shenzhen memories."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "街市繁华", "en": "Bustling market" },
         { "icon": "fas fa-check-circle", "zh": "购物美食", "en": "Shopping & food" },
@@ -295,7 +328,10 @@
           "en": "The world's largest electronics distribution center"
         }
       },
-      "intro": { "zh": ["全球最大的电子产品集散地"], "en": ["The world's largest electronics distribution center"] },
+      "intro": {
+        "zh": ["华强北位于福田区，起源于20世纪80年代初，被誉为'中国电子第一街'，是全球最大的电子产品集散地。", "街区面积约2.96平方公里，商业总营业面积62万平方米，承载着无数创业者的梦想与奋斗。", "这里见证了深圳乃至中国改革开放以来的辉煌历程，是中国电子行业发展的重要见证者和推动者。", "区内设有华强北博物馆，位于广博现代之窗大厦五楼，建筑面积约3000平方米，通过展览展示、科普教育等形式讲述华强北的创业故事和电子行业发展历程。"],
+        "en": ["Huaqiangbei is located in Futian District, originated in the early 1980s, known as the 'First Electronic Street in China', and is the world's largest electronics distribution center.", "The block covers an area of about 2.96 square kilometers, with a total commercial area of 620,000 square meters, carrying the dreams and struggles of countless entrepreneurs.", "It has witnessed the glorious development of Shenzhen and even China since the reform and opening up, and is an important witness and promoter of the development of China's electronics industry.", "The Huaqiangbei Museum is located on the fifth floor of Guangbo Modern Window Building, with a construction area of about 3,000 square meters, telling the entrepreneurial stories of Huaqiangbei and the development history of the electronics industry through exhibitions, science education and other forms."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "电子集散", "en": "Electronics hub" },
         { "icon": "fas fa-check-circle", "zh": "价格实惠", "en": "Affordable prices" },
@@ -316,7 +352,10 @@
           "en": "Comprehensive botanical garden for research, education and tourism"
         }
       },
-      "intro": { "zh": ["集植物科研、科普、旅游于一体的综合性植物园"], "en": ["Comprehensive botanical garden for research, education and tourism"] },
+      "intro": {
+        "zh": ["仙湖植物园位于深圳市罗湖区莲塘仙湖路160号，东倚深圳第一高峰梧桐山，西临深圳水库，是国家AAAA级旅游景区。", "公园占地8800多亩（约668万平方米），始建于1983年，1988年5月1日正式对外开放，是一个集科研、科普、旅游为一体的著名植物园与风景区。", "园区共保育植物约12000种（包括园艺品种），建有苏铁保存中心、木兰园、珍稀树木园、棕榈园等十几个植物专类园，分为六大景区：天上人间景区、湖区、庙区、沙漠植物区、化石森林景区和松柏杜鹃景区。", "开放时间：购票入园时间8:00-18:00，免费开放时间4:00-8:00和18:00-21:30，建议游玩时间3-4小时，是广大游人重返大自然的乐园。"],
+        "en": ["Fairy Lake Botanical Garden is located at No. 160 Xianhu Road, Liantang, Luohu District, Shenzhen, leaning against Wutong Mountain, the highest peak in Shenzhen to the east, and adjacent to Shenzhen Reservoir to the west, it is a national AAAA-level tourist attraction.", "Covering an area of more than 8,800 mu (about 6.68 million square meters), the park was founded in 1983 and officially opened to the public on May 1, 1988. It is a famous botanical garden and scenic spot integrating scientific research, popular science and tourism.", "The park conserves about 12,000 species of plants (including horticultural varieties), and has established more than ten specialized botanical gardens such as Cycad Conservation Center, Magnolia Garden, Rare Tree Garden, and Palm Garden, divided into six scenic areas: Heavenly World Scenic Area, Lake Area, Temple Area, Desert Plant Area, Fossil Forest Scenic Area, and Pine and Cypress Rhododendron Scenic Area.", "Opening hours: Ticket purchase time 8:00-18:00, free opening time 4:00-8:00 and 18:00-21:30, recommended playing time 3-4 hours, it is a paradise for tourists to return to nature."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "植物多样性", "en": "Plant diversity" },
         { "icon": "fas fa-check-circle", "zh": "科普教育", "en": "Education" },
@@ -337,7 +376,10 @@
           "en": "Beautiful bay in eastern Shenzhen, perfect for cycling and hiking"
         }
       },
-      "intro": { "zh": ["深圳东部的美丽海湾，适合骑行和徒步"], "en": ["Beautiful bay in eastern Shenzhen, perfect for cycling and hiking"] },
+      "intro": {
+        "zh": ["杨梅坑位于深圳市大鹏新区南澳街道，南依七娘山，北望大亚湾，是深圳东部黄金海岸的主要组成部分。", "这里面积约6.5平方千米，海岸线总长16.5公里，靠山面海临溪，以溪谷和海滩秀美著称，被誉为'深圳最美的溪谷'。", "杨梅坑名称由来是因为山丘上长满了杨梅，拥有沙滩、岩滩和岩岸等多种地貌，是婚纱摄影的胜地。", "景区全天开放，免费进入，交通便利，可乘坐M274到南澳杨梅坑站，或先到大鹏转大鹏新区假日专线3路，是适合骑行、徒步和摄影打卡的绝佳场所。"],
+        "en": ["Yangmeikeng is located in Nan'ao Street, Dapeng New District, Shenzhen, south of Qiniang Mountain and north of Daya Bay, it is a main part of the golden coastline in eastern Shenzhen.", "Covering an area of about 6.5 square kilometers with a total coastline of 16.5 kilometers, it is backed by mountains, facing the sea and adjacent to streams, famous for its beautiful valleys and beaches, known as 'Shenzhen's most beautiful valley'.", "Yangmeikeng gets its name from the bayberry trees growing on the hills, it has various landforms including beaches, rocky beaches and rocky shores, and is a popular destination for wedding photography.", "The scenic area is open all day and free to enter, with convenient transportation. You can take bus M274 to Nan'ao Yangmeikeng Station, or first go to Dapeng and transfer to Dapeng New District Holiday Special Line 3. It is an excellent place for cycling, hiking and photography."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "海湾风光", "en": "Bay scenery" },
         { "icon": "fas fa-check-circle", "zh": "骑行徒步", "en": "Cycling & hiking" },
@@ -358,7 +400,10 @@
           "en": "Beach with clear water, ideal for swimming and beach activities"
         }
       },
-      "intro": { "zh": ["水质清澈的海滩，适合游泳和沙滩活动"], "en": ["Beach with clear water, ideal for swimming and beach activities"] },
+      "intro": {
+        "zh": ["吉钓沙位于深圳市大鹏新区南澳街道，毗邻浪骑游艇会，是深圳最美的沙滩之一，有'银滩'和'深圳版马尔代夫'的美誉。", "沙滩长约1000米，海滨腹地面积约30公顷，三面环山，环境优美，以清澈的海水和细腻的白色沙滩闻名。", "这里被誉为深圳最美玻璃海，经常能看到果冻般清澈的海水，是游泳、沙滩活动和摄影的绝佳场所。", "景区免费开放，全天开放，交通便利，可乘坐M274路公交车至'桔钓沙'站下车，是深圳东部黄金海岸线上的一颗璀璨明珠。"],
+        "en": ["Jidiaosha is located in Nan'ao Street, Dapeng New District, Shenzhen, adjacent to Langqi Yacht Club. It is one of the most beautiful beaches in Shenzhen, known as 'Silver Beach' and 'Shenzhen version of Maldives'.", "The beach is about 1000 meters long with a coastal hinterland area of about 30 hectares, surrounded by mountains on three sides, with beautiful environment, famous for its clear seawater and fine white sand.", "Known as Shenzhen's most beautiful glass sea, it often features jelly-like clear seawater, making it an excellent place for swimming, beach activities and photography.", "The scenic area is free and open all day, with convenient transportation. You can take bus M274 to 'Jidiaosha' station. It is a bright pearl on the golden coastline of eastern Shenzhen."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "清澈海水", "en": "Clear water" },
         { "icon": "fas fa-check-circle", "zh": "沙滩活动", "en": "Beach activities" },
@@ -379,7 +424,10 @@
           "en": "Shenzhen Observatory, overlooking the beautiful scenery of Dapeng Bay"
         }
       },
-      "intro": { "zh": ["深圳天文台，俯瞰大鹏湾美景"], "en": ["Shenzhen Observatory, overlooking the beautiful scenery of Dapeng Bay"] },
+      "intro": {
+        "zh": ["深圳天文台位于大鹏新区南澳街道西涌海滩东侧崖头顶，于2010年9月建成启用，是深圳市气象局直属的一类公益事业单位。", "占地2.97万平方米，建筑面积2244平方米，建有天文圆顶、天文楼、观测场、公共远程天文观测平台及科普厅等设施。", "这里是以光学天文观测、太阳活动研究、空间天气观测、海洋气象等综合性观测为一体的观测研究基地，也是台风监测前哨站。", "2023年作为核心区域，牵头以西涌社区创建成为全国首个\"国际暗夜社区\"。开放时间：周一闭馆，周二至周日上午9:00-12:00，下午14:30-17:30，参观需通过i深圳app或深圳天文微信公众号预约，仅行走栈道公共区域无需预约。"],
+        "en": ["Shenzhen Observatory is located on the cliff top east of Xichong Beach, Nan'ao Street, Dapeng New District. It was completed and put into use in September 2010, and is a first-class public welfare institution directly under the Shenzhen Meteorological Bureau.", "Covering an area of 29,700 square meters with a construction area of 2,244 square meters, it has facilities such as astronomical domes, astronomical buildings, observation fields, public remote astronomical observation platforms and science popularization halls.", "It is an observation and research base integrating optical astronomical observation, solar activity research, space weather observation, marine meteorology and other comprehensive observations, and is also a typhoon monitoring outpost.", "In 2023, as the core area, it led Xichong Community to become the first \"International Dark Sky Community\" in China. Opening hours: Closed on Mondays, open from 9:00-12:00 am and 14:30-17:30 pm from Tuesday to Sunday. Reservation is required through iShenzhen app or Shenzhen Astronomy WeChat official account, no reservation is needed for walking on the plank road public area."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "观景平台", "en": "View platform" },
         { "icon": "fas fa-check-circle", "zh": "科学普及", "en": "Science outreach" },
@@ -400,7 +448,10 @@
           "en": "Cliffside resort, filming location of the movie 'The Mermaid'"
         }
       },
-      "intro": { "zh": ["悬崖边的度假山庄，电影《美人鱼》拍摄地"], "en": ["Cliffside resort, filming location of the movie 'The Mermaid'"] },
+      "intro": {
+        "zh": ["鹿嘴山庄位于深圳市大鹏新区南澳街道东山社区新东路，是深圳最东端的度假胜地，以绝美山海之景和原始生态环境著称。", "山庄于2005年8月开始对外营业，2010年完成局部装修，2014年因周星驰电影《美人鱼》在此拍摄而声名鹊起，美人鱼洞成为游客必打卡的热门景点。", "这里拥有悬崖边的独特位置，可以俯瞰整个大亚湾美景，是婚纱摄影、度假休闲和摄影爱好者的天堂。", "开放时间：06:00-18:00，交通便利，车可停至杨梅坑停车场，然后换乘前往，是深圳东部海岸线上的一颗璀璨明珠。"],
+        "en": ["Luzui Villa is located on Xindong Road, Dongshan Community, Nan'ao Street, Dapeng New District, Shenzhen. It is the easternmost resort in Shenzhen, famous for its beautiful mountain and sea scenery and pristine ecological environment.", "The villa began operating in August 2005, completed partial renovation in 2010, and gained fame in 2014 when Stephen Chow's movie 'The Mermaid' was filmed here, making the Mermaid Cave a popular check-in spot for tourists.", "With its unique cliffside location, it offers panoramic views of Daya Bay, making it a paradise for wedding photography, holiday leisure and photography enthusiasts.", "Opening hours: 06:00-18:00, with convenient transportation. Cars can be parked at Yangmeikeng parking lot and then transferred to the villa. It is a bright pearl on the eastern coastline of Shenzhen."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "悬崖美景", "en": "Cliff views" },
         { "icon": "fas fa-check-circle", "zh": "度假设施", "en": "Resort facilities" },
@@ -421,7 +472,10 @@
           "en": "Strange rock formation resembling a woman waiting for her husband"
         }
       },
-      "intro": { "zh": ["形似妇人望夫归来的奇石景观"], "en": ["Strange rock formation resembling a woman waiting for her husband"] },
+      "intro": {
+        "zh": ["望郎归位于深圳市大鹏新区七娘山主峰东南方向，是一座海拔约434米的山峰，因山顶岩石形似女子在山峰之巅望夫归来而得名。", "该景点目前为深圳大鹏半岛国家地质公园的未开放区域，公园总面积46.07平方公里，是深圳市最大的地质主题公园。", "山上小路众多，部分地段有峡谷地形，地形复杂，独自进入易走失，近年来成为热门的驴友徒步地点。", "景区内自然资源丰富，地质遗迹资源以距今约1.45亿年前形成的古火山地质遗迹为主，具有极高的地质科研和科普价值。"],
+        "en": ["Wanglanggui is a mountain peak about 434 meters above sea level, located in the southeast direction of the main peak of Qiniang Mountain in Dapeng New District, Shenzhen. It gets its name from the rock on the top of the mountain that resembles a woman waiting for her husband's return.", "This scenic spot is currently an unopened area of Shenzhen Dapeng Peninsula National Geopark, which covers a total area of 46.07 square kilometers and is the largest geological theme park in Shenzhen.", "There are many small paths on the mountain, with canyon terrain in some areas, making the terrain complex. It is easy to get lost when entering alone, but it has become a popular hiking spot for outdoor enthusiasts in recent years.", "The scenic area is rich in natural resources, with geological heritage resources mainly composed of ancient volcanic geological remains formed about 145 million years ago, which have extremely high geological scientific research and popular science value."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "奇石地貌", "en": "Rock formations" },
         { "icon": "fas fa-check-circle", "zh": "海岸景色", "en": "Coastal scenery" },
@@ -442,7 +496,10 @@
           "en": "Natural rock formation resembling shark fin"
         }
       },
-      "intro": { "zh": ["形状酷似鱼翅的天然岩石"], "en": ["Natural rock formation resembling shark fin"] },
+      "intro": {
+        "zh": ["鱼翅石位于深圳市大鹏新区的牛奶排区域，是两块形似鱼翅的天然巨石，因独特的造型而得名。", "作为牛奶排的标志性景点之一，鱼翅石以其栩栩如生的鱼翅形态吸引了众多摄影爱好者前来打卡，拍照效果极佳。", "这些岩石是经过长期的海浪侵蚀、风化作用等自然力量形成的，展现了大自然的鬼斧神工和地质演化的奇妙过程。", "鱼翅石所在的牛奶排区域还拥有其他特色岩石景观，如飞机石、海狗石等，共同构成了独特的海岸地质景观，是徒步爱好者和摄影爱好者的天堂。"],
+        "en": ["Yuchishi (Shark Fin Rock) is located in the Niunaipai area of Dapeng New District, Shenzhen. It consists of two natural boulders that resemble shark fins, hence its name.", "As one of the iconic attractions in Niunaipai, Yuchishi attracts many photography enthusiasts with its lifelike shark fin shape, offering excellent photo opportunities.", "These rocks were formed through long-term natural forces such as wave erosion and weathering, showcasing the amazing craftsmanship of nature and the wonderful process of geological evolution.", "The Niunaipai area where Yuchishi is located also has other distinctive rock landscapes, such as Plane Rock and Sea Dog Rock, which together form unique coastal geological landscapes, making it a paradise for hiking enthusiasts and photography lovers."]
+      },
       "highlights": [
         { "icon": "fas fa-check-circle", "zh": "独特造型", "en": "Unique shape" },
         { "icon": "fas fa-check-circle", "zh": "海岸风光", "en": "Coastal view" },

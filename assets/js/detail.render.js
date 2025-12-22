@@ -137,10 +137,6 @@ function renderDetail(item) {
   root.innerHTML = `
     <div class="detail-header" data-aos="fade-up">
       <h1 class="detail-title">${name}</h1>
-      <div class="detail-meta">
-        <span class="location"><i class="fas fa-map-marker-alt"></i> ${district}</span>
-        <span class="rating"><i class="fas fa-star"></i> ${item.rating.toFixed(1)}</span>
-      </div>
     </div>
     <div class="detail-image" data-aos="zoom-in">
       <img src="${imgSrc}" alt="${name}" onerror="this.onerror=null;this.src='/assets/images/placeholder.svg'">
@@ -158,7 +154,7 @@ function renderDetail(item) {
       </div>
     </div>
     <div class="back-button" data-aos="fade-up">
-      <a href="../attractions.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back' : '返回'}</a>
+      <a href="../${getDataType()}.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back' : '返回'}</a>
     </div>
   `;
 

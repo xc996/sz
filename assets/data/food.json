@@ -6,7 +6,7 @@
       "nameEn": "Chaoshan Beef Hotpot",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.9,
-      "image": "assets/images/food_beef.svg",
+      "image": "assets/images/潮汕牛肉火锅.jpg",
       "seo": {
         "title": { "zh": "潮汕牛肉火锅 | Chaoshan Beef Hotpot", "en": "Chaoshan Beef Hotpot | 潮汕牛肉火锅" },
         "description": {
@@ -30,7 +30,7 @@
       "nameEn": "Coconut Chicken Hotpot",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.8,
-      "image": "assets/images/food_coconut.svg",
+      "image": "assets/images/椰子鸡.jpg",
       "seo": {
         "title": { "zh": "椰子鸡 | Coconut Chicken Hotpot", "en": "Coconut Chicken Hotpot | 椰子鸡" },
         "description": {
@@ -54,7 +54,7 @@
       "nameEn": "Cantonese Dim Sum",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.9,
-      "image": "assets/images/food_dimsum.svg",
+      "image": "assets/images/广式早茶.jpg",
       "seo": {
         "title": { "zh": "广式早茶 | Cantonese Dim Sum", "en": "Cantonese Dim Sum | 广式早茶" },
         "description": {
@@ -78,7 +78,7 @@
       "nameEn": "Seafood Feast",
       "district": { "zh": "盐田区/大鹏新区", "en": "Yantian/Dapeng" },
       "rating": 4.7,
-      "image": "assets/images/food_seafood.svg",
+      "image": "assets/images/海鲜大餐.jpg",
       "seo": {
         "title": { "zh": "海鲜大餐 | Seafood Feast", "en": "Seafood Feast | 海鲜大餐" },
         "description": {
@@ -102,7 +102,7 @@
       "nameEn": "Street Food",
       "district": { "zh": "罗湖区/福田区", "en": "Luohu/Futian" },
       "rating": 4.6,
-      "image": "assets/images/food_street.svg",
+      "image": "assets/images/街头小吃.jpg",
       "seo": {
         "title": { "zh": "街头小吃 | Street Food", "en": "Street Food | 街头小吃" },
         "description": {
@@ -126,7 +126,7 @@
       "nameEn": "Pork Leg Rice",
       "district": { "zh": "全市", "en": "Citywide" },
       "rating": 4.5,
-      "image": "assets/images/food_porkrice.svg",
+      "image": "assets/images/隆江猪脚饭.jpg",
       "seo": {
         "title": { "zh": "隆江猪脚饭 | Pork Leg Rice", "en": "Pork Leg Rice | 隆江猪脚饭" },
         "description": {
@@ -150,7 +150,7 @@
       "nameEn": "Guangming Squab",
       "district": { "zh": "光明区", "en": "Guangming District" },
       "rating": 4.8,
-      "image": "assets/images/food_pigeon.svg",
+      "image": "assets/images/光明乳鸽.jpg",
       "seo": {
         "title": { "zh": "光明乳鸽 | Guangming Squab", "en": "Guangming Squab | 光明乳鸽" },
         "description": {
@@ -166,6 +166,54 @@
         { "icon": "fas fa-drumstick-bite", "zh": "皮脆肉嫩", "en": "Crispy & Tender" },
         { "icon": "fas fa-award", "zh": "经典名菜", "en": "Classic dish" },
         { "icon": "fas fa-history", "zh": "历史悠久", "en": "Historic" }
+      ]
+    },
+    {
+      "slug": "roastgoose",
+      "name": "公明烧鹅",
+      "nameEn": "Gongming Roast Goose",
+      "district": { "zh": "光明区", "en": "Guangming District" },
+      "rating": 4.7,
+      "image": "assets/images/公明烧鹅.jpg",
+      "seo": {
+        "title": { "zh": "公明烧鹅 | Gongming Roast Goose", "en": "Gongming Roast Goose | 公明烧鹅" },
+        "description": {
+          "zh": "皮脆肉滑，香味浓郁，深圳传统名菜",
+          "en": "Crispy skin, tender meat, rich aroma, traditional Shenzhen dish"
+        }
+      },
+      "intro": {
+        "zh": ["选用本地草鹅，用传统方法腌制，木炭烤制，皮脆肉嫩，肥而不腻。"],
+        "en": ["Using local grass geese, marinated with traditional methods, roasted with charcoal, crispy skin and tender meat, fatty but not greasy."]
+      },
+      "highlights": [
+        { "icon": "fas fa-drumstick-bite", "zh": "皮脆肉嫩", "en": "Crispy & Tender" },
+        { "icon": "fas fa-fire", "zh": "木炭烤制", "en": "Charcoal roasted" },
+        { "icon": "fas fa-star", "zh": "香味浓郁", "en": "Rich aroma" }
+      ]
+    },
+    {
+      "slug": "cheungfun",
+      "name": "深圳肠粉",
+      "nameEn": "Shenzhen Cheung Fun",
+      "district": { "zh": "全市", "en": "Citywide" },
+      "rating": 4.6,
+      "image": "assets/images/深圳肠粉.jpg",
+      "seo": {
+        "title": { "zh": "深圳肠粉 | Shenzhen Cheung Fun", "en": "Shenzhen Cheung Fun | 深圳肠粉" },
+        "description": {
+          "zh": "薄如蝉翼，晶莹剔透，深圳早餐必备",
+          "en": "Thin as cicada wings, crystal clear, essential Shenzhen breakfast"
+        }
+      },
+      "intro": {
+        "zh": ["米浆蒸制而成，可搭配虾仁、牛肉、鸡蛋等多种馅料，淋上特制酱汁，美味可口。"],
+        "en": ["Made from rice slurry, can be filled with shrimp, beef, eggs and other fillings, drizzled with special sauce, delicious and tasty."]
+      },
+      "highlights": [
+        { "icon": "fas fa-bread-slice", "zh": "薄如蝉翼", "en": "Thin as cicada wings" },
+        { "icon": "fas fa-utensils", "zh": "馅料丰富", "en": "Various fillings" },
+        { "icon": "fas fa-coffee", "en": "Breakfast essential", "zh": "早餐必备" }
       ]
     }
   ]

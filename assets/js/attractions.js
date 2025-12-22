@@ -478,36 +478,22 @@ function initActiveNav() {
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         
-        // 注意：HTML中可能已经硬编码了 class="active"，这里只负责纠正或再次确认
-        // 如果我们希望完全依赖JS，可以先 remove('active')
-        // 但为了避免闪烁，建议保留 HTML 中的 active，这里只做“如果不匹配则移除”的逻辑，或者“如果匹配则添加”
+        // 移除所有 active 类
+        link.classList.remove('active');
         
         if (href === '#' || href.startsWith('#')) return;
 
-        // 简单匹配
-        const isMatch = currentPath.endsWith(href);
-        const isHomeMatch = currentPath.endsWith('/') && href === 'index.html';
-        
-        if (isMatch || isHomeMatch) {
+        // 简单匹配：当前路径包含 href 中的关键部分
+        // 例如：/pages/attractions/detail.html 包含 attractions，匹配 <a href="pages/attractions.html">
+        const hrefKey = href.replace('.html', '').split('/').pop();
+        if (currentPath.includes(hrefKey)) {
              link.classList.add('active');
              console.log('[Nav] Activated via JS:', href);
-        } else {
-             // 只有当确信不匹配时才移除？或者不移除，让 HTML 默认生效？
-             // 通常逻辑是：除了当前页，其他都移除。
-             // 但由于 href 是相对路径（如 "attractions.html"），而 currentPath 是绝对路径
-             // 我们必须非常小心。
-             
-             // 如果当前页是 attractions.html，而 link 是 history.html，那肯定要移除 history 的 active
-             // 简单起见，我们还是执行严格匹配逻辑：
-             
-             // 如果当前 link 已经被硬编码为 active，但 JS 发现不匹配，则移除
-             if (link.classList.contains('active')) {
-                 // 再次确认是否真的不匹配
-                 if (!isMatch && !isHomeMatch) {
-                     link.classList.remove('active');
-                     console.log('[Nav] Removed active class from mismatch:', href);
-                 }
-             }
+        } 
+        // 处理首页匹配
+        else if (currentPath.endsWith('/') && href === 'index.html') {
+            link.classList.add('active');
+            console.log('[Nav] Activated home via JS:', href);
         }
     });
 }
@@ -947,12 +933,16 @@ function bindAttractionClickEvents() {
             const i = parseInt(card.getAttribute('data-index') || String(index), 10);
             const data = attractionsList[i];
             if (data) {
+                // 处理图片路径，确保使用正确的资源路径
+                const base = getAssetsBase();
+                const imgSrc = (data.image || '').startsWith('assets/') ? `${base}${data.image.replace('assets/','')}` : (data.image || `${base}images/placeholder.svg`);
+                
                 const mapped = {
                     name: data.name,
                     nameEn: data.nameEn,
                     description: data.seo?.description?.zh || '',
                     descriptionEn: data.seo?.description?.en || '',
-                    image: data.image,
+                    image: imgSrc,
                     location: data.district?.zh || '',
                     locationEn: data.district?.en || ''
                 };

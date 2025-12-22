@@ -480,21 +480,22 @@ function initActiveNav() {
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         
+        // 移除所有 active 类
+        link.classList.remove('active');
+        
         if (href === '#' || href.startsWith('#')) return;
 
-        const isMatch = currentPath.endsWith(href);
-        const isHomeMatch = currentPath.endsWith('/') && href === 'index.html';
-        
-        if (isMatch || isHomeMatch) {
+        // 简单匹配：当前路径包含 href 中的关键部分
+        // 例如：/pages/history/detail.html 包含 history，匹配 <a href="pages/history.html">
+        const hrefKey = href.replace('.html', '').split('/').pop();
+        if (currentPath.includes(hrefKey)) {
              link.classList.add('active');
              console.log('[Nav] Activated via JS:', href);
-        } else {
-             if (link.classList.contains('active')) {
-                 if (!isMatch && !isHomeMatch) {
-                     link.classList.remove('active');
-                     console.log('[Nav] Removed active class from mismatch:', href);
-                 }
-             }
+        } 
+        // 处理首页匹配
+        else if (currentPath.endsWith('/') && href === 'index.html') {
+            link.classList.add('active');
+            console.log('[Nav] Activated home via JS:', href);
         }
     });
 }
@@ -651,7 +652,7 @@ function renderHeritage() {
                 <p class="heritage-description">${currentLang === 'zh' ? item.description : item.descriptionEn}</p>
                 <div class="heritage-footer">
                     <span class="heritage-level">${t(`history.heritage.level.${item.level}`)}</span>
-                    <button class="heritage-intro-btn">${currentLang === 'zh' ? '介绍' : 'Introduction'}</button>
+                    <button class="heritage-intro-btn" title="${currentLang === 'zh' ? '详细介绍' : 'View Details'}">${currentLang === 'zh' ? '介绍' : 'Introduction'}</button>
                 </div>
             </div>
         `;

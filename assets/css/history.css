@@ -271,7 +271,6 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    animation: pulse 2s infinite;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
 }
 
@@ -321,7 +320,9 @@
 }
 
 [data-theme="dark"] .heritage-intro-btn:hover {
-    background: var(--accent-hover);
+    background: #FFB300;
+    box-shadow: 0 0 15px rgba(255, 179, 0, 0.5);
+    transform: scale(1.05);
 }
 
 /* ===================================
