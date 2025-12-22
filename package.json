@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/copy-static.mjs",
+    "audit": "node scripts/audit-links.mjs --origin https://xc996.github.io --base /sz --fail-on-404",
     "preview": "vite preview",
     "test": "vitest"
   },

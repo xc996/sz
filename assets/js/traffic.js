@@ -60,7 +60,7 @@ const localTrafficFallback = [
         name: '深圳地铁',
         nameEn: 'Shenzhen Metro',
         district: { zh: '全市', en: 'Citywide' },
-        image: 'assets/images/traffic_metro.jpg',
+        image: 'assets/images/traffic_metro.svg',
         seo: { description: { zh: '四通八达的地下交通网络', en: 'Extensive underground transport network' } }
     }
 ];

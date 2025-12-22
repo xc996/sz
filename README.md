@@ -89,8 +89,8 @@ npx http-server -p 8000
 ### 验证方式
 - 本地预览：`npm run preview`，访问 `http://localhost:4173/` 与 `http://localhost:4173/pages/attractions.html`
 - 线上验证：部署完成后访问
-  - 首页：`https://xc996.github.io/sz/`
-  - 子页：`https://xc996.github.io/sz/pages/attractions.html` 等
+  - 首页：`/sz/`
+  - 子页：`/sz/pages/attractions.html` 等
 
 ## 🧱 构建与资源 (Build & Assets)
 
@@ -99,7 +99,16 @@ npx http-server -p 8000
 - `scripts/copy-static.mjs`：递归复制 `pages/` 与 `assets/` 到 `dist/`
 - `.nojekyll`：在 `dist` 写入以禁用 Jekyll 处理
 
-## �📝 最近更新 (Recent Updates) - 2025-12-21
+## ✅ 自动巡检与统一管理（CI & Path Management）
+
+- 统一资源路径：所有页面脚本统一调用 `window.getAssetsBase()`（位于 `assets/js/utils.js`）生成资源基路径，避免各处重复实现与路径不一致。
+- 构建后复制：始终通过 `scripts/copy-static.mjs` 将 `pages/` 和 `assets/` 一并复制到 `dist/`，确保子页与静态资源发布完整。
+- 发布前自动巡检（CI）：工作流 `.github/workflows/pages.yml` 在构建后执行 `npm run audit`，对 HTML/JS 中的 `href/src` 和 JSON 引用进行并发检查；发现非 200 资源将阻断部署，避免 404 再次上线。
+  - 手动运行：`npm run audit`
+  - 参数说明：`--origin https://xc996.github.io --base /sz --fail-on-404`
+  - 检查范围：`index.html`、`pages/**`、`assets/js/**` 中的 `assets/**` 资源链接（含 `.css/.js/.png/.jpg/.jpeg/.svg/.woff2/.ttf/.json`）
+
+## �� 最近更新 (Recent Updates) - 2025-12-21
 
 ### 1. 项目结构重构 (Refactoring)
 *   **目录整理**：将除首页外的所有 HTML 文件移至 `pages/` 目录，保持根目录整洁。

@@ -222,6 +222,24 @@ const localAttractionsFallback = [
 ];
 
 /**
+ * 获取静态资源基础路径（中文注释）
+ * 说明：统一使用 utils.js 中的 window.getAssetsBase()
+ */
+function getAssetsBase() {
+    return (typeof window !== 'undefined' && typeof window.getAssetsBase === 'function')
+      ? window.getAssetsBase()
+      : 'assets/';
+}
+
+/**
+ * 功能：检测是否为文件协议（中文注释）
+ * 说明：用于判断当前页面是否通过 file:// 直接打开
+ */
+function isFileProtocol() {
+    return (window.location.protocol || '').startsWith('file');
+}
+
+/**
  * 功能：加载景点配置（中文注释）
  * 说明：优先从 assets/data/attractions.json 读取；在 file:// 环境下自动回退到内置数据
  */

@@ -35,6 +35,8 @@ jobs:
         run: npm ci
       - name: 构建项目
         run: npm run build
+      - name: 资源链接巡检（阻止 404 上线）
+        run: npm run audit
       - name: 配置 Pages 环境
         uses: actions/configure-pages@v5
       - name: 生成 .nojekyll（禁用 Jekyll）
