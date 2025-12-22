@@ -134,6 +134,12 @@ function renderDetail(item) {
   const base = getAssetsBase();
   const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
 
+  // 根据数据类型选择合适的标题
+  const type = getDataType();
+  const isFood = type === 'food';
+  const introTitle = isFood ? (lang === 'en' ? 'Food Introduction' : '美食介绍') : (lang === 'en' ? 'Introduction' : '景区介绍');
+  const highlightsTitle = isFood ? (lang === 'en' ? 'Food Features' : '美食特色') : (lang === 'en' ? 'Highlights' : '景区亮点');
+
   root.innerHTML = `
     <div class="detail-header" data-aos="fade-up">
       <h1 class="detail-title">${name}</h1>
@@ -143,11 +149,11 @@ function renderDetail(item) {
     </div>
     <div class="detail-content">
       <div class="detail-info" data-aos="fade-right">
-        <h2>${lang === 'en' ? 'Introduction' : '景区介绍'}</h2>
+        <h2>${introTitle}</h2>
         ${introList.map(p => `<p>${p}</p>`).join('')}
       </div>
       <div class="detail-highlights" data-aos="fade-left">
-        <h2>${lang === 'en' ? 'Highlights' : '景区亮点'}</h2>
+        <h2>${highlightsTitle}</h2>
         <ul>
           ${highlights.map(h => `<li><i class="${h.icon || 'fas fa-check-circle'}"></i> ${lang === 'en' ? (h.en || '') : (h.zh || '')}</li>`).join('')}
         </ul>
