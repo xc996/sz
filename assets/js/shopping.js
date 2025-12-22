@@ -69,9 +69,6 @@ const localShoppingFallback = [
     }
 ];
 
-function isFileProtocol() {
-    return (window.location.protocol || '').startsWith('file');
-}
 
 async function loadShoppingConfig() {
     if (shoppingList && shoppingList.length > 0) return shoppingList;

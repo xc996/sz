@@ -92,6 +92,12 @@ npx http-server -p 8000
 *   **图片显示修复**：解决了历史文化页 (`history.html`) 图片因路径错误无法显示的问题。
 *   **布局修复**：解决了购物页 (`shopping.html`) 和景点页 (`attractions.html`) 因样式缺失导致的排版错乱。
 
+### 5. 代码重构与路径修复 (Refactoring & Path Fixes) - 2025-12-23
+*   **公共代码提取**：将资源路径处理 (`getAssetsBase`) 和环境检测 (`isFileProtocol`) 等公共函数统一提取至 `assets/js/utils.js`，并清理了各业务脚本中的重复代码。
+*   **路径逻辑优化**：修复了在本地预览环境（非 GitHub Pages）下错误识别为远程环境导致资源加载失败的问题。现在仅在域名以 `github.io` 结尾时启用绝对路径策略。
+*   **代码清理**：移除了 HTML 文件中脚本引用不必要的版本号查询参数，保持代码整洁。
+*   **地图页修复**：修复了 `map.html` 缺失 `utils.js` 引用导致的功能异常。
+
 ## 📄 License
 
 MIT License

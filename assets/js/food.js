@@ -83,9 +83,6 @@ const localFoodFallback = [
     }
 ];
 
-function isFileProtocol() {
-    return (window.location.protocol || '').startsWith('file');
-}
 
 async function loadFoodConfig() {
     if (foodList && foodList.length > 0) return foodList;

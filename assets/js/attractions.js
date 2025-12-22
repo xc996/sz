@@ -222,29 +222,6 @@ const localAttractionsFallback = [
 ];
 
 /**
- * 功能：获取静态资源基础路径（中文注释）
- * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
- */
-function getAssetsBase() {
-    const host = window.location.hostname || '';
-    const path = window.location.pathname || '';
-    const isGh = host.endsWith('github.io');
-    if (isGh) {
-        const seg = path.split('/').filter(Boolean)[0] || '';
-        return seg ? `/${seg}/assets/` : '/assets/';
-    }
-    return '/assets/';
-}
-
-/**
- * 功能：检测是否为文件协议（中文注释）
- * 说明：用于判断当前页面是否通过 file:// 直接打开
- */
-function isFileProtocol() {
-    return (window.location.protocol || '').startsWith('file');
-}
-
-/**
  * 功能：加载景点配置（中文注释）
  * 说明：优先从 assets/data/attractions.json 读取；在 file:// 环境下自动回退到内置数据
  */
