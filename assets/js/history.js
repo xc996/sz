@@ -690,18 +690,12 @@ function renderFestivals() {
     if (!grid) return;
     
     grid.innerHTML = '';
-    const base = getAssetsBase();
     
     blendingData.forEach((item, index) => {
         const festivalItem = document.createElement('div');
         festivalItem.className = 'festival-item';
-        // 动态处理图片路径
-        const imgSrc = item.image.startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : item.image;
         
         festivalItem.innerHTML = `
-            <div class="festival-image">
-                <img src="${imgSrc}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
-            </div>
             <div class="festival-content">
                 <h3 class="festival-title">
                     <i class="${item.icon}"></i>

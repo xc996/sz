@@ -22,7 +22,7 @@ function getSlug() {
 function getDataType() {
   const params = new URLSearchParams(window.location.search);
   const type = params.get('type');
-  const validTypes = ['attractions', 'food', 'shopping', 'traffic'];
+  const validTypes = ['attractions', 'food', 'shopping', 'traffic', 'heritage'];
   return (type && validTypes.includes(type)) ? type : 'attractions';
 }
 

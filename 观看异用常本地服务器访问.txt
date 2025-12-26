@@ -1,0 +1,19 @@
+本项目为纯静态网站，无需复杂的构建过程。
+
+### 方式一：直接运行
+直接在浏览器中打开 `index.html` 即可预览。
+
+### 方式二：本地服务器 (推荐)
+为了避免浏览器的跨域限制 (CORS) 导致 JSON 数据无法加载，建议使用本地服务器运行。（任选一个方案即可）
+方案一
+**Python:**
+```bash
+在当前文件夹打开cmd输入并回车：python -m http.server 8000
+# 浏览器输入网址访问： http://localhost:8000
+```
+
+方案二
+**Node.js (http-server):**
+```bash
+在当前文件夹打开cmd输入并回车：npx http-server -p 8000
+# 浏览器输入网址访问： http://localhost:8000
