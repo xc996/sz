@@ -95,17 +95,81 @@
     </section>
 
     <!-- 交通展示区域 -->
-    <section class="attractions-detail-section">
+    <section class="transport-section">
         <div class="container">
             <h2 class="section-title">
-                <span data-i18n="transport.title">便捷交通</span>
+                <span data-i18n="transport.main-title">深圳交通</span>
                 <div class="title-underline"></div>
             </h2>
-            <p class="section-subtitle" data-i18n="transport.subtitle">四通八达的交通网络，轻松畅游深圳</p>
+            <p class="section-subtitle" data-i18n="transport.main-subtitle">多种交通方式，便捷出行</p>
             
-            <!-- 交通卡片区域 -->
-            <div class="attractions-grid" id="trafficGrid">
-                <!-- 交通卡片由JS动态生成 -->
+            <!-- 深圳地铁 -->
+            <div class="transport-content" data-aos="fade-up">
+                <div class="transport-header">
+                    <h3 data-i18n="transport.metro.title">深圳地铁</h3>
+                </div>
+                <div class="transport-detail">
+                    <div class="transport-image">
+                        <img src="../assets/images/深圳地图.png" alt="深圳地铁" class="no-hover-animation">
+                    </div>
+                    <div class="transport-text">
+                        <p data-i18n="transport.metro.desc">深圳地铁是覆盖全市主要区域的地下交通网络，运营时间通常为6:30-23:00。网络密集，准时高效，冷气充足，是深圳市民和游客出行的首选方式。</p>
+                        <h4 data-i18n="transport.features">主要特点：</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.metro.feature1">覆盖全市主要区域</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.metro.feature2">运营时间：6:30-23:00</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.metro.feature3">准时高效，班次密集</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.metro.feature4">支持扫码支付和深圳通</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 水平排列的交通方式 -->
+            <div class="transport-row">
+                <!-- 深圳宝安国际机场 -->
+                <div class="transport-content transport-half" data-aos="fade-up">
+                    <div class="transport-header">
+                    <h3 data-i18n="transport.airport.title">深圳宝安国际机场</h3>
+                </div>
+                <div class="transport-detail">
+                    <div class="transport-image">
+                        <img src="../assets/images/深圳宝安国际机场.jpg" alt="深圳宝安国际机场" class="smaller-image">
+                    </div>
+                    <div class="transport-text">
+                        <p data-i18n="transport.airport.desc">深圳宝安国际机场是一座现代化的大型国际机场，拥有独特的“大飞鱼”造型T3航站楼，海陆空联运便捷。机场连接全球多个城市，是深圳的空中门户。</p>
+                        <h4 data-i18n="transport.features">主要特点：</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.airport.feature1">拥有“大飞鱼”造型T3航站楼</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.airport.feature2">国际通航，连接全球</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.airport.feature3">海陆空联运便捷</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.airport.feature4">多条地铁线直达</span></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- 高铁/火车站 -->
+                <div class="transport-content transport-half" data-aos="fade-up">
+                    <div class="transport-header">
+                    <h3 data-i18n="transport.train.title">高铁/火车站</h3>
+                </div>
+                <div class="transport-detail">
+                    <div class="transport-image">
+                        <img src="../assets/images/高铁-火车站.jpg" alt="高铁/火车站" class="smaller-image">
+                    </div>
+                    <div class="transport-text">
+                        <p data-i18n="transport.train.desc">深圳拥有多个主要火车站，包括深圳北站、福田站、深圳站等，连接全国各大城市。高铁直达香港西九龙仅需14分钟，交通十分便捷。</p>
+                        <h4 data-i18n="transport.train.stations">主要站点：</h4>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.train.station1">深圳北站：主要高铁站，连接全国</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.train.station2">福田站：亚洲最大地下火车站</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.train.station3">深圳站：连接香港红磡</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="transport.train.station4">高铁直达香港西九龙仅需14分钟</span></li>
+                        </ul>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
     </section>
@@ -126,15 +190,6 @@
                         <li><a href="map.html" data-i18n="footer.map">互动地图</a></li>
                         <li><a href="history.html" data-i18n="footer.culture">文化故事</a></li>
                         <li><a href="food.html" data-i18n="footer.food">美食推荐</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3 data-i18n="footer.contact">联系我们</h3>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +86 755-12345678</li>
-                        <li><i class="fas fa-envelope"></i> info@shenzhen.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 深圳市福田区</li>
                     </ul>
                 </div>
             </div>

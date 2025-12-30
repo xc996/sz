@@ -75,6 +75,13 @@ const translations = {
         'culture.title': '深圳故事',
         'culture.subtitle': '从小渔村到国际化大都市的华丽蜕变',
         
+        // 城市概览
+        'intro.title': '城市概览',
+        'intro.subtitle': '深圳简介',
+        'intro.desc1': '深圳位于中国南部沿海，毗邻香港，是中国改革开放的窗口和经济特区。自1980年设立特区以来，深圳从一个小渔村迅速发展成为人口超千万的国际大都市。',
+        'intro.desc2': '深圳是中国的科技创新中心之一，拥有华为、腾讯、大疆等众多知名企业，被誉为"中国硅谷"。',
+        'intro.desc3': '城市环境优美，拥有梧桐山、大小梅沙、深圳湾等自然景观，同时拥有完善的城市基础设施和便捷的交通网络。',
+        
         // 美食
         'food.title': '美食天堂',
         'food.subtitle': '品味深圳的多元美食文化',
@@ -86,6 +93,22 @@ const translations = {
         'food.desc3': '新鲜海鲜，原汁原味，地道粤菜风味',
         'food.item4': '深圳小吃',
         'food.desc4': '东门老街、车公庙美食街，各种特色小吃',
+        
+        // 城市特色
+        'features.title': '城市特色',
+        'features.subtitle': '创新、开放、年轻、包容。',
+        'features.tech.title': '科技创新',
+        'features.tech.desc': '聚集了大量高科技企业和研发机构，在电子信息、互联网、人工智能等领域处于全国领先地位。',
+        'features.modern.title': '现代都市',
+        'features.modern.desc': '高楼林立，城市规划先进，拥有平安金融中心、京基100等标志性建筑。',
+        'features.young.title': '年轻人口',
+        'features.young.desc': '平均年龄约32岁，是中国最年轻的城市之一，充满活力和创造力。',
+        'features.inclusive.title': '开放包容',
+        'features.inclusive.desc': '作为移民城市，深圳汇集了来自全国各地的人才，文化多元，氛围包容。',
+        'features.green.title': '绿色生态',
+        'features.green.desc': '拥有多个城市公园和自然保护区，人均公园绿地面积居全国前列。',
+        'features.food.title': '美食天堂',
+        'features.food.desc': '汇聚了粤菜、川菜、湘菜等各地美食，还有丰富的早茶文化和夜宵文化。',
         
         // 购物
         'shopping.title': '购物天堂',
@@ -191,6 +214,13 @@ const translations = {
         'culture.title': 'Shenzhen Story',
         'culture.subtitle': 'From fishing village to international metropolis',
         
+        // Introduction
+        'intro.title': 'City Overview',
+        'intro.subtitle': 'About Shenzhen',
+        'intro.desc1': 'Located on the southern coast of China, adjacent to Hong Kong, Shenzhen is a window of China\'s reform and opening up and a special economic zone. Since its establishment in 1980, Shenzhen has rapidly developed from a small fishing village into an international metropolis with a population of over 10 million.',
+        'intro.desc2': 'Shenzhen is one of China\'s science and technology innovation centers, home to many well-known enterprises such as Huawei, Tencent, and DJI, and is known as the \"Silicon Valley of China\".',
+        'intro.desc3': 'The city has a beautiful environment with natural landscapes such as Wutong Mountain, Dapeng Bay, and Shenzhen Bay, as well as complete urban infrastructure and convenient transportation networks.',
+        
         // Food
         'food.title': 'Food Paradise',
         'food.subtitle': 'Taste Shenzhen\'s diverse food culture',
@@ -202,6 +232,22 @@ const translations = {
         'food.desc3': 'Fresh seafood, authentic Cantonese flavor',
         'food.item4': 'Shenzhen Snacks',
         'food.desc4': 'Dongmen Old Street, Chegongmiao Food Street, various snacks',
+        
+        // Features
+        'features.title': 'City Features',
+        'features.subtitle': 'Innovation, Openness, Youth, Inclusiveness.',
+        'features.tech.title': 'Technological Innovation',
+        'features.tech.desc': 'Gathers a large number of high-tech enterprises and R&D institutions, leading the country in electronic information, internet, artificial intelligence and other fields.',
+        'features.modern.title': 'Modern Metropolis',
+        'features.modern.desc': 'High-rise buildings, advanced urban planning, with landmark buildings such as Ping An Finance Center and Kingkey 100.',
+        'features.young.title': 'Young Population',
+        'features.young.desc': 'With an average age of about 32, it is one of the youngest cities in China, full of vitality and creativity.',
+        'features.inclusive.title': 'Open and Inclusive',
+        'features.inclusive.desc': 'As an immigrant city, Shenzhen gathers talents from all over the country, with diverse culture and inclusive atmosphere.',
+        'features.green.title': 'Green Ecology',
+        'features.green.desc': 'Home to multiple urban parks and nature reserves, with per capita park green space ranking among the top in the country.',
+        'features.food.title': 'Food Paradise',
+        'features.food.desc': 'Gathering Cantonese, Sichuan, Hunan and other regional cuisines, as well as rich morning tea culture and night food culture.',
         
         // Shopping
         'shopping.title': 'Shopping Paradise',
