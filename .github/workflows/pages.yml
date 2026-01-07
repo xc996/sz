@@ -1,0 +1,55 @@
+name: 部署到 GitHub Pages
+
+# 当仓库的 master 分支有新的提交时自动运行
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+# 运行此工作流所需的权限（GitHub Pages 官方推荐）
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 并发控制，避免重复部署相互覆盖
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # 指定部署环境，自动显示部署后的页面 URL
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      - name: 配置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: 安装依赖
+        run: npm ci
+      - name: 构建项目
+        run: npm run build
+      - name: 资源链接巡检（阻止 404 上线）
+        run: npm run audit
+        env:
+          ORIGIN: https://${{ github.repository_owner }}.github.io
+          BASE: /${{ github.event.repository.name }}
+      - name: 配置 Pages 环境
+        uses: actions/configure-pages@v5
+      - name: 生成 .nojekyll（禁用 Jekyll）
+        run: |
+          touch dist/.nojekyll
+      - name: 上传站点制品
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 使用 Vite 构建输出目录
+          path: ./dist
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

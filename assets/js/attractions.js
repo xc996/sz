@@ -222,18 +222,13 @@ const localAttractionsFallback = [
 ];
 
 /**
- * 功能：获取静态资源基础路径（中文注释）
- * 说明：本地环境返回 'assets/'；GitHub Pages 项目站点返回 '/<repo>/assets/'
+ * 获取静态资源基础路径（中文注释）
+ * 说明：避免覆盖全局 window.getAssetsBase，使用独立包装函数
  */
-function getAssetsBase() {
-    const host = window.location.hostname || '';
-    const path = window.location.pathname || '';
-    const isGh = host.endsWith('github.io');
-    if (isGh) {
-        const seg = path.split('/').filter(Boolean)[0] || '';
-        return seg ? `/${seg}/assets/` : '/assets/';
-    }
-    return '/assets/';
+function resolveAssetsBase() {
+    return (typeof window !== 'undefined' && typeof window.getAssetsBase === 'function')
+      ? window.getAssetsBase()
+      : 'assets/';
 }
 
 /**
@@ -250,7 +245,7 @@ function isFileProtocol() {
  */
 async function loadAttractionsConfig() {
     if (attractionsList && attractionsList.length > 0) return attractionsList;
-    const base = getAssetsBase();
+    const base = resolveAssetsBase();
     try {
         const res = await fetch(`${base}data/attractions.json`, { cache: 'no-cache' });
         if (!res.ok) throw new Error('配置加载失败');
@@ -618,7 +613,7 @@ async function renderAttractions() {
     items.forEach(attraction => {
         const slug = attraction.slug;
         const detailUrl = `attractions/detail.html?slug=${slug}`;
-        const base = getAssetsBase();
+        const base = resolveAssetsBase();
         const imgSrc = (attraction.image || '').startsWith('assets/') ? `${base}${attraction.image.replace('assets/','')}` : (attraction.image || `${base}images/placeholder.svg`);
         console.log(`[list] link=${detailUrl} slug=${slug} mode=query`);
         
@@ -626,7 +621,7 @@ async function renderAttractions() {
         card.className = 'attraction-card';
         card.innerHTML = `
             <div class="card-image">
-                <img src="${imgSrc}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}" onerror="this.onerror=null;this.src='/assets/images/placeholder.svg'">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}" onerror="this.onerror=null;this.src='${base}images/placeholder.svg'">
             </div>
             <div class="card-content">
                 <h3 class="card-title">${currentLang === 'zh' ? attraction.name : attraction.nameEn}</h3>
@@ -964,7 +959,7 @@ function bindAttractionClickEvents() {
             const data = attractionsList[i];
             if (data) {
                 // 处理图片路径，确保使用正确的资源路径
-                const base = getAssetsBase();
+                const base = resolveAssetsBase();
                 const imgSrc = (data.image || '').startsWith('assets/') ? `${base}${data.image.replace('assets/','')}` : (data.image || `${base}images/placeholder.svg`);
                 
                 const mapped = {

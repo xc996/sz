@@ -15,30 +15,8 @@ const translations = {
         'nav.map': '地图',
         'btn.lang': '切换语言',
         'btn.theme': '切换主题',
-        'hero.transport.title1': '交通',
-        'hero.transport.title2': 'TRANSPORT',
-        'transport.main-title': '深圳交通',
-        'transport.main-subtitle': '多种交通方式，便捷出行',
-        'transport.metro.title': '深圳地铁',
-        'transport.metro.desc': '深圳地铁是覆盖全市主要区域的地下交通网络，运营时间通常为6:30-23:00。网络密集，准时高效，冷气充足，是深圳市民和游客出行的首选方式。',
-        'transport.features': '主要特点：',
-        'transport.metro.feature1': '覆盖全市主要区域',
-        'transport.metro.feature2': '运营时间：6:30-23:00',
-        'transport.metro.feature3': '准时高效，班次密集',
-        'transport.metro.feature4': '支持扫码支付和深圳通',
-        'transport.airport.title': '深圳宝安国际机场',
-        'transport.airport.desc': '深圳宝安国际机场是一座现代化的大型国际机场，拥有独特的“大飞鱼”造型T3航站楼，海陆空联运便捷。机场连接全球多个城市，是深圳的空中门户。',
-        'transport.airport.feature1': '拥有“大飞鱼”造型T3航站楼',
-        'transport.airport.feature2': '国际通航，连接全球',
-        'transport.airport.feature3': '海陆空联运便捷',
-        'transport.airport.feature4': '多条地铁线直达',
-        'transport.train.title': '高铁/火车站',
-        'transport.train.desc': '深圳拥有多个主要火车站，包括深圳北站、福田站、深圳站等，连接全国各大城市。高铁直达香港西九龙仅需14分钟，交通十分便捷。',
-        'transport.train.stations': '主要站点：',
-        'transport.train.station1': '深圳北站：主要高铁站，连接全国',
-        'transport.train.station2': '福田站：亚洲最大地下火车站',
-        'transport.train.station3': '深圳站：连接香港红磡',
-        'transport.train.station4': '高铁直达香港西九龙仅需14分钟',
+        'transport.title': '便捷交通',
+        'transport.subtitle': '四通八达的交通网络，轻松畅游深圳',
         'footer.about': '关于深圳',
         'footer.desc': '中国改革开放的窗口，创新创业的热土',
         'footer.quick': '快速链接',
@@ -60,30 +38,8 @@ const translations = {
         'nav.map': 'Map',
         'btn.lang': 'Switch Language',
         'btn.theme': 'Switch Theme',
-        'hero.transport.title1': 'TRANSPORT',
-        'hero.transport.title2': '交通',
-        'transport.main-title': 'Shenzhen Transportation',
-        'transport.main-subtitle': 'Multiple transportation methods for convenient travel',
-        'transport.metro.title': 'Shenzhen Metro',
-        'transport.metro.desc': 'Shenzhen Metro is an underground transportation network covering major areas of the city, usually operating from 6:30 to 23:00. With a dense network, punctuality, efficiency, and sufficient air conditioning, it is the preferred mode of transportation for Shenzhen citizens and tourists.',
-        'transport.features': 'Key Features:',
-        'transport.metro.feature1': 'Covers major areas of the city',
-        'transport.metro.feature2': 'Operating hours: 6:30-23:00',
-        'transport.metro.feature3': 'Punctual, efficient, and frequent service',
-        'transport.metro.feature4': 'Supports QR code payment and Shenzhen Tong',
-        'transport.airport.title': 'Shenzhen Bao\'an International Airport',
-        'transport.airport.desc': 'Shenzhen Bao\'an International Airport is a modern large-scale international airport with a unique "Manta Ray" shaped Terminal 3, offering convenient sea-land-air transportation. The airport connects to multiple cities worldwide and is Shenzhen\'s air gateway.',
-        'transport.airport.feature1': 'Features the unique "Manta Ray" shaped Terminal 3',
-        'transport.airport.feature2': 'International flights connecting to the world',
-        'transport.airport.feature3': 'Convenient sea-land-air transportation',
-        'transport.airport.feature4': 'Direct access via multiple metro lines',
-        'transport.train.title': 'High-speed Railway/ Train Stations',
-        'transport.train.desc': 'Shenzhen has multiple major railway stations, including Shenzhen North Station, Futian Station, Shenzhen Station, etc., connecting to major cities across the country. High-speed trains to Hong Kong West Kowloon take only 14 minutes, making transportation very convenient.',
-        'transport.train.stations': 'Major Stations:',
-        'transport.train.station1': 'Shenzhen North Station: Main high-speed railway station, connecting to the whole country',
-        'transport.train.station2': 'Futian Station: Asia\'s largest underground railway station',
-        'transport.train.station3': 'Shenzhen Station: Connecting to Hong Kong Hung Hom',
-        'transport.train.station4': 'High-speed trains to Hong Kong West Kowloon take only 14 minutes',
+        'transport.title': 'Convenient Transportation',
+        'transport.subtitle': 'Extensive transportation network, easy to travel around Shenzhen',
         'footer.about': 'About Shenzhen',
         'footer.desc': 'Window of China\'s reform, hub of innovation',
         'footer.quick': 'Quick Links',
@@ -95,6 +51,44 @@ const translations = {
         'footer.rights': 'All Rights Reserved'
     }
 };
+
+let trafficList = [];
+
+const localTrafficFallback = [
+    {
+        slug: 'metro',
+        name: '深圳地铁',
+        nameEn: 'Shenzhen Metro',
+        district: { zh: '全市', en: 'Citywide' },
+        image: 'assets/images/traffic_metro.svg',
+        seo: { description: { zh: '四通八达的地下交通网络', en: 'Extensive underground transport network' } }
+    }
+];
+
+function isFileProtocol() {
+    return (window.location.protocol || '').startsWith('file');
+}
+
+async function loadTrafficConfig() {
+    if (trafficList && trafficList.length > 0) return trafficList;
+    const base = getAssetsBase();
+    try {
+        const res = await fetch(`${base}data/traffic.json`, { cache: 'no-cache' });
+        if (!res.ok) throw new Error('配置加载失败');
+        const json = await res.json();
+        trafficList = Array.isArray(json.items) ? json.items : [];
+        return trafficList;
+    } catch (e) {
+        if (isFileProtocol()) {
+            console.warn('[traffic] 检测到本地文件模式，使用回退数据');
+            trafficList = localTrafficFallback;
+            return trafficList;
+        }
+        console.error('[traffic] 配置读取失败', e);
+        trafficList = [];
+        return trafficList;
+    }
+}
 
 // ------------------------------
 // 全局变量
@@ -136,26 +130,8 @@ function switchLanguage() {
         themeBtn.setAttribute('title', translations[currentLang]['btn.theme']);
     }
     
-    updateCarouselTitle(); // 更新轮播标题
+    updateTrafficCardsText();
     localStorage.setItem('preferredLanguage', currentLang);
-}
-
-function updateCarouselTitle() {
-    const carouselTitle = document.querySelector('.carousel-title');
-    if (carouselTitle) {
-        const h1 = carouselTitle.querySelector('h1');
-        const h2 = carouselTitle.querySelector('h2');
-        
-        if (h1) {
-            h1.textContent = translations[currentLang]['hero.transport.title1'];
-            h1.setAttribute('data-i18n', 'hero.transport.title1');
-        }
-        
-        if (h2) {
-            h2.textContent = translations[currentLang]['hero.transport.title2'];
-            h2.setAttribute('data-i18n', 'hero.transport.title2');
-        }
-    }
 }
 
 function initLanguage() {
@@ -328,136 +304,130 @@ function initBackToTop() {
 }
 
 // ------------------------------
-// 轮播图功能
+// 动态渲染函数
 // ------------------------------
 
-let currentSlide = 0;
-let carouselInterval = null;
-let isCarouselRunning = false;
-
-function initCarousel() {
-    const carouselWrapper = document.getElementById('carouselWrapper');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const indicatorsContainer = document.getElementById('carouselIndicators');
+async function renderTraffic() {
+    const grid = document.getElementById('trafficGrid');
+    if (!grid) return;
     
-    if (!carouselWrapper) {
+    grid.innerHTML = '';
+    const items = await loadTrafficConfig();
+    if (!items || items.length === 0) {
+        renderTrafficEmptyState();
+        return;
+    }
+    items.forEach(item => {
+        const slug = item.slug;
+        const detailUrl = `attractions/detail.html?type=traffic&slug=${slug}`;
+        const base = getAssetsBase();
+        const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
+        
+        const card = document.createElement('div');
+        card.className = 'attraction-card'; // 复用卡片样式
+        card.innerHTML = `
+            <div class="card-image">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? item.name : item.nameEn}" onerror="this.onerror=null;this.src='/assets/images/placeholder.svg'">
+            </div>
+            <div class="card-content">
+                <h3 class="card-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
+                <p class="card-description">${currentLang === 'zh' ? (item.seo?.description?.zh || '') : (item.seo?.description?.en || '')}</p>
+                <div class="card-meta">
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '')}</span>
+                    </div>
+                    <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="${currentLang === 'zh' ? '查看详情' : 'View Details'}">${currentLang === 'zh' ? '详' : 'Detail'}</a>
+                </div>
+            </div>
+        `;
+        card.setAttribute('data-index', String(items.indexOf(item)));
+        grid.appendChild(card);
+    });
+}
+
+function renderTrafficEmptyState() {
+    const grid = document.getElementById('trafficGrid');
+    if (!grid) return;
+    const wrapper = document.createElement('div');
+    wrapper.className = 'empty-state';
+    wrapper.innerHTML = `
+        <div class="empty-state-content">
+            <h3>无法加载数据</h3>
+            <p>请检查网络连接或稍后重试。</p>
+        </div>
+    `;
+    grid.appendChild(wrapper);
+}
+
+async function updateTrafficCardsText() {
+    const cards = document.querySelectorAll('.attraction-card');
+    if (!cards || cards.length === 0) {
+        await renderTraffic();
         return;
     }
     
-    const carouselItems = carouselWrapper.querySelectorAll('.carousel-item');
-    const totalSlides = carouselItems.length;
+    const items = await loadTrafficConfig();
+    if (!items || items.length === 0) return;
     
-    if (totalSlides === 0) return;
-    
-    // 创建轮播标题
-    const carouselTitle = document.createElement('div');
-    carouselTitle.className = 'carousel-title';
-    carouselTitle.innerHTML = `
-        <h1 data-i18n="hero.transport.title1">${currentLang === 'zh' ? '交通' : 'TRANSPORT'}</h1>
-        <h2 data-i18n="hero.transport.title2">${currentLang === 'zh' ? 'TRANSPORT' : '交通'}</h2>
-    `;
-    carouselWrapper.parentNode.insertBefore(carouselTitle, carouselWrapper);
-    
-    // 创建指示器
-    indicatorsContainer.innerHTML = '';
-    for (let i = 0; i < totalSlides; i++) {
-        const indicator = document.createElement('button');
-        indicator.className = 'carousel-indicator';
-        if (i === 0) indicator.classList.add('active');
-        indicator.addEventListener('click', () => goToSlide(i));
-        indicatorsContainer.appendChild(indicator);
-    }
-    
-    // 添加按钮事件监听
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => prevSlide());
-    }
-    
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => nextSlide());
-    }
-    
-    // 启动自动轮播
-    startAutoCarousel();
-    
-    // 添加鼠标悬停暂停功能
-    carouselWrapper.addEventListener('mouseenter', pauseAutoCarousel);
-    carouselWrapper.addEventListener('mouseleave', startAutoCarousel);
-    
-    // 页面可见性变化时暂停/恢复轮播
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            pauseAutoCarousel();
-        } else {
-            startAutoCarousel();
+    cards.forEach(card => {
+        const index = parseInt(card.getAttribute('data-index'));
+        const item = items[index];
+        if (!item) return;
+        
+        const title = card.querySelector('.card-title');
+        if (title) {
+            title.textContent = currentLang === 'zh' ? item.name : item.nameEn;
+        }
+        
+        const description = card.querySelector('.card-description');
+        if (description) {
+            description.textContent = currentLang === 'zh' ? (item.seo?.description?.zh || '') : (item.seo?.description?.en || '');
+        }
+        
+        const location = card.querySelector('.card-location span');
+        if (location) {
+            location.textContent = currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '');
+        }
+        
+        const detailBtn = card.querySelector('.detail-btn');
+        if (detailBtn) {
+            detailBtn.textContent = currentLang === 'zh' ? '详' : 'Detail';
+            detailBtn.setAttribute('title', currentLang === 'zh' ? '查看详情' : 'View Details');
         }
     });
 }
 
-function goToSlide(slideIndex) {
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const indicators = document.querySelectorAll('.carousel-indicator');
-    const totalSlides = carouselItems.length;
-    
-    if (totalSlides === 0) return;
-    
-    if (slideIndex < 0) {
-        slideIndex = totalSlides - 1;
-    } else if (slideIndex >= totalSlides) {
-        slideIndex = 0;
+function saveEntryScroll(slug) {
+    try {
+        sessionStorage.setItem('trafficScrollY', String(window.scrollY));
+        sessionStorage.setItem('trafficEntrySlug', slug || '');
+        sessionStorage.setItem('trafficSavedAt', String(Date.now()));
+    } catch (e) {}
+}
+
+function restoreEntryScroll() {
+    const yStr = sessionStorage.getItem('trafficScrollY');
+    const atStr = sessionStorage.getItem('trafficSavedAt');
+    const y = yStr ? parseInt(yStr, 10) : NaN;
+    const at = atStr ? parseInt(atStr, 10) : 0;
+    if (!Number.isNaN(y) && Date.now() - at < 5 * 60 * 1000) {
+        window.scrollTo({ top: y, behavior: 'auto' });
     }
-    
-    // 移除所有活动状态
-    carouselItems.forEach(item => item.classList.remove('active'));
-    indicators.forEach(indicator => indicator.classList.remove('active'));
-    
-    // 设置新的活动状态
-    carouselItems[slideIndex].classList.add('active');
-    indicators[slideIndex].classList.add('active');
-    
-    currentSlide = slideIndex;
+    sessionStorage.removeItem('trafficScrollY');
+    sessionStorage.removeItem('trafficEntrySlug');
+    sessionStorage.removeItem('trafficSavedAt');
 }
 
-function nextSlide() {
-    goToSlide(currentSlide + 1);
-    resetAutoCarousel();
-}
-
-function prevSlide() {
-    goToSlide(currentSlide - 1);
-    resetAutoCarousel();
-}
-
-function startAutoCarousel() {
-    if (isCarouselRunning) return;
-    
-    clearCarouselInterval();
-    
-    carouselInterval = setInterval(() => {
-        nextSlide();
-    }, 5000); // 每5秒切换一次
-    
-    isCarouselRunning = true;
-}
-
-function pauseAutoCarousel() {
-    if (!isCarouselRunning) return;
-    
-    clearCarouselInterval();
-    isCarouselRunning = false;
-}
-
-function clearCarouselInterval() {
-    if (carouselInterval) {
-        clearInterval(carouselInterval);
-        carouselInterval = null;
-    }
-}
-
-function resetAutoCarousel() {
-    pauseAutoCarousel();
-    startAutoCarousel();
+function bindDetailEntryScroll() {
+    const links = document.querySelectorAll('.detail-btn');
+    if (!links || links.length === 0) return;
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            const slug = link.getAttribute('data-slug') || '';
+            saveEntryScroll(slug);
+        });
+    });
 }
 
 // ------------------------------
@@ -480,7 +450,7 @@ function init() {
     initActiveNav();
     initMobileMenu();
     initBackToTop();
-    initCarousel();
+    renderTraffic();
     
     const langSwitch = document.getElementById('langSwitch');
     const themeToggle = document.getElementById('themeToggle');
@@ -500,6 +470,11 @@ function init() {
 
 document.addEventListener('DOMContentLoaded', () => {
     init();
+    
+    if (document.getElementById('trafficGrid')) {
+        restoreEntryScroll();
+        bindDetailEntryScroll();
+    }
 });
 
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
@@ -518,5 +493,11 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
                 icon.classList.add('fa-moon');
             }
         }
+    }
+});
+
+window.addEventListener('pageshow', () => {
+    if (document.getElementById('trafficGrid')) {
+        restoreEntryScroll();
     }
 });

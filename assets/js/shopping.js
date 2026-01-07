@@ -64,7 +64,7 @@ const localShoppingFallback = [
         name: '万象城',
         nameEn: 'The MixC',
         district: { zh: '罗湖区/南山区', en: 'Luohu/Nanshan' },
-        image: 'assets/images/shop_mixc.jpg',
+        image: 'assets/images/shop_mixc.svg',
         seo: { description: { zh: '深圳顶级奢华购物中心', en: 'Shenzhen\'s top luxury shopping mall' } }
     }
 ];
