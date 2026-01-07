@@ -5,3 +5,8 @@ dist/
 .VSCodeCounter/
 *.log
 .env
+.env.*
+.vscode/
+.wrangler/
+.dev.vars
+coverage/

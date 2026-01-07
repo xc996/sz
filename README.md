@@ -134,6 +134,61 @@ npx http-server -p 8000
 *   **图片显示修复**：解决了历史文化页 (`history.html`) 图片因路径错误无法显示的问题。
 *   **布局修复**：解决了购物页 (`shopping.html`) 和景点页 (`attractions.html`) 因样式缺失导致的排版错乱。
 
+## ☁️ 部署到 Cloudflare（Pages 与 Workers）
+
+本项目已内置 Cloudflare 配置与脚本，支持两种部署方式：Cloudflare Pages（静态站点托管）与 Cloudflare Workers（通过 KV/Assets 提供静态资源并支持 SPA 兜底）。
+
+### Cloudflare Pages 表单填写
+- 生产分支：`master`
+- 框架预设：`无`
+- 构建命令：`npm run build`
+- 构建输出目录：`dist`
+- 根目录（高级）：`/`（若仓库即为项目根，保持 `/` 或留空）
+
+说明：构建脚本会使用 Vite 生成首页与指纹资源，并通过 [scripts/copy-static.mjs](scripts/copy-static.mjs) 复制 `pages/` 与 `assets/` 到 `dist/`，保证子页和静态资源在 Pages 环境可直接访问。
+
+可选（CLI）：
+
+```bash
+# 登录 Cloudflare 账号
+npx wrangler login
+
+# 本地开发预览（Pages）
+npm run pages:dev
+
+# 发布到 Pages（将 dist 目录部署）
+npm run pages:publish
+```
+
+### Cloudflare Workers 表单填写
+- 项目名称：`sz-tourism-site`（或你偏好的名称，建议与 [wrangler.toml](wrangler.toml) 的 `name` 保持一致）
+- 构建命令：`npm run build`
+- 部署命令：`npm run cf:publish`（或 `npx wrangler deploy`）
+- 非生产分支构建：勾选（可选）
+- 非生产分支部署命令：`npm run cf:publish`（可选）
+
+说明：
+- 已提供 Worker 入口 [worker/index.js](worker/index.js)，通过 `env.ASSETS` 绑定静态资源目录，并在 GET 请求 404 时回退到 `/index.html`，适配前端路由。
+- [wrangler.toml](wrangler.toml) 中 `assets.directory = "./dist"`，确保 Workers 使用构建产物；`main = "worker/index.js"` 指定入口。
+
+可选（CLI）：
+
+```bash
+# 登录 Cloudflare 账号
+npx wrangler login
+
+# 本地开发（Workers）
+npm run cf:dev
+
+# 发布到 Workers（读取 wrangler.toml 配置）
+npm run cf:publish
+```
+
+### 验证与常见问题
+- 构建后请确认 `dist/` 中包含：`index.html`、`pages/**`、`assets/**`。
+- 若前端路由在 Workers 下出现 404，确认入口逻辑已回退到 `/index.html`（见 [worker/index.js](worker/index.js)）。
+- Pages 与 Workers 可并存：Pages 面向托管静态站点，Workers 面向边缘逻辑与 SPA 兜底；两者互不冲突。
+
 ## 📄 License
 
 MIT License
