@@ -532,14 +532,45 @@ function initNavbarScroll() {
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
+    const isSmall = () => window.matchMedia('(max-width: 992px)').matches;
     if (!menuToggle || !navMenu) return;
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+    });
+    menuToggle.addEventListener('mouseenter', () => {
+        if (isSmall()) navMenu.classList.add('active');
     });
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
         });
+    });
+    navMenu.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', (e) => {
+            const a = li.querySelector('a');
+            if (a && e.target !== a) a.click();
+            navMenu.classList.remove('active');
+        });
+    });
+    navMenu.addEventListener('mouseleave', () => {
+        if (!isSmall()) navMenu.classList.remove('active');
+    });
+    document.addEventListener('mouseover', (e) => {
+        if (isSmall()) return;
+        const target = e.target;
+        const inside = navMenu.contains(target) || menuToggle.contains(target);
+        if (!inside && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+        }
+    });
+    document.addEventListener('click', (e) => {
+        if (!isSmall()) return;
+        const target = e.target;
+        const isInsideMenu = navMenu.contains(target);
+        const isToggle = menuToggle.contains(target);
+        if (navMenu.classList.contains('active') && !isInsideMenu && !isToggle) {
+            navMenu.classList.remove('active');
+        }
     });
 }
 
@@ -690,18 +721,12 @@ function renderFestivals() {
     if (!grid) return;
     
     grid.innerHTML = '';
-    const base = getAssetsBase();
     
     blendingData.forEach((item, index) => {
         const festivalItem = document.createElement('div');
         festivalItem.className = 'festival-item';
-        // 动态处理图片路径
-        const imgSrc = item.image.startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : item.image;
         
         festivalItem.innerHTML = `
-            <div class="festival-image">
-                <img src="${imgSrc}" alt="${currentLang === 'zh' ? item.name : item.nameEn}">
-            </div>
             <div class="festival-content">
                 <h3 class="festival-title">
                     <i class="${item.icon}"></i>

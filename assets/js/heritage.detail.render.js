@@ -109,7 +109,8 @@ function renderDetail(item) {
   const lang = document.body.getAttribute('data-lang') || 'zh';
   const name = lang === 'en' ? item.nameEn : item.name;
   const description = lang === 'en' ? item.descriptionEn : (item.descriptionFull || item.description);
-  const levelText = t(`history.heritage.level.${item.level}`);
+  // 直接根据语言生成级别文本，避免使用未定义的t()函数
+  const levelText = lang === 'en' ? (item.level === 'national' ? 'National' : 'Provincial') : (item.level === 'national' ? '国家级' : '省级');
   const base = getAssetsBase();
   const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
 
