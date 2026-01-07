@@ -621,7 +621,7 @@ async function renderAttractions() {
         card.className = 'attraction-card';
         card.innerHTML = `
             <div class="card-image">
-                <img src="${imgSrc}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}" onerror="this.onerror=null;this.src='/assets/images/placeholder.svg'">
+                <img src="${imgSrc}" alt="${currentLang === 'zh' ? attraction.name : attraction.nameEn}" onerror="this.onerror=null;this.src='${base}images/placeholder.svg'">
             </div>
             <div class="card-content">
                 <h3 class="card-title">${currentLang === 'zh' ? attraction.name : attraction.nameEn}</h3>
