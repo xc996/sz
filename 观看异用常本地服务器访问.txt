@@ -15,5 +15,5 @@
 方案二
 **Node.js (http-server):**
 ```bash
-在当前文件夹打开cmd输入并回车：npx http-server -p 8000
+在当前文件夹打开cmd输入并回车：npx http-server -p 8000     （第一个不行用这个）
 # 浏览器输入网址访问： http://localhost:8000

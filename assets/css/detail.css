@@ -161,7 +161,7 @@
     display: flex;
     align-items: center;
     position: fixed; /* 中文：固定在视口右下角 */
-    right: 30px; /* 中文：与返回顶部按钮右侧对齐 */
+    right: 16px; /* 中文：与返回顶部按钮右侧对齐 */
     bottom: 92px; /* 中文：在返回顶部按钮（50px）上方留 12px 间距：30+50+12=92 */
     margin: 0; /* 中文：固定定位下不需要外边距 */
     z-index: 999; /* 中文：确保位于返回顶部按钮之上且不被内容遮挡 */

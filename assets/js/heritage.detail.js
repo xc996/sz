@@ -41,9 +41,13 @@ function initNavbarScroll() {
 function initMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const navMenu = document.getElementById('navMenu');
+    const isSmall = () => window.matchMedia('(max-width: 992px)').matches;
     
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
+    });
+    menuToggle.addEventListener('mouseenter', () => {
+        if (isSmall()) navMenu.classList.add('active');
     });
     
     // 点击菜单项后关闭菜单
@@ -51,6 +55,34 @@ function initMobileMenu() {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
         });
+    });
+    
+    navMenu.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', (e) => {
+            const a = li.querySelector('a');
+            if (a && e.target !== a) a.click();
+            navMenu.classList.remove('active');
+        });
+    });
+    navMenu.addEventListener('mouseleave', () => {
+        if (!isSmall()) navMenu.classList.remove('active');
+    });
+    document.addEventListener('mouseover', (e) => {
+        if (isSmall()) return;
+        const target = e.target;
+        const inside = navMenu.contains(target) || menuToggle.contains(target);
+        if (!inside && navMenu.classList.contains('active')) {
+            navMenu.classList.remove('active');
+        }
+    });
+    document.addEventListener('click', (e) => {
+        if (!isSmall()) return;
+        const target = e.target;
+        const isInsideMenu = navMenu.contains(target);
+        const isToggle = menuToggle.contains(target);
+        if (navMenu.classList.contains('active') && !isInsideMenu && !isToggle) {
+            navMenu.classList.remove('active');
+        }
     });
 }
 

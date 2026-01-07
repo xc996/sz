@@ -164,10 +164,11 @@ body {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
 .logo {
@@ -217,6 +218,14 @@ body {
     border-radius: 20px;
     display: inline-block;
     border: 1px solid transparent;
+}
+
+[data-lang="en"] .nav-menu { gap: 12px; }
+[data-lang="en"] .nav-menu a {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: none !important;
 }
 
 /* 选中态样式 - 统一改为下划线风格 */
@@ -528,18 +537,23 @@ body {
 .back-to-top {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    right: 16px;
     width: 50px;
     height: 50px;
-    background: var(--primary-color);
-    border: none;
     border-radius: 50%;
+    background: var(--primary-color);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
+    transition: all 0.15s ease;
     z-index: 998;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+    outline: none;
 }
 
 .back-to-top.show {
@@ -1239,11 +1253,74 @@ body {
     background: var(--secondary-color);
 }
 
-/* ��Ӧʽ���� */
+@media (max-width: 992px) and (min-width: 769px) {
+    .nav-menu {
+        gap: 15px;
+    }
+    .nav-menu a {
+        font-size: 0.95rem;
+        padding: 6px 12px;
+        white-space: nowrap;
+    }
+    .logo {
+        font-size: 1.3rem;
+    }
+    .logo-icon {
+        max-width: 35px;
+        max-height: 35px;
+    }
+}
+
 @media (max-width: 768px) {
+    .nav-container { padding: 0 16px; }
+    .nav-actions { gap: 10px; }
+    .menu-toggle { display: flex; }
+    .nav-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        right: 10px;
+        left: auto;
+        width: 200px;
+        background: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 14px 14px;
+        box-shadow: var(--shadow);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        z-index: 1000;
+    }
+    #navbar.scrolled .nav-menu {
+        top: 60px;
+        max-height: calc(100vh - 60px);
+    }
+    .nav-menu.active { display: flex; }
+    .nav-menu a {
+        color: var(--text-primary);
+        padding: 8px;
+        border-radius: 8px;
+        display: block;
+    }
+    [data-lang="en"] .nav-menu { width: 230px; }
+    [data-lang="zh"] .nav-menu { width: 200px; }
     .carousel-section { height: 60vh; }
     .carousel-caption h2 { font-size: 1.8rem; }
     .carousel-title h1 { font-size: 3rem; }
     .attractions-grid { grid-template-columns: 1fr; }
 }
 
+
+
+@media (max-width: 480px) {
+    .nav-menu {
+        right: 8px;
+        width: 180px;
+        padding: 8px 12px 12px;
+        gap: 6px;
+    }
+    [data-lang="en"] .nav-menu { width: 210px; }
+    [data-lang="zh"] .nav-menu { width: 180px; }
+}
