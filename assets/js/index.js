@@ -560,7 +560,7 @@ function initActiveNav() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-menu a');
     
-    console.log('[Home Nav] Init active nav check. Path:', currentPath);
+    
 
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -578,15 +578,15 @@ function initActiveNav() {
         if ((isHome && isHomeLink) || isOtherMatch) {
             if (!link.classList.contains('active')) {
                 link.classList.add('active');
-                console.log('[Home Nav] Added active class:', href);
+                
             } else {
-                console.log('[Home Nav] Active class already present:', href);
+                
             }
         } else {
             // 如果不匹配，但有 active 类，则移除
             if (link.classList.contains('active')) {
                 link.classList.remove('active');
-                console.log('[Home Nav] Removed active class from mismatch:', href);
+                
             }
         }
     });
@@ -1028,17 +1028,13 @@ const carousel = {
 document.addEventListener('DOMContentLoaded', () => {
     init();
     
-    // 初始化轮播
+    // 初始化轮播（仅当存在轮播区时启用）
     if (document.querySelector('.carousel-section')) {
-        console.log('Carousel section found, initializing...');
         carousel.init();
-    } else {
-        console.warn('Carousel section NOT found');
     }
     
     // 绑定景点卡片点击事件
     if (document.querySelector('.attractions-grid')) {
-        console.log('Attractions grid found, binding events...');
         bindAttractionClickEvents();
     }
 
