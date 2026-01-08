@@ -740,13 +740,13 @@ function renderTimeline() {
 
 // 页面加载完成后执行
 function init() {
-    // 初始化AOS动画
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
+    const log = window.Logger ? window.Logger('home') : console
+    if (window.AOS && typeof AOS.init === 'function') {
+        AOS.init({ duration: 1000, easing: 'ease-in-out', once: true, mirror: false })
+        log.info('AOS initialized')
+    } else {
+        log.warn('AOS not available')
+    }
     
     // 初始化语言
     initLanguage();
@@ -1027,15 +1027,21 @@ const carousel = {
 
 document.addEventListener('DOMContentLoaded', () => {
     init();
+    const domLog = window.Logger ? window.Logger('home') : console
     
-    // 初始化轮播（仅当存在轮播区时启用）
     if (document.querySelector('.carousel-section')) {
-        carousel.init();
+        carousel.init()
+        domLog.info('Carousel initialized')
+    } else {
+        domLog.debug('Carousel section not found')
     }
     
     // 绑定景点卡片点击事件
     if (document.querySelector('.attractions-grid')) {
-        bindAttractionClickEvents();
+        bindAttractionClickEvents()
+        domLog.info('Attractions events bound')
+    } else {
+        domLog.debug('Attractions grid not found')
     }
 
     // 使用iframe嵌入官方地图页时，不进行JSAPI初始化
