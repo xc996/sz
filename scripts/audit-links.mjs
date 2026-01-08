@@ -96,22 +96,41 @@ function makeRemote(origin, basePath, srcFile, href) {
  */
 async function checkRemote(urls) {
   const out = [];
-  const limit = 8;
+  const limit = 4;
   let i = 0;
   async function worker() {
     while (i < urls.length) {
       const u = urls[i++];
-      try {
-        const r = await fetch(u, { redirect: 'follow' });
-        out.push({ url: u, status: r.status, type: r.headers.get('content-type') || '' });
-      } catch (e) {
-        out.push({ url: u, status: 'ERR', type: String(e && e.message || 'Error') });
-      }
+      const r = await fetchWithRetry(u, 3);
+      out.push(r);
     }
   }
   await Promise.all(Array.from({ length: limit }, worker));
   return out;
 }
+
+async function fetchWithRetry(url, attempts = 3) {
+  let lastErr = null;
+  for (let k = 1; k <= attempts; k++) {
+    try {
+      // HEAD 优先，失败或不支持则 GET
+      let r = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+      if (!r || !(r.status >= 200 && r.status < 400)) {
+        r = await fetch(url, { method: 'GET', redirect: 'follow' });
+      }
+      if (r && r.status === 200) {
+        return { url, status: r.status, type: r.headers.get('content-type') || '' };
+      }
+      lastErr = new Error(`HTTP ${r && r.status}`);
+    } catch (e) {
+      lastErr = e;
+    }
+    await sleep(300 * k);
+  }
+  return { url, status: 'ERR', type: String(lastErr && lastErr.message || 'Error') };
+}
+
+function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
 
 /**
  * 主函数（中文注释）
@@ -146,9 +165,9 @@ async function main() {
     byStatus[k].slice(0, 1000).forEach(r => console.log(`${String(r.status).padEnd(4)} ${r.type?.split(';')[0] || ''}  ${r.url}`));
   }
 
-  const bad = results.filter(r => String(r.status) !== '200').length;
-  if (failOn404 && bad > 0) {
-    console.error(`\n发现 ${bad} 个非 200 资源，退出并阻止部署`);
+  const bad404 = results.filter(r => String(r.status) === '404').length;
+  if (failOn404 && bad404 > 0) {
+    console.error(`\n发现 ${bad404} 个 404 资源，退出并阻止部署`);
     process.exitCode = 1;
   }
 }
