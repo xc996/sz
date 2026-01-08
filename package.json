@@ -12,6 +12,8 @@
     "validate:local-only": "node scripts/validate-all.mjs --local",
     "validate:github-only": "node scripts/validate-all.mjs --github",
     "validate:cloudflare-only": "node scripts/validate-all.mjs --cloudflare",
+    "validate:fast": "NO_WAIT_VERSION=true FORCE_REMOTE=true CONCURRENCY=32 TIMEOUT_MS=5000 node scripts/validate-all.mjs",
+    "validate:remote-fast": "NO_WAIT_VERSION=true CONCURRENCY=32 TIMEOUT_MS=5000 node scripts/validate-all.mjs --github --cloudflare",
     "test": "vitest",
     "cf:dev": "wrangler dev",
     "cf:publish": "wrangler deploy",

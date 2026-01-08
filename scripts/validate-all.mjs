@@ -8,6 +8,9 @@ const args = process.argv.slice(2)
 const runLocal = args.length === 0 ? true : args.includes('--local')
 const runGithub = args.length === 0 ? true : args.includes('--github')
 const runCloudflare = args.length === 0 ? true : args.includes('--cloudflare')
+const noWait = process.env.NO_WAIT_VERSION === 'true' || args.includes('--no-wait')
+const forceRemote = process.env.FORCE_REMOTE === 'true' || args.includes('--force-remote')
+const waitMs = (() => { const v = parseInt(process.env.WAIT_VERSION_MS || '0'); return v > 0 ? v : 120000 })()
 
 // 允许通过环境变量或参数配置远程域名，避免脚本内硬编码
 const GH_ORIGIN = process.env.GITHUB_ORIGIN || 'https://xc996.github.io'
@@ -29,19 +32,23 @@ async function main() {
     }
 
     const expectedSha = getSha()
+    const conc = process.env.CONCURRENCY || '16'
+    const timeout = process.env.TIMEOUT_MS || '8000'
     for (const c of CASES) {
       console.log(`\n=== Run audit: ${c.name} ===`)
       // 远程连通性预检：防止伪造域名或网络不可达造成假绿灯
       const probeUrl = c.name === 'github' ? `${c.origin}${c.base}/` : `${c.origin}/`
       const reachable = await safeProbe(probeUrl)
-      if (!reachable) {
+      if (!reachable && !forceRemote) {
         console.warn(`[skip] ${c.name} unreachable: ${probeUrl}`)
         results.push({ name: c.name, code: 2 })
         continue
       }
-      const verOk = await waitRemoteVersion(c.origin, c.base, expectedSha)
-      if (!verOk) console.warn(`[warn] ${c.name} version not updated, proceeding with current content`)
-      const code = await run('node', ['scripts/audit-links.mjs', '--origin', c.origin, '--base', c.base, '--fail-on-404'])
+      if (!noWait) {
+        const verOk = await waitRemoteVersion(c.origin, c.base, expectedSha, waitMs)
+        if (!verOk) console.warn(`[warn] ${c.name} version not updated, proceeding with current content`)
+      }
+      const code = await run('node', ['scripts/audit-links.mjs', '--origin', c.origin, '--base', c.base, '--concurrency', conc, '--timeout', timeout, '--fail-on-404'])
       results.push({ name: c.name, code })
     }
     console.log('\n=== Summary ===')
@@ -94,11 +101,11 @@ function getSha() {
   try { return execSync('git rev-parse HEAD').toString().trim() } catch { return '' }
 }
 
-async function waitRemoteVersion(origin, base, expectedSha) {
+async function waitRemoteVersion(origin, base, expectedSha, maxWaitMs = 120000) {
   if (!expectedSha) return true
   const u = new URL(`${origin}${base.endsWith('/') ? base : base + '/'}assets/version.json`)
   const t0 = Date.now()
-  while (Date.now() - t0 < 600000) {
+  while (Date.now() - t0 < maxWaitMs) {
     try {
       const r = await fetch(u)
       if (r.status === 200) {
