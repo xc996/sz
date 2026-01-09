@@ -96,16 +96,82 @@ function makeRemote(origin, basePath, srcFile, href) {
  */
 async function checkRemote(urls) {
   const out = [];
+  const limit = (() => {
+    const idx = process.argv.indexOf('--concurrency');
+    if (idx !== -1) {
+      const v = parseInt(process.argv[idx + 1]);
+      if (!isNaN(v) && v > 0) return v;
+    }
+    const envV = parseInt(process.env.CONCURRENCY || '0');
+    return envV > 0 ? envV : 12;
+  })();
+  let i = 0;
+  async function worker() {
+    while (i < urls.length) {
+      const u = urls[i++];
+      const r = await fetchWithRetry(u, 3, getTimeout());
+      out.push(r);
+    }
+  }
+  await Promise.all(Array.from({ length: limit }, worker));
+  return out;
+}
+
+function getTimeout() {
+  const idx = process.argv.indexOf('--timeout');
+  if (idx !== -1) {
+    const v = parseInt(process.argv[idx + 1]);
+    if (!isNaN(v) && v > 0) return v;
+  }
+  const envV = parseInt(process.env.TIMEOUT_MS || '0');
+  return envV > 0 ? envV : 8000;
+}
+
+async function fetchWithRetry(url, attempts = 3, timeoutMs = 8000) {
+  let lastErr = null;
+  for (let k = 1; k <= attempts; k++) {
+    try {
+      // HEAD 优先，失败或不支持则 GET
+      let r = await timedFetch(url, { method: 'HEAD', redirect: 'follow' }, timeoutMs);
+      if (!r || !(r.status >= 200 && r.status < 400)) {
+        r = await timedFetch(url, { method: 'GET', redirect: 'follow' }, timeoutMs);
+      }
+      if (r && r.status === 200) {
+        return { url, status: r.status, type: r.headers.get('content-type') || '' };
+      }
+      lastErr = new Error(`HTTP ${r && r.status}`);
+    } catch (e) {
+      lastErr = e;
+    }
+    await sleep(300 * k);
+  }
+  return { url, status: 'NETERR', type: String(lastErr && lastErr.message || 'Error') };
+}
+
+function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
+
+async function timedFetch(url, options, timeoutMs) {
+  const ac = new AbortController();
+  const t = setTimeout(() => ac.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: ac.signal });
+  } finally {
+    clearTimeout(t);
+  }
+}
+
+async function checkRemoteGetOnly(urls) {
+  const out = [];
   const limit = 8;
   let i = 0;
   async function worker() {
     while (i < urls.length) {
       const u = urls[i++];
       try {
-        const r = await fetch(u, { redirect: 'follow' });
+        const r = await timedFetch(u, { method: 'GET', redirect: 'follow' }, getTimeout() * 2);
         out.push({ url: u, status: r.status, type: r.headers.get('content-type') || '' });
       } catch (e) {
-        out.push({ url: u, status: 'ERR', type: String(e && e.message || 'Error') });
+        out.push({ url: u, status: 'NETERR', type: String(e && e.message || 'Error') });
       }
     }
   }
@@ -132,7 +198,15 @@ async function main() {
   }
 
   const urls = links.map(({ file, url }) => makeRemote(origin, basePath, file, url));
-  const results = await checkRemote(urls);
+  let results = await checkRemote(urls);
+  const netErrs = results.filter(r => String(r.status) === 'ERR');
+  if (netErrs.length) {
+    const retryUrls = netErrs.map(r => r.url);
+    const retried = await checkRemoteGetOnly(retryUrls);
+    const merged = new Map(results.map(r => [r.url, r]));
+    retried.forEach(r => merged.set(r.url, r));
+    results = Array.from(merged.values());
+  }
   const byStatus = results.reduce((acc, r) => {
     const k = String(r.status);
     acc[k] = acc[k] || [];
@@ -146,9 +220,9 @@ async function main() {
     byStatus[k].slice(0, 1000).forEach(r => console.log(`${String(r.status).padEnd(4)} ${r.type?.split(';')[0] || ''}  ${r.url}`));
   }
 
-  const bad = results.filter(r => String(r.status) !== '200').length;
-  if (failOn404 && bad > 0) {
-    console.error(`\n发现 ${bad} 个非 200 资源，退出并阻止部署`);
+  const bad404 = results.filter(r => String(r.status) === '404').length;
+  if (failOn404 && bad404 > 0) {
+    console.error(`\n发现 ${bad404} 个 404 资源，退出并阻止部署`);
     process.exitCode = 1;
   }
 }

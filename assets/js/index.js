@@ -560,7 +560,7 @@ function initActiveNav() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.nav-menu a');
     
-    console.log('[Home Nav] Init active nav check. Path:', currentPath);
+    
 
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -578,15 +578,15 @@ function initActiveNav() {
         if ((isHome && isHomeLink) || isOtherMatch) {
             if (!link.classList.contains('active')) {
                 link.classList.add('active');
-                console.log('[Home Nav] Added active class:', href);
+                
             } else {
-                console.log('[Home Nav] Active class already present:', href);
+                
             }
         } else {
             // 如果不匹配，但有 active 类，则移除
             if (link.classList.contains('active')) {
                 link.classList.remove('active');
-                console.log('[Home Nav] Removed active class from mismatch:', href);
+                
             }
         }
     });
@@ -740,13 +740,13 @@ function renderTimeline() {
 
 // 页面加载完成后执行
 function init() {
-    // 初始化AOS动画
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
-    });
+    const log = window.Logger ? window.Logger('home') : console
+    if (window.AOS && typeof AOS.init === 'function') {
+        AOS.init({ duration: 1000, easing: 'ease-in-out', once: true, mirror: false })
+        log.info('AOS initialized')
+    } else {
+        log.warn('AOS not available')
+    }
     
     // 初始化语言
     initLanguage();
@@ -1027,19 +1027,21 @@ const carousel = {
 
 document.addEventListener('DOMContentLoaded', () => {
     init();
+    const domLog = window.Logger ? window.Logger('home') : console
     
-    // 初始化轮播
     if (document.querySelector('.carousel-section')) {
-        console.log('Carousel section found, initializing...');
-        carousel.init();
+        carousel.init()
+        domLog.info('Carousel initialized')
     } else {
-        console.warn('Carousel section NOT found');
+        domLog.debug('Carousel section not found')
     }
     
     // 绑定景点卡片点击事件
     if (document.querySelector('.attractions-grid')) {
-        console.log('Attractions grid found, binding events...');
-        bindAttractionClickEvents();
+        bindAttractionClickEvents()
+        domLog.info('Attractions events bound')
+    } else {
+        domLog.debug('Attractions grid not found')
     }
 
     // 使用iframe嵌入官方地图页时，不进行JSAPI初始化

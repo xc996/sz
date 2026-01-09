@@ -54,6 +54,27 @@ function isFileProtocol() {
     return (window.location.protocol || '').startsWith('file');
 }
 
-// 暴露给全局对象，以防模块化环境下无法访问
+function createLogger(scope) {
+    const levels = { debug: 0, info: 1, warn: 2, error: 3 }
+    const env = (window.__ENV || 'prod')
+    const lvlName = (window.__LOG_LEVEL || (env === 'dev' ? 'debug' : 'info'))
+    const lvl = levels[lvlName] ?? 1
+    function out(kind, args) {
+        if (levels[kind] < lvl) return
+        const prefix = `[${scope}]`
+        if (kind === 'debug') console.debug(prefix, ...args)
+        else if (kind === 'info') console.info(prefix, ...args)
+        else if (kind === 'warn') console.warn(prefix, ...args)
+        else console.error(prefix, ...args)
+    }
+    return {
+        debug: (...a) => out('debug', a),
+        info: (...a) => out('info', a),
+        warn: (...a) => out('warn', a),
+        error: (...a) => out('error', a)
+    }
+}
+
 window.getAssetsBase = getAssetsBase;
 window.isFileProtocol = isFileProtocol;
+window.Logger = createLogger;
