@@ -465,11 +465,134 @@ function init() {
 }
 
 // ------------------------------
+// 轮播功能
+// ------------------------------
+
+// 轮播对象
+const carousel = {
+    currentIndex: 0,
+    items: [],
+    indicators: [],
+    interval: null,
+    autoPlay: true,
+    intervalTime: 5000,
+    
+    // 初始化轮播
+    init() {
+        this.items = document.querySelectorAll('.carousel-item');
+        this.createIndicators();
+        this.startAutoPlay();
+        this.bindEvents();
+    },
+    
+    // 创建指示器
+    createIndicators() {
+        const indicatorsContainer = document.getElementById('carouselIndicators');
+        if (!indicatorsContainer) return;
+        
+        indicatorsContainer.innerHTML = '';
+        this.indicators = [];
+        
+        this.items.forEach((item, index) => {
+            const indicator = document.createElement('button');
+            indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
+            indicator.setAttribute('data-index', index);
+            indicator.addEventListener('click', () => this.goToSlide(index));
+            indicatorsContainer.appendChild(indicator);
+            this.indicators.push(indicator);
+        });
+    },
+    
+    // 切换到指定幻灯片
+    goToSlide(index) {
+        // 移除当前活动状态
+        this.items[this.currentIndex].classList.remove('active');
+        this.indicators[this.currentIndex].classList.remove('active');
+        
+        // 更新索引
+        this.currentIndex = index;
+        if (this.currentIndex >= this.items.length) {
+            this.currentIndex = 0;
+        } else if (this.currentIndex < 0) {
+            this.currentIndex = this.items.length - 1;
+        }
+        
+        // 添加新的活动状态
+        this.items[this.currentIndex].classList.add('active');
+        this.indicators[this.currentIndex].classList.add('active');
+        
+        // 重置自动播放
+        if (this.autoPlay) {
+            this.resetAutoPlay();
+        }
+    },
+    
+    // 下一张
+    next() {
+        this.goToSlide(this.currentIndex + 1);
+    },
+    
+    // 上一张
+    prev() {
+        this.goToSlide(this.currentIndex - 1);
+    },
+    
+    // 开始自动播放
+    startAutoPlay() {
+        if (this.autoPlay && !this.interval) {
+            this.interval = setInterval(() => {
+                this.next();
+            }, this.intervalTime);
+        }
+    },
+    
+    // 重置自动播放
+    resetAutoPlay() {
+        clearInterval(this.interval);
+        this.interval = null;
+        this.startAutoPlay();
+    },
+    
+    // 暂停自动播放
+    pauseAutoPlay() {
+        if (this.interval) {
+            clearInterval(this.interval);
+            this.interval = null;
+        }
+    },
+    
+    // 绑定事件
+    bindEvents() {
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.prev());
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.next());
+        }
+        
+        // 点击指示器也会重置自动播放
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+    }
+};
+
+// ------------------------------
 // 页面加载完成后初始化
 // ------------------------------
 
 document.addEventListener('DOMContentLoaded', () => {
     init();
+    
+    // 初始化轮播
+    if (document.querySelector('.carousel-section')) {
+        console.log('Carousel section found, initializing...');
+        carousel.init();
+    }
     
     if (document.getElementById('trafficGrid')) {
         restoreEntryScroll();
