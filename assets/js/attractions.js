@@ -875,8 +875,13 @@ function init() {
 // 景点详情弹窗功能
 // ------------------------------
 
-// 显示景点详情弹窗
+/**
+ * 功能：显示景点详情弹窗（中文注释）
+ * 说明：确保页面只存在一个弹窗实例，并提供关闭/ESC/遮罩关闭能力
+ */
 function showAttractionDetail(attraction) {
+    document.querySelectorAll('.modal-overlay').forEach(existing => existing.remove());
+
     // 获取当前语言
     const lang = document.body.getAttribute('data-lang') || 'zh';
     const name = lang === 'en' ? attraction.nameEn : attraction.name;
@@ -902,28 +907,35 @@ function showAttractionDetail(attraction) {
     document.body.appendChild(modal);
     
     // 关闭模态框 - 点击关闭按钮
-    modal.querySelector('.modal-close').addEventListener('click', () => {
+    const closeBtn = modal.querySelector('.modal-close');
+    const handleEscKey = (e) => {
+        if (e.key === 'Escape') {
+            closeWithCleanup();
+        }
+    };
+    const closeWithCleanup = () => {
+        document.removeEventListener('keydown', handleEscKey);
         closeModal(modal);
-    });
+    };
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeWithCleanup);
+    }
     
     // 关闭模态框 - 点击遮罩层
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            closeModal(modal);
+            closeWithCleanup();
         }
     });
     
     // 关闭模态框 - 按ESC键
-    const handleEscKey = (e) => {
-        if (e.key === 'Escape') {
-            closeModal(modal);
-            document.removeEventListener('keydown', handleEscKey);
-        }
-    };
     document.addEventListener('keydown', handleEscKey);
 }
 
-// 关闭模态框
+/**
+ * 功能：关闭模态框（中文注释）
+ * 说明：添加 closing 状态防止重复触发，使用淡出动画后移除节点
+ */
 function closeModal(modal) {
     // 确保动画只应用一次
     if (modal.classList.contains('closing')) return;
@@ -946,10 +958,15 @@ function closeModal(modal) {
     }, 300);
 }
 
-// 绑定景点卡片点击事件
+/**
+ * 功能：绑定景点卡片点击事件（中文注释）
+ * 说明：对已绑定卡片做幂等处理，避免重复绑定导致弹窗叠加
+ */
 function bindAttractionClickEvents() {
     const cards = document.querySelectorAll('.attraction-card');
     cards.forEach((card, index) => {
+        if (card.dataset.modalClickBound === '1') return;
+        card.dataset.modalClickBound = '1';
         card.addEventListener('click', (e) => {
             // 检查点击的目标是否是链接或链接的子元素，如果是则不显示弹窗
             if (e.target.closest('a')) {
@@ -1105,8 +1122,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.carousel-section')) {
         carousel.init();
     }
-    
-    bindAttractionClickEvents();
     
     if (document.getElementById('attractionsGrid')) {
         restoreEntryScroll();
