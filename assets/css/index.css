@@ -73,21 +73,21 @@
 .title-line {
     display: block;
     opacity: 0;
-    animation: fadeInUp 1s ease forwards;
+    animation: fadeInUp 0.8s ease forwards;
 }
 
 .title-line-2 {
     font-size: 3rem;
     font-weight: 300;
     letter-spacing: 10px;
-    animation-delay: 0.3s;
+    animation-delay: 0.2s;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     margin-bottom: 40px;
     opacity: 0;
-    animation: fadeInUp 1s ease 0.6s forwards;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
 }
 
 .typewriter {
@@ -95,7 +95,7 @@
     border-right: 0.15em solid var(--accent-color);
     white-space: nowrap;
     margin: 0 auto;
-    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    animation: typing 2.8s steps(40, end), blink-caret 0.65s step-end infinite;
 }
 
 @keyframes typing {

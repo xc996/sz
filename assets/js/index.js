@@ -746,7 +746,7 @@ function renderTimeline() {
 function init() {
     const log = window.Logger ? window.Logger('home') : console
     if (window.AOS && typeof AOS.init === 'function') {
-        AOS.init({ duration: 1000, easing: 'ease-in-out', once: true, mirror: false })
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true, mirror: false })
         log.info('AOS initialized')
     } else {
         log.warn('AOS not available')
