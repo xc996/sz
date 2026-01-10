@@ -235,43 +235,36 @@
     overflow: visible; /* 中文：防止卡片阴影被裁剪 */
 }
 
-/* 详情页面导航栏样式 - 保持与首页一致的透明/滚动变色效果 */
-body:has(.attraction-detail-section) .logo,
-body:has(.heritage-detail-section) .logo {
+/* 详情页面导航栏样式 - 背景固定白色 */
+body:has(.attraction-detail-section) #navbar,
+body:has(.heritage-detail-section) #navbar,
+body:has(.attraction-detail-section) #navbar.scrolled,
+body:has(.heritage-detail-section) #navbar.scrolled {
+    background: var(--bg-primary);
+}
+
+body:has(.attraction-detail-section) #navbar .logo,
+body:has(.heritage-detail-section) #navbar .logo,
+body:has(.attraction-detail-section) #navbar .nav-menu a,
+body:has(.heritage-detail-section) #navbar .nav-menu a,
+body:has(.attraction-detail-section) #navbar .icon-btn,
+body:has(.heritage-detail-section) #navbar .icon-btn {
     color: var(--text-primary);
 }
 
-body:has(.attraction-detail-section) .nav-menu a,
-body:has(.heritage-detail-section) .nav-menu a {
-    color: var(--text-primary);
+body:has(.attraction-detail-section) #navbar .icon-btn,
+body:has(.heritage-detail-section) #navbar .icon-btn {
+    background: rgba(0, 0, 0, 0.05);
 }
 
-body:has(.attraction-detail-section) .icon-btn,
-body:has(.heritage-detail-section) .icon-btn {
-    background: rgba(0, 0, 0, 0.05); /* 浅色背景下给按钮加淡底色 */
-    color: var(--text-primary);
-}
-
-/* 滚动后覆盖上面的颜色设置，使用 common.css 定义的 .scrolled 样式 */
-body:has(.attraction-detail-section) #navbar.scrolled .logo,
-body:has(.heritage-detail-section) #navbar.scrolled .logo {
-    color: var(--text-primary);
-}
-
-body:has(.attraction-detail-section) #navbar.scrolled .nav-menu a,
-body:has(.heritage-detail-section) #navbar.scrolled .nav-menu a {
-    color: var(--text-primary);
-}
-
-body:has(.attraction-detail-section) #navbar.scrolled .icon-btn,
-body:has(.heritage-detail-section) #navbar.scrolled .icon-btn {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-}
-
-body:has(.attraction-detail-section) .menu-toggle span,
-body:has(.heritage-detail-section) .menu-toggle span {
+body:has(.attraction-detail-section) #navbar .menu-toggle span,
+body:has(.heritage-detail-section) #navbar .menu-toggle span {
     background: var(--text-primary);
+}
+
+[data-theme="dark"] body:has(.attraction-detail-section) #navbar .icon-btn,
+[data-theme="dark"] body:has(.heritage-detail-section) #navbar .icon-btn {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* 夜间模式调整 */
