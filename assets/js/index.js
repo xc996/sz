@@ -145,7 +145,9 @@ const translations = {
         'footer.city': '深圳',
         
         // 地图
-        'map.subtitle': '基于高德地图，支持缩放与互动'
+        'map.title': '互动地图',
+        'map.heroSubtitle': '探索深圳的每一个角落',
+        'map.sectionSubtitle': '基于高德地图，支持缩放与互动'
     },
     en: {
         // Navigation
@@ -284,7 +286,9 @@ const translations = {
         'footer.city': 'Shenzhen',
         
         // Map
-        'map.subtitle': 'Based on Amap, supports zooming and interaction'
+        'map.title': 'Interactive Map',
+        'map.heroSubtitle': 'Explore every corner of Shenzhen',
+        'map.sectionSubtitle': 'Based on Amap, supports zooming and interaction'
     }
 };
 

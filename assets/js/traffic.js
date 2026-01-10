@@ -15,8 +15,34 @@ const translations = {
         'nav.map': '地图',
         'btn.lang': '切换语言',
         'btn.theme': '切换主题',
+        'hero.transport.title1': '交通',
+        'hero.transport.title2': 'TRANSPORT',
+        'transport.main-title': '深圳交通',
+        'transport.main-subtitle': '多种交通方式，便捷出行',
+        'transport.features': '主要特点：',
+        'transport.metro.title': '深圳地铁',
+        'transport.metro.desc': '深圳地铁是覆盖全市主要区域的地下交通网络，运营时间通常为6:30-23:00。网络密集，准时高效，冷气充足，是深圳市民和游客出行的首选方式。',
+        'transport.metro.feature1': '覆盖全市主要区域',
+        'transport.metro.feature2': '运营时间：6:30-23:00',
+        'transport.metro.feature3': '准时高效，班次密集',
+        'transport.metro.feature4': '支持扫码支付和深圳通',
+        'transport.airport.title': '深圳宝安国际机场',
+        'transport.airport.desc': '深圳宝安国际机场是一座现代化的大型国际机场，拥有独特的“大飞鱼”造型T3航站楼，海陆空联运便捷。机场连接全球多个城市，是深圳的空中门户。',
+        'transport.airport.feature1': '拥有“大飞鱼”造型T3航站楼',
+        'transport.airport.feature2': '国际通航，连接全球',
+        'transport.airport.feature3': '海陆空联运便捷',
+        'transport.airport.feature4': '多条地铁线直达',
+        'transport.train.title': '高铁/火车站',
+        'transport.train.desc': '深圳拥有多个主要火车站，包括深圳北站、福田站、深圳站等，连接全国各大城市。高铁直达香港西九龙仅需14分钟，交通十分便捷。',
+        'transport.train.stations': '主要站点：',
+        'transport.train.station1': '深圳北站：主要高铁站，连接全国',
+        'transport.train.station2': '福田站：亚洲最大地下火车站',
+        'transport.train.station3': '深圳站：连接香港红磡',
+        'transport.train.station4': '高铁直达香港西九龙仅需14分钟',
         'transport.title': '便捷交通',
         'transport.subtitle': '四通八达的交通网络，轻松畅游深圳',
+        'traffic.empty.title': '无法加载数据',
+        'traffic.empty.desc': '请检查网络连接或稍后重试。',
         'footer.about': '关于深圳',
         'footer.desc': '中国改革开放的窗口，创新创业的热土',
         'footer.quick': '快速链接',
@@ -38,8 +64,34 @@ const translations = {
         'nav.map': 'Map',
         'btn.lang': 'Switch Language',
         'btn.theme': 'Switch Theme',
+        'hero.transport.title1': 'TRANSPORT',
+        'hero.transport.title2': '交通',
+        'transport.main-title': 'Transportation',
+        'transport.main-subtitle': 'Multiple travel options for easy commuting',
+        'transport.features': 'Key Features:',
+        'transport.metro.title': 'Shenzhen Metro',
+        'transport.metro.desc': 'Shenzhen Metro is a citywide rapid transit network covering major areas. Typical operating hours are 6:30–23:00. With frequent trains, punctual service, and air-conditioned stations and cars, it is a top choice for both residents and visitors.',
+        'transport.metro.feature1': 'Covers major areas across the city',
+        'transport.metro.feature2': 'Operating hours: 6:30–23:00',
+        'transport.metro.feature3': 'Frequent service and punctual operations',
+        'transport.metro.feature4': 'Supports QR payments and Shenzhen Tong',
+        'transport.airport.title': 'Shenzhen Bao’an International Airport',
+        'transport.airport.desc': 'Shenzhen Bao’an International Airport is a modern international hub featuring the iconic T3 terminal with a “manta ray” design. With convenient sea-air-land connections, it links Shenzhen to cities around the world.',
+        'transport.airport.feature1': 'Iconic “manta ray” T3 terminal design',
+        'transport.airport.feature2': 'International routes connecting global destinations',
+        'transport.airport.feature3': 'Convenient sea-air-land intermodal links',
+        'transport.airport.feature4': 'Direct access via multiple metro lines',
+        'transport.train.title': 'High-Speed Rail / Railway Stations',
+        'transport.train.desc': 'Shenzhen has several major railway stations, including Shenzhen North, Futian, and Shenzhen Station, connecting to cities nationwide. High-speed trains reach Hong Kong West Kowloon in as little as 14 minutes.',
+        'transport.train.stations': 'Major Stations:',
+        'transport.train.station1': 'Shenzhen North: main HSR hub with nationwide connections',
+        'transport.train.station2': 'Futian: one of Asia’s largest underground stations',
+        'transport.train.station3': 'Shenzhen Station: connects to Hong Kong Hung Hom',
+        'transport.train.station4': 'HSR to Hong Kong West Kowloon in as little as 14 minutes',
         'transport.title': 'Convenient Transportation',
         'transport.subtitle': 'Extensive transportation network, easy to travel around Shenzhen',
+        'traffic.empty.title': 'Unable to load data',
+        'traffic.empty.desc': 'Please check your network connection or try again later.',
         'footer.about': 'About Shenzhen',
         'footer.desc': 'Window of China\'s reform, hub of innovation',
         'footer.quick': 'Quick Links',
@@ -353,8 +405,8 @@ function renderTrafficEmptyState() {
     wrapper.className = 'empty-state';
     wrapper.innerHTML = `
         <div class="empty-state-content">
-            <h3>无法加载数据</h3>
-            <p>请检查网络连接或稍后重试。</p>
+            <h3 data-i18n="traffic.empty.title">${t('traffic.empty.title')}</h3>
+            <p data-i18n="traffic.empty.desc">${t('traffic.empty.desc')}</p>
         </div>
     `;
     grid.appendChild(wrapper);
@@ -479,10 +531,25 @@ const carousel = {
     
     // 初始化轮播
     init() {
+        this.ensureTitle();
         this.items = document.querySelectorAll('.carousel-item');
         this.createIndicators();
         this.startAutoPlay();
         this.bindEvents();
+    },
+
+    ensureTitle() {
+        if (document.querySelector('.carousel-title')) return;
+        const carouselWrapper = document.getElementById('carouselWrapper');
+        if (!carouselWrapper || !carouselWrapper.parentNode) return;
+
+        const carouselTitle = document.createElement('div');
+        carouselTitle.className = 'carousel-title';
+        carouselTitle.innerHTML = `
+            <h1 data-i18n="hero.transport.title1">${currentLang === 'zh' ? '交通' : 'TRANSPORT'}</h1>
+            <h2 data-i18n="hero.transport.title2">${currentLang === 'zh' ? 'TRANSPORT' : '交通'}</h2>
+        `;
+        carouselWrapper.parentNode.insertBefore(carouselTitle, carouselWrapper);
     },
     
     // 创建指示器

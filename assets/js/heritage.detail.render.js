@@ -27,6 +27,22 @@ function getDataType() {
 }
 
 /**
+ * 功能：获取当前语言
+ * 说明：优先读取 body[data-lang]，默认 zh
+ */
+function getLang() {
+  return document.body.getAttribute('data-lang') || 'zh';
+}
+
+/**
+ * 功能：按当前语言返回文本
+ * 说明：lang=en 返回英文，否则返回中文
+ */
+function pickText(zhText, enText) {
+  return getLang() === 'en' ? enText : zhText;
+}
+
+/**
  * 功能：加载配置数据
  * 说明：拉取对应类型的 json 并做基本缓存
  */
@@ -86,7 +102,7 @@ function findItemBySlug(items, slug) {
  * 说明：动态设置 title 与 meta description
  */
 function applySEO(item) {
-  const lang = document.body.getAttribute('data-lang') || 'zh';
+  const lang = getLang();
   const name = lang === 'en' ? item.nameEn : item.name;
   const desc = lang === 'en' ? item.descriptionEn : item.description;
   document.title = name;
@@ -106,7 +122,7 @@ function applySEO(item) {
 function renderDetail(item) {
   const root = document.getElementById('detailRoot');
   if (!root) return;
-  const lang = document.body.getAttribute('data-lang') || 'zh';
+  const lang = getLang();
   const name = lang === 'en' ? item.nameEn : item.name;
   const description = lang === 'en' ? item.descriptionEn : (item.descriptionFull || item.description);
   // 直接根据语言生成级别文本，避免使用未定义的t()函数
@@ -303,7 +319,7 @@ async function initDetailRender() {
     const items = await ConfigStore.load();
     const item = findItemBySlug(items, slug);
     if (!item) {
-      showErrorBanner('未找到对应文化遗产与古迹，已显示占位内容');
+      showErrorBanner(pickText('未找到对应文化遗产与古迹，已显示占位内容', 'Heritage item not found. Showing placeholder.'));
       const fallback = {
         name: '未找到内容',
         nameEn: 'Not Found',
@@ -318,7 +334,7 @@ async function initDetailRender() {
     }
     const errors = validateItem(item);
     if (errors.length) {
-      showErrorBanner('配置校验失败：' + errors.join('；'));
+      showErrorBanner(pickText('配置校验失败：' + errors.join('；'), 'Config validation failed: ' + errors.join('; ')));
     }
     applySEO(item);
     renderDetail(item);
@@ -334,7 +350,10 @@ async function initDetailRender() {
     }
   } catch (e) {
     console.error('[heritage.detail.render] 初始化失败', e);
-    showErrorBanner(`页面初始化失败：${e && e.message ? e.message : '未知错误'}，请稍后重试`);
+    showErrorBanner(pickText(
+      `页面初始化失败：${e && e.message ? e.message : '未知错误'}，请稍后重试`,
+      `Initialization failed: ${e && e.message ? e.message : 'Unknown error'}. Please try again later.`
+    ));
   }
 }
 

@@ -27,6 +27,31 @@ function getDataType() {
 }
 
 /**
+ * 功能：获取当前语言（中文注释）
+ * 说明：优先读取 body[data-lang]，默认 zh
+ */
+function getLang() {
+  return document.body.getAttribute('data-lang') || 'zh';
+}
+
+/**
+ * 功能：按当前语言返回文本（中文注释）
+ * 说明：lang=en 返回英文，否则返回中文
+ */
+function pickText(zhText, enText) {
+  return getLang() === 'en' ? enText : zhText;
+}
+
+/**
+ * 功能：获取返回列表页链接（中文注释）
+ * 说明：heritage 类型回到 history.html，其余回到对应列表页
+ */
+function getListPageHref() {
+  const type = getDataType();
+  return type === 'heritage' ? '../history.html' : `../${type}.html`;
+}
+
+/**
  * 功能：加载配置数据（中文注释）
  * 说明：拉取对应类型的 json 并做基本缓存
  */
@@ -91,7 +116,7 @@ function findItemBySlug(items, slug) {
  * 说明：动态设置 title 与 meta description
  */
 function applySEO(item) {
-  const lang = document.body.getAttribute('data-lang') || 'zh';
+  const lang = getLang();
   const title = lang === 'en' ? item.seo.title.en : item.seo.title.zh;
   const desc = lang === 'en' ? item.seo.description.en : item.seo.description.zh;
   document.title = title;
@@ -111,7 +136,7 @@ function applySEO(item) {
 function renderDetail(item) {
   const root = document.getElementById('detailRoot');
   if (!root) return;
-  const lang = document.body.getAttribute('data-lang') || 'zh';
+  const lang = getLang();
   const name = lang === 'en' ? item.nameEn : item.name;
   const district = lang === 'en' ? item.district.en : item.district.zh;
   const introList = lang === 'en' ? (item.intro?.en || []) : (item.intro?.zh || []);
@@ -165,7 +190,7 @@ function renderDetail(item) {
       </div>
     </div>
     <div class="back-button" data-aos="fade-up">
-      <a href="../${getDataType()}.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back' : '返回'}</a>
+      <a href="${getListPageHref()}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> ${lang === 'en' ? 'Back' : '返回'}</a>
     </div>
   `;
 
@@ -204,14 +229,14 @@ async function initDetailRender() {
     const items = await ConfigStore.load();
     const item = findItemBySlug(items, slug);
     if (!item) {
-      showErrorBanner('未找到对应景点，已显示占位内容');
+      showErrorBanner(pickText('未找到对应内容，已显示占位内容', 'Content not found. Showing placeholder.'));
       const fallback = {
         name: '未找到内容',
         nameEn: 'Not Found',
         district: { zh: '深圳', en: 'Shenzhen' },
         rating: 0,
         image: `${getAssetsBase()}images/placeholder.svg`,
-        intro: { zh: ['暂无法显示该景点详情'], en: ['Detail is unavailable'] },
+        intro: { zh: ['暂无法显示该内容详情'], en: ['Details are unavailable.'] },
         highlights: []
       };
       applySEO({ seo: { title: { zh: '未找到内容', en: 'Not Found' }, description: { zh: '暂无描述', en: 'No description' } } });
@@ -220,7 +245,7 @@ async function initDetailRender() {
     }
     const errors = validateItem(item);
     if (errors.length) {
-      showErrorBanner('配置校验失败：' + errors.join('；'));
+      showErrorBanner(pickText('配置校验失败：' + errors.join('；'), 'Config validation failed: ' + errors.join('; ')));
     }
     applySEO(item);
     renderDetail(item);
@@ -236,7 +261,10 @@ async function initDetailRender() {
     }
   } catch (e) {
     console.error('[detail.render] 初始化失败', e);
-    showErrorBanner(`页面初始化失败：${e && e.message ? e.message : '未知错误'}，请稍后重试`);
+    showErrorBanner(pickText(
+      `页面初始化失败：${e && e.message ? e.message : '未知错误'}，请稍后重试`,
+      `Initialization failed: ${e && e.message ? e.message : 'Unknown error'}. Please try again later.`
+    ));
   }
 }
 

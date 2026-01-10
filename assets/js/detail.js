@@ -1,5 +1,175 @@
 // 景区详情页面脚本
 
+// 翻译数据
+const translations = {
+    zh: {
+        'nav.logo': '深圳',
+        'nav.home': '首页',
+        'nav.attractions': '景点',
+        'nav.culture': '历史文化',
+        'nav.food': '美食',
+        'nav.shopping': '购物',
+        'nav.transport': '交通',
+        'nav.map': '地图',
+        'btn.lang': '切换语言',
+        'btn.theme': '切换主题',
+        'footer.about': '关于深圳',
+        'footer.desc': '中国改革开放的窗口，创新创业的热土',
+        'footer.quick': '快速链接',
+        'footer.attractions': '热门景点',
+        'footer.map': '互动地图',
+        'footer.culture': '文化故事',
+        'footer.food': '美食推荐',
+        'footer.contact': '联系我们',
+        'footer.rights': '保留所有权利'
+    },
+    en: {
+        'nav.logo': 'Shenzhen',
+        'nav.home': 'Home',
+        'nav.attractions': 'Attractions',
+        'nav.culture': 'History & Culture',
+        'nav.food': 'Food',
+        'nav.shopping': 'Shopping',
+        'nav.transport': 'Transportation',
+        'nav.map': 'Map',
+        'btn.lang': 'Switch Language',
+        'btn.theme': 'Switch Theme',
+        'footer.about': 'About Shenzhen',
+        'footer.desc': 'Window of China\'s reform, hub of innovation',
+        'footer.quick': 'Quick Links',
+        'footer.attractions': 'Attractions',
+        'footer.map': 'Interactive Map',
+        'footer.culture': 'Culture',
+        'footer.food': 'Food',
+        'footer.contact': 'Contact Us',
+        'footer.rights': 'All Rights Reserved'
+    }
+};
+
+let currentLang = 'zh';
+let currentTheme = 'light';
+
+/**
+ * 功能：翻译函数
+ * 说明：根据当前语言返回对应文案，未命中则回退为 key
+ */
+function t(key) {
+    return translations[currentLang][key] || key;
+}
+
+/**
+ * 功能：将 data-i18n 文案应用到页面
+ * 说明：遍历所有带 data-i18n 的元素并刷新文本
+ */
+function applyI18nToDom() {
+    document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+            element.textContent = translations[currentLang][key];
+        }
+    });
+}
+
+/**
+ * 功能：切换语言
+ * 说明：切换 zh/en，更新 data-lang、按钮文案与本地缓存
+ */
+function switchLanguage() {
+    currentLang = currentLang === 'zh' ? 'en' : 'zh';
+    document.body.setAttribute('data-lang', currentLang);
+    applyI18nToDom();
+
+    const langBtn = document.getElementById('langSwitch');
+    if (langBtn) {
+        langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', t('btn.lang'));
+    }
+
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', t('btn.theme'));
+    }
+
+    localStorage.setItem('preferredLanguage', currentLang);
+}
+
+/**
+ * 功能：初始化语言
+ * 说明：读取本地缓存 preferredLanguage 并渲染页面文案
+ */
+function initLanguage() {
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang === 'zh' || savedLang === 'en') {
+        currentLang = savedLang;
+    }
+    document.body.setAttribute('data-lang', currentLang);
+    applyI18nToDom();
+
+    const langBtn = document.getElementById('langSwitch');
+    if (langBtn) {
+        langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', t('btn.lang'));
+    }
+}
+
+/**
+ * 功能：切换主题
+ * 说明：切换 light/dark，更新 data-theme、图标并持久化
+ */
+function toggleTheme() {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.body.setAttribute('data-theme', currentTheme);
+
+    const themeBtn = document.getElementById('themeToggle');
+    if (!themeBtn) return;
+    const icon = themeBtn.querySelector('i');
+    if (!icon) return;
+
+    icon.classList.add('theme-icon-animate');
+    if (currentTheme === 'dark') {
+        setTimeout(() => {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }, 300);
+    } else {
+        setTimeout(() => {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }, 300);
+    }
+
+    localStorage.setItem('preferredTheme', currentTheme);
+    setTimeout(() => {
+        icon.classList.remove('theme-icon-animate');
+    }, 600);
+}
+
+/**
+ * 功能：初始化主题
+ * 说明：优先读取本地缓存 preferredTheme，否则跟随系统主题
+ */
+function initTheme() {
+    const savedTheme = localStorage.getItem('preferredTheme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (savedTheme) {
+        currentTheme = savedTheme;
+    } else if (systemPrefersDark) {
+        currentTheme = 'dark';
+    }
+
+    document.body.setAttribute('data-theme', currentTheme);
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', t('btn.theme'));
+        const icon = themeBtn.querySelector('i');
+        if (icon && currentTheme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+}
+
 // 初始化AOS动画
 window.addEventListener('load', () => {
     AOS.init({
@@ -137,6 +307,8 @@ function initActiveNav() {
 
 // 初始化所有功能
 document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();
+    initTheme();
     initNavbarScroll();
     initMobileMenu();
     initBackToTop();
@@ -144,7 +316,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initDetailCardsAccessibility();
     initActiveNav(); // 添加初始化活动导航功能
     
-    // 可以在这里添加更多详情页面特定的功能
+    const langSwitch = document.getElementById('langSwitch');
+    const themeToggle = document.getElementById('themeToggle');
+    
+    if (langSwitch) {
+        langSwitch.addEventListener('click', switchLanguage);
+    }
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
 });
 
 /**
