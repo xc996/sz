@@ -388,7 +388,34 @@ function switchLanguage() {
 function initLanguage() {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && savedLang !== currentLang) {
-        switchLanguage();
+        currentLang = savedLang;
+        document.body.setAttribute('data-lang', currentLang);
+        
+        // 更新所有带 data-i18n 属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
+        
+        // 更新景点卡片文本内容
+        updateAttractionCardsText();
+        // 更新时间轴文本内容
+        renderTimeline();
+    }
+    
+    // 确保语言按钮文本和提示在初始化时正确显示
+    const langBtn = document.getElementById('langSwitch');
+    if (langBtn) {
+        langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', translations[currentLang]['btn.lang']);
+    }
+    
+    // 更新主题按钮提示
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', translations[currentLang]['btn.theme']);
     }
 }
 
@@ -888,6 +915,10 @@ function showAttractionDetail(attraction) {
     const desc = lang === 'en' ? attraction.descriptionEn : attraction.description;
     const location = lang === 'en' ? attraction.locationEn : attraction.location;
     
+    // 更新浏览器URL
+    const detailUrl = `pages/attractions/detail.html?slug=${attraction.slug}`;
+    history.pushState({ modal: true, slug: attraction.slug }, name, detailUrl);
+    
     // 创建模态框
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
@@ -1155,8 +1186,13 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 });
 
 // 在页面通过 bfcache 恢复时也尝试恢复滚动（中文注释）
-window.addEventListener('pageshow', () => {
+window.addEventListener('pageshow', (event) => {
     if (document.getElementById('attractionsGrid')) {
         restoreEntryScroll();
+    }
+    
+    if (event.persisted) {
+        // 页面从 bfcache 恢复，重新初始化语言
+        initLanguage();
     }
 });

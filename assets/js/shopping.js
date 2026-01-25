@@ -138,10 +138,36 @@ function switchLanguage() {
     localStorage.setItem('preferredLanguage', currentLang);
 }
 
+// 初始化语言
 function initLanguage() {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && savedLang !== currentLang) {
-        switchLanguage();
+        currentLang = savedLang;
+        document.body.setAttribute('data-lang', currentLang);
+        
+        // 更新所有带 data-i18n 属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
+        
+        // 更新购物卡片文本内容
+        updateShoppingCardsText();
+    }
+    
+    // 确保语言按钮文本和提示在初始化时正确显示
+    const langBtn = document.getElementById('langSwitch');
+    if (langBtn) {
+        langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', translations[currentLang]['btn.lang']);
+    }
+    
+    // 更新主题按钮提示
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', translations[currentLang]['btn.theme']);
     }
 }
 
@@ -584,11 +610,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// 监听系统主题变化
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // 只有在用户没有手动设置主题时才自动切换
     if (!localStorage.getItem('preferredTheme')) {
         currentTheme = e.matches ? 'dark' : 'light';
         document.body.setAttribute('data-theme', currentTheme);
         
+        // 更新主题按钮图标
         const themeBtn = document.getElementById('themeToggle');
         if (themeBtn) {
             const icon = themeBtn.querySelector('i');
@@ -603,8 +632,13 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
     }
 });
 
-window.addEventListener('pageshow', () => {
+window.addEventListener('pageshow', (event) => {
     if (document.getElementById('shoppingGrid')) {
         restoreEntryScroll();
+    }
+    
+    if (event.persisted) {
+        // 页面从 bfcache 恢复，重新初始化语言
+        initLanguage();
     }
 });

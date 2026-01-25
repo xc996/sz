@@ -484,7 +484,32 @@ function switchLanguage() {
 function initLanguage() {
     const savedLang = localStorage.getItem('preferredLanguage');
     if (savedLang && savedLang !== currentLang) {
-        switchLanguage();
+        currentLang = savedLang;
+        document.body.setAttribute('data-lang', currentLang);
+        
+        // 更新所有带 data-i18n 属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[currentLang][key]) {
+                element.textContent = translations[currentLang][key];
+            }
+        });
+        
+        // 重新渲染时间轴
+        renderTimeline();
+    }
+    
+    // 确保语言按钮文本和提示在初始化时正确显示
+    const langBtn = document.getElementById('langSwitch');
+    if (langBtn) {
+        langBtn.querySelector('span').textContent = currentLang === 'zh' ? 'EN' : '中';
+        langBtn.setAttribute('title', translations[currentLang]['btn.lang']);
+    }
+    
+    // 更新主题按钮提示
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) {
+        themeBtn.setAttribute('title', translations[currentLang]['btn.theme']);
     }
 }
 
@@ -1283,3 +1308,11 @@ function initLazyMapIframe() {
     }, { root: null, rootMargin: '200px', threshold: 0.01 });
     observer.observe(section);
 }
+
+// 监听页面显示事件，确保从浏览器后退缓存恢复时语言状态正确
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        // 页面从 bfcache 恢复，重新初始化语言
+        initLanguage();
+    }
+});
