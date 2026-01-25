@@ -374,6 +374,10 @@ async function renderFood() {
                 <h3 class="card-title">${currentLang === 'zh' ? item.name : item.nameEn}</h3>
                 <p class="card-description">${currentLang === 'zh' ? (item.seo?.description?.zh || '') : (item.seo?.description?.en || '')}</p>
                 <div class="card-meta">
+                    <div class="card-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>${currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '')}</span>
+                    </div>
                     <a href="${detailUrl}" class="detail-btn" data-slug="${slug}" title="${currentLang === 'zh' ? '查看详情' : 'View Details'}">${currentLang === 'zh' ? '品' : 'Try'}</a>
                 </div>
             </div>
@@ -423,6 +427,11 @@ async function updateFoodCardsText() {
         }
         
 
+        
+        const location = card.querySelector('.card-location span');
+        if (location) {
+            location.textContent = currentLang === 'zh' ? (item.district?.zh || '') : (item.district?.en || '');
+        }
         
         const detailBtn = card.querySelector('.detail-btn');
         if (detailBtn) {
