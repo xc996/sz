@@ -924,22 +924,6 @@ function showAttractionDetail(attraction) {
     const desc = lang === 'en' ? attraction.descriptionEn : attraction.description;
     const location = lang === 'en' ? attraction.locationEn : attraction.location;
     
-    // 更新浏览器URL
-    const slug = attraction.slug || '';
-    if (slug) {
-        const currentPath = window.location.pathname || '';
-        let detailPath = currentPath.replace(/\/attractions\.html$/, '/attractions/detail.html');
-        if (detailPath === currentPath) {
-            const pagesIndex = currentPath.indexOf('/pages/');
-            const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
-            detailPath = `${pagesBase}attractions/detail.html`;
-        }
-        const detailUrl = isFileProtocol()
-            ? new URL(`attractions/detail.html?slug=${slug}`, window.location.href).href
-            : `${detailPath}?slug=${slug}`;
-        history.pushState({ modal: true, slug }, name, detailUrl);
-    }
-    
     // 创建模态框
     const modal = document.createElement('div');
     modal.className = 'modal-overlay';
@@ -957,6 +941,21 @@ function showAttractionDetail(attraction) {
     
     // 添加到页面
     document.body.appendChild(modal);
+    
+    const slug = attraction.slug || '';
+    if (slug) {
+        const currentPath = window.location.pathname || '';
+        let detailPath = currentPath.replace(/\/attractions\.html$/, '/attractions/detail.html');
+        if (detailPath === currentPath) {
+            const pagesIndex = currentPath.indexOf('/pages/');
+            const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
+            detailPath = `${pagesBase}attractions/detail.html`;
+        }
+        const detailUrl = isFileProtocol()
+            ? new URL(`attractions/detail.html?slug=${slug}`, window.location.href).href
+            : `${detailPath}?slug=${slug}`;
+        history.pushState({ modal: true, slug }, name, detailUrl);
+    }
     
     // 关闭模态框 - 点击关闭按钮
     const closeBtn = modal.querySelector('.modal-close');

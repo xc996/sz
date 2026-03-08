@@ -344,7 +344,12 @@ function initDetailBackButton() {
         const ref = document.referrer || '';
         // 检查来源是否为当前类型的列表页
         const listPage = `${type}.html`;
-        const canGoBack = ref.includes(listPage) || ref.endsWith(listPage);
+        const refMatch = ref.includes(listPage) || ref.endsWith(listPage);
+        const savedAtKey = `${type}SavedAt`;
+        const savedAtStr = sessionStorage.getItem(savedAtKey);
+        const savedAt = savedAtStr ? parseInt(savedAtStr, 10) : 0;
+        const hasSaved = savedAt > 0 && Date.now() - savedAt < 5 * 60 * 1000;
+        const canGoBack = refMatch || hasSaved;
         
         if (canGoBack && window.history.length > 1) {
             e.preventDefault();
