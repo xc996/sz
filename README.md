@@ -66,25 +66,54 @@ npx http-server -p 8000
 # 访问 http://localhost:8000
 ```
 
-## � 部署到 GitHub Pages (Deploy to GitHub Pages)
+## ☁️ 推荐部署方式（基于当前路径适配）
 
- - 访问地址：`https://<GitHub用户名>.github.io/<仓库名>/`
+当前站点为多页静态站点，路径适配逻辑以 `/pages/` 为基准：
+
+- 列表页：`/pages/attractions.html`
+- 详情页：`/pages/attractions/detail.html?slug=...`
+- 静态资源：`/assets/**`
+
+因此**推荐把项目根目录直接作为站点根目录发布**，确保 `pages/` 与 `assets/` 目录在站点根路径下真实存在。
+
+## 🧭 路径适配 JS 位置与职责
+
+路径适配统一集中在 [assets/js/path.adapter.js](assets/js/path.adapter.js)，主要负责：
+
+- 生成详情页链接（`buildDetailHref`）
+- 生成列表页链接（`buildListHref`）
+- 判断是否应返回上一页并保留滚动位置（`canGoBackToList`）
+
+遇到部署路径异常或返回行为异常时，请优先修改该文件。
+
+## 📦 部署方式与注意点
+
+### 方式 A：GitHub Pages
+
+- 访问地址：`https://<GitHub用户名>.github.io/<仓库名>/`
 - 分支：`master`；工作流：`.github/workflows/pages.yml`
 - 构建命令：`npm run build`
+- 注意点：
+  - 发布内容必须包含 `pages/` 与 `assets/`，否则子页 404 或资源 404
+  - `dist/` 需同时包含 `pages/**` 与 `assets/**`
+  - 不要做 SPA 回退重写（否则多页路径被覆盖）
 
-### 部署步骤
-- 安装依赖：`npm ci`
-- 本地构建：`npm run build`
-  - 保留 Vite 构建首页与指纹资源
-  - 复制原始 `pages/` 与 `assets/` 到 `dist/`（确保子页与静态资源在 Pages 可访问）
-- 推送代码：`git add README.md scripts/copy-static.mjs package.json && git commit -m "docs(build): 更新 README 与构建复制 pages/assets" && git push`
-- 等待 GitHub Actions 自动部署完成（通常 1-2 分钟）
+### 方式 B：Cloudflare Pages
 
-### 常见问题与修复
- - 子页 404：`https://<GitHub用户名>.github.io/<仓库名>/pages/attractions.html` 返回 404
-  - 原因：仅发布了 `dist/index.html`，未包含 `pages/**` 子页与 `assets/**` 静态目录
-  - 修复：`scripts/copy-static.mjs` 在构建后复制 `pages/` 与 `assets/` 至 `dist/`，并写入 `dist/.nojekyll`
-  - 现状：构建后 `dist/` 应包含 `pages/*.html`、`assets/**` 以及首页与哈希资源
+- 构建命令：`npm run build`
+- 构建输出目录：`dist`
+- 注意点：
+  - 不要开启“SPA 回退”或将 404 重写到 `/index.html`
+  - 需保证 `dist/` 中包含 `pages/**` 与 `assets/**`
+  - 自定义域名与 `*.pages.dev` 均可用，路径保持 `/pages/...`
+
+### 方式 C：自建服务器（Nginx/Apache/静态托管）
+
+- 站点根目录直接指向项目根（或构建后的 `dist`）
+- 注意点：
+  - 确保 `/pages/` 与 `/assets/` 在站点根路径下真实存在
+  - 不要把 `/*` 重写到 `/index.html`
+  - 如果使用二级目录部署，请保证二级目录下仍保留 `pages/` 与 `assets/`
 
 ### 验证方式
 - 本地预览：`npm run preview`，访问 `http://localhost:4173/` 与 `http://localhost:4173/pages/attractions.html`
@@ -102,6 +131,7 @@ npx http-server -p 8000
 ## ✅ 自动巡检与统一管理（CI & Path Management）
 
 - 统一资源路径：所有页面脚本统一调用 `window.getAssetsBase()`（位于 `assets/js/utils.js`）生成资源基路径，避免各处重复实现与路径不一致。
+- 路径适配统一入口：`assets/js/path.adapter.js` 负责列表/详情链接与返回行为的统一处理。
 - 构建后复制：始终通过 `scripts/copy-static.mjs` 将 `pages/` 和 `assets/` 一并复制到 `dist/`，确保子页与静态资源发布完整。
 - 发布前自动巡检（CI）：工作流 `.github/workflows/pages.yml` 在构建后执行 `npm run audit`，对 HTML/JS 中的 `href/src` 和 JSON 引用进行并发检查；CI 会自动根据仓库上下文设置 `ORIGIN=https://<GitHub用户名>.github.io` 与 `BASE=/&lt;仓库名&gt;`，发现非 200 资源将阻断部署，避免 404 再次上线。
   - 手动运行：`npm run audit`
