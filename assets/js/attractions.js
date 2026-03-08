@@ -639,7 +639,15 @@ async function renderAttractions() {
     }
     items.forEach(attraction => {
         const slug = attraction.slug;
-        const detailUrl = `attractions/detail.html?slug=${slug}`;
+        const currentUrl = new URL(window.location.href);
+        const currentPath = currentUrl.pathname || '';
+        const pagesIndex = currentPath.indexOf('/pages/');
+        const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
+        const detailPath = `${pagesBase}attractions/detail.html`;
+        const nextUrl = new URL(currentUrl.href);
+        nextUrl.pathname = detailPath;
+        nextUrl.search = `?slug=${slug}`;
+        const detailUrl = isFileProtocol() ? nextUrl.href : `${nextUrl.pathname}${nextUrl.search}`;
         const base = resolveAssetsBase();
         const imgSrc = (attraction.image || '').startsWith('assets/') ? `${base}${attraction.image.replace('assets/','')}` : (attraction.image || `${base}images/placeholder.svg`);
         console.log(`[list] link=${detailUrl} slug=${slug} mode=query`);
@@ -916,7 +924,15 @@ function showAttractionDetail(attraction) {
     const location = lang === 'en' ? attraction.locationEn : attraction.location;
     
     // 更新浏览器URL
-    const detailUrl = `attractions/detail.html?slug=${attraction.slug}`;
+    const currentUrl = new URL(window.location.href);
+    const currentPath = currentUrl.pathname || '';
+    const pagesIndex = currentPath.indexOf('/pages/');
+    const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
+    const detailPath = `${pagesBase}attractions/detail.html`;
+    const nextUrl = new URL(currentUrl.href);
+    nextUrl.pathname = detailPath;
+    nextUrl.search = `?slug=${attraction.slug}`;
+    const detailUrl = isFileProtocol() ? nextUrl.href : `${nextUrl.pathname}${nextUrl.search}`;
     history.pushState({ modal: true, slug: attraction.slug }, name, detailUrl);
     
     // 创建模态框
