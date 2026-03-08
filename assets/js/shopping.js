@@ -349,7 +349,9 @@ async function renderShopping() {
     }
     items.forEach(item => {
         const slug = item.slug;
-        const detailUrl = `attractions/detail.html?type=shopping&slug=${slug}`;
+        const detailUrl = window.PathAdapter && typeof window.PathAdapter.buildDetailHref === 'function'
+            ? window.PathAdapter.buildDetailHref(slug, 'shopping')
+            : `attractions/detail.html?type=shopping&slug=${slug}`;
         const base = getAssetsBase();
         const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
         

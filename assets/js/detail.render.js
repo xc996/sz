@@ -48,6 +48,9 @@ function pickText(zhText, enText) {
  */
 function getListPageHref() {
   const type = getDataType();
+  if (window.PathAdapter && typeof window.PathAdapter.buildListHref === 'function') {
+    return window.PathAdapter.buildListHref(type);
+  }
   return type === 'heritage' ? '../history.html' : `../${type}.html`;
 }
 

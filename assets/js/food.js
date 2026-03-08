@@ -360,7 +360,9 @@ async function renderFood() {
     }
     items.forEach(item => {
         const slug = item.slug;
-        const detailUrl = `attractions/detail.html?type=food&slug=${slug}`;
+        const detailUrl = window.PathAdapter && typeof window.PathAdapter.buildDetailHref === 'function'
+            ? window.PathAdapter.buildDetailHref(slug, 'food')
+            : `attractions/detail.html?type=food&slug=${slug}`;
         const base = getAssetsBase();
         const imgSrc = (item.image || '').startsWith('assets/') ? `${base}${item.image.replace('assets/','')}` : (item.image || `${base}images/placeholder.svg`);
         

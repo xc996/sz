@@ -639,16 +639,9 @@ async function renderAttractions() {
     }
     items.forEach(attraction => {
         const slug = attraction.slug;
-        const currentPath = window.location.pathname || '';
-        let detailPath = currentPath.replace(/\/attractions\.html$/, '/attractions/detail.html');
-        if (detailPath === currentPath) {
-            const pagesIndex = currentPath.indexOf('/pages/');
-            const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
-            detailPath = `${pagesBase}attractions/detail.html`;
-        }
-        const detailUrl = isFileProtocol()
-            ? new URL(`attractions/detail.html?slug=${slug}`, window.location.href).href
-            : `${detailPath}?slug=${slug}`;
+        const detailUrl = window.PathAdapter && typeof window.PathAdapter.buildDetailHref === 'function'
+            ? window.PathAdapter.buildDetailHref(slug)
+            : `attractions/detail.html?slug=${slug}`;
         const base = resolveAssetsBase();
         const imgSrc = (attraction.image || '').startsWith('assets/') ? `${base}${attraction.image.replace('assets/','')}` : (attraction.image || `${base}images/placeholder.svg`);
         console.log(`[list] link=${detailUrl} slug=${slug} mode=query`);
@@ -943,17 +936,11 @@ function showAttractionDetail(attraction) {
     document.body.appendChild(modal);
     
     const slug = attraction.slug || '';
+    const previousUrl = window.location.href;
     if (slug) {
-        const currentPath = window.location.pathname || '';
-        let detailPath = currentPath.replace(/\/attractions\.html$/, '/attractions/detail.html');
-        if (detailPath === currentPath) {
-            const pagesIndex = currentPath.indexOf('/pages/');
-            const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
-            detailPath = `${pagesBase}attractions/detail.html`;
-        }
-        const detailUrl = isFileProtocol()
-            ? new URL(`attractions/detail.html?slug=${slug}`, window.location.href).href
-            : `${detailPath}?slug=${slug}`;
+        const detailUrl = window.PathAdapter && typeof window.PathAdapter.buildDetailHref === 'function'
+            ? window.PathAdapter.buildDetailHref(slug)
+            : `attractions/detail.html?slug=${slug}`;
         history.pushState({ modal: true, slug }, name, detailUrl);
     }
     
@@ -966,6 +953,9 @@ function showAttractionDetail(attraction) {
     };
     const closeWithCleanup = () => {
         document.removeEventListener('keydown', handleEscKey);
+        if (previousUrl) {
+            history.replaceState({ modal: false }, document.title, previousUrl);
+        }
         closeModal(modal);
     };
     if (closeBtn) {
