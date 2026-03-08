@@ -639,15 +639,16 @@ async function renderAttractions() {
     }
     items.forEach(attraction => {
         const slug = attraction.slug;
-        const currentUrl = new URL(window.location.href);
-        const currentPath = currentUrl.pathname || '';
-        const pagesIndex = currentPath.indexOf('/pages/');
-        const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
-        const detailPath = `${pagesBase}attractions/detail.html`;
-        const nextUrl = new URL(currentUrl.href);
-        nextUrl.pathname = detailPath;
-        nextUrl.search = `?slug=${slug}`;
-        const detailUrl = isFileProtocol() ? nextUrl.href : `${nextUrl.pathname}${nextUrl.search}`;
+        const currentPath = window.location.pathname || '';
+        let detailPath = currentPath.replace(/\/attractions\.html$/, '/attractions/detail.html');
+        if (detailPath === currentPath) {
+            const pagesIndex = currentPath.indexOf('/pages/');
+            const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
+            detailPath = `${pagesBase}attractions/detail.html`;
+        }
+        const detailUrl = isFileProtocol()
+            ? new URL(`attractions/detail.html?slug=${slug}`, window.location.href).href
+            : `${detailPath}?slug=${slug}`;
         const base = resolveAssetsBase();
         const imgSrc = (attraction.image || '').startsWith('assets/') ? `${base}${attraction.image.replace('assets/','')}` : (attraction.image || `${base}images/placeholder.svg`);
         console.log(`[list] link=${detailUrl} slug=${slug} mode=query`);
@@ -924,16 +925,20 @@ function showAttractionDetail(attraction) {
     const location = lang === 'en' ? attraction.locationEn : attraction.location;
     
     // 更新浏览器URL
-    const currentUrl = new URL(window.location.href);
-    const currentPath = currentUrl.pathname || '';
-    const pagesIndex = currentPath.indexOf('/pages/');
-    const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
-    const detailPath = `${pagesBase}attractions/detail.html`;
-    const nextUrl = new URL(currentUrl.href);
-    nextUrl.pathname = detailPath;
-    nextUrl.search = `?slug=${attraction.slug}`;
-    const detailUrl = isFileProtocol() ? nextUrl.href : `${nextUrl.pathname}${nextUrl.search}`;
-    history.pushState({ modal: true, slug: attraction.slug }, name, detailUrl);
+    const slug = attraction.slug || '';
+    if (slug) {
+        const currentPath = window.location.pathname || '';
+        let detailPath = currentPath.replace(/\/attractions\.html$/, '/attractions/detail.html');
+        if (detailPath === currentPath) {
+            const pagesIndex = currentPath.indexOf('/pages/');
+            const pagesBase = pagesIndex >= 0 ? currentPath.slice(0, pagesIndex + 7) : '/pages/';
+            detailPath = `${pagesBase}attractions/detail.html`;
+        }
+        const detailUrl = isFileProtocol()
+            ? new URL(`attractions/detail.html?slug=${slug}`, window.location.href).href
+            : `${detailPath}?slug=${slug}`;
+        history.pushState({ modal: true, slug }, name, detailUrl);
+    }
     
     // 创建模态框
     const modal = document.createElement('div');
@@ -1027,6 +1032,7 @@ function bindAttractionClickEvents() {
                 const imgSrc = (data.image || '').startsWith('assets/') ? `${base}${data.image.replace('assets/','')}` : (data.image || `${base}images/placeholder.svg`);
                 
                 const mapped = {
+                    slug: data.slug,
                     name: data.name,
                     nameEn: data.nameEn,
                     description: data.seo?.description?.zh || '',
