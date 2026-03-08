@@ -916,7 +916,7 @@ function showAttractionDetail(attraction) {
     const location = lang === 'en' ? attraction.locationEn : attraction.location;
     
     // 更新浏览器URL
-    const detailUrl = `pages/attractions/detail.html?slug=${attraction.slug}`;
+    const detailUrl = `attractions/detail.html?slug=${attraction.slug}`;
     history.pushState({ modal: true, slug: attraction.slug }, name, detailUrl);
     
     // 创建模态框
