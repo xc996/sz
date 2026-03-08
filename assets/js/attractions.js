@@ -670,6 +670,7 @@ async function renderAttractions() {
     
     // 确保卡片创建完成后绑定点击事件
     bindAttractionClickEvents();
+    bindDetailEntryScroll();
 }
 
 /**
@@ -1167,7 +1168,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (document.getElementById('attractionsGrid')) {
         restoreEntryScroll();
-        bindDetailEntryScroll();
     }
 });
 

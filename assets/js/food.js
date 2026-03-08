@@ -387,6 +387,7 @@ async function renderFood() {
         card.setAttribute('data-index', String(items.indexOf(item)));
         grid.appendChild(card);
     });
+    bindDetailEntryScroll();
 }
 
 function renderFoodEmptyState() {
@@ -638,7 +639,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (document.getElementById('foodGrid')) {
         restoreEntryScroll();
-        bindDetailEntryScroll();
     }
 });
 

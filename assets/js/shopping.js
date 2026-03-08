@@ -376,6 +376,7 @@ async function renderShopping() {
         card.setAttribute('data-index', String(items.indexOf(item)));
         grid.appendChild(card);
     });
+    bindDetailEntryScroll();
 }
 
 function renderShoppingEmptyState() {
@@ -608,7 +609,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (document.getElementById('shoppingGrid')) {
         restoreEntryScroll();
-        bindDetailEntryScroll();
     }
 });
 

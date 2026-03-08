@@ -424,6 +424,7 @@ async function renderTraffic() {
         card.setAttribute('data-index', String(items.indexOf(item)));
         grid.appendChild(card);
     });
+    bindDetailEntryScroll();
 }
 
 function renderTrafficEmptyState() {
@@ -691,7 +692,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (document.getElementById('trafficGrid')) {
         restoreEntryScroll();
-        bindDetailEntryScroll();
     }
 });
 
