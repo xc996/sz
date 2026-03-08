@@ -374,9 +374,11 @@ async function renderShopping() {
             </div>
         `;
         card.setAttribute('data-index', String(items.indexOf(item)));
+        card.setAttribute('data-slug', slug || '');
         grid.appendChild(card);
     });
     bindDetailEntryScroll();
+    restoreEntryScroll();
 }
 
 function renderShoppingEmptyState() {
@@ -440,11 +442,23 @@ function saveEntryScroll(slug) {
 }
 
 function restoreEntryScroll() {
+    const slug = sessionStorage.getItem('shoppingEntrySlug') || '';
     const yStr = sessionStorage.getItem('shoppingScrollY');
     const atStr = sessionStorage.getItem('shoppingSavedAt');
     const y = yStr ? parseInt(yStr, 10) : NaN;
     const at = atStr ? parseInt(atStr, 10) : 0;
-    if (!Number.isNaN(y) && Date.now() - at < 5 * 60 * 1000) {
+    const valid = Date.now() - at < 5 * 60 * 1000;
+    if (valid && slug) {
+        const card = document.querySelector(`.attraction-card[data-slug="${slug}"]`);
+        if (card) {
+            const navbar = document.getElementById('navbar');
+            const offset = navbar ? navbar.getBoundingClientRect().height + 16 : 80;
+            const top = window.scrollY + card.getBoundingClientRect().top - offset;
+            window.scrollTo({ top, behavior: 'auto' });
+        } else if (!Number.isNaN(y)) {
+            window.scrollTo({ top: y, behavior: 'auto' });
+        }
+    } else if (!Number.isNaN(y) && valid) {
         window.scrollTo({ top: y, behavior: 'auto' });
     }
     sessionStorage.removeItem('shoppingScrollY');
@@ -607,9 +621,6 @@ function init() {
 document.addEventListener('DOMContentLoaded', () => {
     init();
     
-    if (document.getElementById('shoppingGrid')) {
-        restoreEntryScroll();
-    }
 });
 
 // 监听系统主题变化

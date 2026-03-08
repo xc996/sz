@@ -665,12 +665,14 @@ async function renderAttractions() {
             </div>
         `;
         card.setAttribute('data-index', String(items.indexOf(attraction)));
+        card.setAttribute('data-slug', slug || '');
         grid.appendChild(card);
     });
     
     // 确保卡片创建完成后绑定点击事件
     bindAttractionClickEvents();
     bindDetailEntryScroll();
+    restoreEntryScroll();
 }
 
 /**
@@ -758,14 +760,26 @@ function saveEntryScroll(slug) {
 
 /**
  * 功能：从 sessionStorage 恢复列表滚动位置（中文注释）
- * 说明：仅在数据有效且未过期时恢复，并清理已使用的数据
+ * 说明：优先按条目 slug 定位卡片，不可用时回退到滚动坐标
  */
 function restoreEntryScroll() {
+    const slug = sessionStorage.getItem('attractionsEntrySlug') || '';
     const yStr = sessionStorage.getItem('attractionsScrollY');
     const atStr = sessionStorage.getItem('attractionsSavedAt');
     const y = yStr ? parseInt(yStr, 10) : NaN;
     const at = atStr ? parseInt(atStr, 10) : 0;
-    if (!Number.isNaN(y) && Date.now() - at < 5 * 60 * 1000) {
+    const valid = Date.now() - at < 5 * 60 * 1000;
+    if (valid && slug) {
+        const card = document.querySelector(`.attraction-card[data-slug="${slug}"]`);
+        if (card) {
+            const navbar = document.getElementById('navbar');
+            const offset = navbar ? navbar.getBoundingClientRect().height + 16 : 80;
+            const top = window.scrollY + card.getBoundingClientRect().top - offset;
+            window.scrollTo({ top, behavior: 'auto' });
+        } else if (!Number.isNaN(y)) {
+            window.scrollTo({ top: y, behavior: 'auto' });
+        }
+    } else if (!Number.isNaN(y) && valid) {
         window.scrollTo({ top: y, behavior: 'auto' });
     }
     sessionStorage.removeItem('attractionsScrollY');
@@ -1166,9 +1180,6 @@ document.addEventListener('DOMContentLoaded', () => {
         carousel.init();
     }
     
-    if (document.getElementById('attractionsGrid')) {
-        restoreEntryScroll();
-    }
 });
 
 // ------------------------------
